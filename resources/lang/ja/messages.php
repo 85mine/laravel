@@ -30,8 +30,8 @@ return [
     'validator' => [
         'user' => [
             'login' => [
-                'username' => 'aaa',
-                'password' => 'aaa',
+                'username' => 'Email',
+                'password' => 'Password',
             ]
         ],
     ],

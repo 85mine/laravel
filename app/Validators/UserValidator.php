@@ -19,7 +19,7 @@ class UserValidator {
 
     private function _defaultRule() {
         return [
-            'username' => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
         ];
     }
