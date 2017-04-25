@@ -7,6 +7,19 @@
         /*margin-top: 0;*/
     /*}*/
 /*}*/
+
+.btn-admin-min-width{min-width: 180px;}
+
+.menu-pr-row-height{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.menu-pr-btn-large{
+    width: 250px;
+    height: 90px;
+    font-size: 42px;
+}
 /*========= [HungPD] Report =============*/
 .m-l-150 {
     margin-left: 150px;
