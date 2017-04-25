@@ -37,10 +37,10 @@
 
         <div class="wrapper wrapper-content animated fadeInRight">
             @yield('content')
-            <div class="footer">
-                <div>
-                    {!! trans('messages.message.common.copyright') !!}
-                </div>
+        </div>
+        <div class="footer">
+            <div>
+                {!! trans('messages.message.common.copyright') !!}
             </div>
         </div>
     </div>
@@ -57,7 +57,6 @@
 <script src="{{url('assets/js/inspinia.js')}}"></script>
 <script src="{{url('assets/js/plugins/pace/pace.min.js')}}"></script>
 
-<script src="{{url('assets/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 @yield('extend-js')
 
 </body>
