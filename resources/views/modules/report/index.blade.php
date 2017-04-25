@@ -24,15 +24,15 @@
                     <label for="datepicker">{{ trans('messages.label.report.from') }}</label>
                     <label for="datepicker" class="label2-daterange">{{ trans('messages.label.report.to') }}</label>
                     <div class="input-daterange input-group" id="datepicker">
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text"
-                                                                                                    class="input-sm form-control"
-                                                                                                    name="start"
-                                                                                                    value=""/>
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" class="input-sm form-control" name="start" value=""/>
                         <span class="input-group-addon">～</span>
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text"
-                                                                                                    class="input-sm form-control"
-                                                                                                    name="end"
-                                                                                                    value=""/>
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" class="input-sm form-control" name="end" value=""/>
                     </div>
                 </div>
                 <div class="col-lg-3 custom-select2">
