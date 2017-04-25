@@ -9,7 +9,7 @@ use App\Http\Requests;
 class ProjectController extends BaseController
 {
     //Menu project
-    function getMenu(){
+    public function getMenu(){
         return view('modules.project.menu');
     }
 }
