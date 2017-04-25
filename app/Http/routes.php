@@ -24,10 +24,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'ProjectController@admin')->name('admin.home');
-        Route::get('/create-account', 'ProjectController@createAccount')->name('admin.createAccount');
-        Route::get('/edit-account', 'ProjectController@editAccount')->name('admin.editAccount');
-        Route::get('/create-base', 'ProjectController@createBase')->name('admin.createBase');
+        Route::get('/', 'AdminController@admin')->name('admin.home');
+        Route::get('/create-account', 'AdminController@createAccount')->name('admin.createAccount');
+        Route::get('/edit-account', 'AdminController@editAccount')->name('admin.editAccount');
+        Route::get('/create-base', 'AdminController@createBase')->name('admin.createBase');
     });
 
     Route::group(['prefix' => 'project'], function () {

@@ -20,7 +20,7 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-md-3" id="data_5">
+                <div class="col-md-3" id="filter_daterange">
                     <label for="datepicker">{{ trans('messages.label.report.from') }}</label>
                     <label for="datepicker" class="m-l-150">{{ trans('messages.label.report.to') }}</label>
                     <div class="input-daterange input-group" id="datepicker">
@@ -328,5 +328,83 @@
     <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/d3/d3.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/c3/c3.min.js')}}"></script>
-    <script src="{{url('assets/js/modules/report.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#filter_daterange .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $(".select2").select2();
+
+            c3.generate({
+                bindto: '#pie',
+                data: {
+                    columns: [
+                        ['{{ trans("messages.label.report.loss_orders") }}', 19.6],
+                        ['{{ trans("messages.label.report.accepting_orders") }}', 29.4],
+                        ['{{ trans("messages.label.report.undefined") }}', 51]
+                    ],
+                    colors: {
+                        '{{ trans("messages.label.report.loss_orders") }}': '#9BBB59',
+                        '{{ trans("messages.label.report.accepting_orders") }}': '#C0504D',
+                        '{{ trans("messages.label.report.undefined") }}': '#4F81BD'
+                    },
+                    type: 'pie'
+                }
+            });
+
+            c3.generate({
+                bindto: '#stocked1',
+                data: {
+                    columns: [
+                        ['{{ trans("messages.label.report.preparative") }}', 2, 22, 11, 17, 5, 5, 9, 4, 4, 13],
+                        ['{{ trans("messages.label.report.selective") }}', 1, 10, 5, 12, 0, 1, 0, 0, 3, 1]
+                    ],
+                    colors: {
+                        '{{ trans("messages.label.report.preparative") }}': '#4F81BD',
+                        '{{ trans("messages.label.report.selective") }}': '#C0504D'
+                    },
+                    type: 'bar',
+                    groups: [
+                        ['{{ trans("messages.label.report.preparative") }}', '{{ trans("messages.label.report.selective") }}']
+                    ]
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        categories: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄']
+                    }
+                }
+            });
+
+            c3.generate({
+                bindto: '#stocked2',
+                data: {
+                    columns: [
+                        ['{{ trans("messages.label.report.undefined") }}', 1, 7, 6, 9, 0, 0, 1, 0, 1, 0],
+                        ['{{ trans("messages.label.report.accepting_orders") }}', 0, 5, 1, 2, 0, 1, 0, 0, 1, 0],
+                        ['{{ trans("messages.label.report.loss_orders") }}', 0, 1, 5, 5, 0, 2, 0, 0, 1, 1]
+
+                    ],
+                    colors: {
+                        '{{ trans("messages.label.report.undefined") }}': '#4F81BD',
+                        '{{ trans("messages.label.report.accepting_orders") }}': '#C0504D',
+                        '{{ trans("messages.label.report.loss_orders") }}': '#9BBB59'
+                    },
+                    type: 'bar',
+                    groups: [
+                        ['{{ trans("messages.label.report.undefined") }}', '{{ trans("messages.label.report.accepting_orders") }}', '{{ trans("messages.label.report.loss_orders") }}']
+                    ]
+                },
+                axis: {
+                    x: {
+                        type: 'category',
+                        categories: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄']
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

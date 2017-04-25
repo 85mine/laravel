@@ -9,7 +9,8 @@ return [
     'title.home'                        => 'Home',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
-    'title.admin.home'                  => 'Admin',
+    'title.admin.home'                  => '管理者メニュー',
+    'title.admin.createAccount'         => 'アカウント作成',
 
     // Label
     'label' => [
@@ -20,13 +21,22 @@ return [
             'home' => 'Home'
         ],
         'admin' => [
-            'createAccount' => 'アカウント作成',
-            'createBase' => '拠点作成',
-            'editAccount' => 'アカウント編集',
-            'deleteProject' => '案件削除',
-            'admin' => 'Admin',
-            'createProject' => '案件作成',
-            'editProject' => '案件編集',
+            'admin' => [
+                'btnCreateAccount'  => 'アカウント作成',
+                'btnCreateBase'     => '拠点作成',
+                'btnEditAccount'    => 'アカウント編集',
+                'btnDeleteProject'  => '案件削除',
+                'admin'             => '管理者メニュー',
+            ],
+            'createAccount' => [
+                'btnAddMore'    => '追加',
+                'btnSave'       => '保存',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+                'createAccount' => 'アカウント作成',
+            ],
         ],
         'project' => [
             'list' => [
@@ -59,11 +69,11 @@ return [
             'base_name' => '拠点名',
             'clear' => 'クリア',
             'go' => 'GO!',
-            'preparative' => '',
-            'selective' => '',
-            'undefined' => '',
-            'accepting_orders' => '',
-            'loss_orders' => '',
+            'preparative' => '立候補',
+            'selective' => '選定',
+            'undefined' => '未確定',
+            'accepting_orders' => '受注',
+            'loss_orders' => '失注',
             'rank' => '位',
             'company' => '会社',
             'base' => '拠点',
@@ -84,6 +94,14 @@ return [
                 'password' => 'Password',
             ]
         ],
+        'admin' => [
+            'createAccount' => [
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+            ],
+        ]
     ],
 
     // Validator
