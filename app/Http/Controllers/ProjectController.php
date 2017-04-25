@@ -8,24 +8,6 @@ use App\Http\Requests;
 
 class ProjectController extends BaseController
 {
-    //Admin action
-    public function admin()
-    {
-        return view('modules.admin.home');
-    }
-
-    //Create New Account Action
-    public function createAccount()
-    {
-        return view('modules.admin.create_account');
-    }
-
-    //Edit Account Action
-    public function editAccount()
-    {
-        return view('modules.admin.edit_account');
-    }
-
     //Create Base Action
     public function createBase()
     {
@@ -35,17 +17,32 @@ class ProjectController extends BaseController
     //Delete Project Action
     public function deleteProject()
     {
-        return view('modules.admin.home');
+        return view('modules.project.delete');
     }
 
     //Menu project
-    public function getMenu(){
+    public function getMenu()
+    {
         return view('modules.project.menu');
     }
 
-    public function projectList() {
+    public function getChosingProject()
+    {
+        return view('modules.project.chosing_project');
+    }
+
+    public function projectList()
+    {
         $result_option = config('config.project.result');
         $service_option = config('config.project.service');
         return view('modules.project.list')->with(['result_option' => $result_option, 'service_option' => $service_option]);
     }
+
+    public function edit($id){
+        $result_option = config('config.project.result');
+        $accepting_base = config('config.project.accepting_base');
+        return view('modules.project.edit')->with(['result_option' => $result_option, 'accepting_base' => $accepting_base]);
+    }
+
+
 }
