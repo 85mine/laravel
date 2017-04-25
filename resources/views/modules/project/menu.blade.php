@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('title', trans('messages.title.home.dashboard'))
-@section('extend-css')
-    <link href="{{url('assets/css/modules/project/menu/menu.css')}}" rel="stylesheet">
-@endsection
 @section('breadcrumb')
     <h2>Layouts</h2>
     <ol class="breadcrumb">
@@ -20,16 +17,16 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <div class="row row-height">
+                    <div class="row menu-pr-row-height">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-3 text-center">
                             <a href="/create-project">
-                                <button class="btn btn-primary  dim btn-large-menu" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.project.createProject')}}</button>
+                                <button class="btn btn-primary dim menu-pr-btn-large" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.project.createProject')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
                             <a href="/edit-project">
-                                <button class="btn btn-danger  dim btn-large-menu" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.project.editProject')}}</button>
+                                <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.project.editProject')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3"></div>
