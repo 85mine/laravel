@@ -6,6 +6,8 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
+    'title.home'                        => 'Home',
+    'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
     'title.admin.home'                  => 'Admin',
 
@@ -50,6 +52,28 @@ return [
                 'route-chosing' => 'Chosing'
             ],
         ],
+        'report' => [
+            'from' => '日付',
+            'to' => '日付',
+            'sales_staff' => '営業担当',
+            'base_name' => '拠点名',
+            'clear' => 'クリア',
+            'go' => 'GO!',
+            'preparative' => '',
+            'selective' => '',
+            'undefined' => '',
+            'accepting_orders' => '',
+            'loss_orders' => '',
+            'rank' => '位',
+            'company' => '会社',
+            'base' => '拠点',
+            'preparative_rank' => '立候補順位',
+            'declining_rank' => '辞退順位',
+            'selection_rank' => '選定順位',
+            'order_base_rank' => '受注拠点順位',
+            'order_business_rank' => '受注営業順位',
+            'order_combination' => '受注組み合わせ'
+        ]
     ],
 
     // Placeholder
@@ -81,7 +105,7 @@ return [
             'login' => [
                 'welcome' => 'Welcome to Pittokuru',
                 'fails' => 'Email or password not wrong.',
-            ],
+            ]
         ],
         'project' => [
             'list' =>  [

@@ -7,6 +7,7 @@
         /*margin-top: 0;*/
     /*}*/
 /*}*/
+
 .btn-admin-min-width{min-width: 180px;}
 
 .menu-pr-row-height{
@@ -18,4 +19,11 @@
     width: 250px;
     height: 90px;
     font-size: 42px;
+}
+/*========= Report =============*/
+.m-l-150 {
+    margin-left: 150px;
+}
+.m-t-18 {
+    margin-top: 18px;
 }

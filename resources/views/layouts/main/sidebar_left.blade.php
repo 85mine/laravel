@@ -59,7 +59,7 @@
                 </ul>
             </li>
             <li class="active">
-                <a href="layouts.html"><i class="fa fa-diamond"></i>
+                <a href="{{ route('report.index') }}"><i class="fa fa-diamond"></i>
                     <span class="nav-label">
                         {{trans('messages.menu.report')}}
                     </span>
