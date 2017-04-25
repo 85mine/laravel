@@ -21,7 +21,9 @@ return [
             'createBase' => '拠点作成',
             'editAccount' => 'アカウント編集',
             'deleteProject' => '案件削除',
-            'admin' => 'Admin'
+            'admin' => 'Admin',
+            'createProject' => '案件作成',
+            'editProject' => '案件編集',
         ],
     ],
 
@@ -75,9 +77,4 @@ return [
         'report' => '集計画面',
     ],
 
-    //Project
-    'project' => [
-        'createProject' => '案件作成',
-        'editProject' => '案件編集',
-    ]
 ];

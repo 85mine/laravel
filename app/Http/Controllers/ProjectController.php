@@ -37,4 +37,9 @@ class ProjectController extends BaseController
     {
         return view('modules.admin.home');
     }
+
+    //Menu project
+    public function getMenu(){
+        return view('modules.project.menu');
+    }
 }
