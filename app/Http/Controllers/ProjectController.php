@@ -8,5 +8,9 @@ use App\Http\Requests;
 
 class ProjectController extends BaseController
 {
-    //
+    //Admin action
+    public function admin()
+    {
+        return view('modules.admin.home');
+    }
 }

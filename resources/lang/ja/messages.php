@@ -14,6 +14,12 @@ return [
             'logOut'  => 'Log out',
             'profile'  => 'Profile',
         ],
+        'admin' => [
+            'createAccount' => 'アカウント作成',
+            'createBase' => '拠点作成',
+            'editAccount' => 'アカウント編集',
+            'deleteProject' => '案件削除'
+        ],
     ],
 
     // Placeholder
