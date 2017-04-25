@@ -5,13 +5,10 @@
     <h2>{{trans('messages.title.project.list')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Project</a>
+            <a href="#">{{trans('messages.label.common.home')}}</a>
         </li>
         <li class="active">
-            <strong>List</strong>
+            <strong>{{trans('messages.title.project.list')}}</strong>
         </li>
     </ol>
 @endsection
@@ -144,7 +141,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/2'">
+                                <tr onclick="location.href='/project/detail/2'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -162,7 +159,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/3'">
+                                <tr onclick="location.href='/project/detail/3'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -180,7 +177,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/4'">
+                                <tr onclick="location.href='/project/detail/4'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -190,7 +187,7 @@
                                         <span class="m-r">【未確定】</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/5'">
+                                <tr onclick="location.href='/project/detail/5'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -200,7 +197,7 @@
                                         <span class="m-r">【受注】</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/6'">
+                                <tr onclick="location.href='/project/detail/6'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -210,7 +207,7 @@
                                         <span class="m-r">【受注】</span>
                                     </td>
                                 </tr>
-                                <tr  onclick="location.href='/project/detail/7'">
+                                <tr onclick="location.href='/project/detail/7'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>

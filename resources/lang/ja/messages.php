@@ -33,8 +33,8 @@ return [
                 'customer'      => '顧客名',
                 'branch'        => '拠点名',
                 'result'        => '結果',
-                'candidacy'     =>'立候補',
-                'service'       =>'サービス'
+                'candidacy'     => '立候補',
+                'service'       => 'サービス'
             ]
         ],
     ],
