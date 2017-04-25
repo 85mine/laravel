@@ -8,10 +8,10 @@
             <a href="index.html">Home</a>
         </li>
         <li>
-            <a href="#">Project</a>
+            <a href="#">@lang('messages.label.project.chosing.route-project')</a>
         </li>
         <li class="active">
-            <strong>Chosing</strong>
+            <strong>@lang('messages.label.project.chosing.route-chosing')</strong>
         </li>
     </ol>
 @endsection

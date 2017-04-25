@@ -45,7 +45,9 @@ return [
                 'endProject' => '選定終了案件',
                 'undefined' => '未確定',
                 'received' => '受注',
-                'loss' => '失注'
+                'loss' => '失注',
+                'route-project' => 'Project',
+                'route-chosing' => 'Chosing'
             ],
         ],
     ],
