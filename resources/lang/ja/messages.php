@@ -6,24 +6,25 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
-    'title.admin.home'                  => 'Admin',
-    'title.admin.createAccount'         => 'Create Account',
+    'title.project.list'                => '案件一覧',
+    'title.admin.home'                  => '管理者メニュー',
+    'title.admin.createAccount'         => 'アカウント作成',
 
     // Label
     'label' => [
         'common' => [
-            'login'  => 'Login',
-            'logOut'  => 'Log out',
-            'profile'  => 'Profile',
+            'login' => 'Login',
+            'logOut' => 'Log out',
+            'profile' => 'Profile',
             'home' => 'Home'
         ],
-        'project' => [
+        'admin' => [
             'admin' => [
                 'btnCreateAccount'  => 'アカウント作成',
                 'btnCreateBase'     => '拠点作成',
                 'btnEditAccount'    => 'アカウント編集',
                 'btnDeleteProject'  => '案件削除',
-                'admin'             => 'Admin',
+                'admin'             => '管理者メニュー',
             ],
             'createAccount' => [
                 'btnAddMore'    => '追加',
@@ -32,9 +33,33 @@ return [
                 'base'          => '拠点',
                 'name'          => '名前',
                 'id'            => 'ID（メールアドレス）',
-                'createAccount' => 'Create Account',
+                'createAccount' => 'アカウント作成',
             ],
-        ]
+        ],
+        'project' => [
+            'list' => [
+                'saler'         => '営業担当',
+                'date'          => '日付',
+                'customer'      => '顧客名',
+                'branch'        => '拠点名',
+                'result'        => '結果',
+                'candidacy'     => '立候補',
+                'service'       => 'サービス',
+                'reset_button'  => 'クリア',
+                'go_button'     => 'GO!'
+            ],
+            'chosing' => [
+                'title' => '選定中案件',
+                'chosingProject' => '選定中案件',
+                'project' => '件',
+                'endProject' => '選定終了案件',
+                'undefined' => '未確定',
+                'received' => '受注',
+                'loss' => '失注',
+                'route-project' => 'Project',
+                'route-chosing' => 'Chosing'
+            ],
+        ],
     ],
 
     // Placeholder
@@ -45,7 +70,7 @@ return [
                 'password' => 'Password',
             ]
         ],
-        'project' => [
+        'admin' => [
             'createAccount' => [
                 'department'    => '部署',
                 'base'          => '拠点',
@@ -71,9 +96,16 @@ return [
             'copyright' => '<strong>Copyright</strong> Pittokuru Company &copy; 2014-2017',
         ],
         'user' => [
-            'login' =>  [
+            'login' => [
                 'welcome' => 'Welcome to Pittokuru',
                 'fails' => 'Email or password not wrong.',
+            ],
+        ],
+        'project' => [
+            'list' =>  [
+                'accept_order' => '受注',
+                'loss_order' => '失注',
+                'pending_order'=>'ペンディング'
             ],
         ],
     ],
