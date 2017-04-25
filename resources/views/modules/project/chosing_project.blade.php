@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox-title">
-                    <h5 style="color: blue;">@lang('messages.label.project.chosing.chosingProject'): <span
-                                style="color: red;">7 @lang('messages.label.project.chosing.project')</span></h5>
+                    <h5 style="color: blue;">{{ trans('messages.label.project.chosing.chosingProject') }}:
+                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span></h5>
                 </div>
                 <div class="scroll_content">
                     <div class="ibox-content">

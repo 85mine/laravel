@@ -48,4 +48,11 @@ class ProjectController extends BaseController
     {
         return view('modules.project.chosing_project');
     }
+
+    public function projectList()
+    {
+        $result_option = config('config.project.result');
+        $service_option = config('config.project.service');
+        return view('modules.project.list')->with(['result_option' => $result_option, 'service_option' => $service_option]);
+    }
 }
