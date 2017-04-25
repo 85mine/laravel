@@ -7,6 +7,7 @@ return [
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
     'title.admin.home'                  => 'Admin',
+    'title.admin.createAccount'         => 'Create Account',
 
     // Label
     'label' => [
@@ -16,15 +17,24 @@ return [
             'profile'  => 'Profile',
             'home' => 'Home'
         ],
-        'admin' => [
-            'createAccount' => 'アカウント作成',
-            'createBase' => '拠点作成',
-            'editAccount' => 'アカウント編集',
-            'deleteProject' => '案件削除',
-            'admin' => 'Admin',
-            'createProject' => '案件作成',
-            'editProject' => '案件編集',
-        ],
+        'project' => [
+            'admin' => [
+                'btnCreateAccount'  => 'アカウント作成',
+                'btnCreateBase'     => '拠点作成',
+                'btnEditAccount'    => 'アカウント編集',
+                'btnDeleteProject'  => '案件削除',
+                'admin'             => 'Admin',
+            ],
+            'createAccount' => [
+                'btnAddMore'    => '追加',
+                'btnSave'       => '保存',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+                'createAccount' => 'Create Account',
+            ],
+        ]
     ],
 
     // Placeholder
@@ -35,6 +45,14 @@ return [
                 'password' => 'Password',
             ]
         ],
+        'project' => [
+            'createAccount' => [
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+            ],
+        ]
     ],
 
     // Validator

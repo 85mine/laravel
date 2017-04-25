@@ -18,7 +18,7 @@ Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
-    Route::get('/admin', 'ProjectController@admin')->name('admin.home');
+    Route::get('/admin', 'Admin@admin')->name('admin.home');
     Route::get('/create-account', 'ProjectController@createAccount')->name('admin.createAccount');
     Route::get('/edit-account', 'ProjectController@editAccount')->name('admin.editAccount');
     Route::get('/create-base', 'ProjectController@createBase')->name('admin.createBase');
