@@ -7,6 +7,7 @@ return [
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
     'title.project.list'                => '案件一覧',
+    'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => 'Admin',
 
     // Label
@@ -37,6 +38,23 @@ return [
                 'service'       => 'サービス',
                 'reset_button'  => 'クリア',
                 'go_button'     => 'GO!'
+            ],
+            'edit' => [
+                'edit_button'       => '編集',
+                'budget'            => '予算',
+                'accepting_base'    => '受け入れ拠点',
+                'result'            => '結果',
+                'case_details'      => '案件詳細',
+                'pit_sapporo'       => 'PIT 札幌',
+                'candidacy'         => '立候補',
+                'select'            => '選定',
+                'pco_sendai'        => 'PCO 仙台',
+                'condition'         => '条件付き',
+                'pit_nagoya'        => 'PIT 名古屋',
+                'dismiss'           => '辞退',
+                'reason'            => '理由',
+                'base'              => '拠点',
+                'reason_for_select'  => '選定理由',
             ]
         ],
     ],
