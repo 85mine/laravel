@@ -43,7 +43,7 @@
                                 {{--</thead>--}}
                                 <tbody>
                                 @for($i=0; $i<7; $i++)
-                                    <tr class="grade_$i">
+                                    <tr class="grade_{{ $i }}">
                                         <td class="center">{{ $i+1 }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -57,7 +57,7 @@
                                         </td>
                                     </tr>
                                     @if($i==2)
-                                        <tr class="grade_$i" style="background-color: #ed5565;">
+                                        <tr class="grade_{{ $i }}" style="background-color: #ed5565;">
                                             <td class="center">3</td>
                                             <td>2017/4/25 9:30</td>
                                             <td>本田</td>
