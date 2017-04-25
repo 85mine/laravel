@@ -21,12 +21,12 @@
                         <div class="col-lg-3"></div>
                         <div class="col-lg-3 text-center">
                             <a href="/create-project">
-                                <button class="btn btn-primary dim menu-pr-btn-large" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.project.createProject')}}</button>
+                                <button class="btn btn-primary dim menu-pr-btn-large" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.label.common.createProject')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
                             <a href="/edit-project">
-                                <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.project.editProject')}}</button>
+                                <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.label.common.editProject')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3"></div>

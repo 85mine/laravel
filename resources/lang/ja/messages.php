@@ -13,6 +13,8 @@ return [
             'login'  => 'Login',
             'logOut'  => 'Log out',
             'profile'  => 'Profile',
+            'createProject' => '案件作成',
+            'editProject' => '案件編集',
         ],
     ],
 
@@ -66,9 +68,4 @@ return [
         'report' => '集計画面',
     ],
 
-    //Project
-    'project' => [
-        'createProject' => '案件作成',
-        'editProject' => '案件編集',
-    ]
 ];
