@@ -6,6 +6,7 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
+    'title.admin.home'                  => 'Admin',
 
     // Label
     'label' => [
@@ -13,6 +14,14 @@ return [
             'login'  => 'Login',
             'logOut'  => 'Log out',
             'profile'  => 'Profile',
+            'home' => 'Home'
+        ],
+        'admin' => [
+            'createAccount' => 'アカウント作成',
+            'createBase' => '拠点作成',
+            'editAccount' => 'アカウント編集',
+            'deleteProject' => '案件削除',
+            'admin' => 'Admin',
             'createProject' => '案件作成',
             'editProject' => '案件編集',
         ],
