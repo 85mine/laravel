@@ -18,4 +18,6 @@ Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
+    // Menu project
+    Route::get('/menu-project','ProjectController@getMenu')->name('project.getMenu');
 });
