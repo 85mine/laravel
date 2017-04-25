@@ -2,11 +2,11 @@
 return [
 
     // Title page
-    'title.common'                      => 'Pittokuru',
-    'title.short.common'                => 'PI',
-    'title.user.login'                  => 'Login',
+    'title.common'                      => '拠点選定システム',
+    'title.short.common'                => 'BS',
+    'title.user.login'                  => 'ログイン',
     'title.home.dashboard'              => 'Dashboard',
-    'title.home'                        => 'Home',
+    'title.home'                        => 'ホーム',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
     'title.admin.home'                  => '管理者メニュー',
@@ -15,10 +15,10 @@ return [
     // Label
     'label' => [
         'common' => [
-            'login' => 'Login',
-            'logOut' => 'Log out',
-            'profile' => 'Profile',
-            'home' => 'Home'
+            'login' => 'ログイン',
+            'logOut' => 'ログアウト',
+            'profile' => 'プロフィール',
+            'home' => 'ホーム'
         ],
         'admin' => [
             'admin' => [
@@ -58,7 +58,7 @@ return [
                 'undefined' => '未確定',
                 'received' => '受注',
                 'loss' => '失注',
-                'route-project' => 'Project',
+                'route-project' => 'プロジェクト',
                 'route-chosing' => 'Chosing'
             ],
         ],
@@ -108,8 +108,8 @@ return [
     'validator' => [
         'user' => [
             'login' => [
-                'username' => 'Email',
-                'password' => 'Password',
+                'username' => 'メール',
+                'password' => 'パスワード',
             ]
         ],
     ],
@@ -117,12 +117,12 @@ return [
     // Message
     'message' => [
         'common' => [
-            'copyright' => '<strong>Copyright</strong> Pittokuru Company &copy; 2014-2017',
+            'copyright' => '<strong>Copyright</strong> &copy; PITCREW Co.,Ltd. All Rights Reserved.',
         ],
         'user' => [
             'login' => [
                 'welcome' => 'Welcome to Pittokuru',
-                'fails' => 'Email or password not wrong.',
+                'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             ]
         ],
         'project' => [
