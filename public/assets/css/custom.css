@@ -21,9 +21,26 @@
     font-size: 42px;
 }
 /*========= Report =============*/
-.m-l-150 {
-    margin-left: 150px;
+.label2-daterange {
+    margin-left: calc(46%);
 }
-.m-t-18 {
-    margin-top: 18px;
+.filter-btn .btn {
+    margin-top: 23px;
+}
+#chart {
+    margin-top: 20px;
+}
+#report_img {
+    height: 320px;
+}
+#datepicker, #datepicker input, .custom-select2 .select2-container .select2-selection--single {
+    height: 34px;
+}
+.custom-select2 .select2-container .select2-selection--single {
+    border-radius: 0;
+}
+@media (min-width: 768px) and (max-width: 1366px){
+    .label2-daterange {
+        margin-left: calc(25%);
+    }
 }

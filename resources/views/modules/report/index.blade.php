@@ -20,53 +20,53 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-md-3" id="filter_daterange">
+                <div class="col-lg-3" id="filter_daterange">
                     <label for="datepicker">{{ trans('messages.label.report.from') }}</label>
-                    <label for="datepicker" class="m-l-150">{{ trans('messages.label.report.to') }}</label>
+                    <label for="datepicker" class="label2-daterange">{{ trans('messages.label.report.to') }}</label>
                     <div class="input-daterange input-group" id="datepicker">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
                         <input type="text" class="input-sm form-control" name="start" value=""/>
                         <span class="input-group-addon">～</span>
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
                         <input type="text" class="input-sm form-control" name="end" value=""/>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 custom-select2">
                     <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
                     <select id="sales_staff" class="select2 form-control">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
+                        <option value="1">金子</option>
+                        <option value="2">本田康稔</option>
+                        <option value="3">村田和樹</option>
+                        <option value="4">本田康稔</option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 custom-select2">
                     <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
                     <select id="base_name" class="select2 form-control">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
-                        <option value="5">Option 5</option>
+                        <option value="1">沖縄</option>
+                        <option value="2">岐阜</option>
                     </select>
                 </div>
-                <div class="col-md-3">
+                <div class="col-lg-3 text-right filter-btn">
                     <button type="reset"
-                            class="btn btn-w-m btn-default m-t-18">{{ trans('messages.label.report.clear') }}</button>
+                            class="btn btn-w-m btn-default">{{ trans('messages.label.report.clear') }}</button>
                     <button type="submit"
-                            class="btn btn-w-m btn-default m-t-18">{{ trans('messages.label.report.go') }}</button>
+                            class="btn btn-w-m btn-primary">{{ trans('messages.label.report.go') }}</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div id="chart">
         <div class="row">
             <div class="col-sm-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div>
-                            <div id="report_img">
-                                <img class="img-responsive" src="{{ url('assets/img/report.png') }}" alt="report">
-                            </div>
+                        <div id="report_img" class="text-center">
+                            <img src="{{ url('assets/img/report.png') }}" alt="report">
                         </div>
                     </div>
                 </div>
