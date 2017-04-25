@@ -6,7 +6,7 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
-    'title.home'                        => 'Home',
+    'title.home'                        => 'ホーム',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
     'title.project.edit'                => '案件結果入力',
