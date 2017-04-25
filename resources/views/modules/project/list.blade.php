@@ -34,7 +34,7 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.saler')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="0"></option>
                                         <option value="ABC株式会社">ABC株式会社</option>
                                     </select>
@@ -44,14 +44,14 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
 
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
                             <div class="form-group col-sm-3 m-b-xs">
@@ -66,7 +66,7 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.branch')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="0"></option>
                                         <option value="沖縄">沖縄</option>
                                         <option value="岐阜">岐阜</option>
@@ -76,7 +76,7 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.result')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline">
                                         <option value=""></option>
                                         @foreach ($result_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -87,18 +87,18 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.candidacy')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="0"></option>
-                                        <option value="1">Option 2</option>
-                                        <option value="2">Option 3</option>
-                                        <option value="3">Option 4</option>
+                                        @foreach ($candidacy_option as $key=>$value){
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.service')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline">
                                         <option value=""></option>
                                         @foreach ($service_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -106,7 +106,6 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="ibox-content">
