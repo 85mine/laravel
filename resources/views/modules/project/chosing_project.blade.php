@@ -5,7 +5,7 @@
     <h2>@lang('messages.label.project.chosing.title')</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">@lang('messages.label.common.home')</a>
         </li>
         <li>
             <a href="#">@lang('messages.label.project.chosing.route-project')</a>
@@ -23,7 +23,8 @@
             <div class="col-lg-12">
                 <div class="ibox-title">
                     <h5 style="color: blue;">{{ trans('messages.label.project.chosing.chosingProject') }}:
-                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span></h5>
+                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span>
+                    </h5>
                 </div>
                 <div class="scroll_content">
                     <div class="ibox-content">
@@ -41,95 +42,36 @@
                                 {{--</tr>--}}
                                 {{--</thead>--}}
                                 <tbody>
-                                <tr class="gradeX">
-                                    <td>1</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td>2</td>
-                                    <td>2017/4/24 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA text-primary" style="background-color: #ed5565;">
-                                    <td>3</td>
-                                    <td>2017/4/23 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="m-r">EE CC</span>
-                                        <span class="m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>4</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td>5</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td>6</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>7</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">AA BB</span>
-                                        <span class="text-navy m-r">CC DD</span>
-                                        <span class="text-danger m-r">EE CC</span>
-                                        <span class="text-primary m-r">GG HH KK</span>
-                                    </td>
-                                </tr>
+                                @for($i=0; $i<7; $i++)
+                                    <tr class="grade_$i">
+                                        <td class="center">{{ $i+1 }}</td>
+                                        <td>2017/4/25 9:30</td>
+                                        <td>本田</td>
+                                        <td>ABC株式会社</td>
+                                        <td>ABCゲームアプリメールサポート</td>
+                                        <td class="center">
+                                            <span class="text-success m-r">P札 C博</span>
+                                            <span class="text-navy m-r">P東 P名</span>
+                                            <span class="text-danger m-r">P岐　P北　C沖</span>
+                                            <span class="text-primary m-r">C仙　C岐　C東</span>
+                                        </td>
+                                    </tr>
+                                    @if($i==2)
+                                        <tr class="grade_$i" style="background-color: #ed5565;">
+                                            <td class="center">3</td>
+                                            <td>2017/4/25 9:30</td>
+                                            <td>本田</td>
+                                            <td>ABC株式会社</td>
+                                            <td>ABCゲームアプリメールサポート</td>
+                                            <td class="center">
+                                                <span class="m-r">P札 C博</span>
+                                                <span class="m-r">P東 P名</span>
+                                                <span class="m-r">P岐　P北　C沖</span>
+                                                <span class="m-r">C仙　C岐　C東</span>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endfor
                                 </tbody>
                                 {{--<tfoot>--}}
                                 {{--<tr>--}}
@@ -162,18 +104,9 @@
 
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table- table-hover" id="end-table">
-                                    {{--<thead>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>ID</th>--}}
-                                    {{--<th>Date</th>--}}
-                                    {{--<th>Project</th>--}}
-                                    {{--<th>Prepare</th>--}}
-                                    {{--<th></th>--}}
-                                    {{--</tr>--}}
-                                    {{--</thead>--}}
                                     <tbody>
                                     <tr class="gradeX">
-                                        <td>1</td>
+                                        <td class="center">1</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -181,12 +114,12 @@
                                         <td class="center">
                                             <span class="text-success m-r">P札</span>
                                             <span class="center text-primary">
-                                                    [@lang('messages.label.project.chosing.undefined')]
-                                                </span>
+                                                [@lang('messages.label.project.chosing.undefined')]
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>2</td>
+                                        <td class="center">2</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -194,12 +127,12 @@
                                         <td class="center">
                                             <span class="text-success m-r">P札</span>
                                             <span class="center text-primary">
-                                                    [@lang('messages.label.project.chosing.received')]
-                                                </span>
+                                                [@lang('messages.label.project.chosing.received')]
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>3</td>
+                                        <td class="center">3</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -207,12 +140,12 @@
                                         <td class="center">
                                             <span class="text-success m-r">P札</span>
                                             <span class="center text-primary">
-                                                    [@lang('messages.label.project.chosing.loss')]
-                                                </span>
+                                                [@lang('messages.label.project.chosing.loss')]
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>2</td>
+                                        <td class="center">4</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -220,12 +153,12 @@
                                         <td class="center">
                                             <span class="text-success m-r">P札</span>
                                             <span class="center text-primary">
-                                                    [@lang('messages.label.project.chosing.received')]
-                                                </span>
+                                                [@lang('messages.label.project.chosing.received')]
+                                            </span>
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>3</td>
+                                        <td class="center">5</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -233,20 +166,11 @@
                                         <td class="center">
                                             <span class="text-success m-r">P札</span>
                                             <span class="center text-primary">
-                                                    [@lang('messages.label.project.chosing.loss')]
-                                                </span>
+                                                [@lang('messages.label.project.chosing.loss')]
+                                            </span>
                                         </td>
                                     </tr>
                                     </tbody>
-                                    {{--<tfoot>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>ID</th>--}}
-                                    {{--<th>Date</th>--}}
-                                    {{--<th>Project</th>--}}
-                                    {{--<th>Prepare</th>--}}
-                                    {{--<th></th>--}}
-                                    {{--</tr>--}}
-                                    {{--</tfoot>--}}
                                 </table>
                             </div>
 

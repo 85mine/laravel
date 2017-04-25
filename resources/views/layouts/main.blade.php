@@ -37,10 +37,10 @@
 
         <div class="wrapper wrapper-content animated fadeInRight">
             @yield('content')
-            <div class="footer">
-                <div>
-                    {!! trans('messages.message.common.copyright') !!}
-                </div>
+        </div>
+        <div class="footer">
+            <div>
+                {!! trans('messages.message.common.copyright') !!}
             </div>
         </div>
     </div>
