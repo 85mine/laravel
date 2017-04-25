@@ -35,7 +35,7 @@
                                                                                                     value=""/>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 custom-select2">
                     <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
                     <select id="sales_staff" class="select2 form-control">
                         <option value="1">金子</option>
@@ -44,23 +44,23 @@
                         <option value="4">本田康稔</option>
                     </select>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 custom-select2">
                     <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
                     <select id="base_name" class="select2 form-control">
                         <option value="1">沖縄</option>
                         <option value="2">岐阜</option>
                     </select>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 text-right filter-btn">
                     <button type="reset"
-                            class="btn btn-w-m btn-default m-t-18">{{ trans('messages.label.report.clear') }}</button>
+                            class="btn btn-w-m btn-default">{{ trans('messages.label.report.clear') }}</button>
                     <button type="submit"
-                            class="btn btn-w-m btn-default m-t-18">{{ trans('messages.label.report.go') }}</button>
+                            class="btn btn-w-m btn-primary">{{ trans('messages.label.report.go') }}</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div id="chart">
         <div class="row">
             <div class="col-sm-6">
                 <div class="ibox float-e-margins">
