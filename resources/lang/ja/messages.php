@@ -6,6 +6,7 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
+    'title.project.list'                => '案件一覧',
 
     // Label
     'label' => [
@@ -13,6 +14,17 @@ return [
             'login'  => 'Login',
             'logOut'  => 'Log out',
             'profile'  => 'Profile',
+        ],
+        'project' => [
+            'list' => [
+                'saler'         => '営業担当',
+                'date'          => '日付',
+                'customer'      => '顧客名',
+                'branch'        => '拠点名',
+                'result'        => '結果',
+                'candidacy'     =>'立候補',
+                'service'       =>'サービス'
+            ]
         ],
     ],
 
@@ -45,6 +57,13 @@ return [
             'login' =>  [
                 'welcome' => 'Welcome to Pittokuru',
                 'fails' => 'Email or password not wrong.',
+            ],
+        ],
+        'project' => [
+            'list' =>  [
+                'accept_order' => '受注',
+                'loss_order' => '失注',
+                'pending_order'=>'ペンディング'
             ],
         ],
     ],
