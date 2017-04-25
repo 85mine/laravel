@@ -2,17 +2,28 @@
 return [
 
     // Title page
-    'title.common'                      => 'Pittokuru',
-    'title.short.common'                => 'PI',
-    'title.user.login'                  => 'Login',
-    'title.home.dashboard'              => 'Dashboard',
+    'title.common' => 'Pittokuru',
+    'title.short.common' => 'PI',
+    'title.user.login' => 'Login',
+    'title.home.dashboard' => 'Dashboard',
 
     // Label
     'label' => [
         'common' => [
-            'login'  => 'Login',
-            'logOut'  => 'Log out',
-            'profile'  => 'Profile',
+            'login' => 'Login',
+            'logOut' => 'Log out',
+            'profile' => 'Profile',
+        ],
+        'project' => [
+            'chosing' => [
+                'title' => '選定中案件',
+                'chosingProject' => '選定中案件',
+                'project' => '件',
+                'endProject' => '選定終了案件',
+                'undefined' => '未確定',
+                'received' => '受注',
+                'loss' => '失注'
+            ],
         ],
     ],
 
@@ -42,7 +53,7 @@ return [
             'copyright' => '<strong>Copyright</strong> Pittokuru Company &copy; 2014-2017',
         ],
         'user' => [
-            'login' =>  [
+            'login' => [
                 'welcome' => 'Welcome to Pittokuru',
                 'fails' => 'Email or password not wrong.',
             ],
@@ -65,4 +76,6 @@ return [
         'detailProject' => '案件詳細画面',
         'report' => '集計画面',
     ],
+
+
 ];
