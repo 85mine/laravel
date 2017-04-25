@@ -1,14 +1,14 @@
 @extends('layouts.main')
-@section('title', trans('messages.title.home.dashboard'))
+@section('title', trans('messages.title.admin.home'))
 
 @section('breadcrumb')
-    <h2>Layouts</h2>
+    <h2>{{trans('messages.label.admin.admin')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">{{trans('messages.label.common.home')}}</a>
         </li>
         <li class="active">
-            <strong>Layouts</strong>
+            <strong>{{trans('messages.label.admin.admin')}}</strong>
         </li>
     </ol>
 @endsection
