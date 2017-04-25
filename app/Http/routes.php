@@ -18,6 +18,10 @@ Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
+    // Report
+    Route::group(['prefix' => 'report'], function () {
+        Route::get('/', 'ReportController@index')->name('report.index');
+    });
 
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'ProjectController@admin')->name('admin.home');
