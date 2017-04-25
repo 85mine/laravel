@@ -164,7 +164,7 @@ return [
         'editProject' => '案件編集',
         'listProject' => '案件一覧',
         'resultProject' => '案件結果入力',
-        'chooseProject' => '案件（選定中）',
+        'chooseProject' => '選定中案件',
         'detailProject' => '案件詳細画面',
         'report' => '集計画面',
     ],
