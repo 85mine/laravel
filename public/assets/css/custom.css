@@ -21,9 +21,17 @@
     font-size: 42px;
 }
 /*========= Report =============*/
-.m-l-150 {
-    margin-left: 150px;
+.label2-daterange {
+    margin-left: calc(46%);
 }
 .m-t-18 {
     margin-top: 18px;
+}
+#report_img{
+    height: 320px;
+}
+@media (min-width: 768px) and (max-width: 1366px){
+    .label2-daterange {
+        margin-left: calc(25%);
+    }
 }
