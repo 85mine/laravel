@@ -5,7 +5,7 @@
     <h2>@lang('messages.label.project.chosing.title')</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">@lang('messages.label.common.home')</a>
         </li>
         <li>
             <a href="#">@lang('messages.label.project.chosing.route-project')</a>
@@ -23,7 +23,8 @@
             <div class="col-lg-12">
                 <div class="ibox-title">
                     <h5 style="color: blue;">{{ trans('messages.label.project.chosing.chosingProject') }}:
-                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span></h5>
+                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span>
+                    </h5>
                 </div>
                 <div class="scroll_content">
                     <div class="ibox-content">
@@ -212,7 +213,7 @@
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>2</td>
+                                        <td>4</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -225,7 +226,7 @@
                                         </td>
                                     </tr>
                                     <tr class="gradeX">
-                                        <td>3</td>
+                                        <td>5</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
