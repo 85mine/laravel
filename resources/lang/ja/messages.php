@@ -74,4 +74,10 @@ return [
         'detailProject' => '案件詳細画面',
         'report' => '集計画面',
     ],
+
+    //Project
+    'project' => [
+        'createProject' => '案件作成',
+        'editProject' => '案件編集',
+    ]
 ];
