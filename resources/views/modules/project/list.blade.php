@@ -44,14 +44,14 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
 
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
                             <div class="form-group col-sm-3 m-b-xs">
@@ -89,9 +89,9 @@
                                 <div>
                                     <select class="input-s-lg form-control inline">
                                         <option value="0"></option>
-                                        <option value="1">Option 2</option>
-                                        <option value="2">Option 3</option>
-                                        <option value="3">Option 4</option>
+                                        @foreach ($candidacy_option as $key=>$value){
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -106,7 +106,6 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="ibox-content">
