@@ -27,8 +27,8 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-w-m btn-default">クリア</button>
-                            <button type="button" class="btn btn-w-m btn-primary">GO!</button>
+                            <button type="button" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
+                            <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-3 m-b-xs">
@@ -123,7 +123,7 @@
                                 </tr>
                                 </thead>--}}
                                 <tbody>
-                                <tr onclick="location.href='/project/detail/1'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -141,7 +141,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/2'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -159,7 +159,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/3'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -177,7 +177,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/4'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -187,7 +187,7 @@
                                         <span class="m-r">【未確定】</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/5'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -197,7 +197,7 @@
                                         <span class="m-r">【受注】</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/6'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -207,7 +207,7 @@
                                         <span class="m-r">【受注】</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='/project/detail/7'">
+                                <tr onclick="location.href='#'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>

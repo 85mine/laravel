@@ -34,7 +34,9 @@ return [
                 'branch'        => '拠点名',
                 'result'        => '結果',
                 'candidacy'     => '立候補',
-                'service'       => 'サービス'
+                'service'       => 'サービス',
+                'reset_button'  => 'クリア',
+                'go_button'     => 'GO!'
             ]
         ],
     ],
