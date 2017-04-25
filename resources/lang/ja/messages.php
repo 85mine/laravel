@@ -6,6 +6,7 @@ return [
     'title.short.common'                => 'PI',
     'title.user.login'                  => 'Login',
     'title.home.dashboard'              => 'Dashboard',
+    'title.report'                      => 'Report',
 
     // Label
     'label' => [
@@ -47,6 +48,9 @@ return [
                 'fails' => 'Email or password not wrong.',
             ],
         ],
+        'report' => [
+            'title' => 'Report'
+        ]
     ],
 
     // Menu
