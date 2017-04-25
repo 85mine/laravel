@@ -42,97 +42,36 @@
                                 {{--</tr>--}}
                                 {{--</thead>--}}
                                 <tbody>
-                                <tr class="gradeX">
-                                    <td class="center">1</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">2</td>
-                                    <td>2017/4/24 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA text-primary" style="background-color: #ed5565;">
-                                    <td class="center">3</td>
-                                    <td>2017/4/23 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="m-r">P札 C博</span>
-                                        <span class="m-r">P東 P名</span>
-                                        <span class="m-r">P岐　P北　C沖</span>
-                                        <span class="m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td class="center">4</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td class="center">5</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td class="center">6</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td class="center">7</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
+                                @for($i=0; $i<7; $i++)
+                                    <tr class="grade_$i">
+                                        <td class="center">{{ $i+1 }}</td>
+                                        <td>2017/4/25 9:30</td>
+                                        <td>本田</td>
+                                        <td>ABC株式会社</td>
+                                        <td>ABCゲームアプリメールサポート</td>
+                                        <td class="center">
+                                            <span class="text-success m-r">P札 C博</span>
+                                            <span class="text-navy m-r">P東 P名</span>
+                                            <span class="text-danger m-r">P岐　P北　C沖</span>
+                                            <span class="text-primary m-r">C仙　C岐　C東</span>
+                                        </td>
+                                    </tr>
+                                    @if($i==2)
+                                        <tr class="grade_$i" style="background-color: #ed5565;">
+                                            <td class="center">3</td>
+                                            <td>2017/4/25 9:30</td>
+                                            <td>本田</td>
+                                            <td>ABC株式会社</td>
+                                            <td>ABCゲームアプリメールサポート</td>
+                                            <td class="center">
+                                                <span class="m-r">P札 C博</span>
+                                                <span class="m-r">P東 P名</span>
+                                                <span class="m-r">P岐　P北　C沖</span>
+                                                <span class="m-r">C仙　C岐　C東</span>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endfor
                                 </tbody>
                                 {{--<tfoot>--}}
                                 {{--<tr>--}}
@@ -165,15 +104,6 @@
 
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table- table-hover" id="end-table">
-                                    {{--<thead>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>ID</th>--}}
-                                    {{--<th>Date</th>--}}
-                                    {{--<th>Project</th>--}}
-                                    {{--<th>Prepare</th>--}}
-                                    {{--<th></th>--}}
-                                    {{--</tr>--}}
-                                    {{--</thead>--}}
                                     <tbody>
                                     <tr class="gradeX">
                                         <td class="center">1</td>
@@ -241,15 +171,6 @@
                                         </td>
                                     </tr>
                                     </tbody>
-                                    {{--<tfoot>--}}
-                                    {{--<tr>--}}
-                                    {{--<th>ID</th>--}}
-                                    {{--<th>Date</th>--}}
-                                    {{--<th>Project</th>--}}
-                                    {{--<th>Prepare</th>--}}
-                                    {{--<th></th>--}}
-                                    {{--</tr>--}}
-                                    {{--</tfoot>--}}
                                 </table>
                             </div>
 
