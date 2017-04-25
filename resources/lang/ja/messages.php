@@ -12,9 +12,9 @@ return [
     // Label
     'label' => [
         'common' => [
-            'login'  => 'Login',
-            'logOut'  => 'Log out',
-            'profile'  => 'Profile',
+            'login' => 'Login',
+            'logOut' => 'Log out',
+            'profile' => 'Profile',
             'home' => 'Home'
         ],
         'admin' => [
@@ -37,7 +37,18 @@ return [
                 'service'       => 'サービス',
                 'reset_button'  => 'クリア',
                 'go_button'     => 'GO!'
-            ]
+            ],
+            'chosing' => [
+                'title' => '選定中案件',
+                'chosingProject' => '選定中案件',
+                'project' => '件',
+                'endProject' => '選定終了案件',
+                'undefined' => '未確定',
+                'received' => '受注',
+                'loss' => '失注',
+                'route-project' => 'Project',
+                'route-chosing' => 'Chosing'
+            ],
         ],
     ],
 
@@ -67,7 +78,7 @@ return [
             'copyright' => '<strong>Copyright</strong> Pittokuru Company &copy; 2014-2017',
         ],
         'user' => [
-            'login' =>  [
+            'login' => [
                 'welcome' => 'Welcome to Pittokuru',
                 'fails' => 'Email or password not wrong.',
             ],

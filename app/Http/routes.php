@@ -30,5 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/list', 'ProjectController@projectList')->name('project.projectList');
         Route::get('/delete', 'ProjectController@deleteProject')->name('admin.deleteProject');
         Route::get('/menu', 'ProjectController@getMenu')->name('project.getMenu');
+        Route::get('/chosing-project', 'ProjectController@getChosingProject')->name('project.chosingProject');
     });
 });
