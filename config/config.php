@@ -17,6 +17,10 @@
                 'customer_support' => 'カスタマーサポート',
                 'post_monitoring' =>'投稿監視',
                 'advertis_review'=> '広告審査'
+            ],
+            'accepting_base'=>[
+                0 => 'PIT 東京',
+                1 => 'PIT 名古屋'
             ]
         ],
     ];
