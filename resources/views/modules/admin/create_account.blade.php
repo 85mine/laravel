@@ -18,8 +18,8 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-primary btn-admin-min-width" id="addMoreAccount">{{trans('messages.label.admin.createAccount.btnAddMore')}}</button>
-                            <button type="button" class="btn btn-primary btn-admin-min-width">{{trans('messages.label.admin.createAccount.btnSave')}}</button>
+                            <button type="button" class="btn btn-primary btn-default btn-outline" id="addMoreAccount"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.admin.createAccount.btnAddMore')}}</button>
+                            <button type="button" class="btn btn-primary "><i class="fa fa-check"></i>&nbsp;{{trans('messages.label.admin.createAccount.btnSave')}}</button>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -34,11 +34,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="acc[0]department" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="acc[0]base" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="acc[0]name" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="acc[0]id" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
                                 </tr>
+                                @include('modules.admin.templateJs.new_account_template')
                             </tbody>
                         </table>
                     </div>
@@ -47,15 +48,27 @@
         </div>
 @endsection
 @section('extend-js')
+    <script src="{{url('assets/js/jsrender.min.js')}}"></script>
     <script type="application/javascript">
-        $(document).ready(function(){
-            $('#addMoreAccount').click(function(){
-                var _row = '<tr><td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>'
-                    + '<td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>'
-                    + '<td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>'
-                    + '<td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>'
-                    + '</tr>';
-                $('#createAccount tbody').append(_row);
+        $.views.settings.delimiters("[%", "%]");
+        $(document).ready(function () {
+            var index_name = 0;
+            $('#addMoreAccount').click(function () {
+                var table = $('#createAccount');
+                var table_body = table.find('tbody');
+                index_name++;
+                var name = [
+                    {
+                        department: 'acc[' + index_name + '][department]',
+                        base: 'acc[' + index_name + '][base]',
+                        name: 'acc[' + index_name + '][name]',
+                        id: 'acc[' + index_name + '][id]'
+                    }
+
+                ];
+                var newRowTemplate = $.templates("#new_account");
+                var _row = newRowTemplate.render(name);
+                table_body.prepend(_row);
             });
         });
     </script>
