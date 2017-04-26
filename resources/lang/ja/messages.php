@@ -50,6 +50,10 @@ return [
             ]
         ],
         'project' => [
+            'menu' => [
+                'create' => '案件作成',
+                'edit' => '案件編集',
+            ],
             'list' => [
                 'saler'         => '営業担当',
                 'date'          => '日付',
@@ -76,7 +80,8 @@ return [
                 'dismiss'           => '辞退',
                 'reason'            => '理由',
                 'base'              => '拠点',
-                'reason_for_select'  => '選定理由',
+                'reason_for_select' => '選定理由',
+                'update_button'     => '更新',
             ],
             'chosing' => [
                 'title' => '選定中案件',
@@ -87,7 +92,7 @@ return [
                 'received' => '受注',
                 'loss' => '失注',
                 'route-project' => 'プロジェクト',
-                'route-chosing' => 'Chosing'
+                'route-chosing' => '選定中案件'
             ],
         ],
         'report' => [
@@ -118,8 +123,8 @@ return [
     'placeholder' => [
         'user' => [
             'login' => [
-                'username' => 'Username',
-                'password' => 'Password',
+                'username' => 'アカウント',
+                'password' => 'パスワード',
             ]
         ],
         'admin' => [
@@ -155,7 +160,8 @@ return [
         ],
         'user' => [
             'login' => [
-                'welcome' => 'Welcome to Pittokuru',
+                'selectSystem' => '拠点選定システム',
+                'answerSystem' => 'はい!!やります!!',
                 'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             ]
         ],

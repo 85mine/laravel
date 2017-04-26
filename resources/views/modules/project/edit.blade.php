@@ -23,17 +23,18 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="ibox float-e-margins">
+            <div class="ibox float-e-margins" id="project_edit">
                 <div class="ibox-content">
                     <div class="ibox-tools m-b-md">
-                        <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.edit.edit_button')}}</button>
+                        <button type="button" class="btn btn-w-m btn-primary btn_edit">{{trans('messages.label.project.edit.edit_button')}}</button>
+                        <button type="button" class="btn btn-w-m btn-primary btn_update pace-inactive">{{trans('messages.label.project.edit.update_button')}}</button>
                     </div>
 
                     <div class="row m-b-md">
                         <div class="form-group col-sm-4">
                             <label class="font-normal">{{trans('messages.label.project.edit.budget')}}</label>
-                            <div>
-                                <input type="text" class="form-control m-b">
+                            <div class="input-group m-b">
+                                <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b">
                             </div>
                         </div>
                         <div class="form-group col-sm-4">
@@ -113,41 +114,10 @@
             </div>
         </div>
     </div>
-    <div class="modal inmodal" id="myModal_result" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
-                <div class="modal-header">
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
-                    <div class="form-group col-sm-6">
-                        <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" disabled id="content_result" value="">
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <div>
-                            <button type="button" class="btn btn-primary">Save</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-white">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="font-normal">{{trans('messages.label.project.edit.reason')}}</label>
-                        <div>
-                            <textarea class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
     <div class="modal inmodal" id="base_modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-            <div class="modal-content animated flipInY">
-                <div class="modal-header">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header form-horizontal">
                     {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
                     <div class="form-group col-sm-6">
                         <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
@@ -175,4 +145,36 @@
             </div>
         </div>
     </div>
+    <div class="modal inmodal" id="myModal_result" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content animated fadeIn">
+                <div class="modal-header form-horizontal">
+                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
+                    <div class="form-group col-sm-6">
+                        <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" disabled id="content_result" value="">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div>
+                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-white">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="font-normal">{{trans('messages.label.project.edit.reason')}}</label>
+                        <div>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 @endsection
