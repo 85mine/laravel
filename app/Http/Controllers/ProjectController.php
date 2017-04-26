@@ -73,13 +73,26 @@ class ProjectController extends BaseController
         $eg_option = config('config.project.eg');
         $attractive_option = config('config.project.attractive');
         $service_option = config('config.project.service');
-        return view('modules.project.edit')->with([
-            'result_option' => $result_option,
-            'accepting_base' => $accepting_base,
-            'eg_option' => $eg_option,
-            'attractive_option' => $attractive_option,
-            'service_option'=> $service_option,
+        if($id == 1){
+            return view('modules.project.edit')->with([
+                'result_option' => $result_option,
+                'accepting_base' => $accepting_base,
+                'eg_option' => $eg_option,
+                'attractive_option' => $attractive_option,
+                'service_option'=> $service_option,
             ]);
+        }elseif($id == 3){
+            $saler_option = config('config.project.sales_staff');
+            return view('modules.project.detail_chosing')->with([
+                'result_option' => $result_option,
+                'accepting_base' => $accepting_base,
+                'eg_option' => $eg_option,
+                'attractive_option' => $attractive_option,
+                'service_option'=> $service_option,
+                'saler_option' => $saler_option
+            ]);
+        }
+
     }
 
     public function sendMail(Request $request)

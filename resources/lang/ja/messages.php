@@ -116,6 +116,7 @@ return [
                 'update_button'     => '更新',
                 'save_button'       => '保存',
                 'cancel_button'     => 'キャンセル',
+                'saler'             => '担当'
             ],
             'chosing' => [
                 'title' => '選定中案件',
