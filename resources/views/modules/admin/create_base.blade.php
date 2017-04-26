@@ -19,10 +19,10 @@
                 <form action="#" role="form">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-primary btn-admin-min-width"
-                                    id="addMoreAccount">{{trans('messages.label.common.btnAddMore')}}</button>
+                            <button type="button" class="btn btn-primary btn-outline"
+                                    id="addMoreAccount"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.common.btnAddMore')}}</button>
                             <button type="submit"
-                                    class="btn btn-primary btn-admin-min-width">{{trans('messages.label.common.btnSave')}}</button>
+                                    class="btn btn-primary "><i class="fa fa-check"></i>&nbsp;{{trans('messages.label.common.btnSave')}}</button>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -38,26 +38,50 @@
                             <tbody>
                             <tr>
                                 <td class="text-justify">
-                                    <input type="text" name="base[0][company]"
+                                    <input type="text" name="base[{{ $count_data }}][company]"
                                            placeholder="{{trans('messages.placeholder.admin.createBase.company')}}"
-                                           class="form-control">
+                                           class="form-control" value="">
                                 </td>
                                 <td class="text-justify">
-                                    <input type="text" name="base[0][department]"
+                                    <input type="text" name="base[{{ $count_data }}][department]"
                                            placeholder="{{trans('messages.placeholder.admin.createBase.department')}}"
-                                           class="form-control">
+                                           class="form-control" value="">
                                 </td>
                                 <td class="text-justify">
-                                    <input type="text" name="base[0][base]"
+                                    <input type="text" name="base[{{ $count_data }}][base]"
                                            placeholder="{{trans('messages.placeholder.admin.createBase.base')}}"
-                                           class="form-control">
+                                           class="form-control" value="">
                                 </td>
                                 <td class="text-justify">
-                                    <input type="text" name="base[0][short_name]"
+                                    <input type="text" name="base[{{ $count_data }}][short_name]"
                                            placeholder="{{trans('messages.placeholder.admin.createBase.short_name')}}"
-                                           class="form-control">
+                                           class="form-control" value="">
                                 </td>
                             </tr>
+                            @foreach( $datas as $index => $data)
+                                <tr>
+                                    <td class="text-justify">
+                                        <input type="text" name="base[{{ $index }}][company]"
+                                               placeholder="{{trans('messages.placeholder.admin.createBase.company')}}"
+                                               class="form-control" value="{{ $data['company'] }}">
+                                    </td>
+                                    <td class="text-justify">
+                                        <input type="text" name="base[{{ $index }}][department]"
+                                               placeholder="{{trans('messages.placeholder.admin.createBase.department')}}"
+                                               class="form-control" value="{{ $data['department'] }}">
+                                    </td>
+                                    <td class="text-justify">
+                                        <input type="text" name="base[{{ $index }}][base]"
+                                               placeholder="{{trans('messages.placeholder.admin.createBase.base')}}"
+                                               class="form-control" value="{{ $data['base'] }}">
+                                    </td>
+                                    <td class="text-justify">
+                                        <input type="text" name="base[{{ $index }}][short_name]"
+                                               placeholder="{{trans('messages.placeholder.admin.createBase.short_name')}}"
+                                               class="form-control" value="{{ $data['short_name'] }}">
+                                    </td>
+                                </tr>
+                            @endforeach
                             @include('modules.admin.templateJs.new_base_template')
                             </tbody>
                         </table>
@@ -72,7 +96,7 @@
     <script type="application/javascript">
         $.views.settings.delimiters("[%", "%]");
         $(document).ready(function () {
-            var index_name = 0;
+            var index_name = '{{ $count_data }}';
             $('#addMoreAccount').click(function () {
                 var table = $('#createBase');
                 var table_body = table.find('tbody');

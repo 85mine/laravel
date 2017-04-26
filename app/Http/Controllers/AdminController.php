@@ -29,6 +29,23 @@ class AdminController extends BaseController
     //Create New Base Action
     public function createBase()
     {
-        return view('modules.admin.create_base');
+        $dummy_data = [
+            [
+                'company' => 'PCO',
+                'department' => '業務部',
+                'base' => '沖縄',
+                'short_name' => 'C沖縄'
+            ],
+            [
+                'company' => 'PIT',
+                'department' => '業務部',
+                'base' => '岐阜',
+                'short_name' => 'P岐阜'
+            ]
+        ];
+        return view('modules.admin.create_base', [
+            'datas' => $dummy_data,
+            'count_data' => count($dummy_data)
+        ]);
     }
 }

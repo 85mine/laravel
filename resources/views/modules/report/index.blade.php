@@ -19,7 +19,7 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-lg-4" id="filter_daterange">
+                <div class="col-lg-4 form-group" id="filter_daterange">
                     <label for="datepicker">{{ trans('messages.label.report.from') }}</label>
                     <label for="datepicker" class="label2-daterange">{{ trans('messages.label.report.to') }}</label>
                     <div class="input-daterange input-group" id="datepicker">
@@ -34,7 +34,7 @@
                         <input type="text" class="input-sm form-control" name="end" value=""/>
                     </div>
                 </div>
-                <div class="col-lg-2 custom-select2">
+                <div class="col-lg-2 form-group custom-select2">
                     <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
                     <select id="sales_staff" class="select2 form-control">
                         <option value="">&nbsp;</option>
@@ -44,7 +44,7 @@
                         <option value="4">本田康稔</option>
                     </select>
                 </div>
-                <div class="col-lg-2 custom-select2">
+                <div class="col-lg-2 form-group custom-select2">
                     <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
                     <select id="base_name" class="select2 form-control">
                         <option value="">&nbsp;</option>
