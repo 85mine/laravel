@@ -43,7 +43,7 @@
                                 {{--</thead>--}}
                                 <tbody>
                                 @for($i=0; $i<7; $i++)
-                                    <tr class="grade_{{ $i }}">
+                                    <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}">
                                         <td class="center">{{ $i+1 }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -57,7 +57,7 @@
                                         </td>
                                     </tr>
                                     @if($i==2)
-                                        <tr class="grade_{{ $i }}" style="background-color: #ed5565;">
+                                        <tr class="grade_{{ $i }}" style="background-color: #ed5565; color: white !important;   ">
                                             <td class="center">3</td>
                                             <td>2017/4/25 9:30</td>
                                             <td>本田</td>
@@ -221,14 +221,6 @@
                 height: '200px'
             });
 
-            $('#chosing-table tbody tr').on("click", function () {
-                alert("chosing " + $(this).attr("class"));
-            });
-
-            $('#end-table tbody tr').on("click", function () {
-                alert("end " + $(this).attr("class"));
-            });
-
             var l = $( '.ladda-button-demo' ).ladda();
 
             l.click(function(){
@@ -268,6 +260,9 @@
 
         });
 
+        function link(url) {
+            window.location.href = url;
+        }
     </script>
 
     <!-- Ladda -->
@@ -287,6 +282,10 @@
         }
         #chosing-table, #end-table {
             margin-bottom: 0 !important;
+        }
+
+        #chosing-table tr:hover, #end-table tr:hover {
+            cursor: pointer;
         }
     </style>
 @endsection

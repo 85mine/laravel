@@ -12,6 +12,8 @@ return [
     'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
+    'title.admin.editAccount'           => 'アカウント編集',
+    'title.admin.createBase'            => '拠点作成',
 
     // Label
     'label' => [
@@ -19,7 +21,9 @@ return [
             'login' => 'ログイン',
             'logOut' => 'ログアウト',
             'profile' => 'プロフィール',
-            'home' => 'ホーム'
+            'home' => 'ホーム',
+            'btnAddMore'    => '追加',
+            'btnSave'       => '保存',
         ],
         'admin' => [
             'admin' => [
@@ -38,8 +42,28 @@ return [
                 'id'            => 'ID（メールアドレス）',
                 'createAccount' => 'アカウント作成',
             ],
+            'editAccount' => [
+                'btnDelete'     => '削除',
+                'btnSave'       => '保存',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+                'editAccount'   => 'アカウント編集'
+             ],
+            'createBase' => [
+                'createBase'    => '拠点作成',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'company'       => '会社',
+                'short_name'    => '略称'
+            ]
         ],
         'project' => [
+            'menu' => [
+                'create' => '案件作成',
+                'edit' => '案件編集',
+            ],
             'list' => [
                 'saler'         => '営業担当',
                 'date'          => '日付',
@@ -66,7 +90,8 @@ return [
                 'dismiss'           => '辞退',
                 'reason'            => '理由',
                 'base'              => '拠点',
-                'reason_for_select'  => '選定理由',
+                'reason_for_select' => '選定理由',
+                'update_button'     => '更新',
             ],
             'chosing' => [
                 'title' => '選定中案件',
@@ -77,7 +102,7 @@ return [
                 'received' => '受注',
                 'loss' => '失注',
                 'route-project' => 'プロジェクト',
-                'route-chosing' => 'Chosing'
+                'route-chosing' => '選定中案件'
             ],
         ],
         'report' => [
@@ -108,8 +133,8 @@ return [
     'placeholder' => [
         'user' => [
             'login' => [
-                'username' => 'Username',
-                'password' => 'Password',
+                'username' => 'アカウント',
+                'password' => 'パスワード',
             ]
         ],
         'admin' => [
@@ -119,6 +144,12 @@ return [
                 'name'          => '名前',
                 'id'            => 'ID（メールアドレス）',
             ],
+            'createBase'    => [
+                'department'    => '部署',
+                'base'          => '拠点',
+                'company'       => '会社',
+                'short_name'    => '略称'
+            ]
         ]
     ],
 
@@ -139,7 +170,8 @@ return [
         ],
         'user' => [
             'login' => [
-                'welcome' => 'Welcome to Pittokuru',
+                'selectSystem' => '拠点選定システム',
+                'answerSystem' => 'はい!!やります!!',
                 'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             ]
         ],

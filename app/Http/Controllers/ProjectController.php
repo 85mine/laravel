@@ -37,10 +37,12 @@ class ProjectController extends BaseController
         $result_option = config('config.project.result');
         $service_option = config('config.project.service');
         $candidacy_option = config('config.project.candidacy');
+        $sales_option = config('config.project.sales_staff');
         return view('modules.project.list')->with([
             'result_option' => $result_option,
             'service_option' => $service_option,
-            'candidacy_option' => $candidacy_option
+            'candidacy_option' => $candidacy_option,
+            'sales_option' => $sales_option
         ]);
     }
 
@@ -54,12 +56,12 @@ class ProjectController extends BaseController
     public function sendMail(Request $request)
     {
         if ($request->ajax()) {
-            $isSent = Mail::send('modules.mail.reminder', ['user' => "admin"], function ($m){
+            $isSent = Mail::send('modules.mail.reminder', ['user' => "admin"], function ($m) {
                 $m->from('admin@pittokuru.com', 'Admin');
 
                 $m->to("linh.nv@altplus.com.vn", "Nguyen Van Linh")->subject('Your Subject!');
             });
-            if($isSent) {
+            if ($isSent) {
                 return response()->json([
                     'response' => 'Mail has been sent successfully!'
                 ]);
