@@ -63,6 +63,15 @@ class ProjectController extends BaseController
     public function edit($id){
         $result_option = config('config.project.result');
         $accepting_base = config('config.project.accepting_base');
-        return view('modules.project.edit')->with(['result_option' => $result_option, 'accepting_base' => $accepting_base]);
+        $eg_option = config('config.project.eg');
+        $attractive_option = config('config.project.attractive');
+        $service_option = config('config.project.service');
+        return view('modules.project.edit')->with([
+            'result_option' => $result_option,
+            'accepting_base' => $accepting_base,
+            'eg_option' => $eg_option,
+            'attractive_option' => $attractive_option,
+            'service_option'=> $service_option,
+            ]);
     }
 }
