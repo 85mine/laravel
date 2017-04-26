@@ -58,6 +58,7 @@
                                            class="form-control">
                                 </td>
                             </tr>
+                            @include('modules.admin.templateJs.new_base_template')
                             </tbody>
                         </table>
                     </div>
@@ -67,23 +68,27 @@
     </div>
 @endsection
 @section('extend-js')
+    <script src="{{url('assets/js/jsrender.min.js')}}"></script>
     <script type="application/javascript">
+        $.views.settings.delimiters("[%", "%]");
         $(document).ready(function () {
             var index_name = 0;
             $('#addMoreAccount').click(function () {
-                var table = $('#createBase'),
-                        table_body = table.find('tbody'),
-                        content_clone = table_body.clone();
-                index_name ++;
-                var _row = '<tr><td class="text-justify"><input type="text" name="base[' + index_name + '][company]" placeholder="{{trans('messages.placeholder.admin.createBase.company')}}" class="form-control"></td>'
-                        + '<td class="text-justify"><input type="text" name="base[' + index_name + '][department]" placeholder="{{trans('messages.placeholder.admin.createBase.department')}}" class="form-control"></td>'
-                        + '<td class="text-justify"><input type="text" name="base[' + index_name + '][base]" placeholder="{{trans('messages.placeholder.admin.createBase.base')}}" class="form-control"></td>'
-                        + '<td class="text-justify"><input type="text" name="base[' + index_name + '][short_name]" placeholder="{{trans('messages.placeholder.admin.createBase.short_name')}}" class="form-control"></td>'
-                        + '</tr>';
-                table_body.html(_row);
-                $.each(content_clone.find('tr'), function () {
-                    table_body.append(this);
-                });
+                var table = $('#createBase');
+                var table_body = table.find('tbody');
+                index_name++;
+                var name = [
+                    {
+                        name_company: 'base[' + index_name + '][company]',
+                        name_department: 'base[' + index_name + '][department]',
+                        name_base: 'base[' + index_name + '][base]',
+                        name_short_name: 'base[' + index_name + '][short_name]'
+                    }
+
+                ];
+                var newRowTemplate = $.templates("#new_base");
+                var _row = newRowTemplate.render(name);
+                table_body.prepend(_row);
             });
         });
     </script>
