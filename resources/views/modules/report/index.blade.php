@@ -2,7 +2,6 @@
 @section('title', trans('messages.title.report'))
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/c3/c3.min.css')}}" rel="stylesheet">
 @endsection
 @section('breadcrumb')
@@ -325,7 +324,6 @@
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/d3/d3.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/c3/c3.min.js')}}"></script>
     <script type="text/javascript">
@@ -335,8 +333,6 @@
                 forceParse: false,
                 autoclose: true
             });
-
-            $(".select2").select2();
 
             c3.generate({
                 bindto: '#pie',
