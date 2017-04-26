@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('title', trans('messages.title.home.dashboard'))
 @section('breadcrumb')
-    <h2>Layouts</h2>
+    <h2>{{trans('messages.menu.managerProject')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="index.html">Home</a>
+            <a href="index.html">{{trans('messages.label.common.home')}}</a>
         </li>
         <li class="active">
             <strong>{{trans('messages.menu.managerProject')}}</strong>
@@ -20,12 +20,12 @@
                     <div class="row menu-pr-row-height">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-3 text-center">
-                            <a href="/create-project">
+                            <a href="/project/create">
                                 <button class="btn btn-primary dim menu-pr-btn-large" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.label.project.menu.create')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
-                            <a href="/edit-project">
+                            <a href="/project/edit">
                                 <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.label.project.menu.edit')}}</button>
                             </a>
                         </div>
