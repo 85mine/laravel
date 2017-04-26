@@ -15,7 +15,6 @@
 
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
