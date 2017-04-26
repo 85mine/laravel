@@ -13,6 +13,7 @@ return [
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
     'title.admin.editAccount'           => 'アカウント編集',
+    'title.admin.createBase'            => '拠点作成',
 
     // Label
     'label' => [
@@ -20,7 +21,9 @@ return [
             'login' => 'ログイン',
             'logOut' => 'ログアウト',
             'profile' => 'プロフィール',
-            'home' => 'ホーム'
+            'home' => 'ホーム',
+            'btnAddMore'    => '追加',
+            'btnSave'       => '保存',
         ],
         'admin' => [
             'admin' => [
@@ -47,6 +50,13 @@ return [
                 'name'          => '名前',
                 'id'            => 'ID（メールアドレス）',
                 'editAccount'   => 'アカウント編集'
+             ],
+            'createBase' => [
+                'createBase'    => '拠点作成',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'company'       => '会社',
+                'short_name'    => '略称'
             ]
         ],
         'project' => [
@@ -134,6 +144,12 @@ return [
                 'name'          => '名前',
                 'id'            => 'ID（メールアドレス）',
             ],
+            'createBase'    => [
+                'department'    => '部署',
+                'base'          => '拠点',
+                'company'       => '会社',
+                'short_name'    => '略称'
+            ]
         ]
     ],
 

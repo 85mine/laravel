@@ -2,7 +2,6 @@
 @section('title', trans('messages.title.report'))
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/c3/c3.min.css')}}" rel="stylesheet">
 @endsection
 @section('breadcrumb')

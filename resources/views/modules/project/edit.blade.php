@@ -15,11 +15,9 @@
 
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/modules/project.js')}}"></script>
 @endsection
 @section('content')
@@ -43,7 +41,7 @@
                             <label class="font-normal">{{trans('messages.label.project.edit.accepting_base')}}</label>
                             <div>
                                 <select class="input-s-lg form-control inline select2">
-                                    <option value=""></option>
+                                    <option value="">&nbsp;</option>
                                     @foreach ($accepting_base as $key=>$value){
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -71,11 +69,11 @@
                     </div>
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <label class="font-normal block">
-                                <span class="m-r">{{trans('messages.label.project.edit.pit_sapporo')}}</span>
-                                <button type="button" class="btn btn-success">{{trans('messages.label.project.edit.candidacy')}}</button>
+                            <div class="block">
+                                <div class="label-reason">{{trans('messages.label.project.edit.pit_sapporo')}}</div>
+                                <div class="bg-success hightling-reason">{{trans('messages.label.project.edit.candidacy')}}</div>
                                 <button type="button" data-base="{{trans('messages.label.project.edit.pit_sapporo')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
-                            </label>
+                            </div>
 
                             <div>
                                 <textarea class="form-control" rows="5"></textarea>
@@ -86,11 +84,11 @@
 
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <label class="font-normal block">
-                                <span class="m-r">{{trans('messages.label.project.edit.pco_sendai')}}</span>
-                                <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.condition')}}</button>
+                            <div class="block">
+                                <div class="label-reason"><span>{{trans('messages.label.project.edit.pco_sendai')}}</span></div>
+                                <div class="bg-primary hightling-reason">{{trans('messages.label.project.edit.condition')}}</div>
                                 <button type="button" data-base="{{trans('messages.label.project.edit.pco_sendai')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
-                            </label>
+                            </div>
 
                             <div>
                                 <textarea class="form-control" rows="5"></textarea>
@@ -100,11 +98,11 @@
 
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <label class="font-normal block">
-                                <span class="m-r">{{trans('messages.label.project.edit.pit_nagoya')}}</span>
-                                <button type="button" class="btn btn-danger">{{trans('messages.label.project.edit.dismiss')}}</button>
+                            <div class="block">
+                                <div class="label-reason"><span>{{trans('messages.label.project.edit.pit_nagoya')}}</span></div>
+                                <div class="bg-danger hightling-reason">{{trans('messages.label.project.edit.dismiss')}}</div>
                                 <button type="button" data-base="{{trans('messages.label.project.edit.pit_nagoya')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
-                            </label>
+                            </div>
 
                             <div>
                                 <textarea class="form-control" rows="5"></textarea>

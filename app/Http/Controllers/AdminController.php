@@ -25,4 +25,10 @@ class AdminController extends BaseController
     {
         return view('modules.admin.edit_account');
     }
+
+    //Create New Base Action
+    public function createBase()
+    {
+        return view('modules.admin.create_base');
+    }
 }
