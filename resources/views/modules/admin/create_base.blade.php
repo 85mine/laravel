@@ -19,10 +19,14 @@
                 <form action="#" role="form">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-primary btn-outline"
-                                    id="addMoreAccount"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.common.btnAddMore')}}</button>
-                            <button type="submit"
-                                    class="btn btn-primary "><i class="fa fa-check"></i>&nbsp;{{trans('messages.label.common.btnSave')}}</button>
+                            <button type="button" class="btn btn-primary btn-default btn-outline" id="addMore">
+                                <i class="fa fa-plus"></i>&nbsp;
+                                {{trans('messages.label.admin.createAccount.btnAddMore')}}
+                            </button>
+                            <button type="submit" class="btn btn-primary ">
+                                <i class="fa fa-check"></i>&nbsp;
+                                {{trans('messages.label.admin.createAccount.btnSave')}}
+                            </button>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -97,7 +101,7 @@
         $.views.settings.delimiters("[%", "%]");
         $(document).ready(function () {
             var index_name = '{{ $count_data }}';
-            $('#addMoreAccount').click(function () {
+            $('#addMore').click(function () {
                 var table = $('#createBase');
                 var table_body = table.find('tbody');
                 index_name++;
