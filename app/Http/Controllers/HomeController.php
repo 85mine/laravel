@@ -13,6 +13,7 @@ class HomeController extends BaseController
 {
     public function dashboard()
     {
-        return view('modules.home.dashboard');
+        return redirect(route('project.chosingProject'));
+        //return view('modules.home.dashboard');
     }
 }

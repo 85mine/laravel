@@ -3,14 +3,14 @@
 
 @section('breadcrumb')
     <h2>{{trans('messages.title.project.edit')}}</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="#">{{trans('messages.label.common.home')}}</a>
-        </li>
-        <li class="active">
-            <strong>{{trans('messages.title.project.edit')}}</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="#">{{trans('messages.label.common.home')}}</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>{{trans('messages.title.project.edit')}}</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 
 @section('extend-css')

@@ -2,14 +2,14 @@
 @section('title', trans('messages.title.home.dashboard'))
 @section('breadcrumb')
     <h2>{{trans('messages.menu.createProject')}}</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="index.html">{{trans('messages.label.common.home')}}</a>
-        </li>
-        <li class="active">
-            <strong>{{trans('messages.label.project.menu.create')}}</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="index.html">{{trans('messages.label.common.home')}}</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>{{trans('messages.label.project.menu.create')}}</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 
 @section('extend-css')
