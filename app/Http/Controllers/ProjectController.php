@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
 
 use App\Http\Requests;
 
@@ -39,15 +40,34 @@ class ProjectController extends BaseController
         return view('modules.project.list')->with([
             'result_option' => $result_option,
             'service_option' => $service_option,
-            'candidacy_option'=> $candidacy_option
-            ]);
+            'candidacy_option' => $candidacy_option
+        ]);
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $result_option = config('config.project.result');
         $accepting_base = config('config.project.accepting_base');
         return view('modules.project.edit')->with(['result_option' => $result_option, 'accepting_base' => $accepting_base]);
     }
 
+    public function sendMail(Request $request)
+    {
+        if ($request->ajax()) {
+            $isSent = Mail::send('modules.mail.reminder', ['user' => "admin"], function ($m){
+                $m->from('admin@pittokuru.com', 'Admin');
+
+                $m->to("linh.nv@altplus.com.vn", "Nguyen Van Linh")->subject('Your Subject!');
+            });
+            if($isSent) {
+                return response()->json([
+                    'response' => 'Mail has been sent successfully!'
+                ]);
+            }
+            return response()->json([
+                'response' => 'Mail has been sent failure!'
+            ]);
+        }
+    }
 
 }

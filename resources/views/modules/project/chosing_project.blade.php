@@ -169,6 +169,30 @@
                                                 [@lang('messages.label.project.chosing.loss')]
                                             </span>
                                         </td>
+                                    </tr><tr class="gradeX">
+                                        <td class="center">6</td>
+                                        <td>2017/4/25 9:30</td>
+                                        <td>本田</td>
+                                        <td>ABC株式会社</td>
+                                        <td>ABCゲームアプリメールサポート</td>
+                                        <td class="center">
+                                            <span class="text-success m-r">P札</span>
+                                            <span class="center text-primary">
+                                                [@lang('messages.label.project.chosing.loss')]
+                                            </span>
+                                        </td>
+                                    </tr><tr class="gradeX">
+                                        <td class="center">7</td>
+                                        <td>2017/4/25 9:30</td>
+                                        <td>本田</td>
+                                        <td>ABC株式会社</td>
+                                        <td>ABCゲームアプリメールサポート</td>
+                                        <td class="center">
+                                            <span class="text-success m-r">P札</span>
+                                            <span class="center text-primary">
+                                                [@lang('messages.label.project.chosing.loss')]
+                                            </span>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -180,6 +204,11 @@
             </div>
         </div>
     </div>
+    {{--<div class="row m-t-md">--}}
+        {{--<button class="ladda-button ladda-button-demo btn btn-primary" data-style="zoom-in">Send</button>--}}
+        {{--<p class="result"></p>--}}
+    {{--</div>--}}
+    {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
 @endsection
 
 @section('extend-js')
@@ -200,8 +229,64 @@
                 alert("end " + $(this).attr("class"));
             });
 
+            var l = $( '.ladda-button-demo' ).ladda();
+
+            l.click(function(){
+                var start_time = new Date().getTime();
+                // Start loading
+                l.ladda( 'start' );
+                var request_time = 0;
+
+                // Timeout example
+                // Do something in backend and then stop ladda
+                setTimeout(function(){
+                    $.ajax({
+                        url: '/send-mail',
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: '',
+                        success: function(result) {
+                            var message = result['response'];
+                            $('.result').html(message.replace(/\"/g, ""));
+                            request_time = new Date().getTime() - start_time;
+                            return;
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log(JSON.stringify(jqXHR));
+                            console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                            $('.result').html("Occured errors!!!");
+                        }
+                    });
+                    l.ladda('stop');
+                },5000)
+
+
+            });
+
+
         });
 
     </script>
 
+    <!-- Ladda -->
+    <script src="{{ asset('assets/js/plugins/ladda/spin.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ladda/ladda.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ladda/ladda.jquery.min.js') }}"></script>
+
+
+@endsection
+
+@section('extend-css')
+    <!-- Ladda style -->
+    <link href="{{ asset('assets/css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
+    <style>
+        .ibox-content {
+            padding: 0 0 0 0 !important;
+        }
+        #chosing-table, #end-table {
+            margin-bottom: 0 !important;
+        }
+    </style>
 @endsection

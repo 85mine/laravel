@@ -37,4 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'ProjectController@edit')->name('project.edit');
         Route::get('/chosing-project', 'ProjectController@getChosingProject')->name('project.chosingProject');
     });
+
+    Route::post('/send-mail', 'ProjectController@sendMail')->name('sendMail');
 });
