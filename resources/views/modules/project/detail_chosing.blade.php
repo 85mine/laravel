@@ -1,8 +1,8 @@
 @extends('layouts.main')
-@section('title', trans('messages.title.project.edit'))
+@section('title', trans('messages.title.project.detail_chosing'))
 
 @section('breadcrumb')
-    <h2>{{trans('messages.title.project.edit')}}</h2>
+    <h2>{{trans('messages.title.project.detail_chosing')}}</h2>
     {{--<ol class="breadcrumb">--}}
     {{--<li>--}}
     {{--<a href="#">{{trans('messages.label.common.home')}}</a>--}}
@@ -236,10 +236,10 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.reply')}}</label>
                             <div class="col-sm-9">
                                 <select class="input-s-lg form-control inline">
-                                    @foreach ($result_option as $key=>$value)
+                                    @foreach ($reply_option as $key=>$value)
                                         <option value="{{$value}}">{{$value}}</option>
                                     @endforeach
                                 </select>

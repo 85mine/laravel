@@ -9,11 +9,12 @@ return [
     'title.home'                        => 'ホーム',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
-    'title.project.edit'                => '案件詳細（選定中）',
+    'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
     'title.admin.editAccount'           => 'アカウント編集',
     'title.admin.createBase'            => '拠点作成',
+    'title.project.detail_chosing'      => '案件詳細（選定中）',
 
     // Label
     'label' => [
@@ -116,7 +117,8 @@ return [
                 'update_button'     => '更新',
                 'save_button'       => '保存',
                 'cancel_button'     => 'キャンセル',
-                'saler'             => '担当'
+                'saler'             => '担当',
+                'reply'             => '回答'
             ],
             'chosing' => [
                 'title' => '選定中案件',
