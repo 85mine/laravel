@@ -14,11 +14,50 @@
 @endsection
 
 @section('extend-css')
-    <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <!-- DateTime Picker-->
+    <link href="{{url('assets/css/plugins/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
-    <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/modules/project.js')}}"></script>
+    <!-- Input Mask-->
+    <script src="{{url('assets/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
+    <!-- DateTime Picker BEGIN-->
+    <script type="text/javascript" src="{{url('assets/js/plugins/moment/moment.js')}}"></script>
+    <script type="text/javascript" src="{{url('assets/js/plugins/datetimepicker/datetimepicker.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.date[name*="input-datetime-"]').datetimepicker({
+            });
+
+            $('.date[name*="input-date"]').datetimepicker({
+
+                format: 'DD/MM/YYYY',
+            });
+            $('#result_option').change(function(){
+                $('#content_result').val($(this).val());
+                $('#myModal_result').modal('show');
+            });
+            $('.choose_base').click(function(){
+                $('#content_base').val($(this).attr('data-base'));
+                $('#reason_base').val('');
+                $('#base_modal').modal('show');
+            });
+            $('#project_edit').find('.form-control').prop('disabled',true);
+            $('#project_edit .choose_base').prop('disabled',true);
+            $('#project_edit .btn_edit').click(function(){
+                $(this).hide();
+                $('.btn_update').show();
+                $('#project_edit').find('.form-control').prop('disabled',false);
+                $('#project_edit .choose_base').prop('disabled',false);
+            });
+            $('#project_edit .btn_update').click(function(){
+                $(this).hide();
+                $('.btn_edit').show();
+                $('#project_edit').find('.form-control').prop('disabled',true);
+                $('#project_edit .choose_base').prop('disabled',true);
+            });
+        });
+    </script>
 @endsection
 @section('content')
     <div class="row">
@@ -31,10 +70,78 @@
                     </div>
 
                     <div class="row m-b-md">
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.createDateProject')}}</label>
+                            <div class="input-group date " name="input-datetime-1">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.deadlineDateProject')}}</label>
+                            <div class="input-group date" name="input-datetime-2">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 form-group custom-select2">
+                            <label class="font-normal">{{trans('messages.label.project.create.egProject')}}</label>
+                            <select class="form-control m-b select2" name="eG">
+                                @foreach ($eg_option as $key=>$value){
+                                <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-sm-2 form-group custom-select2">
+                            <label class="font-normal">{{trans('messages.label.project.create.attractiveProject')}}</label>
+                            <select class="form-control m-b select2" name="attractive">
+                                @foreach ($attractive_option as $key=>$value){
+                                <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row m-b-md">
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.customerName')}}</label>
+                            <input type="text" class="form-control m-b" name="customer_name" value="ABC株式会社">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.projectName')}}</label>
+                            <input type="text" class="form-control m-b" name="project_name" value="ABCゲームアプリメールサポート">
+                        </div>
+                        <div class="col-sm-4 form-group custom-select2">
+                            <label class="font-normal">{{trans('messages.label.project.create.serviceName')}}</label>
+                            <select class="form-control m-b select2" name="service">
+                                @foreach ($service_option as $key=>$value){
+                                <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row m-b-md">
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.trialPeriodDate')}}</label>
+                            <div class="input-group date " name="input-datetime-3">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.estimatePeriodDate')}}</label>
+                            <div class="input-group date " name="input-datetime-4">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                            </div>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label class="font-normal">{{trans('messages.label.project.create.startBusinessDate')}}</label>
+                            <div class="input-group date" name="input-date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="20/07/2017">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-md">
                         <div class="form-group col-sm-4">
                             <label class="font-normal">{{trans('messages.label.project.edit.budget')}}</label>
                             <div class="input-group m-b">
-                                <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b">
+                                <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b" value="2000000">
                             </div>
                         </div>
                         <div class="form-group col-sm-4 custom-select2">
@@ -127,8 +234,8 @@
                     </div>
                     <div class="form-group col-sm-6">
                         <div>
-                            <button type="button" class="btn btn-primary">Save</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-white">Cancel</button>
+                            <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
                         </div>
                     </div>
                 </div>
@@ -158,8 +265,8 @@
                     </div>
                     <div class="form-group col-sm-6">
                         <div>
-                            <button type="button" class="btn btn-primary">Save</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-white">Cancel</button>
+                            <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
                         </div>
                     </div>
                 </div>

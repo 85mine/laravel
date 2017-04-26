@@ -114,6 +114,8 @@ return [
                 'base'              => '拠点',
                 'reason_for_select' => '選定理由',
                 'update_button'     => '更新',
+                'save_button'       => '保存',
+                'cancel_button'     => 'キャンセル',
             ],
             'chosing' => [
                 'title' => '選定中案件',
