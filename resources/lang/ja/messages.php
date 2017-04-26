@@ -66,7 +66,8 @@ return [
                 'dismiss'           => '辞退',
                 'reason'            => '理由',
                 'base'              => '拠点',
-                'reason_for_select'  => '選定理由',
+                'reason_for_select' => '選定理由',
+                'update_button'     => '更新',
             ],
             'chosing' => [
                 'title' => '選定中案件',

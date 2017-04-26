@@ -14,4 +14,18 @@ $(document).ready(function(){
         $('#reason_base').val('');
         $('#base_modal').modal('show');
     });
+    $('#project_edit').find('.form-control').prop('disabled',true);
+    $('#project_edit .choose_base').prop('disabled',true);
+    $('#project_edit .btn_edit').click(function(){
+        $(this).hide();
+        $('.btn_update').show();
+        $('#project_edit').find('.form-control').prop('disabled',false);
+        $('#project_edit .choose_base').prop('disabled',false);
+    });
+    $('#project_edit .btn_update').click(function(){
+        $(this).hide();
+        $('.btn_edit').show();
+        $('#project_edit').find('.form-control').prop('disabled',true);
+        $('#project_edit .choose_base').prop('disabled',true);
+    });
 });
