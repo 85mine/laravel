@@ -4,10 +4,10 @@
     <h2>{{trans('messages.menu.createProject')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="index.html">{{trans('messages.menu.createCompany')}}</a>
+            <a href="index.html">{{trans('messages.label.common.home')}}</a>
         </li>
         <li class="active">
-            <strong>{{trans('messages.menu.createProject')}}</strong>
+            <strong>{{trans('messages.label.project.menu.create')}}</strong>
         </li>
     </ol>
 @endsection
@@ -27,14 +27,14 @@
                     <form method="POST">
                         <div class="row">
                             <div class="m-r pull-right">
-                                <button class="btn btn-primary" type="submit" name="save_submit"><i class="fa fa-save"></i> {{trans('messages.label.common.saveProject')}}</button>
-                                <button class="btn btn-warning" type="submit" name="copy_submit"><i class="fa fa-copy"></i>  {{trans('messages.label.common.copyProject')}}</button>
+                                <button class="btn btn-primary" type="submit" name="save_submit"><i class="fa fa-save"></i> {{trans('messages.label.project.create.saveProject')}}</button>
+                                <button class="btn btn-warning" type="submit" name="copy_submit"><i class="fa fa-copy"></i>  {{trans('messages.label.project.create.copyProject')}}</button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-3">
-                                    <label>{{trans('messages.label.common.personCareProject')}}</label>
+                                    <label>{{trans('messages.label.project.create.personCareProject')}}</label>
                                     <select class="form-control m-b" name="person_care">
                                         <option>本田康稔</option>
                                         <option>本田康稔</option>
@@ -47,7 +47,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label>{{trans('messages.label.common.createDateProject')}}</label>
+                                    <label>{{trans('messages.label.project.create.createDateProject')}}</label>
                                     <div class="input-group date " name="input-date-1">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
                                     </div>
@@ -55,14 +55,14 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label>{{trans('messages.label.common.deadlineDateProject')}}</label>
+                                    <label>{{trans('messages.label.project.create.deadlineDateProject')}}</label>
                                     <div class="input-group date" name="input-date-2">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                <label>{{trans('messages.label.common.egProject')}}</label>
+                                <label>{{trans('messages.label.project.create.egProject')}}</label>
                                 <select class="form-control m-b" name="eG">
                                     <option>あり</option>
                                     <option>なし</option>
@@ -70,7 +70,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <label>{{trans('messages.label.common.attractiveProject')}}</label>
+                                <label>{{trans('messages.label.project.create.attractiveProject')}}</label>
                                 <select class="form-control m-b" name="attractive">
                                     <option>あり</option>
                                     <option>なし</option>
@@ -80,15 +80,15 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <label>{{trans('messages.label.common.customerName')}}</label>
+                                <label>{{trans('messages.label.project.create.customerName')}}</label>
                                 <input type="text" class="form-control m-b" name='customer_name'>
                             </div>
                             <div class="col-sm-6">
-                                <label>{{trans('messages.label.common.projectName')}}</label>
+                                <label>{{trans('messages.label.project.create.projectName')}}</label>
                                 <input type="text" class="form-control m-b" name='project_name'>
                             </div>
                             <div class="col-sm-3">
-                                <label>{{trans('messages.label.common.serviceName')}}</label>
+                                <label>{{trans('messages.label.project.create.serviceName')}}</label>
                                 <select class="form-control m-b" name="service">
                                     <option>カスタマーサポート</option>
                                     <option>カスタマーサポート</option>
@@ -98,29 +98,29 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <label>{{trans('messages.label.common.trialPeriodDate')}}</label>
+                                <label>{{trans('messages.label.project.create.trialPeriodDate')}}</label>
                                 <input type="text" class="form-control m-b" name='trial_period_date'>
                             </div>
                             <div class="col-sm-6">
-                                <label>{{trans('messages.label.common.estimatePeriodDate')}}</label>
+                                <label>{{trans('messages.label.project.create.estimatePeriodDate')}}</label>
                                 <input type="text" class="form-control m-b" name='estimate_period_date'>
                             </div>
                             <div class="col-sm-3">
-                                <label>{{trans('messages.label.common.startBusinessDate')}}</label>
+                                <label>{{trans('messages.label.project.create.startBusinessDate')}}</label>
                                 <input type="text" class="form-control m-b" name='start_business_date'>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-3">
-                                <label>{{trans('messages.label.common.budgetProject')}}</label>
+                                <label>{{trans('messages.label.project.create.budgetProject')}}</label>
                                 <input type="text" class="form-control m-b" name="bugget_project" data-mask="¥ 999,999,999.99" placeholder="{{trans('messages.placeholder.common.currency')}}">
                             </div>
                             <div class="col-sm-6">
-                                <label><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.common.suggestCompany')}}</label>
+                                <label><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.project.create.suggestCompany')}}</label>
                                 <div class="create-pr-sub-form m-b">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <label>{{trans('messages.label.common.assignCompany')}}</label>
+                                            <label>{{trans('messages.label.project.create.assignCompany')}}</label>
                                             <select class="form-control m-b" name="assign_company" disabled>
                                                 <option>PIT 札幌</option>
                                                 <option>PIT 札幌</option>
@@ -133,7 +133,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <label>{{trans('messages.label.common.detailProject')}}</label>
+                                <label>{{trans('messages.label.project.create.detailProject')}}</label>
                                 <textarea class="form-control m-b" id="message" rows="3" placeholder="Enter a message ..."></textarea>
                             </div>
                         </div>

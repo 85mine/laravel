@@ -10,46 +10,39 @@
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/custom.css')}}" rel="stylesheet">
     @yield('extend-css')
 </head>
 
-<body class="top-navigation">
+<body>
 
 <div id="wrapper">
+    <!-- Include sidebar left -->
+    @include('layouts.main.sidebar_left')
+    <!-- End include side bar left -->
+
     <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom white-bg">
-            <!-- Include sidebar top -->
-            @include('layouts.main.sidebar_top')
-            <!-- End include side bar top -->
-        </div>
-        <div class="wrapper wrapper-content">
-            <div class="container">
-                <div class="row wrapper border-bottom white-bg page-heading">
-                    <div class="col-lg-10">
-                        @yield('breadcrumb')
-                    </div>
-                    <div class="col-lg-2">
-                    </div>
-                </div>
-                &nbsp;
-                <div class="row">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-content">
-                            @yield('content')
-                        </div>
-                    </div>
-                </div>
+        <!-- Include sidebar top -->
+        @include('layouts.main.sidebar_top')
+        <!-- End include side bar top -->
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                @yield('breadcrumb')
             </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            @yield('content')
         </div>
         <div class="footer">
             <div>
                 {!! trans('messages.message.common.copyright') !!}
             </div>
         </div>
-
     </div>
 </div>
 
@@ -63,15 +56,7 @@
 <!-- Custom and plugin javascript -->
 <script src="{{url('assets/js/inspinia.js')}}"></script>
 <script src="{{url('assets/js/plugins/pace/pace.min.js')}}"></script>
-<script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
-<script src="{{url('assets/js/plugins/select2/i18n/ja.js')}}"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".select2").select2({
-            language: '{{ env('APP_LOCALE') ? env('APP_LOCALE') : 'ja' }}'
-        });
-    });
-</script>
+
 @yield('extend-js')
 
 </body>
