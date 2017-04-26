@@ -176,11 +176,13 @@
 
             $('.date[name*="input-datetime-"]').datetimepicker({
                 defaultDate: moment(),
+                allowInputToggle: true,
             });
 
             $('.date[name*="input-date"]').datetimepicker({
                 defaultDate: moment(),
                 format: 'DD/MM/YYYY',
+                allowInputToggle: true,
             });
         });
     </script>
