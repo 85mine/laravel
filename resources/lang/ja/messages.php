@@ -25,6 +25,7 @@ return [
             'btnAddMore'    => '追加',
             'btnSave'       => '保存',
         ],
+
         'admin' => [
             'admin' => [
                 'btnCreateAccount'  => 'アカウント作成',
@@ -75,6 +76,27 @@ return [
                 'reset_button'  => 'クリア',
                 'go_button'     => 'GO!'
             ],
+            'create' =>[
+                'createProject' => '案件作成',
+                'editProject' => '案件編集',
+                'saveProject' => '保存',
+                'copyProject' => '保存してコピー',
+                'personCareProject' => '担当者',
+                'createDateProject' => '作成日',
+                'deadlineDateProject' => '回答期限',
+                'egProject' => 'EG',
+                'attractiveProject' => '競合',
+                'customerName' => '顧客名',
+                'projectName' => '案件名',
+                'serviceName' => 'サービス',
+                'trialPeriodDate' => '試算期限',
+                'estimatePeriodDate' => '見積期限',
+                'startBusinessDate' => '業務開始日',
+                'budgetProject' => '予算',
+                'suggestCompany' => '拠点指名',
+                'assignCompany' => '受け入れ拠点',
+                'detailProject' => '案件詳細',
+            ],
             'edit' => [
                 'edit_button'       => '編集',
                 'budget'            => '予算',
@@ -92,6 +114,8 @@ return [
                 'base'              => '拠点',
                 'reason_for_select' => '選定理由',
                 'update_button'     => '更新',
+                'save_button'       => '保存',
+                'cancel_button'     => 'キャンセル',
             ],
             'chosing' => [
                 'title' => '選定中案件',
@@ -137,6 +161,12 @@ return [
                 'password' => 'パスワード',
             ]
         ],
+
+        'common'=> [
+            'currency' => '¥ 999,999,999.99',
+            'enter_message' => '案件詳細を入力してください',
+        ],
+
         'admin' => [
             'createAccount' => [
                 'department'    => '部署',
@@ -192,7 +222,7 @@ return [
         'createCompany' => '拠点作成',
         'deleteProject' => '案件削除',
         'managerProject' => '案件メニュー',
-        'createProject' => '案件作成画面',
+        'createProject' => '案件作成',
         'editProject' => '案件編集',
         'listProject' => '案件一覧',
         'resultProject' => '案件結果入力',

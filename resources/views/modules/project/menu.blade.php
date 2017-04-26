@@ -2,14 +2,14 @@
 @section('title', trans('messages.title.home.dashboard'))
 @section('breadcrumb')
     <h2>{{trans('messages.menu.managerProject')}}</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="index.html">{{trans('messages.label.common.home')}}</a>
-        </li>
-        <li class="active">
-            <strong>{{trans('messages.menu.managerProject')}}</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="index.html">{{trans('messages.label.common.home')}}</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>{{trans('messages.menu.managerProject')}}</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
-                            <a href="{{route('project.edit', ['id' => '1'])}}">
+                            <a href="#">
                                 <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.label.project.menu.edit')}}</button>
                             </a>
                         </div>

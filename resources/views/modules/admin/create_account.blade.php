@@ -3,14 +3,14 @@
 
 @section('breadcrumb')
     <h2>{{trans('messages.label.admin.createAccount.createAccount')}}</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{route('dashboard')}}">{{trans('messages.label.common.home')}}</a>
-        </li>
-        <li class="active">
-            <strong>{{trans('messages.label.admin.createAccount.createAccount')}}</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="{{route('dashboard')}}">{{trans('messages.label.common.home')}}</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>{{trans('messages.label.admin.createAccount.createAccount')}}</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 @section('content')
         <div class="row">

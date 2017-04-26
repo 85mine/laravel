@@ -6,14 +6,14 @@
 @endsection
 @section('breadcrumb')
     <h2>{{ trans('messages.title.report') }}</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="{{ route('dashboard') }}">{{ trans('messages.title.home') }}</a>
-        </li>
-        <li class="active">
-            <strong>{{ trans('messages.title.report') }}</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="{{ route('dashboard') }}">{{ trans('messages.title.home') }}</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>{{ trans('messages.title.report') }}</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 @section('content')
     <div id="filter">
