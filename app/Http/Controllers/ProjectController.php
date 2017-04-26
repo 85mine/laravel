@@ -83,13 +83,15 @@ class ProjectController extends BaseController
             ]);
         }elseif($id == 3){
             $saler_option = config('config.project.sales_staff');
+            $reply_option = config('config.project.reply');
             return view('modules.project.detail_chosing')->with([
                 'result_option' => $result_option,
                 'accepting_base' => $accepting_base,
                 'eg_option' => $eg_option,
                 'attractive_option' => $attractive_option,
                 'service_option'=> $service_option,
-                'saler_option' => $saler_option
+                'saler_option' => $saler_option,
+                'reply_option' => $reply_option
             ]);
         }
 
