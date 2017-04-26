@@ -44,6 +44,20 @@
     height: 90px;
     font-size: 42px;
 }
+
+/*========= Create Project =============*/
+.create-pr-row-width{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.create-pr-sub-form {
+    box-sizing: border-box;
+    border: solid 1px #bdbdbd;
+    background-color: #eee;
+    padding: 15px;
+}
+
 /*========= Report =============*/
 .label2-daterange {
     margin-left: calc(46%);

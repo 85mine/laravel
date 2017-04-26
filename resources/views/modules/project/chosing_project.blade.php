@@ -57,7 +57,8 @@
                                         </td>
                                     </tr>
                                     @if($i==2)
-                                        <tr class="grade_{{ $i }}" style="background-color: #ed5565; color: white !important;   ">
+                                        <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}"
+                                            style="background-color: #ed5565; color: white !important;   ">
                                             <td class="center">3</td>
                                             <td>2017/4/25 9:30</td>
                                             <td>本田</td>
@@ -105,7 +106,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table- table-hover" id="end-table">
                                     <tbody>
-                                    <tr class="gradeX">
+                                    <tr class="grade_1" onclick="link('{{ route('project.edit', 1) }}')">
                                         <td class="center">1</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -118,7 +119,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr class="gradeX">
+                                    <tr class="grade_2" onclick="link('{{ route('project.edit', 2) }}')">
                                         <td class="center">2</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -131,7 +132,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr class="gradeX">
+                                    <tr class="grade_3" onclick="link('{{ route('project.edit', 3) }}')">
                                         <td class="center">3</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -144,7 +145,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr class="gradeX">
+                                    <tr class="grade_4" onclick="link('{{ route('project.edit', 4) }}')">
                                         <td class="center">4</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -157,7 +158,7 @@
                                             </span>
                                         </td>
                                     </tr>
-                                    <tr class="gradeX">
+                                    <tr class="grade_5" onclick="link('{{ route('project.edit', 5) }}')">
                                         <td class="center">5</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -169,7 +170,8 @@
                                                 [@lang('messages.label.project.chosing.loss')]
                                             </span>
                                         </td>
-                                    </tr><tr class="gradeX">
+                                    </tr>
+                                    <tr class="grade_6" onclick="link('{{ route('project.edit', 6) }}')">
                                         <td class="center">6</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -181,7 +183,8 @@
                                                 [@lang('messages.label.project.chosing.loss')]
                                             </span>
                                         </td>
-                                    </tr><tr class="gradeX">
+                                    </tr>
+                                    <tr class="grade_7" onclick="link('{{ route('project.edit', 7) }}')">
                                         <td class="center">7</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -205,8 +208,8 @@
         </div>
     </div>
     {{--<div class="row m-t-md">--}}
-        {{--<button class="ladda-button ladda-button-demo btn btn-primary" data-style="zoom-in">Send</button>--}}
-        {{--<p class="result"></p>--}}
+    {{--<button class="ladda-button ladda-button-demo btn btn-primary" data-style="zoom-in">Send</button>--}}
+    {{--<p class="result"></p>--}}
     {{--</div>--}}
     {{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
 @endsection
@@ -221,17 +224,17 @@
                 height: '200px'
             });
 
-            var l = $( '.ladda-button-demo' ).ladda();
+            var l = $('.ladda-button-demo').ladda();
 
-            l.click(function(){
+            l.click(function () {
                 var start_time = new Date().getTime();
                 // Start loading
-                l.ladda( 'start' );
+                l.ladda('start');
                 var request_time = 0;
 
                 // Timeout example
                 // Do something in backend and then stop ladda
-                setTimeout(function(){
+                setTimeout(function () {
                     $.ajax({
                         url: '/send-mail',
                         type: 'POST',
@@ -239,20 +242,20 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         data: '',
-                        success: function(result) {
+                        success: function (result) {
                             var message = result['response'];
                             $('.result').html(message.replace(/\"/g, ""));
                             request_time = new Date().getTime() - start_time;
                             return;
                         },
-                        error: function(jqXHR, textStatus, errorThrown) {
+                        error: function (jqXHR, textStatus, errorThrown) {
                             console.log(JSON.stringify(jqXHR));
                             console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                             $('.result').html("Occured errors!!!");
                         }
                     });
                     l.ladda('stop');
-                },5000)
+                }, 5000)
 
 
             });
@@ -280,6 +283,7 @@
         .ibox-content {
             padding: 0 0 0 0 !important;
         }
+
         #chosing-table, #end-table {
             margin-bottom: 0 !important;
         }
