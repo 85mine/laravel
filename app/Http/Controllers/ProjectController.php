@@ -27,7 +27,18 @@ class ProjectController extends BaseController
     }
 
     public function getCreateProject(){
-        return view('modules.project.create');
+        $person_care = config('config.project.person_care');
+        $eg_option = config('config.project.eg');
+        $attractive_option = config('config.project.attractive');
+        $service_option = config('config.project.service');
+        $sales_option = config('config.project.sales_staff');
+        return view('modules.project.create')->with([
+            'person_care' => $person_care,
+            'eg_option' => $eg_option,
+            'attractive_option' => $attractive_option,
+            'service_option' => $service_option,
+            'sales_option' => $sales_option
+        ]);
     }
 
     public function getChosingProject()
