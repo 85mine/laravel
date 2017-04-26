@@ -82,7 +82,7 @@ return [
                 'received' => '受注',
                 'loss' => '失注',
                 'route-project' => 'プロジェクト',
-                'route-chosing' => 'Chosing'
+                'route-chosing' => '選定中案件'
             ],
         ],
         'report' => [
