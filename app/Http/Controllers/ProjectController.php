@@ -35,7 +35,12 @@ class ProjectController extends BaseController
     {
         $result_option = config('config.project.result');
         $service_option = config('config.project.service');
-        return view('modules.project.list')->with(['result_option' => $result_option, 'service_option' => $service_option]);
+        $candidacy_option = config('config.project.candidacy');
+        return view('modules.project.list')->with([
+            'result_option' => $result_option,
+            'service_option' => $service_option,
+            'candidacy_option'=> $candidacy_option
+            ]);
     }
 
     public function edit($id){
