@@ -32,7 +32,7 @@ class UserController extends BaseController
             }
 
             if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
-                return redirect()->intended('/');
+                return redirect()->intended(route('project.chosingProject'));
             } else {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.message.user.login.fails')]);
                 return redirect(route('user.getLogin'))->withInput();

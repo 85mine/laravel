@@ -15,40 +15,34 @@
     @yield('extend-css')
 </head>
 
-<body class="top-navigation">
+<body>
 
 <div id="wrapper">
+    <!-- Include sidebar left -->
+    @include('layouts.main.sidebar_left')
+    <!-- End include side bar left -->
+
     <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom white-bg">
-            <!-- Include sidebar top -->
-            @include('layouts.main.sidebar_top')
-            <!-- End include side bar top -->
-        </div>
-        <div class="wrapper wrapper-content">
-            <div class="container">
-                <div class="row wrapper border-bottom white-bg page-heading">
-                    <div class="col-lg-10">
-                        @yield('breadcrumb')
-                    </div>
-                    <div class="col-lg-2">
-                    </div>
-                </div>
-                &nbsp;
-                <div class="row">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-content">
-                            @yield('content')
-                        </div>
-                    </div>
-                </div>
+        <!-- Include sidebar top -->
+        @include('layouts.main.sidebar_top')
+        <!-- End include side bar top -->
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                @yield('breadcrumb')
             </div>
+            <div class="col-lg-2">
+            </div>
+        </div>
+
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            @yield('content')
         </div>
         <div class="footer">
             <div>
                 {!! trans('messages.message.common.copyright') !!}
             </div>
         </div>
-
     </div>
 </div>
 
