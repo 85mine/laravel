@@ -26,6 +26,21 @@ class ProjectController extends BaseController
         return view('modules.project.menu');
     }
 
+    public function getCreateProject(){
+        $person_care = config('config.project.person_care');
+        $eg_option = config('config.project.eg');
+        $attractive_option = config('config.project.attractive');
+        $service_option = config('config.project.service');
+        $sales_option = config('config.project.sales_staff');
+        return view('modules.project.create')->with([
+            'person_care' => $person_care,
+            'eg_option' => $eg_option,
+            'attractive_option' => $attractive_option,
+            'service_option' => $service_option,
+            'sales_option' => $sales_option
+        ]);
+    }
+
     public function getChosingProject()
     {
         return view('modules.project.chosing_project');
@@ -50,6 +65,4 @@ class ProjectController extends BaseController
         $accepting_base = config('config.project.accepting_base');
         return view('modules.project.edit')->with(['result_option' => $result_option, 'accepting_base' => $accepting_base]);
     }
-
-
 }

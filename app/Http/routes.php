@@ -18,6 +18,7 @@ Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
+
     // Report
     Route::group(['prefix' => 'report'], function () {
         Route::get('/', 'ReportController@index')->name('report.index');
@@ -36,5 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/menu', 'ProjectController@getMenu')->name('project.getMenu');
         Route::get('/edit/{id}', 'ProjectController@edit')->name('project.edit');
         Route::get('/chosing-project', 'ProjectController@getChosingProject')->name('project.chosingProject');
+        Route::get('/create','ProjectController@getCreateProject')->name('project.create');
     });
 });
