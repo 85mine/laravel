@@ -164,7 +164,7 @@ return [
 
         'common'=> [
             'currency' => '¥ 999,999,999.99',
-            'enter_message' => '...メッセージを入力してください。',
+            'enter_message' => '案件詳細を入力してください',
         ],
 
         'admin' => [
