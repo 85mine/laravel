@@ -61,6 +61,11 @@ class ProjectController extends BaseController
         ]);
     }
 
+    public function getProjectView($id)
+    {
+        return view('modules.project.view');
+    }
+
     public function edit($id)
     {
         $result_option = config('config.project.result');
