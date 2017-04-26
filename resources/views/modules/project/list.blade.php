@@ -35,8 +35,10 @@
                                 <label class="font-normal">{{trans('messages.label.project.list.saler')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline">
-                                        <option value="0"></option>
-                                        <option value="ABC株式会社">ABC株式会社</option>
+                                        <option value=""></option>
+                                        @foreach ($sales_option as $key=>$value){
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
