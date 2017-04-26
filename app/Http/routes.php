@@ -39,4 +39,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/chosing-project', 'ProjectController@getChosingProject')->name('project.chosingProject');
         Route::get('/create','ProjectController@getCreateProject')->name('project.create');
     });
+
+    Route::post('/send-mail', 'ProjectController@sendMail')->name('sendMail');
 });
