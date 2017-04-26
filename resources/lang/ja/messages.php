@@ -12,6 +12,7 @@ return [
     'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
+    'title.admin.editAccount'           => 'アカウント編集',
     'title.admin.createBase'            => '拠点作成',
 
     // Label
@@ -41,6 +42,15 @@ return [
                 'id'            => 'ID（メールアドレス）',
                 'createAccount' => 'アカウント作成',
             ],
+            'editAccount' => [
+                'btnDelete'     => '削除',
+                'btnSave'       => '保存',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+                'editAccount'   => 'アカウント編集'
+             ],
             'createBase' => [
                 'createBase'    => '拠点作成',
                 'department'    => '部署',

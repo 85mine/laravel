@@ -15,20 +15,20 @@
 
 @section('content')
     <div class="ibox-content text-center p-md">
-        <div class="row">
+        <div class="row admin-menu-top">
             <div class="col-lg-12">
-                <div class="ibox text-center">
-                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.createAccount')}}"><button type="button" class="btn btn-primary btn-lg btn-admin-min-width">{{trans('messages.label.admin.admin.btnCreateAccount')}}</button></a></div>
-                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.createBase')}}"><button type="button" class="btn btn-primary btn-lg btn-admin-min-width">{{trans('messages.label.admin.admin.btnCreateBase')}}</button></a></div>
+                <div class="ibox text-center ">
+                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.createAccount')}}"><button type="button" class="btn btn-primary btn-lg dim menu-pr-btn-large btn-admin-min-width"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.admin.admin.btnCreateAccount')}}</button></a></div>
+                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.createBase')}}"><button type="button" class="btn btn-primary btn-lg dim menu-pr-btn-large btn-admin-min-width"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.admin.admin.btnCreateBase')}}</button></a></div>
                 </div>
             </div>
         </div>
         &nbsp;
-        <div class="row">
+        <div class="row admin-menu-bottom">
             <div class="col-lg-12">
-                <div class="ibox text-center">
-                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.editAccount')}}"><button type="button" class="btn btn-primary btn-lg btn-admin-min-width">{{trans('messages.label.admin.admin.btnEditAccount')}}</button></a></div>
-                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.deleteProject')}}"><button type="button" class="btn btn-primary btn-lg btn-admin-min-width">{{trans('messages.label.admin.admin.btnDeleteProject')}}</button></a></div>
+                <div class="ibox text-center ">
+                    <div class="col-md-6 col-lg-6"><a href="{{route('admin.editAccount')}}"><button type="button" class="btn btn-primary btn-lg btn-danger dim menu-pr-btn-large btn-admin-min-width"><i class="fa fa-edit"></i>&nbsp;{{trans('messages.label.admin.admin.btnEditAccount')}}</button></a></div>
+                    <div class="col-md-6 col-lg-6"><a href="#"><button type="button" class="btn btn-primary btn-lg btn-danger dim menu-pr-btn-large btn-admin-min-width"><i class="fa fa-times"></i>&nbsp;{{trans('messages.label.admin.admin.btnDeleteProject')}}</button></a></div>
                 </div>
             </div>
         </div>
