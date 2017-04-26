@@ -4,12 +4,12 @@
 @section('breadcrumb')
     <h2>{{trans('messages.title.project.edit')}}</h2>
     {{--<ol class="breadcrumb">--}}
-        {{--<li>--}}
-            {{--<a href="#">{{trans('messages.label.common.home')}}</a>--}}
-        {{--</li>--}}
-        {{--<li class="active">--}}
-            {{--<strong>{{trans('messages.title.project.edit')}}</strong>--}}
-        {{--</li>--}}
+    {{--<li>--}}
+    {{--<a href="#">{{trans('messages.label.common.home')}}</a>--}}
+    {{--</li>--}}
+    {{--<li class="active">--}}
+    {{--<strong>{{trans('messages.title.project.edit')}}</strong>--}}
+    {{--</li>--}}
     {{--</ol>--}}
 @endsection
 
@@ -56,6 +56,9 @@
                 $('#project_edit').find('.form-control').prop('disabled',true);
                 $('#project_edit .choose_base').prop('disabled',true);
             });
+            $('.btn_reply').click(function(){
+                $('#myModal_result').modal('show');
+            });
         });
     </script>
 @endsection
@@ -64,10 +67,6 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins" id="project_edit">
                 <div class="ibox-content">
-                    <div class="ibox-tools m-b-md">
-                        <button type="button" class="btn btn-w-m btn-primary btn_edit">{{trans('messages.label.project.edit.edit_button')}}</button>
-                        <button type="button" class="btn btn-w-m btn-primary btn_update pace-inactive">{{trans('messages.label.project.edit.update_button')}}</button>
-                    </div>
                     <div class="row m-b-md">
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.createDateProject')}}</label>
@@ -144,25 +143,10 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-4 custom-select2">
-                            <label class="font-normal">{{trans('messages.label.project.edit.accepting_base')}}</label>
-                            <div>
-                                <select class="input-s-lg form-control inline select2">
-                                    <option value="">&nbsp;</option>
-                                    @foreach ($accepting_base as $key=>$value)
-                                    <option value="{{$key}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+
                         </div>
                         <div class="form-group col-sm-4">
-                            <label class="font-normal">{{trans('messages.label.project.edit.result')}}</label>
-                            <div>
-                                <select class="input-s-lg form-control inline" id="result_option">
-                                    @foreach ($result_option as $key=>$value)
-                                    <option value="{{$value}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <button class="btn btn-primary btn-lg btn_reply" type="button">拠点回答</button>
                         </div>
                     </div>
                     <div class="row m-b-md">
@@ -175,10 +159,10 @@
                     </div>
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <div class="block">
+                            <div class="block m-b-xs">
                                 <div class="label-reason">{{trans('messages.label.project.edit.pit_sapporo')}}</div>
                                 <div class="bg-success hightling-reason">{{trans('messages.label.project.edit.candidacy')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_sapporo')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+
                             </div>
 
                             <div>
@@ -190,10 +174,10 @@
 
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <div class="block">
+                            <div class="block m-b-xs">
                                 <div class="label-reason"><span>{{trans('messages.label.project.edit.pco_sendai')}}</span></div>
                                 <div class="bg-primary hightling-reason">{{trans('messages.label.project.edit.condition')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pco_sendai')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+
                             </div>
 
                             <div>
@@ -204,10 +188,10 @@
 
                     <div class="row m-b-md">
                         <div class="form-group col-sm-12">
-                            <div class="block">
+                            <div class="block m-b-xs">
                                 <div class="label-reason"><span>{{trans('messages.label.project.edit.pit_nagoya')}}</span></div>
                                 <div class="bg-danger hightling-reason">{{trans('messages.label.project.edit.dismiss')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_nagoya')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+
                             </div>
 
                             <div>
@@ -220,52 +204,46 @@
             </div>
         </div>
     </div>
-    <div class="modal inmodal" id="base_modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
-                <div class="modal-header form-horizontal">
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
-                    <div class="form-group col-sm-6">
-                        <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" disabled id="content_base" value="">
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <div>
-                            <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="font-normal">{{trans('messages.label.project.edit.reason_for_select')}}</label>
-                        <div>
-                            <textarea class="form-control" rows="5" id="reason_base"></textarea>
-                        </div>
-                    </div>
 
-                </div>
-
-            </div>
-        </div>
-    </div>
     <div class="modal inmodal" id="myModal_result" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content animated fadeIn">
                 <div class="modal-header form-horizontal">
                     {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
-                    <div class="form-group col-sm-6">
-                        <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" disabled id="content_result" value="">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" disabled value="PIT 札幌">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div>
+                                <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group col-sm-6">
-                        <div>
-                            <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
-                            <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.saler')}}</label>
+                            <div class="col-sm-9">
+                                <select class="input-s-lg form-control inline">
+                                    @foreach ($saler_option as $key=>$value)
+                                        <option value="{{$value}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
+                            <div class="col-sm-9">
+                                <select class="input-s-lg form-control inline">
+                                    @foreach ($result_option as $key=>$value)
+                                        <option value="{{$value}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
