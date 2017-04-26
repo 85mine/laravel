@@ -62,7 +62,15 @@
 <!-- Custom and plugin javascript -->
 <script src="{{url('assets/js/inspinia.js')}}"></script>
 <script src="{{url('assets/js/plugins/pace/pace.min.js')}}"></script>
-
+<script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
+<script src="{{url('assets/js/plugins/select2/i18n/ja.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".select2").select2({
+            language: '{{ env('APP_LOCALE') ? env('APP_LOCALE') : 'ja' }}'
+        });
+    });
+</script>
 @yield('extend-js')
 
 </body>
