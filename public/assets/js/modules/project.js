@@ -28,4 +28,5 @@ $(document).ready(function(){
         $('#project_edit').find('.form-control').prop('disabled',true);
         $('#project_edit .choose_base').prop('disabled',true);
     });
+    $(".select2").select2();
 });
