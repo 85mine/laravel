@@ -115,7 +115,7 @@
                                 <input type="text" class="form-control m-b" name="bugget_project" data-mask="{{trans('messages.placeholder.common.currency')}}" placeholder="{{trans('messages.placeholder.common.currency')}}">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <label class="m-b" style="margin-top: 23px;"><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.project.create.suggestCompany')}}</label>
+                                <label class="m-b create-pr-checkbox-margin"><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.project.create.suggestCompany')}}</label>
                                 <div class="create-pr-sub-form m-b">
                                     <div class="row">
                                         <div class="col-sm-12 m-t custom-select2">

@@ -58,6 +58,10 @@
     padding: 15px;
 }
 
+.create-pr-checkbox-margin{
+    margin-top: 23px;
+}
+
 /*========= Report =============*/
 .label2-daterange {
     margin-left: calc(46%);
