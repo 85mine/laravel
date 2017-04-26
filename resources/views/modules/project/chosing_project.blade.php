@@ -3,17 +3,17 @@
 
 @section('breadcrumb')
     <h2>@lang('messages.label.project.chosing.title')</h2>
-    {{--<ol class="breadcrumb">--}}
-        {{--<li>--}}
-            {{--<a href="index.html">@lang('messages.label.common.home')</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-            {{--<a href="#">@lang('messages.label.project.chosing.route-project')</a>--}}
-        {{--</li>--}}
-        {{--<li class="active">--}}
-            {{--<strong>@lang('messages.label.project.chosing.route-chosing')</strong>--}}
-        {{--</li>--}}
-    {{--</ol>--}}
+    <ol class="breadcrumb">
+        <li>
+            <a href="index.html">@lang('messages.label.common.home')</a>
+        </li>
+        <li>
+            <a href="#">@lang('messages.label.project.chosing.route-project')</a>
+        </li>
+        <li class="active">
+            <strong>@lang('messages.label.project.chosing.route-chosing')</strong>
+        </li>
+    </ol>
 @endsection
 
 @section('content')
@@ -42,7 +42,7 @@
                                 {{--</tr>--}}
                                 {{--</thead>--}}
                                 <tbody>
-                                @for($i=0; $i<7; $i++)
+                                @for($i=1; $i<8; $i++)
                                     <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}">
                                         <td class="center">{{ $i+1 }}</td>
                                         <td>2017/4/25 9:30</td>
@@ -56,7 +56,7 @@
                                             <span class="text-primary m-r">C仙　C岐　C東</span>
                                         </td>
                                     </tr>
-                                    @if($i==2)
+                                    @if($i==3)
                                         <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}"
                                             style="background-color: #ed5565; color: white !important;   ">
                                             <td class="center">3</td>

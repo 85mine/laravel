@@ -142,7 +142,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='{{route('project.edit',2)}}'">
+                                <tr onclick="location.href='{{route('project.view',2)}}'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
