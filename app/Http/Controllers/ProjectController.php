@@ -12,4 +12,8 @@ class ProjectController extends BaseController
     public function getMenu(){
         return view('modules.project.menu');
     }
+
+    public function getCreateProject(){
+        return view('modules.project.create');
+    }
 }

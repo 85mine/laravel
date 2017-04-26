@@ -20,4 +20,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
     // Menu project
     Route::get('/menu-project','ProjectController@getMenu')->name('project.getMenu');
+    Route::get('/create-project','ProjectController@getCreateProject')->name('project.getCreateProject');
 });

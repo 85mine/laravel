@@ -18,3 +18,15 @@
     height: 90px;
     font-size: 42px;
 }
+
+.create-pr-row-width{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.create-pr-sub-form{
+    box-sizing: border-box;
+    border: solid 1px #bdbdbd;
+    background-color: #eee;
+    padding: 15px;
+}
