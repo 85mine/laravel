@@ -29,6 +29,11 @@
     margin-top: 50px; margin-bottom: 100px;
 }
 
+#editAccount th, td{
+    vertical-align: middle !important;
+    text-align: center;
+}
+
 .menu-pr-row-height{
     margin-top: 100px;
     margin-bottom: 100px;
