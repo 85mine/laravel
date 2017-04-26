@@ -57,7 +57,6 @@
                             <div class="col-sm-2 form-group custom-select2">
                                 <label>{{trans('messages.label.project.create.egProject')}}</label>
                                 <select class="form-control m-b select2" name="eG">
-                                    <option value="">&nbsp;</option>
                                     @foreach ($eg_option as $key=>$value){
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -66,7 +65,6 @@
                             <div class="col-sm-2 form-group custom-select2">
                                 <label>{{trans('messages.label.project.create.attractiveProject')}}</label>
                                 <select class="form-control m-b select2" name="attractive">
-                                    <option value="">&nbsp;</option>
                                     @foreach ($attractive_option as $key=>$value){
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -85,7 +83,6 @@
                             <div class="col-sm-4 form-group custom-select2">
                                 <label>{{trans('messages.label.project.create.serviceName')}}</label>
                                 <select class="form-control m-b select2" name="service">
-                                    <option value="">&nbsp;</option>
                                     @foreach ($service_option as $key=>$value){
                                     <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
@@ -118,13 +115,12 @@
                                 <input type="text" class="form-control m-b" name="bugget_project" data-mask="{{trans('messages.placeholder.common.currency')}}" placeholder="{{trans('messages.placeholder.common.currency')}}">
                             </div>
                             <div class="col-sm-4 form-group">
-                                <label class="m-b"><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.project.create.suggestCompany')}}</label>
+                                <label class="m-b create-pr-checkbox-margin"><input type="checkbox" class="i-checks" name="allow_select_company"> {{trans('messages.label.project.create.suggestCompany')}}</label>
                                 <div class="create-pr-sub-form m-b">
                                     <div class="row">
                                         <div class="col-sm-12 m-t custom-select2">
                                             <label>{{trans('messages.label.project.create.assignCompany')}}</label>
                                             <select class="form-control m-b select2" name="assign_company" disabled>
-                                                <option value="">&nbsp;</option>
                                                 <option>PIT 札幌</option>
                                                 <option>PIT 札幌</option>
                                                 <option>PIT 札幌</option>
@@ -163,13 +159,7 @@
     <script>
         $(document).ready(function () {
 
-            $('.btn[name="save_submit"]').submit(function (e) {
-                e.preventDefault();
-            });
-
-            $('.btn[name="copy_submit"]').submit(function (e) {
-                e.preventDefault();
-            });
+            $('form').submit(false);
 
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-green',
