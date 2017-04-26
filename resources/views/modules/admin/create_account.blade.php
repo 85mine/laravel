@@ -34,10 +34,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-justify"><input type="text" name="acc[0]department" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" name="acc[0]base" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" name="acc[0]name" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" name="acc[0]id" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
+                                    <td><input type="text" name="acc[0]department" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
+                                    <td><input type="text" name="acc[0]base" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
+                                    <td><input type="text" name="acc[0]name" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
+                                    <td><input type="text" name="acc[0]id" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
                                 </tr>
                                 @include('modules.admin.templateJs.new_account_template')
                             </tbody>
