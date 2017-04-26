@@ -19,7 +19,6 @@
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/modules/project.js')}}"></script>
 @endsection
 @section('content')
