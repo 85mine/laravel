@@ -25,7 +25,7 @@
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
-                            <a href="{{route('project.edit', ['id' => '1'])}}">
+                            <a href="#">
                                 <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.label.project.menu.edit')}}</button>
                             </a>
                         </div>
