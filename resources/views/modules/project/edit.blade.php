@@ -15,9 +15,11 @@
 
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/modules/project.js')}}"></script>
 @endsection
 @section('content')
@@ -37,10 +39,10 @@
                                 <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b">
                             </div>
                         </div>
-                        <div class="form-group col-sm-4">
+                        <div class="form-group col-sm-4 custom-select2">
                             <label class="font-normal">{{trans('messages.label.project.edit.accepting_base')}}</label>
                             <div>
-                                <select class="input-s-lg form-control inline">
+                                <select class="input-s-lg form-control inline select2">
                                     <option value=""></option>
                                     @foreach ($accepting_base as $key=>$value){
                                     <option value="{{$key}}">{{$value}}</option>

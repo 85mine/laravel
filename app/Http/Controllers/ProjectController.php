@@ -36,10 +36,12 @@ class ProjectController extends BaseController
         $result_option = config('config.project.result');
         $service_option = config('config.project.service');
         $candidacy_option = config('config.project.candidacy');
+        $sales_option = config('config.project.sales_staff');
         return view('modules.project.list')->with([
             'result_option' => $result_option,
             'service_option' => $service_option,
-            'candidacy_option'=> $candidacy_option
+            'candidacy_option'=> $candidacy_option,
+            'sales_option' => $sales_option
             ]);
     }
 
