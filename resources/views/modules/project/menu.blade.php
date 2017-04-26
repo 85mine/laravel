@@ -20,12 +20,12 @@
                     <div class="row menu-pr-row-height">
                         <div class="col-lg-3"></div>
                         <div class="col-lg-3 text-center">
-                            <a href="/project/create">
+                            <a href="{{route('project.create')}}">
                                 <button class="btn btn-primary dim menu-pr-btn-large" type="button"><i class="fa fa-plus fa-1x"></i> {{trans('messages.label.project.menu.create')}}</button>
                             </a>
                         </div>
                         <div class="col-lg-3 text-center">
-                            <a href="/project/edit">
+                            <a href="{{route('project.edit', ['id' => '1'])}}">
                                 <button class="btn btn-danger dim menu-pr-btn-large" type="button"><i class="fa fa-edit fa-1x"></i> {{trans('messages.label.project.menu.edit')}}</button>
                             </a>
                         </div>
