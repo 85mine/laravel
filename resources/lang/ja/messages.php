@@ -227,7 +227,7 @@ return [
         'listProject' => '案件一覧',
         'resultProject' => '案件結果入力',
         'chooseProject' => '選定中案件',
-        'detailProject' => '案件詳細画面',
+        'detailProject' => '案件詳細',
         'report' => '集計画面',
     ],
 
