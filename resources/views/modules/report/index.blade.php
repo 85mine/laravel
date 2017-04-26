@@ -325,7 +325,6 @@
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/d3/d3.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/c3/c3.min.js')}}"></script>
     <script type="text/javascript">
@@ -335,8 +334,6 @@
                 forceParse: false,
                 autoclose: true
             });
-
-            $(".select2").select2();
 
             c3.generate({
                 bindto: '#pie',
