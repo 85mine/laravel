@@ -19,10 +19,10 @@
                 <form action="#" role="form">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-primary btn-admin-min-width"
-                                    id="addMoreAccount">{{trans('messages.label.common.btnAddMore')}}</button>
+                            <button type="button" class="btn btn-primary btn-outline"
+                                    id="addMoreAccount"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.common.btnAddMore')}}</button>
                             <button type="submit"
-                                    class="btn btn-primary btn-admin-min-width">{{trans('messages.label.common.btnSave')}}</button>
+                                    class="btn btn-primary "><i class="fa fa-check"></i>&nbsp;{{trans('messages.label.common.btnSave')}}</button>
                         </div>
                     </div>
                     <div class="ibox-content">
