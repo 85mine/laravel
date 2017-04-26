@@ -9,7 +9,7 @@ return [
     'title.home'                        => 'ホーム',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
-    'title.project.edit'                => '案件詳細（選定中）',
+    'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
     'title.admin.editAccount'           => 'アカウント編集',
