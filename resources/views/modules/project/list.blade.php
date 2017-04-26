@@ -124,7 +124,7 @@
                                 </tr>
                                 </thead>--}}
                                 <tbody>
-                                <tr onclick="location.href='#'">
+                                <tr onclick="location.href='{{route('project.edit',1)}}'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -142,7 +142,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='#'">
+                                <tr onclick="location.href='{{route('project.edit',2)}}'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
@@ -160,7 +160,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='#'">
+                                <tr onclick="location.href='{{route('project.edit',3)}}'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
