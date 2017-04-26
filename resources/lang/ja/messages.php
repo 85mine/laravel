@@ -40,6 +40,10 @@ return [
             ],
         ],
         'project' => [
+            'menu' => [
+                'create' => '案件作成',
+                'edit' => '案件編集',
+            ],
             'list' => [
                 'saler'         => '営業担当',
                 'date'          => '日付',
@@ -108,8 +112,8 @@ return [
     'placeholder' => [
         'user' => [
             'login' => [
-                'username' => 'Username',
-                'password' => 'Password',
+                'username' => 'アカウント',
+                'password' => 'パスワード',
             ]
         ],
         'admin' => [
@@ -139,7 +143,8 @@ return [
         ],
         'user' => [
             'login' => [
-                'welcome' => 'Welcome to Pittokuru',
+                'selectSystem' => '拠点選定システム',
+                'answerSystem' => 'はい!!やります!!',
                 'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             ]
         ],

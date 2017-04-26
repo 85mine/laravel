@@ -3,10 +3,10 @@
 
 @section('content')
 <div class="login-form">
-    <div>
-        <h1 class="logo-name">{{trans('messages.title.short.common')}}</h1>
+    <div class="title">
+        <h3>{{ trans('messages.message.user.login.selectSystem') }}</h3>
     </div>
-    <h3>{{ trans('messages.message.user.login.welcome') }}</h3>
+    <h2>{{ trans('messages.message.user.login.answerSystem') }}</h2>
     <form class="m-t" role="form" action="{{route('user.postLogin')}}" method="post">
         {!! csrf_field() !!}
         {!! $messages !!}
