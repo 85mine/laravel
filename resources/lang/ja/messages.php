@@ -2,13 +2,14 @@
 return [
 
     // Title page
-    'title.common'                      => 'Pittokuru',
-    'title.short.common'                => 'PI',
-    'title.user.login'                  => 'Login',
+    'title.common'                      => '拠点選定システム',
+    'title.short.common'                => 'BS',
+    'title.user.login'                  => 'ログイン',
     'title.home.dashboard'              => 'Dashboard',
-    'title.home'                        => 'Home',
+    'title.home'                        => 'ホーム',
     'title.report'                      => '集計',
     'title.project.list'                => '案件一覧',
+    'title.project.edit'                => '案件結果入力',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
     'title.admin.editAccount'           => 'アカウント編集',
@@ -16,10 +17,10 @@ return [
     // Label
     'label' => [
         'common' => [
-            'login' => 'Login',
-            'logOut' => 'Log out',
-            'profile' => 'Profile',
-            'home' => 'Home'
+            'login' => 'ログイン',
+            'logOut' => 'ログアウト',
+            'profile' => 'プロフィール',
+            'home' => 'ホーム'
         ],
         'admin' => [
             'admin' => [
@@ -49,6 +50,10 @@ return [
             ]
         ],
         'project' => [
+            'menu' => [
+                'create' => '案件作成',
+                'edit' => '案件編集',
+            ],
             'list' => [
                 'saler'         => '営業担当',
                 'date'          => '日付',
@@ -60,6 +65,24 @@ return [
                 'reset_button'  => 'クリア',
                 'go_button'     => 'GO!'
             ],
+            'edit' => [
+                'edit_button'       => '編集',
+                'budget'            => '予算',
+                'accepting_base'    => '受け入れ拠点',
+                'result'            => '結果',
+                'case_details'      => '案件詳細',
+                'pit_sapporo'       => 'PIT 札幌',
+                'candidacy'         => '立候補',
+                'select'            => '選定',
+                'pco_sendai'        => 'PCO 仙台',
+                'condition'         => '条件付き',
+                'pit_nagoya'        => 'PIT 名古屋',
+                'dismiss'           => '辞退',
+                'reason'            => '理由',
+                'base'              => '拠点',
+                'reason_for_select' => '選定理由',
+                'update_button'     => '更新',
+            ],
             'chosing' => [
                 'title' => '選定中案件',
                 'chosingProject' => '選定中案件',
@@ -68,8 +91,8 @@ return [
                 'undefined' => '未確定',
                 'received' => '受注',
                 'loss' => '失注',
-                'route-project' => 'Project',
-                'route-chosing' => 'Chosing'
+                'route-project' => 'プロジェクト',
+                'route-chosing' => '選定中案件'
             ],
         ],
         'report' => [
@@ -100,8 +123,8 @@ return [
     'placeholder' => [
         'user' => [
             'login' => [
-                'username' => 'Username',
-                'password' => 'Password',
+                'username' => 'アカウント',
+                'password' => 'パスワード',
             ]
         ],
         'admin' => [
@@ -118,8 +141,8 @@ return [
     'validator' => [
         'user' => [
             'login' => [
-                'username' => 'Email',
-                'password' => 'Password',
+                'username' => 'メール',
+                'password' => 'パスワード',
             ]
         ],
     ],
@@ -127,12 +150,13 @@ return [
     // Message
     'message' => [
         'common' => [
-            'copyright' => '<strong>Copyright</strong> Pittokuru Company &copy; 2014-2017',
+            'copyright' => '<strong>Copyright</strong> &copy; PITCREW Co.,Ltd. All Rights Reserved.',
         ],
         'user' => [
             'login' => [
-                'welcome' => 'Welcome to Pittokuru',
-                'fails' => 'Email or password not wrong.',
+                'selectSystem' => '拠点選定システム',
+                'answerSystem' => 'はい!!やります!!',
+                'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             ]
         ],
         'project' => [
@@ -156,7 +180,7 @@ return [
         'editProject' => '案件編集',
         'listProject' => '案件一覧',
         'resultProject' => '案件結果入力',
-        'chooseProject' => '案件（選定中）',
+        'chooseProject' => '選定中案件',
         'detailProject' => '案件詳細画面',
         'report' => '集計画面',
     ],

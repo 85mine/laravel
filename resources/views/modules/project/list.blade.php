@@ -15,9 +15,11 @@
 
 @section('extend-css')
     <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{url('assets/js/plugins/select2/select2.full.min.js')}}"></script>
     <script src="{{url('assets/js/modules/project.js')}}"></script>
 @endsection
 @section('content')
@@ -26,17 +28,19 @@
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <div class="ibox-tools">
+                        <div class="ibox-tools m-b">
                             <button type="button" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
                         <div class="row">
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3 m-b-xs custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.saler')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
-                                        <option value="0"></option>
-                                        <option value="ABC株式会社">ABC株式会社</option>
+                                    <select class="input-s-lg form-control inline select2">
+                                        <option value=""></option>
+                                        @foreach ($sales_option as $key=>$value){
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -44,14 +48,14 @@
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
 
                             <div class="form-group col-sm-3 m-b-xs">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control bg-info" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
                             <div class="form-group col-sm-3 m-b-xs">
@@ -63,20 +67,20 @@
 
                         </div>
                         <div class="row">
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3 m-b-xs custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.branch')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline select2">
                                         <option value="0"></option>
-                                        <option value="沖縄">沖縄</option>
-                                        <option value="岐阜">岐阜</option>
+                                        <option value="1">沖縄</option>
+                                        <option value="2">岐阜</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3 m-b-xs custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.result')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline select2">
                                         <option value=""></option>
                                         @foreach ($result_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -84,21 +88,21 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3 m-b-xs custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.candidacy')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline select2">
                                         <option value="0"></option>
-                                        <option value="1">Option 2</option>
-                                        <option value="2">Option 3</option>
-                                        <option value="3">Option 4</option>
+                                        @foreach ($candidacy_option as $key=>$value){
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3 m-b-xs custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.service')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline bg-danger">
+                                    <select class="input-s-lg form-control inline select2">
                                         <option value=""></option>
                                         @foreach ($service_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -106,7 +110,6 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="ibox-content">
