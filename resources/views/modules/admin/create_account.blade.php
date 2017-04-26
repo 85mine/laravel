@@ -18,8 +18,8 @@
                 <div class="ibox">
                     <div class="ibox-title">
                         <div class="ibox-tools">
-                            <button type="button" class="btn btn-primary btn-admin-min-width" id="addMoreAccount">{{trans('messages.label.admin.createAccount.btnAddMore')}}</button>
-                            <button type="button" class="btn btn-primary btn-admin-min-width">{{trans('messages.label.admin.createAccount.btnSave')}}</button>
+                            <button type="button" class="btn btn-primary btn-default btn-outline" id="addMoreAccount"><i class="fa fa-plus"></i>&nbsp;{{trans('messages.label.admin.createAccount.btnAddMore')}}</button>
+                            <button type="button" class="btn btn-primary "><i class="fa fa-check"></i>&nbsp;{{trans('messages.label.admin.createAccount.btnSave')}}</button>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -34,10 +34,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
-                                    <td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="department" placeholder="{{trans('messages.placeholder.admin.createAccount.department')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="base" placeholder="{{trans('messages.placeholder.admin.createAccount.base')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="name" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>
+                                    <td class="text-justify"><input type="text" name="id" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -55,7 +55,7 @@
                     + '<td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.name')}}" class="form-control"></td>'
                     + '<td class="text-justify"><input type="text" placeholder="{{trans('messages.placeholder.admin.createAccount.id')}}" class="form-control"></td>'
                     + '</tr>';
-                $('#createAccount tbody').append(_row);
+                $('#createAccount tbody').prepend(_row);
             });
         });
     </script>

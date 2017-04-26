@@ -11,6 +11,7 @@ return [
     'title.project.list'                => '案件一覧',
     'title.admin.home'                  => '管理者メニュー',
     'title.admin.createAccount'         => 'アカウント作成',
+    'title.admin.editAccount'           => 'アカウント編集',
 
     // Label
     'label' => [
@@ -37,6 +38,15 @@ return [
                 'id'            => 'ID（メールアドレス）',
                 'createAccount' => 'アカウント作成',
             ],
+            'editAccount' => [
+                'btnDelete'     => '削除',
+                'btnSave'       => '保存',
+                'department'    => '部署',
+                'base'          => '拠点',
+                'name'          => '名前',
+                'id'            => 'ID（メールアドレス）',
+                'editAccount'   => 'アカウント編集'
+            ]
         ],
         'project' => [
             'list' => [

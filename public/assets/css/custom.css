@@ -8,7 +8,9 @@
     /*}*/
 /*}*/
 
-.btn-admin-min-width{min-width: 180px;}
+.btn-admin-min-width{min-width: 380px;}
+
+.admin-menu-bottom{padding-bottom: 100px;}
 
 .menu-pr-row-height{
     margin-top: 100px;
