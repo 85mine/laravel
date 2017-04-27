@@ -220,3 +220,9 @@
 #chosing-table tr:hover, #end-table tr:hover {
     cursor: pointer;
 }
+.modal-customs .modal-header{
+    padding-bottom: 12px;
+}
+.modal-customs .modal-body{
+    padding-bottom: 20px;
+}

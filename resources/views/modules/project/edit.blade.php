@@ -225,14 +225,13 @@
         <div class="modal-dialog">
             <div class="modal-content animated fadeIn">
                 <div class="modal-header form-horizontal">
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
-                    <div class="form-group col-sm-6">
+                    <div class="col-sm-6">
                         <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" disabled id="content_base" value="">
                         </div>
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="col-sm-4 col-sm-offset-2 pull-right">
                         <div>
                             <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
                             <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
@@ -256,14 +255,13 @@
         <div class="modal-dialog">
             <div class="modal-content animated fadeIn">
                 <div class="modal-header form-horizontal">
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
-                    <div class="form-group col-sm-6">
+                    <div class="col-sm-6">
                         <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" disabled id="content_result" value="">
                         </div>
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="col-sm-4 col-sm-offset-2 pull-right">
                         <div>
                             <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
                             <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
