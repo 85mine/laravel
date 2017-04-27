@@ -148,6 +148,11 @@
     background-color: aliceblue;
 }
 
+/* TABLES */
+.table-bordered {
+    border: 1px solid #c1c1c1;
+}
+
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
 .table-bordered > tfoot > tr > th,
