@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox-title">
-                    <h5 style="color: blue;">{{ trans('messages.label.project.chosing.chosingProject') }}:
+                    <h5 style="color: blue;">@lang('messages.label.project.chosing.chosingProject') :
                         <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span>
                     </h5>
                 </div>
@@ -44,7 +44,7 @@
                                 <tbody>
                                 @for($i=1; $i<8; $i++)
                                     <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}">
-                                        <td class="center">{{ $i+1 }}</td>
+                                        <td class="center">{{ $i }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -227,13 +227,12 @@
             var l = $('.ladda-button-demo').ladda();
 
             l.click(function () {
-                var start_time = new Date().getTime();
                 // Start loading
                 l.ladda('start');
-                var request_time = 0;
 
                 // Timeout example
                 // Do something in backend and then stop ladda
+
                 setTimeout(function () {
                     $.ajax({
                         url: '/send-mail',
@@ -245,7 +244,7 @@
                         success: function (result) {
                             var message = result['response'];
                             $('.result').html(message.replace(/\"/g, ""));
-                            request_time = new Date().getTime() - start_time;
+                            l.ladda('stop');
                             return;
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
@@ -254,8 +253,8 @@
                             $('.result').html("Occured errors!!!");
                         }
                     });
-                    l.ladda('stop');
-                }, 5000)
+
+                }, 0)
 
 
             });
@@ -284,7 +283,7 @@
             padding: 0 0 0 0 !important;
         }
 
-        #chosing-table, #end-table {
+        .table-responsive, #chosing-table, #end-table {
             margin-bottom: 0 !important;
         }
 
