@@ -340,13 +340,13 @@
                 bindto: '#pie',
                 data: {
                     columns: [
-                        ['{{ trans("messages.label.report.loss_orders") }}', 19.6],
-                        ['{{ trans("messages.label.report.accepting_orders") }}', 29.4],
+                        ['{{ trans("messages.label.report.accepting_orders") }}', 19.6],
+                        ['{{ trans("messages.label.report.loss_orders") }}', 29.4],
                         ['{{ trans("messages.label.report.undefined") }}', 51]
                     ],
                     colors: {
-                        '{{ trans("messages.label.report.loss_orders") }}': '#C0504D',
-                        '{{ trans("messages.label.report.accepting_orders") }}': '#9BBB59',
+                        '{{ trans("messages.label.report.loss_orders") }}': '#9BBB59',
+                        '{{ trans("messages.label.report.accepting_orders") }}': '#C0504D',
                         '{{ trans("messages.label.report.undefined") }}': '#4F81BD'
                     },
                     type: 'pie'
