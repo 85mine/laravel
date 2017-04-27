@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-    <div class="ibox-content text-center p-md">
+    <div class="ibox-content text-center">
         <div class="row admin-menu-top">
             <div class="col-lg-12">
                 <div class="ibox text-center ">
