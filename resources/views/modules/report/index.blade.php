@@ -340,8 +340,8 @@
                 bindto: '#pie',
                 data: {
                     columns: [
-                        ['{{ trans("messages.label.report.loss_orders") }}', 19.6],
-                        ['{{ trans("messages.label.report.accepting_orders") }}', 29.4],
+                        ['{{ trans("messages.label.report.accepting_orders") }}', 19.6],
+                        ['{{ trans("messages.label.report.loss_orders") }}', 29.4],
                         ['{{ trans("messages.label.report.undefined") }}', 51]
                     ],
                     colors: {

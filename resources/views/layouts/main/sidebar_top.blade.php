@@ -1,6 +1,11 @@
 <nav class="navbar navbar-static-top" role="navigation">
     <div class="navbar-header">
-        <a href="#" class="navbar-brand">{{ trans('messages.label.common.home') }}</a>
+        <div class="navbar-header">
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                <i class="fa fa-reorder"></i>
+            </button>
+            <a href="#" class="navbar-brand">{{ trans('messages.label.common.home') }}</a>
+        </div>
     </div>
     <div class="navbar-collapse collapse" id="navbar">
         <ul class="nav navbar-nav">
