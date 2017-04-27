@@ -12,9 +12,9 @@
     <link href="{{url('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet">
+    @yield('extend-css')
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/custom.css')}}" rel="stylesheet">
-    @yield('extend-css')
 </head>
 
 <body class="top-navigation">

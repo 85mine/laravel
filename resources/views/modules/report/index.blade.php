@@ -27,7 +27,7 @@
                             <i class="fa fa-calendar"></i>
                         </span>
                         <input type="text" class="input-sm form-control" name="start" value=""/>
-                        <span class="input-group-addon">～</span>
+                        <span class="input-group-addon from-to-addon">～</span>
                         <span class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </span>
