@@ -178,7 +178,7 @@
                             <div class="block">
                                 <div class="label-reason">{{trans('messages.label.project.edit.pit_sapporo')}}</div>
                                 <div class="bg-success hightling-reason">{{trans('messages.label.project.edit.candidacy')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_sapporo')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_sapporo')}}" class="btn btn-white pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
                             </div>
 
                             <div>
@@ -193,7 +193,7 @@
                             <div class="block">
                                 <div class="label-reason"><span>{{trans('messages.label.project.edit.pco_sendai')}}</span></div>
                                 <div class="bg-primary hightling-reason">{{trans('messages.label.project.edit.condition')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pco_sendai')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+                                <button type="button" data-base="{{trans('messages.label.project.edit.pco_sendai')}}" class="btn btn-white pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
                             </div>
 
                             <div>
@@ -207,7 +207,7 @@
                             <div class="block">
                                 <div class="label-reason"><span>{{trans('messages.label.project.edit.pit_nagoya')}}</span></div>
                                 <div class="bg-danger hightling-reason">{{trans('messages.label.project.edit.dismiss')}}</div>
-                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_nagoya')}}" class="btn pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
+                                <button type="button" data-base="{{trans('messages.label.project.edit.pit_nagoya')}}" class="btn btn-white pull-right choose_base">{{trans('messages.label.project.edit.select')}}</button>
                             </div>
 
                             <div>
