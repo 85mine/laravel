@@ -82,6 +82,15 @@
     height: 320px;
 }
 
+#filter .input-daterange .input-group-addon {
+    padding: 6px 12px;
+    border-width: 1px;
+}
+#filter .input-daterange .input-group-addon.from-to-addon {
+    border-width: 1px 0;
+    padding: 6px;
+}
+
 #datepicker, #datepicker input, .custom-select2 .select2-container .select2-selection--single {
     height: 34px;
 }

@@ -25,13 +25,13 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
+                    <div class="ibox-content">
                         <div class="ibox-tools m-b">
                             <button type="button" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-sm-3 m-b-xs custom-select2">
+                        <div class="row m-b-md">
+                            <div class="form-group col-sm-3 custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.saler')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline select2">
@@ -43,20 +43,20 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
 
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.customer')}}</label>
                                 <div>
                                     <input type="text" class="form-control m-b">
@@ -64,8 +64,8 @@
                             </div>
 
                         </div>
-                        <div class="row">
-                            <div class="form-group col-sm-3 m-b-xs custom-select2">
+                        <div class="row m-b-md">
+                            <div class="form-group col-sm-3 custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.branch')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline select2">
@@ -75,7 +75,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs custom-select2">
+                            <div class="form-group col-sm-3 custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.result')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline select2">
@@ -86,7 +86,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs custom-select2">
+                            <div class="form-group col-sm-3 custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.candidacy')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline select2">
@@ -97,7 +97,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 m-b-xs custom-select2">
+                            <div class="form-group col-sm-3 custom-select2">
                                 <label class="font-normal">{{trans('messages.label.project.list.service')}}</label>
                                 <div>
                                     <select class="input-s-lg form-control inline select2">
@@ -109,9 +109,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="ibox-content">
-
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-example">
                                 {{--<thead>
