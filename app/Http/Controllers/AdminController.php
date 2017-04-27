@@ -44,7 +44,7 @@ class AdminController extends BaseController
             ]
         ];
         return view('modules.admin.create_base', [
-            'datas' => $dummy_data,
+            'data' => $dummy_data,
             'count_data' => count($dummy_data)
         ]);
     }

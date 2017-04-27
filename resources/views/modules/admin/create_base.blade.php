@@ -62,27 +62,27 @@
                                            class="form-control" value="">
                                 </td>
                             </tr>
-                            @foreach( $datas as $index => $data)
+                            @foreach( $data as $index => $datum)
                                 <tr>
                                     <td class="text-justify">
                                         <input type="text" name="base[{{ $index }}][company]"
                                                placeholder="{{trans('messages.placeholder.admin.createBase.company')}}"
-                                               class="form-control" value="{{ $data['company'] }}">
+                                               class="form-control" value="{{ $datum['company'] }}">
                                     </td>
                                     <td class="text-justify">
                                         <input type="text" name="base[{{ $index }}][department]"
                                                placeholder="{{trans('messages.placeholder.admin.createBase.department')}}"
-                                               class="form-control" value="{{ $data['department'] }}">
+                                               class="form-control" value="{{ $datum['department'] }}">
                                     </td>
                                     <td class="text-justify">
                                         <input type="text" name="base[{{ $index }}][base]"
                                                placeholder="{{trans('messages.placeholder.admin.createBase.base')}}"
-                                               class="form-control" value="{{ $data['base'] }}">
+                                               class="form-control" value="{{ $datum['base'] }}">
                                     </td>
                                     <td class="text-justify">
                                         <input type="text" name="base[{{ $index }}][short_name]"
                                                placeholder="{{trans('messages.placeholder.admin.createBase.short_name')}}"
-                                               class="form-control" value="{{ $data['short_name'] }}">
+                                               class="form-control" value="{{ $datum['short_name'] }}">
                                     </td>
                                 </tr>
                             @endforeach
