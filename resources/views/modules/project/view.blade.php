@@ -23,16 +23,6 @@
     <!-- DateTime Picker BEGIN-->
     <script type="text/javascript" src="{{url('assets/js/plugins/moment/moment.js')}}"></script>
     <script type="text/javascript" src="{{url('assets/js/plugins/datetimepicker/datetimepicker.min.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('.date[name*="input-datetime-"]').datetimepicker();
-
-            $('.date[name*="input-date"]').datetimepicker({
-                format: 'DD/MM/YYYY',
-            });
-        });
-    </script>
 @endsection
 @section('content')
     <div class="row">
@@ -43,13 +33,13 @@
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.createDateProject')}}</label>
                             <div class="input-group date " name="input-datetime-1">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="2017/04/27 15:29">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.deadlineDateProject')}}</label>
                             <div class="input-group date" name="input-datetime-2">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="2017/04/27 15:29">
                             </div>
                         </div>
                         <div class="col-sm-2 form-group custom-select2">
@@ -79,19 +69,19 @@
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.trialPeriodDate')}}</label>
                             <div class="input-group date " name="input-datetime-3">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="2017/04/27 15:29">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.estimatePeriodDate')}}</label>
                             <div class="input-group date " name="input-datetime-4">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="2017/04/27 15:29">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.startBusinessDate')}}</label>
                             <div class="input-group date" name="input-date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="20/07/2017">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" disabled  class="form-control" value="2017/04/27">
                             </div>
                         </div>
                     </div>
@@ -99,7 +89,7 @@
                         <div class="form-group col-sm-4">
                             <label class="font-normal">{{trans('messages.label.project.edit.budget')}}</label>
                             <div class="input-group m-b">
-                                <span class="input-group-addon">¥</span> <input type="text" disabled  class="form-control m-b" value="2000000">
+                                <span class="input-group-addon">¥</span> <input type="text" disabled  class="form-control m-b" value="200,000,00">
                             </div>
                         </div>
                         <div class="form-group col-sm-4 custom-select2">
