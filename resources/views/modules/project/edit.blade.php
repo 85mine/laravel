@@ -27,11 +27,12 @@
         $(document).ready(function () {
 
             $('.date[name*="input-datetime-"]').datetimepicker({
+                format: 'YYYY/MM/DD hh:mm A',
             });
 
             $('.date[name*="input-date"]').datetimepicker({
 
-                format: 'DD/MM/YYYY',
+                format: 'YYYY/MM/DD',
             });
             $('#result_option').change(function(){
                 $('#content_result').val($(this).val());
@@ -72,13 +73,13 @@
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.createDateProject')}}</label>
                             <div class="input-group date " name="input-datetime-1">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/26 4:15 PM">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.deadlineDateProject')}}</label>
                             <div class="input-group date" name="input-datetime-2">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/26 4:15 PM">
                             </div>
                         </div>
                         <div class="col-sm-2 form-group custom-select2">
@@ -120,19 +121,19 @@
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.trialPeriodDate')}}</label>
                             <div class="input-group date " name="input-datetime-3">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/26 4:15 PM">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.estimatePeriodDate')}}</label>
                             <div class="input-group date " name="input-datetime-4">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/26/2017 4:15 PM">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/26 4:15 PM">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.startBusinessDate')}}</label>
                             <div class="input-group date" name="input-date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="20/07/2017">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/20">
                             </div>
                         </div>
                     </div>

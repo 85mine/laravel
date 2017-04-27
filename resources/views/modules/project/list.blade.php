@@ -14,11 +14,19 @@
 @endsection
 
 @section('extend-css')
-    <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
 @endsection
 @section('extend-js')
-    <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
-    <script src="{{url('assets/js/modules/project.js')}}"></script>
+    <!-- DateTime Picker BEGIN-->
+    <script type="text/javascript" src="{{url('assets/js/plugins/moment/moment.js')}}"></script>
+    <script type="text/javascript" src="{{url('assets/js/plugins/datetimepicker/datetimepicker.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.input-group.date').datetimepicker({
+                format: 'YYYY/MM/DD',
+            });
+        });
+    </script>
 @endsection
 @section('content')
     <div class="row">
@@ -27,7 +35,7 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
                         <div class="ibox-tools m-b">
-                            <button type="button" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
+                            <button type="button" onclick="location.reload();" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
                         <div class="row m-b-md">
@@ -46,14 +54,14 @@
                             <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/20">
                                 </div>
                             </div>
 
                             <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.date')}}</label>
                                 <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="04/20/2017">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/20">
                                 </div>
                             </div>
                             <div class="form-group col-sm-3">
@@ -157,7 +165,7 @@
                                         <span class="m-r text-primary">C東</span>
                                     </td>
                                 </tr>
-                                <tr onclick="location.href='{{route('project.edit',3)}}'">
+                                <tr onclick="location.href='{{route('project.detailChosing',3)}}'">
                                     <td>2017/4/20 17:00</td>
                                     <td>本田</td>
                                     <td>ABC株式会社</td>
