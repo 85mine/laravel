@@ -207,9 +207,8 @@
 
     <div class="modal inmodal" id="myModal_result" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
+            <div class="modal-content modal-customs animated fadeIn">
                 <div class="modal-header form-horizontal">
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>--}}
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
@@ -217,8 +216,8 @@
                                 <input type="text" class="form-control" disabled value="PIT 札幌">
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
-                            <div>
+                        <div class="col-sm-4 col-sm-offset-2 pull-right">
+                            <div class="pull-right">
                                 <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
                                 <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
                             </div>
@@ -235,7 +234,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-6 pull-right">
                             <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.reply')}}</label>
                             <div class="col-sm-9">
                                 <select class="input-s-lg form-control inline">
