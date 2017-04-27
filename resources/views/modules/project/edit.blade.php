@@ -223,9 +223,9 @@
     </div>
     <div class="modal inmodal" id="base_modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
+            <div class="modal-content modal-customs animated fadeIn">
                 <div class="modal-header form-horizontal">
-                    <div class="col-sm-6">
+                    <div class="form-group col-sm-6">
                         <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.base')}}</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" disabled id="content_base" value="">
@@ -253,9 +253,9 @@
     </div>
     <div class="modal inmodal" id="myModal_result" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
-            <div class="modal-content animated fadeIn">
+            <div class="modal-content modal-customs animated fadeIn">
                 <div class="modal-header form-horizontal">
-                    <div class="col-sm-6">
+                    <div class="form-group col-sm-6">
                         <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.result')}}</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" disabled id="content_result" value="">
