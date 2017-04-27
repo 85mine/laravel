@@ -29,7 +29,8 @@
     margin-top: 50px;
 }
 
-#editAccount th, td{
+
+#editAccount .acc-checkbox{
     vertical-align: middle !important;
     text-align: center;
 }
@@ -43,6 +44,30 @@
     width: 250px;
     height: 90px;
     font-size: 42px;
+}
+
+@media screen and (max-device-width: 767px) {
+    .menu-pr-btn-large{
+        width: 260px;
+        height: 80px;
+        font-size: 28px;
+    }
+
+    .btn-admin-min-width{
+        min-width: 260px;
+    }
+}
+
+@media screen and (max-device-width: 380px) {
+    .menu-pr-btn-large{
+        width: 180px;
+        height: 60px;
+        font-size: 18px;
+    }
+
+    .btn-admin-min-width{
+        min-width: 180px;
+    }
 }
 
 /*========= Create Project =============*/
