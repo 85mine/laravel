@@ -37,7 +37,7 @@
                 </div>
                 &nbsp;
                 <div class="row">
-                    <div class="ibox float-e-margins">
+                    <div class="ibox float-e-margins custom-border">
                         <div class="ibox-content">
                             @yield('content')
                         </div>
