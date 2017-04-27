@@ -103,7 +103,7 @@ class ProjectController extends BaseController
             Mail::queue('modules.mail.reminder', ['user' => "admin"], function ($m) {
                 $m->from("admin@pittokuru.com", "Admin");
 
-                $m->to("linh.nv@altplus.com.vn", "Nguyen Van Linh")->cc("vanlinhb0@gmail.com", "Van Linh")->subject('Your Subject!');
+                $m->to("fffflinh.nv@altplus.com.vn", "Nguyen Van Linh")->cc("vanlinhb0@gmail.com", "Van Linh")->subject('Your Subject!');
             });
             if (!Mail::failures()) {
                 return response()->json([

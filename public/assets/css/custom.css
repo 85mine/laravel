@@ -1,6 +1,7 @@
 .login-form {
     margin-top: 40%;
 }
+
 .login-form h3 {
     font-size: 26px;
 }
@@ -8,45 +9,47 @@
 .login-form h2 {
     font-size: 40px;
 }
+
 .login-form .title {
     margin-bottom: 40px;
 }
+
 /*@media (max-height: 500px) {*/
-    /*.login-form {*/
-        /*margin-top: 0;*/
-    /*}*/
+/*.login-form {*/
+/*margin-top: 0;*/
+/*}*/
 /*}*/
 
-.btn-admin-min-width{
+.btn-admin-min-width {
     min-width: 380px;
 }
 
-.admin-menu-bottom{
+.admin-menu-bottom {
     padding-bottom: 50px;
 }
 
-.admin-menu-top{
+.admin-menu-top {
     margin-top: 50px;
 }
 
-#editAccount th, td{
+#editAccount th, td {
     vertical-align: middle !important;
     text-align: center;
 }
 
-.menu-pr-row-height{
+.menu-pr-row-height {
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.menu-pr-btn-large{
+.menu-pr-btn-large {
     width: 250px;
     height: 90px;
     font-size: 42px;
 }
 
 /*========= Create Project =============*/
-.create-pr-row-width{
+.create-pr-row-width {
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -58,7 +61,7 @@
     padding: 15px;
 }
 
-.create-pr-checkbox-margin{
+.create-pr-checkbox-margin {
     margin-top: 23px;
 }
 
@@ -66,27 +69,34 @@
 .label2-daterange {
     margin-left: calc(46%);
 }
+
 .filter-btn .btn {
     margin-top: 23px;
 }
+
 #chart {
     margin-top: 20px;
 }
+
 #report_img {
     height: 320px;
 }
+
 #datepicker, #datepicker input, .custom-select2 .select2-container .select2-selection--single {
     height: 34px;
 }
+
 .custom-select2 .select2-container .select2-selection--single {
     border-radius: 0;
 }
-@media only screen and (max-width: 1024px){
+
+@media only screen and (max-width: 1024px) {
     #datepicker {
         width: 100%;
     }
 }
-@media (min-width: 768px) and (max-width: 1024px){
+
+@media (min-width: 768px) and (max-width: 1024px) {
     .label2-daterange {
         margin-left: calc(51%);
     }
@@ -96,13 +106,15 @@
 .top-navigation .ibox-title, .top-navigation .ibox-content {
     border: 0;
 }
-.label-reason{
+
+.label-reason {
     padding-left: 0;
     width: 150px;
     display: inline-block;
     font-size: 14px;
 }
-.hightling-reason{
+
+.hightling-reason {
     width: 150px;
     display: inline-block;
     height: 34px;
@@ -122,8 +134,8 @@
 }
 
 .top-navigation .navbar-brand {
-    background: #02AAB0;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #02AAB0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -136,15 +148,15 @@
     border: solid 1px #23c6c8;
 }
 
-.input-group-addon{
+.input-group-addon {
     background: #f5f5f5;
 }
 
-.breadcrumb{
+.breadcrumb {
     background-color: transparent;
 }
 
-#page-wrapper{
+#page-wrapper {
     background-color: aliceblue;
 }
 
@@ -162,3 +174,16 @@
     border: 1px solid #c1c1c1;
 }
 
+.ibox-content-custom {
+    padding: 0 0 0 0 !important;
+    overflow-y: auto;
+    height: 200px;
+}
+
+.chosing_project .table-responsive, #chosing-table, #end-table {
+    margin-bottom: 0 !important;
+}
+
+#chosing-table tr:hover, #end-table tr:hover {
+    cursor: pointer;
+}

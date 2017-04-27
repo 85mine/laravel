@@ -4,21 +4,21 @@
 @section('breadcrumb')
     <h2>@lang('messages.label.project.chosing.title')</h2>
     {{--<ol class="breadcrumb">--}}
-        {{--<li>--}}
-            {{--<a href="index.html">@lang('messages.label.common.home')</a>--}}
-        {{--</li>--}}
-        {{--<li>--}}
-            {{--<a href="#">@lang('messages.label.project.chosing.route-project')</a>--}}
-        {{--</li>--}}
-        {{--<li class="active">--}}
-            {{--<strong>@lang('messages.label.project.chosing.route-chosing')</strong>--}}
-        {{--</li>--}}
+    {{--<li>--}}
+    {{--<a href="index.html">@lang('messages.label.common.home')</a>--}}
+    {{--</li>--}}
+    {{--<li>--}}
+    {{--<a href="#">@lang('messages.label.project.chosing.route-project')</a>--}}
+    {{--</li>--}}
+    {{--<li class="active">--}}
+    {{--<strong>@lang('messages.label.project.chosing.route-chosing')</strong>--}}
+    {{--</li>--}}
     {{--</ol>--}}
 @endsection
 
 @section('content')
 
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content chosing_project">
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox-title">
@@ -44,23 +44,11 @@
                             {{--</thead>--}}
                             <tbody>
                             @for($i=1; $i<8; $i++)
-                                <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}">
-                                    <td class="center">{{ $i }}</td>
-                                    <td>2017/4/25 9:30</td>
-                                    <td>本田</td>
-                                    <td>ABC株式会社</td>
-                                    <td>ABCゲームアプリメールサポート</td>
-                                    <td class="center">
-                                        <span class="text-success m-r">P札 C博</span>
-                                        <span class="text-navy m-r">P東 P名</span>
-                                        <span class="text-danger m-r">P岐　P北　C沖</span>
-                                        <span class="text-primary m-r">C仙　C岐　C東</span>
-                                    </td>
-                                </tr>
+
                                 @if($i==3)
                                     <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}"
                                         style="background-color: #ed5565; color: white !important;   ">
-                                        <td class="center">3</td>
+                                        <td class="center">{{ $i }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
                                         <td>ABC株式会社</td>
@@ -70,6 +58,20 @@
                                             <span class="m-r">P東 P名</span>
                                             <span class="m-r">P岐　P北　C沖</span>
                                             <span class="m-r">C仙　C岐　C東</span>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}">
+                                        <td class="center">{{ $i }}</td>
+                                        <td>2017/4/25 9:30</td>
+                                        <td>本田</td>
+                                        <td>ABC株式会社</td>
+                                        <td>ABCゲームアプリメールサポート</td>
+                                        <td class="center">
+                                            <span class="text-success m-r">P札 C博</span>
+                                            <span class="text-navy m-r">P東 P名</span>
+                                            <span class="text-danger m-r">P岐　P北　C沖</span>
+                                            <span class="text-primary m-r">C仙　C岐　C東</span>
                                         </td>
                                     </tr>
                                 @endif
@@ -93,7 +95,7 @@
         </div>
     </div>
     <!--Canceled Project-->
-    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content chosing_project">
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -277,20 +279,5 @@
 
 @section('extend-css')
     <!-- Ladda style -->
-    <link href="{{ asset('assets/css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
-    <style>
-        .ibox-content-custom {
-            padding: 0 0 0 0 !important;
-            overflow-y: auto;
-            height: 200px;
-        }
-
-        .table-responsive, #chosing-table, #end-table {
-            margin-bottom: 0 !important;
-        }
-
-        #chosing-table tr:hover, #end-table tr:hover {
-            cursor: pointer;
-        }
-    </style>
+    {{--<link href="{{ asset('assets/css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">--}}
 @endsection
