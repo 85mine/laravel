@@ -3,17 +3,17 @@
 
 @section('breadcrumb')
     <h2>@lang('messages.label.project.chosing.title')</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="index.html">@lang('messages.label.common.home')</a>
-        </li>
-        <li>
-            <a href="#">@lang('messages.label.project.chosing.route-project')</a>
-        </li>
-        <li class="active">
-            <strong>@lang('messages.label.project.chosing.route-chosing')</strong>
-        </li>
-    </ol>
+    {{--<ol class="breadcrumb">--}}
+        {{--<li>--}}
+            {{--<a href="index.html">@lang('messages.label.common.home')</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#">@lang('messages.label.project.chosing.route-project')</a>--}}
+        {{--</li>--}}
+        {{--<li class="active">--}}
+            {{--<strong>@lang('messages.label.project.chosing.route-chosing')</strong>--}}
+        {{--</li>--}}
+    {{--</ol>--}}
 @endsection
 
 @section('content')
