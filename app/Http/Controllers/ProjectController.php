@@ -100,12 +100,12 @@ class ProjectController extends BaseController
     public function sendMail(Request $request)
     {
         if ($request->ajax()) {
-            $isSent = Mail::send('modules.mail.reminder', ['user' => "admin"], function ($m) {
-                $m->from('admin@pittokuru.com', 'Admin');
+            Mail::queue('modules.mail.reminder', ['user' => "admin"], function ($m) {
+                $m->from("admin@pittokuru.com", "Admin");
 
-                $m->to("linh.nv@altplus.com.vn", "Nguyen Van Linh")->subject('Your Subject!');
+                $m->to("fffflinh.nv@altplus.com.vn", "Nguyen Van Linh")->cc("vanlinhb0@gmail.com", "Van Linh")->subject('Your Subject!');
             });
-            if ($isSent) {
+            if (!Mail::failures()) {
                 return response()->json([
                     'response' => 'Mail has been sent successfully!'
                 ]);
