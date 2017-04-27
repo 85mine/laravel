@@ -176,12 +176,13 @@
 
             $('.date[name*="input-datetime-"]').datetimepicker({
                 defaultDate: moment(),
+                format: 'YYYY/MM/DD HH:mm',
                 allowInputToggle: true,
             });
 
             $('.date[name*="input-date"]').datetimepicker({
                 defaultDate: moment(),
-                format: 'DD/MM/YYYY',
+                format: 'YYYY/MM/DD',
                 allowInputToggle: true,
             });
         });
