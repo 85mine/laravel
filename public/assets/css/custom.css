@@ -209,8 +209,14 @@
 
 .ibox-content-custom {
     padding: 0 0 0 0 !important;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 200px;
+    /*white-space: nowrap; //don't show scroll*/
+}
+
+.chosing_project {
+    padding: 10px !important;
 }
 
 .chosing_project .table-responsive, #chosing-table, #end-table {
@@ -220,6 +226,13 @@
 #chosing-table tr:hover, #end-table tr:hover {
     cursor: pointer;
 }
+
+/*@media screen and (max-width: 768px) {*/
+    /*.touch {*/
+        /*-webkit-overflow-scrolling: touch;*/
+    /*}*/
+/*}*/
+
 .modal-customs .modal-header{
     padding-bottom: 12px;
 }
