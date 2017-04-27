@@ -333,7 +333,8 @@
             $('#filter_daterange .input-daterange').datepicker({
                 keyboardNavigation: false,
                 forceParse: false,
-                autoclose: true
+                autoclose: true,
+                format: 'yyyy/mm/dd'
             });
 
             c3.generate({
