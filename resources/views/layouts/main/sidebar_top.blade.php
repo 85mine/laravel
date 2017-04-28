@@ -39,27 +39,27 @@
                     {{--<li><a href="">{{trans('messages.menu.detailProject')}}</a></li>--}}
                 {{--</ul>--}}
             {{--</li>--}}
-            <li class="dropdown">
+            <li class="dropdown {{ menu_active(route('project.chosingProject')) }}">
                 <a aria-expanded="false" role="button" href="{{ route('project.chosingProject') }}" class="dropdown-toggle" >
                     {{trans('messages.menu.chooseProject')}}
                 </a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ menu_active(route('report.index')) }}">
                 <a aria-expanded="false" role="button" href="{{ route('report.index') }}" class="dropdown-toggle" >
                     {{trans('messages.menu.report')}}
                 </a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ menu_active(route('project.projectList')) }}">
                 <a aria-expanded="false" role="button" href="{{ route('project.projectList') }}" class="dropdown-toggle" >
                     {{trans('messages.menu.listProject')}}
                 </a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ menu_active(route('project.getMenu')) }}">
                 <a aria-expanded="false" role="button" href="{{ route('project.getMenu') }}" class="dropdown-toggle" >
                     {{trans('messages.menu.managerProject')}}
                 </a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown {{ menu_active(route('admin.home')) }}">
                 <a aria-expanded="false" role="button" href="{{ route('admin.home') }}" class="dropdown-toggle" >
                     {{trans('messages.menu.managerUser')}}
                 </a>
