@@ -142,11 +142,8 @@
                                 <input type="text" class="form-control m-b" name="bugget_project" data-mask="{{trans('messages.placeholder.common.currency')}}" placeholder="{{trans('messages.placeholder.common.currency')}}" value="¥ 200,000,000.00">
                             </div>
                         </div>
-                        <div class="form-group col-sm-4 custom-select2">
-
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <button class="btn btn-primary btn-lg btn_reply" type="button">拠点回答</button>
+                        <div class="form-group col-sm-4 col-sm-offset-4">
+                            <button class="btn btn-primary btn-lg btn_reply" type="button">{{trans('messages.label.project.edit.reply_button')}}</button>
                         </div>
                     </div>
                     <div class="row m-b-md">
@@ -224,16 +221,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-sm-6 custom-select2">
-                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.saler')}}</label>
-                            <div class="col-sm-9">
-                                <select class="input-s-lg form-control inline select2">
-                                    @foreach ($saler_option as $key=>$value)
-                                        <option value="{{$value}}">{{$value}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+
                         <div class="form-group col-sm-6 pull-right hidden-xs">
                             <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.reply')}}</label>
                             <div class="col-sm-9">
@@ -249,6 +237,16 @@
                             <div class="col-sm-9">
                                 <select class="input-s-lg form-control inline">
                                     @foreach ($reply_option as $key=>$value)
+                                        <option value="{{$value}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 custom-select2">
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.saler')}}</label>
+                            <div class="col-sm-9">
+                                <select class="input-s-lg form-control inline select2">
+                                    @foreach ($saler_option as $key=>$value)
                                         <option value="{{$value}}">{{$value}}</option>
                                     @endforeach
                                 </select>

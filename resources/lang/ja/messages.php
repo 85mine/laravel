@@ -118,7 +118,8 @@ return [
                 'save_button'       => '保存',
                 'cancel_button'     => 'キャンセル',
                 'saler'             => '担当',
-                'reply'             => '回答'
+                'reply'             => '回答',
+                'reply_button'      => '拠点回答'
             ],
             'chosing' => [
                 'title' => '選定中案件',
