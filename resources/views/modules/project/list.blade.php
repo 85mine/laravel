@@ -34,7 +34,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div class="ibox-tools m-b group-btn-origin">
+                        <div class="ibox-tools m-b hidden-xs">
                             <button type="button" onclick="location.reload();" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="ibox-tools m-b group-btn-rp">
+                        <div class="ibox-tools m-b visible-xs">
                             <button type="button" onclick="location.reload();" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
