@@ -69,7 +69,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(".select2").select2({
-            language: '{{ env('APP_LOCALE') ? env('APP_LOCALE') : 'ja' }}'
+            language: '{{ env('APP_LOCALE') ? env('APP_LOCALE') : 'ja' }}',
+            width: '100%'
         });
     });
 </script>
