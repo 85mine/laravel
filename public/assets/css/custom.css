@@ -32,7 +32,7 @@
     margin-top: 50px;
 }
 
-#editAccount th, td {
+#editAccount .acc-checkbox{
     vertical-align: middle !important;
     text-align: center;
 }
@@ -48,6 +48,30 @@
     font-size: 42px;
 }
 
+@media screen and (max-device-width: 767px) {
+    .menu-pr-btn-large{
+        width: 260px;
+        height: 80px;
+        font-size: 28px;
+    }
+
+    .btn-admin-min-width{
+        min-width: 260px;
+    }
+}
+
+@media screen and (max-device-width: 380px) {
+    .menu-pr-btn-large{
+        width: 180px;
+        height: 60px;
+        font-size: 18px;
+    }
+
+    .btn-admin-min-width{
+        min-width: 180px;
+    }
+}
+
 /*========= Create Project =============*/
 .create-pr-row-width {
     margin-left: 20px;
@@ -57,7 +81,7 @@
 .create-pr-sub-form {
     box-sizing: border-box;
     border: solid 1px #bdbdbd;
-    background-color: #cccccc;
+    background-color: #f3f3f4;
     padding: 15px;
 }
 
@@ -194,8 +218,14 @@
 
 .ibox-content-custom {
     padding: 0 0 0 0 !important;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 200px;
+    /*white-space: nowrap; //don't show scroll*/
+}
+
+.chosing_project {
+    padding: 10px !important;
 }
 
 .chosing_project .table-responsive, #chosing-table, #end-table {
@@ -204,4 +234,18 @@
 
 #chosing-table tr:hover, #end-table tr:hover {
     cursor: pointer;
+}
+
+/*@media screen and (max-width: 768px) {*/
+    /*.touch {*/
+        /*-webkit-overflow-scrolling: touch;*/
+    /*}*/
+/*}*/
+
+.modal-customs .modal-header{
+    padding-bottom: 12px;
+    text-align: left;
+}
+.modal-customs .modal-body{
+    padding-bottom: 20px;
 }

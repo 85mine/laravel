@@ -28,7 +28,7 @@
                         <table class="table table-bordered" id="editAccount">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th class="acc-checkbox">
                                         <div class="icheckbox_square-green">
                                             <input type="checkbox" class="i-checks" name="checkAll" id="checkAll">
                                         </div>
@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
+                                    <td class="acc-checkbox">
                                         <div class="icheckbox_square-green">
                                             <input type="checkbox" class="i-checks" name="list[]" value="">
                                         </div>
@@ -52,7 +52,7 @@
                                     <td><input type="text" name="id" value="aaa@pit" disabled="" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td class="align-middle">
+                                    <td class="acc-checkbox">
                                         <div class="icheckbox_square-green">
                                             <input type="checkbox" class="i-checks" name="list[]" value="">
                                         </div>
@@ -63,7 +63,7 @@
                                     <td><input type="text" name="id" value="bbb@pit" disabled="" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td class="acc-checkbox">
                                         <div class="icheckbox_square-green">
                                             <input type="checkbox" class="i-checks" name="list[]" value="">
                                         </div>
