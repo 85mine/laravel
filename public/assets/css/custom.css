@@ -231,6 +231,14 @@
     background: #ffa;
 }
 
+#chosing-table .no-prepare {
+    background-color: #ed5565;
+}
+
+.chosing_project .ibox-title h5 {
+    color: blue;
+}
+
 /*@media screen and (max-width: 768px) {*/
     /*.touch {*/
         /*-webkit-overflow-scrolling: touch;*/

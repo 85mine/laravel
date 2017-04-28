@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox-title">
-                    <h5 style="color: blue;">@lang('messages.label.project.chosing.chosingProject'):
+                    <h5>@lang('messages.label.project.chosing.chosingProject'):
                         7 @lang('messages.label.project.chosing.project')
                     </h5>
                 </div>
@@ -46,8 +46,8 @@
                             @for($i=1; $i<8; $i++)
 
                                 @if($i==3)
-                                    <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}"
-                                        style="background-color: #ed5565;">
+                                    <tr onclick="link('{{ route('project.edit', $i) }}')"
+                                        class="grade_{{ $i }} no-prepare">
                                         <td class="center">{{ $i }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>
@@ -100,7 +100,7 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5 style="color: blue;">@lang('messages.label.project.chosing.endProject')</h5>
+                        <h5>@lang('messages.label.project.chosing.endProject')</h5>
                     </div>
 
                     <div class="ibox-content-custom">
