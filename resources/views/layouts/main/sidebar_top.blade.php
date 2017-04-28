@@ -4,7 +4,7 @@
             <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                 <i class="fa fa-reorder"></i>
             </button>
-            <a href="#" class="navbar-brand">{{ trans('messages.label.common.home') }}</a>
+            <a href="{{ route('project.chosingProject') }}" class="navbar-brand">{{ trans('messages.label.common.home') }}</a>
         </div>
     </div>
     <div class="navbar-collapse collapse" id="navbar">
@@ -68,7 +68,7 @@
         </ul>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="{{route('user.getLogin')}}">
+                <a href="{{route('user.getLogout')}}">
                     <i class="fa fa-sign-out"></i> {{ trans('messages.label.common.logOut') }}
                 </a>
             </li>
