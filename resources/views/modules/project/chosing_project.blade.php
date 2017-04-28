@@ -22,8 +22,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox-title">
-                    <h5 style="color: blue;">@lang('messages.label.project.chosing.chosingProject') :
-                        <span style="color: red;">7 @lang('messages.label.project.chosing.project')</span>
+                    <h5 style="color: blue;">@lang('messages.label.project.chosing.chosingProject'):
+                        7 @lang('messages.label.project.chosing.project')
                     </h5>
                 </div>
 
@@ -47,7 +47,7 @@
 
                                 @if($i==3)
                                     <tr onclick="link('{{ route('project.edit', $i) }}')" class="grade_{{ $i }}"
-                                        style="background-color: #ed5565; color: white !important;   ">
+                                        style="background-color: #ed5565;">
                                         <td class="center">{{ $i }}</td>
                                         <td>2017/4/25 9:30</td>
                                         <td>本田</td>

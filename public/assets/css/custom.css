@@ -236,6 +236,11 @@
     cursor: pointer;
 }
 
+#chosing-table tr:hover > td,
+#end-table tr:hover > td{
+    background: #ffa;
+}
+
 /*@media screen and (max-width: 768px) {*/
     /*.touch {*/
         /*-webkit-overflow-scrolling: touch;*/
