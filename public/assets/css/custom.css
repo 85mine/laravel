@@ -240,3 +240,19 @@
 .modal-customs .modal-body{
     padding-bottom: 20px;
 }
+@media screen and (max-width:767px){
+    .group-btn-origin{
+        display: none;
+    }
+    .group-btn-rp{
+        display: block;
+    }
+}
+@media screen and (min-width:768px){
+    .group-btn-origin{
+        display: block;
+    }
+    .group-btn-rp{
+        display: none;
+    }
+}

@@ -34,7 +34,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div class="ibox-tools m-b">
+                        <div class="ibox-tools m-b group-btn-origin">
                             <button type="button" onclick="location.reload();" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
@@ -116,6 +116,10 @@
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                        <div class="ibox-tools m-b group-btn-rp">
+                            <button type="button" onclick="location.reload();" class="btn btn-w-m btn-default">{{trans('messages.label.project.list.reset_button')}}</button>
+                            <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover dataTables-example">
