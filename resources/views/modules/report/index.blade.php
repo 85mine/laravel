@@ -20,8 +20,8 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-lg-5 form-group clearfix" id="filter_daterange">
-                    <div class="col-xs-6">
+                <div class="col-lg-5 clearfix" id="filter_daterange">
+                    <div class="col-md-6 form-group">
                         <label>{{trans('messages.label.report.from')}}</label>
                         <div id="datetimepicker_from" class="input-group date">
                             <span class="input-group-addon">
@@ -33,7 +33,7 @@
                    <div id="daterange_tilde">
                         <span class="input-group-addon">～</span>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-md-6 form-group">
                         <label>{{trans('messages.label.report.to')}}</label>
                         <div id="datetimepicker_to" class="input-group date">
                             <span class="input-group-addon">
