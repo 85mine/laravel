@@ -10,10 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-// Login
-Route::get('/login', 'UserController@getLogin')->name('user.getLogin');
-Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
+Route::group(['middleware' => 'guest'], function () {
+    // Login
+    Route::get('/login', 'UserController@getLogin')->name('user.getLogin');
+    Route::post('/login', 'UserController@postLogin')->name('user.postLogin');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
@@ -24,6 +25,26 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'ReportController@index')->name('report.index');
     });
 
+    // Choosing project
+    Route::group(['prefix' => 'project-choosing'], function () {
+        Route::get('/', 'ProjectController@getChosingProject')->name('project.chosingProject');
+        Route::get('/edit/{id}', 'ProjectController@edit')->name('project.edit');
+    });
+
+    // List project
+    Route::group(['prefix' => 'project-list'], function () {
+        Route::get('/', 'ProjectController@projectList')->name('project.projectList');
+        Route::get('/view/{id}', 'ProjectController@getProjectView')->name('project.view');
+        Route::get('/detail/{id}', 'ProjectController@detailChosing')->name('project.detailChosing');
+    });
+
+    // Menu project
+    Route::group(['prefix' => 'project-menu'], function () {
+        Route::get('/', 'ProjectController@getMenu')->name('project.getMenu');
+        Route::get('/create','ProjectController@getCreateProject')->name('project.create');
+    });
+
+    // Admin
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/', 'AdminController@admin')->name('admin.home');
         Route::get('/create-account', 'AdminController@createAccount')->name('admin.createAccount');
@@ -31,16 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/create-base', 'AdminController@createBase')->name('admin.createBase');
     });
 
-    Route::group(['prefix' => 'project'], function () {
-        Route::get('/list', 'ProjectController@projectList')->name('project.projectList');
-        Route::get('/delete', 'ProjectController@deleteProject')->name('admin.deleteProject');
-        Route::get('/menu', 'ProjectController@getMenu')->name('project.getMenu');
-        Route::get('/edit/{id}', 'ProjectController@edit')->name('project.edit');
-        Route::get('/chosing-project', 'ProjectController@getChosingProject')->name('project.chosingProject');
-        Route::get('/create','ProjectController@getCreateProject')->name('project.create');
-        Route::get('/view/{id}', 'ProjectController@getProjectView')->name('project.view');
-        Route::get('/detail/{id}', 'ProjectController@detailChosing')->name('project.detailChosing');
-    });
+    // have not page
+    Route::get('/delete', 'ProjectController@deleteProject')->name('admin.deleteProject');
 
     Route::post('/send-mail', 'ProjectController@sendMail')->name('sendMail');
 });
