@@ -122,10 +122,6 @@
     border-radius: 0;
 }
 
-#filter_daterange {
-    position: relative;
-}
-
 #daterange_tilde {
     position: absolute;
     width: 34px;
@@ -136,12 +132,6 @@
 #daterange_tilde .input-group-addon {
     padding: 6px;
     height: 34px;
-}
-
-@media only screen and (max-width: 1024px) {
-    #datepicker {
-        width: 100%;
-    }
 }
 
 /*======== End Report =============*/
