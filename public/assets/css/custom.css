@@ -245,3 +245,6 @@
 .hover-pointer tr:hover{
     cursor: pointer;
 }
+.select2-container--open{
+    z-index: 9999;
+}
