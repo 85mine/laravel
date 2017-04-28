@@ -20,35 +20,33 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-lg-5" id="filter_daterange">
-                    <div class="col-xs-6 form-group">
+                <div class="col-lg-5 form-group clearfix" id="filter_daterange">
+                    <div class="col-xs-6">
                         <label>{{trans('messages.label.report.from')}}</label>
                         <div id="datetimepicker_from" class="input-group date">
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <input type="text" class="form-control">
-
+                            <input type="text" class="form-control" name="from">
                         </div>
                     </div>
-                    <div id="daterange_tilde">
+                   <div id="daterange_tilde">
                         <span class="input-group-addon">～</span>
                     </div>
-                    <div id="" class="col-xs-6 form-group">
+                    <div class="col-xs-6">
                         <label>{{trans('messages.label.report.to')}}</label>
                         <div id="datetimepicker_to" class="input-group date">
-
                             <span class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="to">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="col-lg-6 form-group custom-select2">
                         <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
-                        <select id="sales_staff" class="select2 form-control">
+                        <select id="sales_staff" class="select2 form-control" name="sales_staff">
                             <option value="">&nbsp;</option>
                             <option value="1">金子</option>
                             <option value="2">本田康稔</option>
@@ -58,7 +56,7 @@
                     </div>
                     <div class="col-lg-6 form-group custom-select2">
                         <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
-                        <select id="base_name" class="select2 form-control">
+                        <select id="base_name" class="select2 form-control" name="base_name">
                             <option value="">&nbsp;</option>
                             <option value="1">沖縄</option>
                             <option value="2">岐阜</option>
@@ -68,7 +66,7 @@
 
                 <div class="col-lg-3 text-right filter-btn">
                     <button type="reset"
-                            class="btn btn-w-m btn-default">{{ trans('messages.label.report.clear') }}</button>
+                            class="btn btn-w-m btn-default btn-reset">{{ trans('messages.label.report.clear') }}</button>
                     <button type="submit"
                             class="btn btn-w-m btn-primary">{{ trans('messages.label.report.go') }}</button>
                 </div>
@@ -344,12 +342,13 @@
     <script src="{{url('assets/js/plugins/chartJs/Chart.min.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            /* Date time picker */
             $('#datetimepicker_from').datetimepicker({
                 format: "YYYY/MM/DD"
             });
             $('#datetimepicker_to').datetimepicker({
                 format: "YYYY/MM/DD",
-                useCurrent: false //Important! See issue #1075
+                useCurrent: false //Important!
             });
             $("#datetimepicker_from").on("dp.change", function (e) {
                 $('#datetimepicker_to').data("DateTimePicker").minDate(e.date);
@@ -357,7 +356,14 @@
             $("#datetimepicker_to").on("dp.change", function (e) {
                 $('#datetimepicker_from').data("DateTimePicker").maxDate(e.date);
             });
+            /* End Date time picker */
 
+            /* Clear Btn */
+            $('.btn-reset').click(function () {
+                $('.select2').val('').trigger("change");
+            });
+
+            /* Pie Chart */
             c3.generate({
                 bindto: '#pie',
                 data: {
@@ -377,7 +383,9 @@
                     }
                 }
             });
+            /* End Pie Chart */
 
+            /* Stock Chart */
             var stocked_options = {
                 scales: {
                     xAxes: [{
@@ -429,6 +437,7 @@
                 data: data_2,
                 options: stocked_options
             });
+            /* End Stock Chart */
         });
     </script>
 @endsection
