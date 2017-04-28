@@ -83,10 +83,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 custom-select2">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.result')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline select2">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="">&nbsp;</option>
                                         @foreach ($result_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -94,10 +94,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 custom-select2">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.candidacy')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline select2">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="0">&nbsp;</option>
                                         @foreach ($candidacy_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
@@ -105,10 +105,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-3 custom-select2">
+                            <div class="form-group col-sm-3">
                                 <label class="font-normal">{{trans('messages.label.project.list.service')}}</label>
                                 <div>
-                                    <select class="input-s-lg form-control inline select2">
+                                    <select class="input-s-lg form-control inline">
                                         <option value="">&nbsp;</option>
                                         @foreach ($service_option as $key=>$value){
                                         <option value="{{$key}}">{{$value}}</option>
