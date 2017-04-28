@@ -226,6 +226,19 @@
     cursor: pointer;
 }
 
+#chosing-table tr:hover > td,
+#end-table tr:hover > td{
+    background: #ffa;
+}
+
+#chosing-table .no-prepare {
+    background-color: #ed5565;
+}
+
+.chosing_project .ibox-title h5 {
+    color: blue;
+}
+
 /*@media screen and (max-width: 768px) {*/
     /*.touch {*/
         /*-webkit-overflow-scrolling: touch;*/
@@ -238,4 +251,13 @@
 }
 .modal-customs .modal-body{
     padding-bottom: 20px;
+}
+.table-hover-custom tr:hover > td{
+    background-color: #FFFFAA;
+}
+.hover-pointer tr:hover{
+    cursor: pointer;
+}
+.select2-container--open{
+    z-index: 9999;
 }

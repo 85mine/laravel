@@ -82,17 +82,17 @@
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="2017/04/26 4:15 PM">
                             </div>
                         </div>
-                        <div class="col-sm-2 form-group custom-select2">
+                        <div class="col-sm-2 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.egProject')}}</label>
-                            <select class="form-control m-b select2" name="eG">
+                            <select class="form-control m-b" name="eG">
                                 @foreach ($eg_option as $key=>$value){
                                 <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-sm-2 form-group custom-select2">
+                        <div class="col-sm-2 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.attractiveProject')}}</label>
-                            <select class="form-control m-b select2" name="attractive">
+                            <select class="form-control m-b" name="attractive">
                                 @foreach ($attractive_option as $key=>$value){
                                 <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
@@ -108,9 +108,9 @@
                             <label class="font-normal">{{trans('messages.label.project.create.projectName')}}</label>
                             <input type="text" class="form-control m-b" name="project_name" value="ABCゲームアプリメールサポート">
                         </div>
-                        <div class="col-sm-4 form-group custom-select2">
+                        <div class="col-sm-4 form-group">
                             <label class="font-normal">{{trans('messages.label.project.create.serviceName')}}</label>
-                            <select class="form-control m-b select2" name="service">
+                            <select class="form-control m-b" name="service">
                                 @foreach ($service_option as $key=>$value){
                                 <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
@@ -141,7 +141,7 @@
                         <div class="form-group col-sm-4">
                             <label class="font-normal">{{trans('messages.label.project.edit.budget')}}</label>
                             <div class="input-group m-b">
-                                <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b" value="2000000">
+                                <input type="text" class="form-control m-b" name="bugget_project" data-mask="{{trans('messages.placeholder.common.currency')}}" placeholder="{{trans('messages.placeholder.common.currency')}}" value="¥ 200,000,000.00">
                             </div>
                         </div>
                         <div class="form-group col-sm-4 custom-select2">
