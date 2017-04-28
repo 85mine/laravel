@@ -122,7 +122,7 @@
                             <button type="button" class="btn btn-w-m btn-primary">{{trans('messages.label.project.list.go_button')}}</button>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <table class="table table-striped table-bordered table-hover-custom hover-pointer">
                                 {{--<thead>
                                 <tr>
                                     <th>Rendering engine</th>

@@ -141,7 +141,7 @@
                         <div class="form-group col-sm-4">
                             <label class="font-normal">{{trans('messages.label.project.edit.budget')}}</label>
                             <div class="input-group m-b">
-                                <span class="input-group-addon">¥</span> <input type="text" class="form-control m-b" value="2000000">
+                                <input type="text" class="form-control m-b" name="bugget_project" data-mask="{{trans('messages.placeholder.common.currency')}}" placeholder="{{trans('messages.placeholder.common.currency')}}" value="¥ 200,000,000.00">
                             </div>
                         </div>
                         <div class="form-group col-sm-4 custom-select2">
