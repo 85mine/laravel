@@ -216,7 +216,7 @@
                                 <input type="text" class="form-control" disabled value="PIT 札幌">
                             </div>
                         </div>
-                        <div class="col-sm-4 col-sm-offset-2 pull-right">
+                        <div class="col-sm-4 col-sm-offset-2 pull-right hidden-xs">
                             <div class="pull-right">
                                 <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
                                 <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
@@ -234,7 +234,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group col-sm-6 pull-right">
+                        <div class="form-group col-sm-6 pull-right hidden-xs">
                             <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.reply')}}</label>
                             <div class="col-sm-9">
                                 <select class="input-s-lg form-control inline">
@@ -242,6 +242,24 @@
                                         <option value="{{$value}}">{{$value}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 visible-xs">
+                            <label class="col-sm-3 control-label">{{trans('messages.label.project.edit.reply')}}</label>
+                            <div class="col-sm-9">
+                                <select class="input-s-lg form-control inline">
+                                    @foreach ($reply_option as $key=>$value)
+                                        <option value="{{$value}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row visible-xs">
+                        <div class="col-sm-6 pull-right">
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary">{{trans('messages.label.project.edit.save_button')}}</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-white">{{trans('messages.label.project.edit.cancel_button')}}</button>
                             </div>
                         </div>
                     </div>
