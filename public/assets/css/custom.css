@@ -252,3 +252,9 @@
 .modal-customs .modal-body{
     padding-bottom: 20px;
 }
+.table-hover-custom tr:hover > td{
+    background-color: #FFFFAA;
+}
+.hover-pointer tr:hover{
+    cursor: pointer;
+}
