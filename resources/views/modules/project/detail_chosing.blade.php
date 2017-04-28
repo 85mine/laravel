@@ -143,7 +143,7 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-4 col-sm-offset-4">
-                            <button class="btn btn-primary btn-lg btn_reply" type="button">拠点回答</button>
+                            <button class="btn btn-primary btn-lg btn_reply" type="button">{{trans('messages.label.project.edit.reply_button')}}</button>
                         </div>
                     </div>
                     <div class="row m-b-md">
