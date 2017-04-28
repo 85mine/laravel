@@ -1,8 +1,9 @@
 @extends('layouts.main')
 @section('title', trans('messages.title.report'))
 @section('extend-css')
-    <link href="{{url('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/datetimepicker/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/c3/c3.min.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
 @endsection
 @section('breadcrumb')
     <h2>{{ trans('messages.title.report') }}</h2>
@@ -19,40 +20,53 @@
     <div id="filter">
         <form action="#" role="form">
             <div class="row">
-                <div class="col-lg-4 form-group" id="filter_daterange">
-                    <label for="datepicker">{{ trans('messages.label.report.from') }}</label>
-                    <label for="datepicker" class="label2-daterange">{{ trans('messages.label.report.to') }}</label>
-                    <div class="input-daterange input-group" id="datepicker">
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                        <input type="text" class="input-sm form-control" name="start" value=""/>
-                        <span class="input-group-addon from-to-addon">～</span>
-                        <span class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                        <input type="text" class="input-sm form-control" name="end" value=""/>
+                <div class="col-lg-5" id="filter_daterange">
+                    <div class="col-xs-6 form-group">
+                        <label>{{trans('messages.label.report.from')}}</label>
+                        <div id="datetimepicker_from" class="input-group date">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" class="form-control">
+
+                        </div>
+                    </div>
+                    <div id="daterange_tilde">
+                        <span class="input-group-addon">～</span>
+                    </div>
+                    <div id="" class="col-xs-6 form-group">
+                        <label>{{trans('messages.label.report.to')}}</label>
+                        <div id="datetimepicker_to" class="input-group date">
+
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            <input type="text" class="form-control">
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 form-group custom-select2">
-                    <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
-                    <select id="sales_staff" class="select2 form-control">
-                        <option value="">&nbsp;</option>
-                        <option value="1">金子</option>
-                        <option value="2">本田康稔</option>
-                        <option value="3">村田和樹</option>
-                        <option value="4">本田康稔</option>
-                    </select>
+                <div class="col-lg-4">
+                    <div class="col-lg-6 form-group custom-select2">
+                        <label for="sales_staff">{{ trans('messages.label.report.sales_staff') }}</label>
+                        <select id="sales_staff" class="select2 form-control">
+                            <option value="">&nbsp;</option>
+                            <option value="1">金子</option>
+                            <option value="2">本田康稔</option>
+                            <option value="3">村田和樹</option>
+                            <option value="4">本田康稔</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 form-group custom-select2">
+                        <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
+                        <select id="base_name" class="select2 form-control">
+                            <option value="">&nbsp;</option>
+                            <option value="1">沖縄</option>
+                            <option value="2">岐阜</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-lg-2 form-group custom-select2">
-                    <label for="base_name">{{ trans('messages.label.report.base_name') }}</label>
-                    <select id="base_name" class="select2 form-control">
-                        <option value="">&nbsp;</option>
-                        <option value="1">沖縄</option>
-                        <option value="2">岐阜</option>
-                    </select>
-                </div>
-                <div class="col-lg-4 text-right filter-btn">
+
+                <div class="col-lg-3 text-right filter-btn">
                     <button type="reset"
                             class="btn btn-w-m btn-default">{{ trans('messages.label.report.clear') }}</button>
                     <button type="submit"
@@ -86,18 +100,14 @@
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div>
-                            <div id="stocked1"></div>
-                        </div>
+                        <canvas id="stocked1" height="250px"></canvas>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
-                        <div>
-                            <div id="stocked2"></div>
-                        </div>
+                        <canvas id="stocked2" height="250px"></canvas>
                     </div>
                 </div>
             </div>
@@ -325,16 +335,27 @@
     </div>
 @endsection
 @section('extend-js')
-    <script src="{{url('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+    <!-- DateTime Picker BEGIN-->
+    <script type="text/javascript" src="{{url('assets/js/plugins/moment/moment.js')}}"></script>
+    <script type="text/javascript" src="{{url('assets/js/plugins/datetimepicker/datetimepicker.min.js')}}"></script>
+    <!-- DateTime Picker END-->
     <script src="{{url('assets/js/plugins/d3/d3.min.js')}}"></script>
     <script src="{{url('assets/js/plugins/c3/c3.min.js')}}"></script>
+    <script src="{{url('assets/js/plugins/chartJs/Chart.min.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#filter_daterange .input-daterange').datepicker({
-                keyboardNavigation: false,
-                forceParse: false,
-                autoclose: true,
-                format: 'yyyy/mm/dd'
+            $('#datetimepicker_from').datetimepicker({
+                format: "YYYY/MM/DD"
+            });
+            $('#datetimepicker_to').datetimepicker({
+                format: "YYYY/MM/DD",
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepicker_from").on("dp.change", function (e) {
+                $('#datetimepicker_to').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker_to").on("dp.change", function (e) {
+                $('#datetimepicker_from').data("DateTimePicker").maxDate(e.date);
             });
 
             c3.generate({
@@ -350,59 +371,63 @@
                         '{{ trans("messages.label.report.loss_orders") }}': '#C0504D',
                         '{{ trans("messages.label.report.undefined") }}': '#4F81BD'
                     },
-                    type: 'pie'
-                }
-            });
-
-            c3.generate({
-                bindto: '#stocked1',
-                data: {
-                    columns: [
-                        ['{{ trans("messages.label.report.preparative") }}', 2, 22, 11, 17, 5, 5, 9, 4, 4, 13],
-                        ['{{ trans("messages.label.report.selective") }}', 1, 10, 5, 12, 0, 1, 0, 0, 3, 1]
-                    ],
-                    colors: {
-                        '{{ trans("messages.label.report.preparative") }}': '#4F81BD',
-                        '{{ trans("messages.label.report.selective") }}': '#C0504D'
-                    },
-                    type: 'bar',
-                    groups: [
-                        ['{{ trans("messages.label.report.preparative") }}', '{{ trans("messages.label.report.selective") }}']
-                    ]
-                },
-                axis: {
-                    x: {
-                        type: 'category',
-                        categories: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄']
+                    type: 'pie',
+                    legend: {
+                        position: 'top'
                     }
                 }
             });
 
-            c3.generate({
-                bindto: '#stocked2',
-                data: {
-                    columns: [
-                        ['{{ trans("messages.label.report.undefined") }}', 1, 7, 6, 9, 0, 0, 1, 0, 1, 0],
-                        ['{{ trans("messages.label.report.accepting_orders") }}', 0, 5, 1, 2, 0, 1, 0, 0, 1, 0],
-                        ['{{ trans("messages.label.report.loss_orders") }}', 0, 1, 5, 5, 0, 2, 0, 0, 1, 1]
-
-                    ],
-                    colors: {
-                        '{{ trans("messages.label.report.undefined") }}': '#4F81BD',
-                        '{{ trans("messages.label.report.accepting_orders") }}': '#C0504D',
-                        '{{ trans("messages.label.report.loss_orders") }}': '#9BBB59'
-                    },
-                    type: 'bar',
-                    groups: [
-                        ['{{ trans("messages.label.report.undefined") }}', '{{ trans("messages.label.report.accepting_orders") }}', '{{ trans("messages.label.report.loss_orders") }}']
-                    ]
-                },
-                axis: {
-                    x: {
-                        type: 'category',
-                        categories: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄']
-                    }
+            var stocked_options = {
+                scales: {
+                    xAxes: [{
+                        stacked: true
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
                 }
+            };
+            var data_1 = {
+                labels: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄'],
+
+                datasets: [{
+                    label: '{{ trans("messages.label.report.preparative") }}',
+                    data: [2, 22, 11, 17, 5, 5, 9, 4, 4, 13],
+                    backgroundColor: "#4F81BD"
+                },{
+                    label: '{{ trans("messages.label.report.selective") }}',
+                    data: [1, 10, 5, 12, 0, 1, 0, 0, 3, 1],
+                    backgroundColor: "#C0504D"
+                }]
+            };
+            var data_2 = {
+                labels: ['P東京', 'P札幌', 'P名古屋', 'P岐阜', 'P北九州', 'C東京', 'C仙台', 'C岐阜', 'C博多', 'C沖縄'],
+
+                datasets: [{
+                    label: '{{ trans("messages.label.report.undefined") }}',
+                    data: [1, 7, 6, 9, 0, 0, 1, 0, 1, 0],
+                    backgroundColor: "#4F81BD"
+                },{
+                    label: '{{ trans("messages.label.report.accepting_orders") }}',
+                    data: [0, 5, 1, 2, 0, 1, 0, 0, 1, 0],
+                    backgroundColor: "#C0504D"
+                },{
+                    label: '{{ trans("messages.label.report.loss_orders") }}',
+                    data: [0, 1, 5, 5, 0, 2, 0, 0, 1, 1],
+                    backgroundColor: "#9BBB59"
+                }]
+            };
+            var stocked1Chart = new Chart($('#stocked1'), {
+                type: 'bar',
+                data: data_1,
+                options: stocked_options
+            });
+
+            var stocked2Chart = new Chart($('#stocked2'), {
+                type: 'bar',
+                data: data_2,
+                options: stocked_options
             });
         });
     </script>
