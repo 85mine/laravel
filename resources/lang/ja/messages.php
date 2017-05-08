@@ -1,8 +1,5 @@
 <?php
 return [
-    'common' => [
-        'copyright' => '<strong>Copyright</strong> &copy; PITCREW Co.,Ltd. All Rights Reserved.',
-    ],
     'user' => [
         'login' => [
             'welcome' => 'Diagnostic application for housing makers',
