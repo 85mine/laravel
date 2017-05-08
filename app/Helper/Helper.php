@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 
 if (!function_exists('menu_active')) {
 
@@ -14,5 +15,13 @@ if (!function_exists('menu_active')) {
             $class = 'active';
 
         return $class;
+    }
+}
+
+if (!function_exists('datetime_now')) {
+
+    function datetime_now()
+    {
+       return Carbon::now()->format('Y-m-d H:i:s');
     }
 }

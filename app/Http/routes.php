@@ -12,6 +12,11 @@
 */
 Route::group(['middleware' => 'ip'], function () {
     Route::get('/', 'UserController@getIndex')->name('user.getIndex');
+    // Active email
+    Route::group(['middleware' => 'user.status:' . ROUTER_ACTIVE_EMAIL], function () {
+        Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
+    });
+    // Guest
     Route::group(['middleware' => 'guest'], function () {
         // Login
         Route::get('/login', 'UserController@getLogin')->name('user.getLogin');
@@ -21,7 +26,7 @@ Route::group(['middleware' => 'ip'], function () {
     // Admin
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         // Check user confirm email
-        Route::group(['middleware' => 'user.status'], function () {
+        Route::group(['middleware' => 'user.status:' . ROUTER_USER], function () {
             Route::get('/', 'UserController@getDashboard')->name('admin.dashboard');
 
         });
