@@ -1,5 +1,8 @@
 <?php
 return [
+    'common' => [
+        'error_when_update' => 'Have error while process',
+    ],
     'user' => [
         'login' => [
             'welcome' => 'Diagnostic application for housing makers',
@@ -7,7 +10,8 @@ return [
             'confirm_email_fails' => 'Your email is not activated. Please click <a href="' . STRING_REPLACE . '">here</a> to activate',
         ],
         'confirm_email' => [
-            'send_email_success' => '',
+            'send_success' => 'Send success. Please check email!',
+            'send_fail' => 'Sent fail. Please try again!'
         ],
     ],
 ];

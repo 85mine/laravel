@@ -1,8 +1,9 @@
 <?php namespace App\Services;
 
 use App\Models\ConfirmEmail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 
 class UserService extends Service
 {
@@ -16,16 +17,18 @@ class UserService extends Service
         $confirmEmail->save();
 
         if ($confirmEmail) {
-            Mail::send('emails.template.confirm_email', ['user' => $user], function ($m) use ($user) {
-                $m->from(config('email_setting.email'), config('email_setting.name'));
+            $email = Mail::send('emails.template.confirm_email', ['user' => $user, 'token' => $confirmEmail], function ($m) use ($user) {
+                $m->from(config('config.email_setting.email'), config('config.email_setting.name'));
                 $m->to($user->email, $user->name)->subject(trans('labels.email.confirm_email.title'));
             });
 
-            if( count(Mail::failures()) > 0 ) {
+            if($email) {
                 $this->res['status'] = true;
-                $this->res['message'] = trans('messages');
+                $this->res['message'] = trans('messages.user.confirm_email.send_success');
+            } else {
+                $this->res['message'] = trans('messages.user.confirm_email.send_fail');
             }
-            return redirect(route('user.getActiveEmail'))->withInput('aaaa');
         }
+        return $this->res;
     }
 }

@@ -16,6 +16,7 @@ class RedirectIfIpBlocked
      */
     public function handle($request, Closure $next)
     {
+
         $ips = Ip::lists('ip_address')->toArray();
 
         if(in_array($request->ip(), $ips))

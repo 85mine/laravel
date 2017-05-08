@@ -4,4 +4,7 @@
             'email' => 'admin@test.com',
             'name' => 'Admin',
         ],
+        'date' => [
+            'format_datetime' => 'Y/m/d H:i'
+        ],
     ];

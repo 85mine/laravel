@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ConfirmEmail;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
 use Auth;
 use App\Helper\Common;
 use App\Services\UserService;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class UserController extends BaseController
 {
@@ -27,10 +24,10 @@ class UserController extends BaseController
     }
 
     // before login
-
     public function getIndex(Request $request) {
         return redirect(route('user.getLogin'));
     }
+
     public function getLogin(Request $request)
     {
         $messages = Common::getMessage($request);
@@ -68,23 +65,28 @@ class UserController extends BaseController
         return redirect(route('user.getLogin'));
     }
 
-    public function getActiveEmail(Request $request)
-    {
-        $messages = Common::getMessage($request);
-        return view('backend.modules.user.active_email')->with([
-            'messages' => $messages
-        ]);
-    }
-
-    public function postActiveEmail()
-    {
-        $activeEmail = $this->userService->activeEmail($this->user);
-
-    }
-
     // after login
     public function getDashboard()
     {
-        dd('aaa');
+        return view('backend.modules.home.index');
+    }
+
+    public function getActiveEmail()
+    {
+
+    }
+
+    public function getConfirmEmail(Request $request)
+    {
+        $request->input('check', true);
+        return view('backend.modules.user.confirm_email');
+    }
+
+    public function postConfirmEmail(Request $request)
+    {
+        $activeEmail = $this->userService->activeEmail($this->user);
+        $request->input('check', true);
+        $request->input('message', $activeEmail['message']);
+        return redirect(route('user.getConfirmEmail'))->withInput($request->all());
     }
 }

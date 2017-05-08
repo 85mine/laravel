@@ -4,7 +4,7 @@ return [
     'title.common'                      => '拠点選定システム',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
-    'title.user.active_email'           => 'Active email',
+    'title.user.confirm_email'           => 'Confirm email',
 
     // Label
     'label' => [
@@ -18,7 +18,7 @@ return [
             'nameOfAdminEmail'          => 'Admin',
         ],
         'user' => [
-            'active_email' => [
+            'confirm_email' => [
                 'description' => 'Please check email or request new email to active',
                 'send_email' => 'Send new email',
             ],

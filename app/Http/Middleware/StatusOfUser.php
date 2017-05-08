@@ -20,7 +20,7 @@ class StatusOfUser
 
         switch ($user->status) {
             case USER_NOT_CONFIRM_EMAIL:
-                return redirect(route('user.getActiveEmail'));
+                return redirect(route('user.getConfirmEmail'));
                 break;
 
             default:
