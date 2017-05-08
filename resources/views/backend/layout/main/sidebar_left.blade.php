@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('company.getAllCompanies') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">Companies</span>
                     <span class="fa arrow"></span>

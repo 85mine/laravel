@@ -30,5 +30,10 @@ Route::group(['middleware' => 'ip'], function () {
         Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         // Active email
         Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
+
+        // Company management
+        Route::get('/companies', 'CompanyController@getAllCompanies')->name('company.getAllCompanies');
+        Route::get('/company/new', 'CompanyController@getAddNewCompany')->name('company.addNew');
+        Route::post('/company/new', 'CompanyController@postAddNewCompany')->name('company.postNew');
     });
 });
