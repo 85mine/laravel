@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
-    protected $user;
-
-    public function __construct(Request $request)
-    {
-        $this->user = Auth::user();
-        $request->session()->put('segments', $request->segments());
-    }
 
     public function checkValidator($data, $validators) {
         $rules = isset($validators['rules']) ? $validators['rules'] : [];

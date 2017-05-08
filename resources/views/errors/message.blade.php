@@ -4,7 +4,7 @@
     <!-- Custom message -->
     @if ($messages && is_array($messages))
         @foreach ($messages as $key => $message)
-            {{$message}} {!! ($key == count($messages) - 1) ? null : '<br>' !!}
+            {!! $message !!} {!! ($key == count($messages) - 1) ? null : '<br>' !!}
         @endforeach
     @endif
 
@@ -12,7 +12,7 @@
     @if ($messages && !is_array($messages))
         @if ($messages->has())
             @foreach ($messages->all() as $key => $message)
-                {{$message}} {!! ($key == count($messages->all()) - 1) ? null : '<br>' !!}
+                {!! $message !!} {!! ($key == count($messages->all()) - 1) ? null : '<br>' !!}
             @endforeach
         @endif
     @endif
