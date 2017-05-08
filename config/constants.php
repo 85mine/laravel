@@ -15,3 +15,7 @@ if (!defined('USER_ACTIVE')) define('USER_ACTIVE', 1);
 if (!defined('ROLE_ADMIN')) define('ROLE_ADMIN', 'admin');
 if (!defined('ROLE_MASTER_STAFF')) define('ROLE_MASTER_STAFF', 'master_staff');
 if (!defined('ROLE_SUB_STAFF')) define('ROLE_SUB_STAFF', 'sub_staff');
+
+// Routing
+if (!defined('ROUTER_USER')) define('ROUTER_USER', 'user');
+if (!defined('ROUTER_ACTIVE_EMAIL')) define('ROUTER_ACTIVE_EMAIL', 'active_email');

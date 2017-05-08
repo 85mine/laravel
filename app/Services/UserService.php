@@ -1,14 +1,37 @@
 <?php namespace App\Services;
 
 use App\Models\ConfirmEmail;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Mail;
+use Mail, DB;
 
 class UserService extends Service
 {
+    public function activeEmail($token)
+    {
+        $confirmEmail = ConfirmEmail::where(['token' => $token])->first();
+        $findUser = User::where(['email' => $confirmEmail->email])->first();
 
-    public function activeEmail($user)
+        DB::beginTransaction();
+        try {
+            // active email user
+            $findUser->status = USER_ACTIVE;
+            $findUser->save();
+
+            // delete token from confirm email table
+            $confirmEmail->delete();
+            DB::commit();
+            $this->res['status'] = true;
+            $this->res['message'] = str_replace( STRING_REPLACE, route('user.getLogin'), trans('messages.user.confirm_email.active_email_success'));
+        } catch (\Exception $e) {
+            DB::rollback();
+        }
+
+        return $this->res;
+    }
+
+    public function sendConfirmEmail($user)
     {
 
         $confirmEmail = ConfirmEmail::firstOrNew(['email' => $user->email]);

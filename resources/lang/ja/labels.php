@@ -4,7 +4,8 @@ return [
     'title.common'                      => '拠点選定システム',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
-    'title.user.confirm_email'           => 'Confirm email',
+    'title.user.confirm_email'          => 'Confirm email',
+    'title.user.active_email'           => 'Active email',
 
     // Label
     'label' => [
