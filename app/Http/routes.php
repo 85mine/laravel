@@ -31,4 +31,12 @@ Route::group(['middleware' => 'ip'], function () {
         // Active email
         Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
     });
+
+    // Account
+    Route::group(['prefix' => 'account', 'middleware' => 'auth'], function () {
+        // List account
+        Route::get('/list', 'UserController@listUser')->name('user.list');
+        // Create account
+        Route::get('/create', 'UserController@listUser')->name('user.create');
+    });
 });

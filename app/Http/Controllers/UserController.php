@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Helper\Common;
 use App\Services\UserService;
+use App\Models\User;
 
 class UserController extends BaseController
 {
@@ -88,5 +89,17 @@ class UserController extends BaseController
         $request->input('check', true);
         $request->input('message', $activeEmail['message']);
         return redirect(route('user.getConfirmEmail'))->withInput($request->all());
+    }
+
+    // Get list account
+    public function listUser()
+    {
+        return view('backend/modules/user/list', ['accList' => User::with('company')->get()]);
+    }
+
+    // Create account
+    public function createUser()
+    {
+        return view('backend/modules/user/create');
     }
 }
