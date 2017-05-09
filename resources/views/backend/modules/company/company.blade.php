@@ -47,39 +47,36 @@
                                     <th>Website</th>
                                     <th>Respresentative Name</th>
                                     <th>Respresentative Mobile</th>
+                                    <th>Options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {{--{{ dd($companies) }}--}}
                                 @foreach($companies as $key => $company)
-                                    <tr class="gradeX">
-                                        <td>{{ ++$key }}</td>
+                                    <tr class="company" id="{{ $company->id }}">
+                                        <td>{{ $companies->perPage() * $companies->currentPage() + ++$key }}</td>
                                         <td>{{ $company->company_name }}</td>
-                                        <td>{{ $company->company_address }}                                        </td>
+                                        <td>{{ $company->company_address }}</td>
                                         <td>{{ $company->company_mobile }}</td>
                                         <td>{{ $company->company_email }}</td>
                                         <td>{{ $company->company_website }}</td>
                                         <td class="center">{{ $company->representative_name }}</td>
                                         <td class="center">{{ $company->representative_mobile }}</td>
+                                        <td>
+                                            <a role="button" href="{{ route('company.detail', ['id' => $company->id]) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                            <a role="button" href="{{ route('company.edit', ['id' => $company->id]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>Mobile</th>
-                                    <th>Email</th>
-                                    <th>Website</th>
-                                    <th>Respresentative Name</th>
-                                    <th>Respresentative Mobile</th>
-                                </tr>
                                 </tfoot>
 
                             </table>
                             {{ $companies->links() }}
                         </div>
-
+                        <meta name="csrf-token" content="{{ csrf_token() }}">
                     </div>
                 </div>
             </div>
@@ -118,6 +115,38 @@
 
             });
 
+        });
+
+        //View the company
+        $('.btn-info').click(function () {
+            var id = $(this).closest("tr").attr("id");
+            window.location = '/company/' + id + '/detail';
+        });
+
+        //Delete the company
+        $('.btn-danger').click(function () {
+            var id = $(this).closest("tr").attr("id");
+            $.ajax({
+                type: 'post',
+                url: '{{ URL::route('company.delete') }}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {'id': id},
+                success: function( msg ) {
+                    if ( msg.status === 'success' ) {
+                        alert( msg.msg );
+                        setInterval(function() {
+                            window.location.reload();
+                        }, 5000);
+                    }
+                },
+                error: function( data ) {
+                    if ( data.status === 422 ) {
+                        alert('Cannot delete the category');
+                    }
+                }
+            })
         });
 
     </script>

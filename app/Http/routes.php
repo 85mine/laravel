@@ -40,5 +40,8 @@ Route::group(['middleware' => 'ip'], function () {
         Route::get('/companies', 'CompanyController@getAllCompanies')->name('company.getAllCompanies');
         Route::get('/company/new', 'CompanyController@getAddNewCompany')->name('company.addNew');
         Route::post('/company/new', 'CompanyController@postAddNewCompany')->name('company.postNew');
+        Route::get('/company/{id}/detail', 'CompanyController@getCompany')->name('company.detail');
+        Route::get('/company/{id}/edit', 'CompanyController@editCompany')->name('company.edit');
+        Route::post('/company/delete', 'CompanyController@deleteCompany')->name('company.delete');
     });
 });

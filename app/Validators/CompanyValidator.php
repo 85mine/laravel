@@ -1,12 +1,10 @@
 <?php
 namespace App\Validators;
 
-use Illuminate\Http\Request;
-
 class CompanyValidator
 {
-    public function validateCompany() {
-
+    public function validateCompany()
+    {
         $res['rules'] = $this->_defaultRule();
         $res['messages'] = $this->_defaultMessage();
         $res['attributes'] = $this->_defaultAttribute();
@@ -14,11 +12,12 @@ class CompanyValidator
         return $res;
     }
 
-    private function _defaultRule() {
+    private function _defaultRule()
+    {
         return [
-            'company_name' => 'required,max:255',
+            'company_name' => 'required|max:255',
             'company_address' => 'required',
-            'company_mobile' => 'required,max:255',
+            'company_mobile' => 'required|max:255',
             'company_email' => 'email',
             'company_website' => 'max:255',
             'representative_name' => 'required',
@@ -26,14 +25,16 @@ class CompanyValidator
         ];
     }
 
-    private function _defaultMessage() {
+    private function _defaultMessage()
+    {
         return [];
     }
 
-    private function _defaultAttribute() {
+    private function _defaultAttribute()
+    {
         return [
             'email' => trans('messages.validator.user.login.username'),
-            'password' => trans('messages.validator.user.login.password'),
+            'max' => trans(''),
         ];
     }
 
