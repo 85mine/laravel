@@ -40,6 +40,19 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.postEdit');
         });
         // Confirm email
+        Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
+        Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
+        // Active email
+        Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
+
+        // Company management
+        Route::get('/companies', 'CompanyController@getAllCompanies')->name('company.getAllCompanies');
+        Route::get('/company/new', 'CompanyController@getAddNewCompany')->name('company.addNew');
+        Route::post('/company/new', 'CompanyController@postAddNewCompany')->name('company.postNew');
+        Route::get('/company/{id}/detail', 'CompanyController@getCompany')->name('company.detail');
+        Route::get('/company/{id}/edit', 'CompanyController@editCompany')->name('company.edit');
+        Route::post('/company/delete', 'CompanyController@deleteCompany')->name('company.delete');
+
         Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
