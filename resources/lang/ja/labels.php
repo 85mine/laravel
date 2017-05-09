@@ -7,6 +7,8 @@ return [
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
     'title.home.dashboard'              => 'Dashboard',
+    'title.qr.create'                   => 'Create Qr',
+    'title.qr.edit'                     => 'Edit Qr',
 
     // Label
     'label' => [
