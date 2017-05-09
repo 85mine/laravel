@@ -7,6 +7,7 @@ return [
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
     'title.home.dashboard'              => 'Dashboard',
+    'title.ips'                         => 'IP',
 
     // Label
     'label' => [
@@ -25,6 +26,9 @@ return [
                 'send_email' => 'Send new email',
             ],
         ],
+        'ips' => [
+            'page_title' => 'Ips'
+        ]
     ],
 
     // Placeholder

@@ -10,9 +10,9 @@
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
+    @yield('extend-css')
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/custom.css')}}" rel="stylesheet">
-    @yield('extend-css')
 </head>
 
 <body>

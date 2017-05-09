@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('ips.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">IP</span>
                     {{--<span class="fa arrow"></span>--}}

@@ -28,7 +28,7 @@ Route::group(['middleware' => 'ip'], function () {
         // Check user confirm email
         Route::group(['middleware' => 'user.status:' . ROUTER_USER], function () {
             Route::get('/', 'UserController@getDashboard')->name('admin.dashboard');
-
+            Route::get('/ips', 'IpController@index')->name('ips.index');
         });
         // Confirm email
         Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
