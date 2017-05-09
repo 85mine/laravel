@@ -50,6 +50,12 @@ class StatusOfUser
                 abort('503');
         }
 
+        // case confirm email
+        if ($role == ROUTER_CONFIRM_EMAIL) {
+            if($user->status != USER_NOT_CONFIRM_EMAIL)
+                return redirect(route('admin.dashboard'));
+        }
+
         return $next($request);
     }
 }

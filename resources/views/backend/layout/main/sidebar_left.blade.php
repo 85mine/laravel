@@ -26,14 +26,28 @@
                 <a href="#">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">User</span>
-                    <span class="fa arrow"></span>
+                    {{--<span class="fa arrow"></span>--}}
                 </a>
             </li>
             <li>
                 <a href="{{ route('company.getAllCompanies') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">Companies</span>
-                    <span class="fa arrow"></span>
+                    {{--<span class="fa arrow"></span>--}}
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">QR code</span>
+                    {{--<span class="fa arrow"></span>--}}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('ips.index') }}">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">IP</span>
+                    {{--<span class="fa arrow"></span>--}}
                 </a>
             </li>
         </ul>

@@ -19,3 +19,4 @@ if (!defined('ROLE_SUB_STAFF')) define('ROLE_SUB_STAFF', 'sub_staff');
 // Routing
 if (!defined('ROUTER_USER')) define('ROUTER_USER', 'user');
 if (!defined('ROUTER_ACTIVE_EMAIL')) define('ROUTER_ACTIVE_EMAIL', 'active_email');
+if (!defined('ROUTER_CONFIRM_EMAIL')) define('ROUTER_CONFIRM_EMAIL', 'confirm_email');
