@@ -1,5 +1,5 @@
 @extends('backend.layout.main')
-@section('title', trans('messages.title.home.dashboard'))
+@section('title', trans('labels.title.home.dashboard'))
 
 @section('breadcrumb')
     <h2>Layouts</h2>

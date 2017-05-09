@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ trans('messages.title.common') }} | @yield('title')</title>
+    <title>{{ trans('labels.title.common') }} | @yield('title')</title>
 
     <link href="{{url('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">

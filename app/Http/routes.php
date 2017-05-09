@@ -31,7 +31,9 @@ Route::group(['middleware' => 'ip'], function () {
 
         });
         // Confirm email
-        Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
-        Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
+        Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
+            Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
+            Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
+        });
     });
 });
