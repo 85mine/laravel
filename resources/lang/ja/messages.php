@@ -11,7 +11,9 @@ return [
         ],
         'confirm_email' => [
             'send_success' => 'Send success. Please check email!',
-            'send_fail' => 'Sent fail. Please try again!'
+            'send_fail' => 'Sent fail. Please try again!',
+            'active_email_success' => 'Active email success. Please click <a href="' . STRING_REPLACE . '">here</a> to login',
+            'active_email_error' => 'Active email error. Please click <a href="' . STRING_REPLACE . '">here</a> to try again.',
         ],
     ],
 ];

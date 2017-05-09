@@ -4,7 +4,12 @@ return [
     'title.common'                      => '拠点選定システム',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
-    'title.user.confirm_email'           => 'Confirm email',
+    'title.user.confirm_email'          => 'Confirm email',
+    'title.user.active_email'           => 'Active email',
+    'title.home.dashboard'              => 'Dashboard',
+    'title.ips'                         => 'IP',
+    'title.qr.create'                   => 'Create Qr',
+    'title.qr.edit'                     => 'Edit Qr',
 
     // Label
     'label' => [
@@ -23,6 +28,9 @@ return [
                 'send_email' => 'Send new email',
             ],
         ],
+        'ips' => [
+            'page_title' => 'Ips'
+        ]
     ],
 
     // Placeholder

@@ -261,3 +261,15 @@
 .select2-container--open{
     z-index: 9999;
 }
+
+.over-hidden{
+    overflow: hidden;
+}
+
+td.center{
+    text-align: center;
+}
+
+.btn-delete-submit{
+    margin-right: 5px;
+}

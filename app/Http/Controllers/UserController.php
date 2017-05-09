@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConfirmEmail;
 use App\Validators\UserValidator;
 use Illuminate\Http\Request;
 use Auth;
@@ -67,28 +68,31 @@ class UserController extends BaseController
     }
 
     // after login
-    public function getDashboard()
+    public function getDashboard(Request $request)
     {
         return view('backend.modules.home.index');
     }
 
-    public function getActiveEmail()
+    public function getActiveEmail(Request $request)
     {
-
+        $activeEmail = $this->userService->activeEmail($request->get('token'));
+        return view('backend.modules.user.active_email')->with([
+            'check' => $activeEmail['status']
+        ]);
     }
 
     public function getConfirmEmail(Request $request)
     {
-        $request->input('check', true);
         return view('backend.modules.user.confirm_email');
     }
 
     public function postConfirmEmail(Request $request)
     {
-        $activeEmail = $this->userService->activeEmail($this->user);
-        $request->input('check', true);
-        $request->input('message', $activeEmail['message']);
-        return redirect(route('user.getConfirmEmail'))->withInput($request->all());
+        $confirmEmail = $this->userService->sendConfirmEmail($this->user);
+        $input = $request->all();
+        $input['check'] = $confirmEmail['status'];
+        $input['message'] = $confirmEmail['message'];
+        return redirect(route('user.getConfirmEmail'))->withInput($input);
     }
 
     // Get list account
