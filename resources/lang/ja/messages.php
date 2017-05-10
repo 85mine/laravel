@@ -10,7 +10,7 @@ return [
     ],
     'user' => [
         'login' => [
-            'welcome' => 'Diagnostic application for housing makers',
+            'welcome' => '住宅メーカ向け診断',
             'fails' => 'メール又はパスワードは正しくないので、再度確認してください。',
             'confirm_email_fails' => 'Your email is not activated. Please click <a href="' . STRING_REPLACE . '">here</a> to activate',
         ],
