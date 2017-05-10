@@ -6,6 +6,7 @@ return [
     'title.user.login'                  => 'ログイン',
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
+    'title.user.list'                   => 'User List',
     'title.home.dashboard'              => 'Dashboard',
     'title.ips'                         => 'IP',
     'title.ips.create'                  => 'Add IP',
@@ -32,6 +33,12 @@ return [
             'confirm_email' => [
                 'description' => 'Please check email or request new email to active',
                 'send_email' => 'Send new email',
+            ],
+            'list' => [
+                'name'      => 'Name',
+                'email'     => 'Email',
+                'status'    => 'Status',
+                'company'   => 'Company',
             ],
         ],
         'ips' => [

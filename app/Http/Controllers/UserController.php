@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConfirmEmail;
 use App\Validators\UserValidator;
+use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
 use Auth;
 use App\Helper\Common;
@@ -95,15 +96,50 @@ class UserController extends BaseController
         return redirect(route('user.getConfirmEmail'))->withInput($input);
     }
 
-    // Get list account
+    // Get list user
     public function listUser()
     {
-        return view('backend/modules/user/list', ['accList' => User::with('company')->get()]);
+        return view('backend/modules/user/list');
     }
 
-    // Create account
+    public function getAjaxList()
+    {
+        $userList = User::with('company')->get();
+        foreach ($userList as &$user) {
+            $id = $user['id'];
+            $edit_url = route('user.getEdit', [$id]);
+
+            // Checkbox
+            $user['checkbox'] = '<div class="checkbox checkbox-success">
+                                        <input id="checkbox' . $id . '" type="checkbox" class="check" value="' . $id . '">
+                                        <label for="checkbox' . $id . '"></label>
+                                  </div>';
+            $user['buttons'] = '<div class="btn-group">';
+            $user['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
+            $user['buttons'] .= '<a href="javascript:;" class="btn btn-danger delete" title="' . trans('labels.label.common.btnDelete') . '" data-delete="' . $id . '"><i class="fa fa-remove"></i></a>';
+            $user['buttons'] .= '</div>';
+        }
+        return Datatables::of($userList)->make(true);
+    }
+
+    // Create user
     public function createUser()
     {
         return view('backend/modules/user/create');
+    }
+
+    // Edit user
+    public function getEdit(Request $request, $id)
+    {
+        $ips = Ip::find($id);
+        if (!$ips) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
+            return redirect(route('ips.index'));
+        }
+        $route = 'ips.postEdit';
+        $breadcrumb = trans('labels.label.ips.breadcrumb.edit');
+        $messages = Common::getMessage($request);
+
+        return view('backend.modules.ips.add_edit', compact('ips', 'route', 'breadcrumb', 'messages'));
     }
 }
