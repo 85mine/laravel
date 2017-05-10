@@ -3,7 +3,7 @@ return [
     // title
     'title.common'                      => '拠点選定システム',
     'title.short.common'                => 'BS',
-    'title.user.login'                  => 'ログイン',
+    'title.user.login'                  => '住宅メーカ向け診断',
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
     'title.home.dashboard'              => 'Dashboard',
