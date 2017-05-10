@@ -26,10 +26,10 @@
                     <div class="over-hidden bulk-action">
                         <a href="#"
                            class="btn btn-success pull-right"><i
-                                    class="fa fa-fw fa-plus"></i> Add</a>
+                                    class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
                            class="btn btn-danger btn-delete-submit pull-right m-r-10 hidden" data-action="deleted"><i
-                                    class="fa fa-fw fa-remove"></i> Bulk Delete</a>
+                                    class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover dataTables-example">
@@ -41,78 +41,13 @@
                                         <label for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th class="text-center">{{ trans('labels.label.ips.column.ip') }}</th>
+                                <th>{{ trans('labels.label.ips.column.description') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeX">
-                                <td class="center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="checkbox1" class="check" type="checkbox">
-                                        <label for="checkbox1"></label>
-                                    </div>
-                                </td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center">4</td>
-                                <td class="center">X</td>
-                                <td class="center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-warning edit" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:;" class="btn btn-danger delete" title="Xóa" data-delete=""><i class="fa fa-remove"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="gradeC">
-                                <td class="center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="checkbox2" class="check" type="checkbox">
-                                        <label for="checkbox2"></label>
-                                    </div>
-                                </td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center">5</td>
-                                <td class="center">C</td>
-                                <td class="center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-warning edit" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:;" class="btn btn-danger delete" title="Xóa" data-delete=""><i class="fa fa-remove"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="gradeA">
-                                <td class="center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="checkbox3" class="check" type="checkbox">
-                                        <label for="checkbox3"></label>
-                                    </div>
-                                </td>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 5.5
-                                </td>
-                                <td>Win 95+</td>
-                                <td class="center">5.5</td>
-                                <td class="center">A</td>
-                                <td class="center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-warning edit" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:;" class="btn btn-danger delete" title="Xóa" data-delete=""><i class="fa fa-remove"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            {{--dataTables go here--}}
                             </tbody>
                         </table>
                     </div>
@@ -129,24 +64,32 @@
             $('.dataTables-example').DataTable({
                 pageLength: 25,
                 responsive: true,
-                'aoColumnDefs': [
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    "url": '{!! route('ips.ajaxData') !!}',
+                    "type": "GET"
+                },
+                aoColumns: [
+                    {data: 'checkbox'},
+                    {data: 'ip_address'},
+                    {data: 'description'},
+                    {data: 'buttons'}
+                ],
+                aoColumnDefs: [
                     {
                         'aTargets': ['nosort'],
                         'bSortable': false
 
-                    }
+                    },
+                    {
+                        'targets': [0, 1, 3],
+                        "sClass": "text-center"
+                    },
+                    {"width": "100px", "targets": [0]},
+                    {"width": "150px", "targets": [3]}
                 ],
-                'order': [[1, 'desc']]
-            });
-
-            // delete button
-            $(document).on('click', 'input[type="checkbox"]', function () {
-                var checkbox_length = $('input.check:checked').length;
-                if (checkbox_length > 0) {
-                    $('.bulk-action .btn-delete-submit').removeClass('hidden');
-                } else {
-                    $('.bulk-action .btn-delete-submit').addClass('hidden');
-                }
+                order: [[1, 'desc']]
             });
         });
 
