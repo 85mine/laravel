@@ -13,7 +13,7 @@ class RolesAndPermissionsTableSeeder extends Seeder
     {
         DB::table('roles')->insert([
             ['name' => 'admin', 'display_name' => 'Administrator', 'description' => ''],
-            ['name' => 'master_staff`', 'display_name' => 'Master staff', 'description' => ''],
+            ['name' => 'master_staff', 'display_name' => 'Master staff', 'description' => ''],
             ['name' => 'sub_staff', 'display_name' => 'Sub staff', 'description' => '']
         ]);
 
