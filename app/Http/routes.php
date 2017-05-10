@@ -38,6 +38,11 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.postEdit');
+
+            // Question management
+            Route::get('/question', 'QuestionController@index')->name('question.index');
+            Route::get('/question/add', 'QuestionController@add')->name('question.add');
+            Route::post('/question/add', 'QuestionController@add')->name('question.add');
         });
         // Confirm email
         Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
