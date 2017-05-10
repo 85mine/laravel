@@ -31,6 +31,8 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/', 'UserController@getDashboard')->name('admin.dashboard');
             // IPs
             Route::get('/ips', 'IpController@index')->name('ips.index');
+            Route::get('/ips/ajaxData', 'IpController@getAjaxData')->name('ips.ajaxData');
+            Route::get('/ips/edit/{id}', 'IpController@getEdit')->name('ips.edit');
 
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');

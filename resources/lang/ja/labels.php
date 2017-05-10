@@ -20,7 +20,10 @@ return [
             'home'                      => 'ホーム',
             'btnAddMore'                => '追加',
             'btnSave'                   => '保存',
+            'btnEdit'                   => 'Edit',
+            'btnDelete'                 => 'Delete',
             'nameOfAdminEmail'          => 'Admin',
+            'bulkDelete'                => 'Bulk Delete'
         ],
         'user' => [
             'confirm_email' => [
@@ -29,7 +32,11 @@ return [
             ],
         ],
         'ips' => [
-            'page_title' => 'Ips'
+            'page_title'    => 'Ips',
+            'column'        => [
+                'ip'            => 'Ip Address',
+                'description'    => 'Description'
+            ]
         ]
     ],
 
