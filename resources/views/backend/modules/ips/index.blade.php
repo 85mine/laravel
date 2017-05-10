@@ -93,7 +93,7 @@
                         'targets': [0, 1, 3],
                         "sClass": "text-center"
                     },
-                    {"width": "100px", "targets": [0]},
+                    {"width": "50px", "targets": [0]},
                     {"width": "150px", "targets": [3]}
                 ],
                 order: [[1, 'desc']]
