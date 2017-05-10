@@ -8,12 +8,12 @@
 @section('breadcrumb')
     <h2>{{ trans('labels.label.ips.page_title') }}</h2>
     <ol class="breadcrumb">
-        {{--<li class="active">--}}
-        {{--<a href="{{ route('admin.dashboard') }}">Home</a>--}}
-        {{--</li>--}}
-        {{--<li class="active">--}}
-        {{--<strong>Home</strong>--}}
-        {{--</li>--}}
+        <li class="active">
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
+        </li>
+        <li class="active">
+            <strong>{{ trans('labels.label.ips.page_title') }}</strong>
+        </li>
     </ol>
 @endsection
 
@@ -22,9 +22,10 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
+                    {!! $messages !!}
                     {{--Add/Delete Button--}}
                     <div class="over-hidden bulk-action">
-                        <a href="#"
+                        <a href="{{ route('ips.getAdd') }}"
                            class="btn btn-success pull-right"><i
                                     class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
@@ -41,7 +42,7 @@
                                         <label for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th class="text-center">{{ trans('labels.label.ips.column.ip') }}</th>
+                                <th class="text-center">{{ trans('labels.label.ips.column.ip_address') }}</th>
                                 <th>{{ trans('labels.label.ips.column.description') }}</th>
                                 <th class="nosort"></th>
                             </tr>
