@@ -7,12 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Yajra\Datatables\Facades\Datatables;
 use App\Models\Ip;
+use App\Helper\Common;
+use App\Validators\IpValidator;
 
-class IpController extends Controller
+class IpController extends BaseController
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('backend.modules.ips.index');
+        $messages = Common::getMessage($request);
+        return view('backend.modules.ips.index', compact('messages'));
     }
 
     public function getAjaxData()
@@ -20,7 +23,7 @@ class IpController extends Controller
         $data = Ip::all();
         foreach ($data as &$_data) {
             $id = $_data['id'];
-            $edit_url = route('ips.edit', [$id]);
+            $edit_url = route('ips.getEdit', [$id]);
 
             // Checkbox
             $_data['checkbox'] = '<div class="checkbox checkbox-success">
@@ -35,8 +38,55 @@ class IpController extends Controller
         return Datatables::of($data)->make(true);
     }
 
-    public function getEdit($id)
+    public function getEdit(Request $request, $id)
     {
+        $ips = Ip::find($id);
+        if (!$ips) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
+            return redirect(route('ips.index'));
+        }
+        $route = 'ips.postEdit';
+        $breadcrumb = trans('labels.label.ips.breadcrumb.edit');
+        $messages = Common::getMessage($request);
 
+        return view('backend.modules.ips.add_edit', compact('ips', 'route', 'breadcrumb', 'messages'));
+    }
+
+    public function getAdd(Request $request)
+    {
+        $ips = new Ip();
+        $route = 'ips.postAdd';
+        $breadcrumb = trans('labels.label.ips.breadcrumb.add');
+        $messages = Common::getMessage($request);
+
+        return view('backend.modules.ips.add_edit', compact('ips', 'route', 'breadcrumb', 'messages'));
+    }
+
+    public function postEdit()
+    {
+        
+    }
+
+    public function postAdd(Request $request)
+    {
+        try {
+            $ipValidator = new IpValidator();
+            $validator = $this->checkValidator($request->all(), $ipValidator->validateIps());
+
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                return redirect(route('ips.getAdd'))->withInput();
+            }
+
+            $ip = new Ip();
+            $ip->ip_address = $request->ip_address;
+            $ip->description = $request->description;
+            $ip->save();
+
+            return redirect()->intended(route('ips.index'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            return redirect(route('ips.getAdd'))->withInput();
+        }
     }
 }
