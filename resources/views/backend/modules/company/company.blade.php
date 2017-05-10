@@ -20,6 +20,7 @@
 @endsection
 
 @section('content')
+    {!! $messages !!}
     <a class="btn btn-primary" href="{{ route('company.addNew') }}" role="button"><i class="fa fa-plus"></i> Add New</a>
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
@@ -65,7 +66,23 @@
                                         <td>
                                             <a role="button" href="{{ route('company.detail', ['id' => $company->id]) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                             <a role="button" href="{{ route('company.edit', ['id' => $company->id]) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <a role="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $company->id }}"><i class="fa fa-remove"></i></a>
+                                            {{--<button class="btn btn-danger" data-toggle="modal" data-target="#modal-delete-{{ $company->id }}"><i class="fa fa-trash"></i></button>--}}
+                                            <!--Modal delete-->
+                                            <div class="modal inmodal" id="modal-delete-{{ $company->id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content animated bounceInRight">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                            <h4 class="modal-title">Are you sure to delete the company?</h4>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+                                                            <a role="button" href="{{ route('company.delete', ['id' => $company->id]) }}" class="btn btn-danger" id="{{ $company->id }}">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -82,73 +99,52 @@
             </div>
         </div>
     </div>
+
+
 @endsection
 
 @section('extend-js')
     <script src="{{ URL::asset('assets/js/plugins/dataTables/datatables.min.js') }}"></script>
 
     <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').DataTable({
-                pageLength: 25,
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    {extend: 'copy'},
-                    {extend: 'csv'},
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
 
-                    {
-                        extend: 'print',
-                        customize: function (win) {
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
+            {{--//View the company--}}
+            {{--$('.btn-info').click(function () {--}}
+                {{--var id = $(this).closest("tr").attr("id");--}}
+                {{--window.location = '/company/' + id + '/detail';--}}
+            {{--});--}}
 
-                            $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
-                        }
-                    }
-                ]
+            {{--//Delete the company--}}
+            {{--$('.modal .btn-danger').click(function () {--}}
+                {{--var id = $(this).attr("id");--}}
+                {{--$.ajax({--}}
+                    {{--type: 'post',--}}
+                    {{--url: '{{ URL::route('company.delete', []) }}',--}}
+                    {{--headers: {--}}
+                        {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                    {{--},--}}
+                    {{--data: {'id': id},--}}
+                    {{--success: function( msg ) {--}}
+                        {{--if ( msg.status === 'success' ) {--}}
+                            {{--alert( msg.msg + msg.isDeleted);--}}
+                            {{--setInterval(function() {--}}
+                                {{--window.location.reload();--}}
+                            {{--}, 3000);--}}
+                        {{--}else{--}}
+                            {{--alert( msg.msg );--}}
+                        {{--}--}}
+                    {{--},--}}
+                    {{--error: function( data ) {--}}
+                        {{--if ( data.status === 422 ) {--}}
+                            {{--alert('Can not delete the category');--}}
+                        {{--}--}}
+                    {{--}--}}
+                {{--});--}}
+            {{--});--}}
 
-            });
-
-        });
-
-        //View the company
-        $('.btn-info').click(function () {
-            var id = $(this).closest("tr").attr("id");
-            window.location = '/company/' + id + '/detail';
-        });
-
-        //Delete the company
-        $('.btn-danger').click(function () {
-            var id = $(this).closest("tr").attr("id");
-            $.ajax({
-                type: 'post',
-                url: '{{ URL::route('company.delete') }}',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {'id': id},
-                success: function( msg ) {
-                    if ( msg.status === 'success' ) {
-                        alert( msg.msg );
-                        setInterval(function() {
-                            window.location.reload();
-                        }, 5000);
-                    }
-                },
-                error: function( data ) {
-                    if ( data.status === 422 ) {
-                        alert('Cannot delete the category');
-                    }
-                }
-            })
-        });
-
-    </script>
+        {{--});--}}
+    {{--</script>--}}
 
 @endsection

@@ -50,8 +50,9 @@ Route::group(['middleware' => 'ip'], function () {
         Route::get('/company/new', 'CompanyController@getAddNewCompany')->name('company.addNew');
         Route::post('/company/new', 'CompanyController@postAddNewCompany')->name('company.postNew');
         Route::get('/company/{id}/detail', 'CompanyController@getCompany')->name('company.detail');
-        Route::get('/company/{id}/edit', 'CompanyController@editCompany')->name('company.edit');
-        Route::post('/company/delete', 'CompanyController@deleteCompany')->name('company.delete');
+        Route::get('/company/{id}/edit', 'CompanyController@getEditCompany')->name('company.edit');
+        Route::post('/company/{id}/edit', 'CompanyController@postEditCompany')->name('company.edit');
+        Route::get('/company/{id}/delete', 'CompanyController@deleteCompany')->name('company.delete');
 
         Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');

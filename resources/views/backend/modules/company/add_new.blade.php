@@ -40,38 +40,42 @@
                         {!! $messages !!}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="company_name" value="{{ old('company_name') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="company_name" value="{{ $company->company_name }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="company_address" value="{{ old('company_address') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="company_address" value="{{ $company->company_address }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Mobile</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="company_mobile" value="{{ old('company_mobile') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="company_mobile" value="{{ $company->company_mobile }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="company_email" value="{{ old('company_email') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="company_email" value="{{ $company->company_email }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Website</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="company_website" value="{{ old('company_website') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="company_website" value="{{ $company->company_website }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Respresentative Name</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="representative_name" value="{{ old('representative_name') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="representative_name" value="{{ $company->representative_name }}"></div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Respresentative Mobile</label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="representative_mobile" value="{{ old('representative_mobile') }}"></div>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="representative_mobile" value="{{ $company->representative_mobile }}"></div>
                         </div>
 
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <a class="btn btn-white" href="#" role="button">Cancel</a>
-                                <button class="btn btn-primary" type="submit">Create New</button>
+                            <div class="col-sm-2 col-sm-offset-10">
+                                <a class="btn btn-white" href="{{ route('company.getAllCompanies') }}" role="button">Back</a>
+                                @if($option == 'add')
+                                    <button class="btn btn-primary" type="submit">Add</button>
+                                @else
+                                    <button class="btn btn-danger" type="submit">Edit</button>
+                                @endif
                             </div>
                         </div>
                     </form>
