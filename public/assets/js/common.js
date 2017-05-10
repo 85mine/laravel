@@ -141,4 +141,13 @@ function checkAll($control)
 
 $(function () {
     checkAll($('input.check-all, a.check-all, label.check-all'));
+    // delete button
+    $(document).on('click', 'input[type="checkbox"]', function () {
+        var checkbox_length = $('input.check:checked').length;
+        if (checkbox_length > 0) {
+            $('.bulk-action .btn-delete-submit').removeClass('hidden');
+        } else {
+            $('.bulk-action .btn-delete-submit').addClass('hidden');
+        }
+    });
 });

@@ -31,7 +31,11 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/', 'UserController@getDashboard')->name('admin.dashboard');
             // IPs
             Route::get('/ips', 'IpController@index')->name('ips.index');
-
+            Route::get('/ips/ajaxData', 'IpController@getAjaxData')->name('ips.ajaxData');
+            Route::get('/ips/edit/{id}', 'IpController@getEdit')->name('ips.getEdit');
+            Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
+            Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
+            Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
@@ -43,6 +47,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/question', 'QuestionController@index')->name('question.index');
             Route::get('/question/add', 'QuestionController@add')->name('question.add');
             Route::post('/question/add', 'QuestionController@add')->name('question.add');
+
         });
         // Confirm email
         Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');

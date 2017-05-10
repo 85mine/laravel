@@ -1,13 +1,15 @@
 <?php
 return [
     // title
-    'title.common'                      => '拠点選定システム',
+    'title.common'                      => '住宅メーカ向け診断',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
     'title.home.dashboard'              => 'Dashboard',
     'title.ips'                         => 'IP',
+    'title.ips.create'                  => 'Add IP',
+    'title.ips.edit'                    => 'Edit IP',
     'title.qr.create'                   => 'Create Qr',
     'title.qr.edit'                     => 'Edit Qr',
 
@@ -20,7 +22,11 @@ return [
             'home'                      => 'ホーム',
             'btnAddMore'                => '追加',
             'btnSave'                   => '保存',
+            'btnCancel'                 => 'Cancel',
+            'btnEdit'                   => 'Edit',
+            'btnDelete'                 => 'Delete',
             'nameOfAdminEmail'          => 'Admin',
+            'bulkDelete'                => 'Bulk Delete'
         ],
         'user' => [
             'confirm_email' => [
@@ -29,7 +35,15 @@ return [
             ],
         ],
         'ips' => [
-            'page_title' => 'Ips'
+            'page_title'    => 'Ips Management',
+            'column'        => [
+                'ip_address'            => 'Ip Address',
+                'description'           => 'Description'
+            ],
+            'breadcrumb'    => [
+                'edit'                  => 'Edit IP',
+                'add'                   => 'Add New IP'
+            ]
         ]
     ],
 
