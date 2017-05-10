@@ -273,3 +273,7 @@
 input[type="checkbox"]{
     cursor: pointer;
 }
+
+.bulk-action{
+    margin-bottom: 20px;
+}

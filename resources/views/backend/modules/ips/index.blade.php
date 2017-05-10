@@ -4,6 +4,8 @@
     <link href="{{url('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}"
           rel="stylesheet">
+    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}"
+          rel="stylesheet">
 @endsection
 @section('breadcrumb')
     <h2>{{ trans('labels.label.ips.page_title') }}</h2>
@@ -26,10 +28,10 @@
                     {{--Add/Delete Button--}}
                     <div class="over-hidden bulk-action">
                         <a href="{{ route('ips.getAdd') }}"
-                           class="btn btn-success pull-right"><i
+                           class="btn btn-success"><i
                                     class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
-                           class="btn btn-danger btn-delete-submit pull-right m-r-10 hidden" data-action="deleted"><i
+                           class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
@@ -56,10 +58,14 @@
             </div>
         </div>
     </div>
+    {!! Form::open(array('route' => array('ips.postDelete'), 'method' => 'POST', 'id' => 'form_delete', 'class' => 'form-horizontal')) !!}
+    {!! Form::hidden('id', null) !!}
+    {!! Form::close() !!}
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
     <script src="{{url('assets/js/common.js')}}"></script>
+    <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.dataTables-example').DataTable({
@@ -92,7 +98,57 @@
                 ],
                 order: [[1, 'desc']]
             });
-        });
 
+            $(document).on('click', '.delete', function () {
+                var $form = $('#form_delete'),
+                        id_input = $form.find('input[name="id"]'),
+                        data_id = $(this).data('delete');
+                id_input.val(data_id);
+
+                $.confirm({
+                    icon: 'fa fa-warning',
+                    title: '{{ trans('messages.common.confirm_title') }}',
+                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
+                    animation: 'opacity',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        '{{ trans('messages.common.confirm_yes') }}': function () {
+                            $form.submit();
+                        },
+                        '{{ trans('messages.common.confirm_no') }}': function () {
+                            // do something
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.btn-delete-submit', function () {
+                var check_box = $('input[type="checkbox"]:checked'),
+                        $form = $('#form_delete'),
+                        id_input = $form.find('input[name="id"]'),
+                        temp_arr = [];
+                $.each(check_box, function () {
+                    var $val = $(this).val();
+                    temp_arr.push($val);
+                });
+                id_input.val(temp_arr);
+                $.confirm({
+                    icon: 'fa fa-warning',
+                    title: '{{ trans('messages.common.confirm_title') }}',
+                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
+                    animation: 'opacity',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        '{{ trans('messages.common.confirm_yes') }}': function () {
+                            $form.submit();
+                        },
+                        '{{ trans('messages.common.confirm_no') }}': function () {
+                            // do something
+                        }
+                    }
+                });
+            })
+
+        });
     </script>
 @endsection
