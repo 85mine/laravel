@@ -273,3 +273,11 @@
 input[type="checkbox"]{
     cursor: pointer;
 }
+
+.bulk-action{
+    margin-bottom: 20px;
+}
+
+th .checkbox, td .checkbox{
+    padding-left: 0;
+}

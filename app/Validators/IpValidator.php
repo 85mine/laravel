@@ -15,7 +15,7 @@ class IpValidator
     private function _defaultRule()
     {
         return [
-            'ip_address' => 'required|max:50'
+            'ip_address' => 'required|max:50|ip'
         ];
     }
 
