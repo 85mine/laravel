@@ -23,7 +23,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('user.list') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">User</span>
                     {{--<span class="fa arrow"></span>--}}

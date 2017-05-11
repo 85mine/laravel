@@ -25,4 +25,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //protected $table = 'users';
+
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company', 'company_id');
+    }
 }
