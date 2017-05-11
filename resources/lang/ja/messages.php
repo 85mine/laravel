@@ -26,5 +26,10 @@ return [
         'edit_success'      => 'Edit Success',
         'add_success'       => 'Add Success',
         'delete_success'       => 'Delete Success',
-    ]
+    ],
+    'company' => [
+        'create_success' => 'Create new a company successfully!',
+        'edit_success' => 'Edit the company successfully!',
+        'delete_success' => 'Delete the company successfully!',
+    ],
 ];

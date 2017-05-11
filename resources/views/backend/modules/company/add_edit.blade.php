@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::model($company, ['route' => [$route, $company], 'method' => 'POST', 'id' => 'formCompany', 'class' => 'form-horizontal']) !!}
+                    {!! Form::model($company, ['route' => [$route], 'method' => 'POST', 'id' => 'formCompany', 'class' => 'form-horizontal']) !!}
                     {!! Form::hidden('id', null) !!}
                     {!! $messages !!}
                     <div class="form-group {{ $errors->has('company_name') ? ' has-error' : '' }}">

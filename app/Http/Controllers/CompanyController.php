@@ -62,7 +62,7 @@ class CompanyController extends BaseController
         return view('backend.modules.company.add_edit', compact('company', 'route', 'breadcrumb', 'messages'));
     }
 
-    public function postEdit(Request $request, $id)
+    public function postEdit(Request $request)
     {
         try {
             $companyValidator = new CompanyValidator();
@@ -73,17 +73,10 @@ class CompanyController extends BaseController
                 return redirect(route('company.getAdd'))->withInput();
             }
 
-            $company = Company::find($id);
-            $company->company_name = $request->company_name;
-            $company->company_address = $request->company_address;
-            $company->company_mobile = $request->company_mobile;
-            $company->company_email = $request->company_email;
-            $company->company_website = $request->company_website;
-            $company->representative_name = $request->representative_name;
-            $company->representative_mobile = $request->representative_mobile;
-            $company->update();
+            $company = Company::find($request->id);
+            $company->fill($request->input())->update();
 
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, ["Create new a company successfully!"]);
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.edit_success')]);
             return redirect()->intended(route('company.index'))->withInput();
         } catch (\Exception $e) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
@@ -103,20 +96,26 @@ class CompanyController extends BaseController
             }
 
             $company = new Company();
-            $company->company_name = $request->company_name;
-            $company->company_address = $request->company_address;
-            $company->company_mobile = $request->company_mobile;
-            $company->company_email = $request->company_email;
-            $company->company_website = $request->company_website;
-            $company->representative_name = $request->representative_name;
-            $company->representative_mobile = $request->representative_mobile;
-            $company->save();
+            $company->fill($request->input())->save();
 
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, ["Create new a company successfully!"]);
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.create_success')]);
             return redirect()->intended(route('company.index'))->withInput();
         } catch (\Exception $e) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
             return redirect(route('company.getAdd'))->withInput();
+        }
+    }
+
+    public function delete(Request $request) {
+        try {
+            $id = $request->id;
+            $company = explode(",", $id);
+            Company::whereIn('id', $company)->delete();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);
+            return redirect()->intended(route('company.index'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            return redirect(route('company.index'));
         }
     }
 }
