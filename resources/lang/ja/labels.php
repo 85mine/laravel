@@ -88,7 +88,8 @@ return [
             ],
             'column'        => [
                 'content'               => 'Question',
-                'answer'                => 'Answer'
+                'answer'                => 'Answer',
+                'status'                => 'Status'
             ],
             'breadcrumb'    => [
                 'edit'                  => 'Edit Question',

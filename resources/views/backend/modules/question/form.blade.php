@@ -21,7 +21,6 @@
     <link href="{{url('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 @endsection
 
-
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -38,18 +37,19 @@
                         {!! Form::model($question, ['route' => [$route], 'method' => 'POST', 'id' => 'form_question', 'class' => 'form-horizontal']) !!}
                         {!! Form::hidden('id', null) !!}
                         {!! $messages !!}
-                        <div class="form-group {{ $errors->has('ip_address') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.content') }}</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="content" rows="8">{{ old('content') }}</textarea>
+                                <textarea class="form-control" name="content" rows="8">{{ $question->content }}</textarea>
                             </div>
                         </div>
-                        <div class="form-group {{ $errors->has('ip_address') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('answer') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.answer') }}</label>
                             <div class="col-sm-9 list_answer">
-                                @if(!empty(old('answer')))
-                                    @foreach(old('answer') as $key => $answer)
-                                        <div class="col-xs-10 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value=""></div>
+                                @if(!empty($question->answer))
+                                    <?php $list_answer = json_decode($question->answer);?>
+                                    @foreach($list_answer as $key => $answer)
+                                        <div class="col-xs-10 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value="{{$answer}}"></div>
                                         <div class="col-xs-2 btn_remove"><button type="button" class="btn btn-danger remove" onclick="removeAnswer(this);"><i class="fa fa-times"></i></button></div>
                                     @endforeach
                                 @else
@@ -66,12 +66,12 @@
                             <div class="col-sm-10">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="1"> Active
+                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="1" {{$question->status == 1 ? 'checked':''}} > Active
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0" checked> Pending
+                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0" {{ $question->status == 0 ? 'checked':''}} > Pending
                                     </label>
                                 </div>
                             </div>

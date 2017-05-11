@@ -38,9 +38,15 @@ return [
         'edit_fail'                 => 'Edit the company failure!',
         'delete_fail'               => 'Delete the company failre!',
     ],
+    'question' => [
+        'edit_success'              => 'Edit Success',
+        'add_success'               => 'Add Success',
+        'delete_success'            => 'Delete Success',
+    ],
     'validator' => [
         'company' => [
             'email' => 'Email is incorrect format',
         ],
     ],
+
 ];

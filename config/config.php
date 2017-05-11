@@ -7,4 +7,8 @@
         'date' => [
             'format_datetime' => 'Y/m/d H:i'
         ],
+        'status_question' => [
+            0 => 'Pending',
+            1 => 'Active'
+        ]
     ];
