@@ -26,5 +26,8 @@ return [
         'edit_success'      => 'Edit Success',
         'add_success'       => 'Add Success',
         'delete_success'       => 'Delete Success',
+        'edit_fail'       => 'Edit Fail',
+        'add_fail'       => 'Add Fail',
+        'delete_fail'       => 'Delete Fail',
     ]
 ];
