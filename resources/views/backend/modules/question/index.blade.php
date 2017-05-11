@@ -5,6 +5,10 @@
 
 @section('extend-css')
     <link href="{{ URL::asset('assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}"
+          rel="stylesheet">
+    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}"
+          rel="stylesheet">
 @endsection
 
 @section('breadcrumb')
@@ -25,12 +29,12 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <div class="over-hidden bulk-action">
-                        <a href="{{route('question.add')}}"
-                           class="btn btn-success pull-right"><i
-                                    class="fa fa-fw fa-plus"></i> Add</a>
+                        <a href="{{ route('question.add') }}"
+                           class="btn btn-success"><i
+                                    class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
-                           class="btn btn-danger btn-delete-submit pull-right m-r-10 hidden" data-action="deleted"><i
-                                    class="fa fa-fw fa-remove"></i> Bulk Delete</a>
+                           class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
+                                    class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover dataTables-example">
@@ -42,42 +46,14 @@
                                         <label for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th>Content</th>
-                                <th>Answer</th>
-                                <th>Status</th>
+                                <th>{{ trans('labels.label.question.column.content') }}</th>
+                                <th>{{ trans('labels.label.question.column.answer') }}</th>
+                                <th>{{ trans('labels.label.question.column.status') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($data as $key=>$question)
-                            <?php
-                                $list_answer = json_decode($question->answer);
-                                $azRange = range('A', 'Z');
-                            ?>
-                            <tr class="gradeX">
 
-                                <td class="center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="checkbox{{$question->id}}" class="check" type="checkbox">
-                                        <label for="checkbox{{$question->id}}"></label>
-                                    </div>
-                                </td>
-                                <td>{{$question->content}}</td>
-                                <td>
-
-                                    @foreach($list_answer as $key => $answer)
-                                    <p>{{$azRange[$key] .' : '.$answer}}</p>
-                                    @endforeach
-                                </td>
-                                <td>{{$question->status}}</td>
-                                <td class="center">
-                                    <div class="btn-group">
-                                        <a href="#" class="btn btn-warning edit" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:;" class="btn btn-danger delete" title="Xóa" data-delete=""><i class="fa fa-remove"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -85,35 +61,97 @@
             </div>
         </div>
     </div>
+    {!! Form::open(array('route' => array('question.postDelete'), 'method' => 'POST', 'id' => 'form_delete', 'class' => 'form-horizontal')) !!}
+    {!! Form::hidden('id', null) !!}
+    {!! Form::close() !!}
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
     <script src="{{url('assets/js/common.js')}}"></script>
+
+    <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $('.dataTables-example').DataTable({
                 pageLength: 25,
                 responsive: true,
-                'aoColumnDefs': [
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    "url": '{!! route('question.ajaxData') !!}',
+                    "type": "GET"
+                },
+                aoColumns: [
+                    {data: 'checkbox'},
+                    {data: 'content'},
+                    {data: 'answer'},
+                    {data: 'status'},
+                    {data: 'buttons'}
+                ],
+                aoColumnDefs: [
                     {
                         'aTargets': ['nosort'],
                         'bSortable': false
 
-                    }
+                    },
+                    {
+                        'targets': [0,3,4],
+                        "sClass": "text-center"
+                    },
                 ],
-                'order': [[1, 'desc']]
+                order: [[1, 'desc']]
             });
 
-            // delete button
-            $(document).on('click', 'input[type="checkbox"]', function () {
-                var checkbox_length = $('input.check:checked').length;
-                if (checkbox_length > 0) {
-                    $('.bulk-action .btn-delete-submit').removeClass('hidden');
-                } else {
-                    $('.bulk-action .btn-delete-submit').addClass('hidden');
-                }
+            $(document).on('click', '.delete', function () {
+                var $form = $('#form_delete'),
+                    id_input = $form.find('input[name="id"]'),
+                    data_id = $(this).data('delete');
+                id_input.val(data_id);
+
+                $.confirm({
+                    icon: 'fa fa-warning',
+                    title: '{{ trans('messages.common.confirm_title') }}',
+                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
+                    animation: 'opacity',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        '{{ trans('messages.common.confirm_yes') }}': function () {
+                            $form.submit();
+                        },
+                        '{{ trans('messages.common.confirm_no') }}': function () {
+                            // do something
+                        }
+                    }
+                });
             });
+
+            $(document).on('click', '.btn-delete-submit', function () {
+                var check_box = $('input[type="checkbox"]:checked'),
+                    $form = $('#form_delete'),
+                    id_input = $form.find('input[name="id"]'),
+                    temp_arr = [];
+                $.each(check_box, function () {
+                    var $val = $(this).val();
+                    temp_arr.push($val);
+                });
+                id_input.val(temp_arr);
+                $.confirm({
+                    icon: 'fa fa-warning',
+                    title: '{{ trans('messages.common.confirm_title') }}',
+                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
+                    animation: 'opacity',
+                    closeAnimation: 'scale',
+                    buttons: {
+                        '{{ trans('messages.common.confirm_yes') }}': function () {
+                            $form.submit();
+                        },
+                        '{{ trans('messages.common.confirm_no') }}': function () {
+                            // do something
+                        }
+                    }
+                });
+            })
+
         });
-
     </script>
 @endsection
