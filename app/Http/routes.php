@@ -40,6 +40,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
             Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
             Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
+            Route::post('/ips/delete', 'IpController@postDelete')->name('ips.postDelete');
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
