@@ -26,5 +26,10 @@ return [
         'edit_success'      => 'Edit Success',
         'add_success'       => 'Add Success',
         'delete_success'       => 'Delete Success',
+    ],
+    'question' => [
+        'edit_success'      => 'Edit Success',
+        'add_success'       => 'Add Success',
+        'delete_success'       => 'Delete Success',
     ]
 ];
