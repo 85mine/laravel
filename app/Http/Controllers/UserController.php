@@ -114,7 +114,7 @@ class UserController extends BaseController
             $edit_url = route('user.getEdit', [$id]);
 
             $user['company_name'] = $user->company ? $user->company->company_name : '';
-            $user['status'] = $user->status == 1 ? 'active' : 'disable';
+            $user['status'] = $user->status == 1 ? trans('labels.label.user.create.active') : trans('labels.label.user.create.disable');
 
             // Checkbox
             $user['checkbox'] = '<div class="checkbox checkbox-success">
@@ -136,12 +136,13 @@ class UserController extends BaseController
         $companies = Company::pluck('company_name', 'id')->all();
 
         $route = 'user.add';
-        $breadcrumb = trans('labels.label.user.add');
+        $title = trans('labels.label.user.add');
         $messages = Common::getMessage($request);
 
-        return view('backend/modules/user/create', compact('user', 'route', 'breadcrumb', 'messages', 'companies'));
+        return view('backend/modules/user/create', compact('user', 'route', 'title', 'messages', 'companies'));
     }
 
+    // Save user from add form
     public function addUser(Request $request)
     {
         DB::beginTransaction();
@@ -155,8 +156,8 @@ class UserController extends BaseController
             }
 
             $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
+            $user->name = trim($request->name);
+            $user->email = trim($request->email);
             $user->status = 0;
             $user->company_id = $request->company_id;
             $user->save();
@@ -170,9 +171,9 @@ class UserController extends BaseController
         }
     }
 
+    // Save user from edit form
     public function postEditUser(Request $request)
     {
-        //dd(['id' => $request->id]);
         DB::beginTransaction();
         try {
             $userValidator = new AddUserValidator();
@@ -180,13 +181,13 @@ class UserController extends BaseController
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                //return redirect(route('user.edit', ['id' => 4]))->withInput();
+                return redirect(route('user.getEdit', ['id' => 4]))->withInput();
             }
 
             $user = User::find($request->id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->status = 0;
+            $user->name = trim($request->name);
+            $user->email = trim($request->email);
+            $user->status = $request->status;
             $user->company_id = $request->company_id;
             $user->save();
             DB::commit();
@@ -195,7 +196,7 @@ class UserController extends BaseController
         } catch (\Exception $e) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
             DB::rollback();
-            return redirect(route('user.create', ['id' => 4]))->withInput();
+            return redirect(route('user.getEdit', ['id' => 4]))->withInput();
         }
     }
 
@@ -210,9 +211,9 @@ class UserController extends BaseController
             return redirect(route('user.list'));
         }
         $route = 'user.postEdit';
-        $breadcrumb = trans('labels.title.user.edit');
+        $title = trans('labels.title.user.edit');
         $messages = Common::getMessage($request);
 
-        return view('backend/modules/user/create', compact('user', 'route', 'breadcrumb', 'messages', 'companies'));
+        return view('backend/modules/user/create', compact('user', 'route', 'title', 'messages', 'companies'));
     }
 }

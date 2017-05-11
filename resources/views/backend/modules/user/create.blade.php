@@ -1,14 +1,14 @@
 @extends('backend.layout.main')
-@section('title', trans('labels.title.user.create'))
+@section('title', $title)
 
 @section('breadcrumb')
-    <h2>{{ trans('labels.title.user.create') }}</h2>
+    <h2>{{ $title }}</h2>
     <ol class="breadcrumb">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.title.user.create') }}</strong>
+            <strong>{{ $title }}</strong>
         </li>
     </ol>
 @endsection
@@ -33,10 +33,18 @@
                             {!! Form::text('email', null,  ["id" => "email", "class" => "form-control", "placeholder" => trans('labels.label.user.create.email')]) !!}
                         </div>
                     </div>
+                    @if( $route == 'user.postEdit' )
+                        <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.list.status') }}</label>
+                            <div class="col-sm-8">
+                                {!! Form::select('status', ['0' => trans('labels.label.user.create.disable'), '1' => trans('labels.label.user.create.active')],  null, ["id" => "status", "class" => "form-control m-b"]) !!}
+                            </div>
+                        </div>
+                    @endif
                     <div class="form-group {{ $errors->has('company') ? ' has-error' : '' }}">
                         <label class="col-sm-2 control-label">{{ trans('labels.label.user.create.company') }}</label>
                         <div class="col-sm-8">
-                            {!! Form::select('company_id', $companies, null, ["id" => "company", "class" => "form-control", "placeholder" => trans('labels.label.user.create.selectCompany')]) !!}
+                            {!! Form::select('company_id', $companies, ($user->company_id ? $user->company_id : null), ["id" => "company", "class" => "form-control", "placeholder" => trans('labels.label.user.create.selectCompany')]) !!}
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>

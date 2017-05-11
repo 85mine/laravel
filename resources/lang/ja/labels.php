@@ -46,7 +46,9 @@ return [
                 'name'      => 'Name',
                 'email'     => 'Email',
                 'company'   => 'Company',
-                'selectCompany' => 'Please select company'
+                'selectCompany' => 'Please select company',
+                'active'    => 'active',
+                'disable'   => 'disable'
             ],
         ],
         'ips' => [
