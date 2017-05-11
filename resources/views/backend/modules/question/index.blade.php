@@ -50,6 +50,10 @@
                             </thead>
                             <tbody>
                             @foreach($data as $key=>$question)
+                            <?php
+                                $list_answer = json_decode($question->answer);
+                                $azRange = range('A', 'Z');
+                            ?>
                             <tr class="gradeX">
 
                                 <td class="center">
@@ -58,8 +62,13 @@
                                         <label for="checkbox{{$question->id}}"></label>
                                     </div>
                                 </td>
-                                <td><textarea>{{$question->content}}</textarea></td>
-                                <td>{{$question->answer}}</td>
+                                <td>{{$question->content}}</td>
+                                <td>
+
+                                    @foreach($list_answer as $key => $answer)
+                                    <p>{{$azRange[$key] .' : '.$answer}}</p>
+                                    @endforeach
+                                </td>
                                 <td>{{$question->status}}</td>
                                 <td class="center">
                                     <div class="btn-group">

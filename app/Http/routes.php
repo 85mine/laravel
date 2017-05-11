@@ -50,8 +50,8 @@ Route::group(['middleware' => 'ip'], function () {
 
             // Question management
             Route::get('/question', 'QuestionController@index')->name('question.index');
-            Route::get('/question/add', 'QuestionController@add')->name('question.add');
-            Route::post('/question/add', 'QuestionController@add')->name('question.add');
+            Route::get('/question/add', 'QuestionController@getAdd')->name('question.add');
+            Route::post('/question/postAdd', 'QuestionController@postAdd')->name('question.postAdd');
 
         });
         // Confirm email

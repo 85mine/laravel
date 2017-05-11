@@ -59,6 +59,21 @@ return [
                 'edit'                  => 'Edit IP',
                 'add'                   => 'Add New IP'
             ]
+        ],
+        'question' => [
+            'page_title'    => 'Questions Management',
+            'label'         => [
+                'add_more'      =>  'Add More',
+                'remove'        =>  'Remove'
+            ],
+            'column'        => [
+                'content'           => 'Question',
+                'answer'            => 'Answer'
+            ],
+            'breadcrumb'    => [
+                'edit'                  => 'Edit Question',
+                'add'                   => 'Add New Question'
+            ]
         ]
     ],
 
