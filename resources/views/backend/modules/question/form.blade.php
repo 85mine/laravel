@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Status</label>
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.status') }}</label>
                             <div class="col-sm-10">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
@@ -79,7 +79,6 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-4">
-                                <a class="btn btn-white" href="{{route('question.index')}}" role="button">{{ trans('labels.label.common.btnCancel') }}</a>
                                 <button class="btn btn-primary" type="submit">{{ trans('labels.label.common.btnSave') }}</button>
                             </div>
                         </div>
