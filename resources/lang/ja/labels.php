@@ -15,6 +15,9 @@ return [
     'title.ips.edit'                    => 'Edit IP',
     'title.qr.create'                   => 'Create Qr',
     'title.qr.edit'                     => 'Edit Qr',
+    'title.company'                     => 'Company',
+    'title.company.create'              => 'Create Company',
+    'title.company.edit'                => 'Edit Company',
 
     // Label
     'label' => [
@@ -60,16 +63,33 @@ return [
                 'add'                   => 'Add New IP'
             ]
         ],
+        'company' => [
+            'page_title'    => 'Companies Management',
+            'column'        => [
+                'company_name'                  => 'Name',
+                'company_address'               => 'Address',
+                'company_mobile'                => 'Mobile',
+                'company_email'                 => 'Email',
+                'company_website'               => 'Website',
+                'representative_name'           => 'Represent Name',
+                'representative_mobile'         => 'Represent Mobile',
+            ],
+            'breadcrumb'    => [
+                'index'                 => 'Companies',
+                'edit'                  => 'Edit Company',
+                'add'                   => 'Add Company'
+            ]
+        ],
         'question' => [
             'page_title'    => 'Questions Management',
             'label'         => [
-                'add_more'      =>  'Add More',
-                'remove'        =>  'Remove'
+                'add_more'              =>  'Add More',
+                'remove'                =>  'Remove'
             ],
             'column'        => [
-                'content'           => 'Question',
-                'answer'            => 'Answer',
-                'status'            => 'Status'
+                'content'               => 'Question',
+                'answer'                => 'Answer',
+                'status'                => 'Status'
             ],
             'breadcrumb'    => [
                 'edit'                  => 'Edit Question',
