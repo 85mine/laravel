@@ -37,6 +37,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('question.index') }}">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">Question</span>
+                    {{--<span class="fa arrow"></span>--}}
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">QR code</span>

@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    New Question
+    Add new question
 @endsection
 
 @section('extend-css')
@@ -39,25 +39,25 @@
                         {!! csrf_field() !!}
                         {!! $messages !!}
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Content</label>
+                            <label class="col-sm-2 control-label">Question</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="content" rows="8">{{ old('content') }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Answer</label>
-                            <div class="col-sm-8">
-                                <ul class="list-group">
-                                    @if(!empty(old('answer')))
-                                        @foreach(old('answer') as $key => $answer)
-                                        <li class="list-group-item"><input type="text" class="form-control" name="answer[]" value="{{ $answer }}"></li>
-                                        @endforeach
-                                    @else
-                                        <li class="list-group-item"><input type="text" class="form-control" name="answer[]" value=""></li>
-                                    @endif
-                                </ul>
+                            <div class="col-sm-8 list_answer">
+                                @if(!empty(old('answer')))
+                                    @foreach(old('answer') as $key => $answer)
+                                        <input type="text" class="form-control m-b-md" name="answer[]" value="{{ $answer }}">
+                                    @endforeach
+                                @else
+                                    <input type="text" class="form-control m-b-md" name="answer[]" value="">
+                                @endif
                             </div>
-                            <div class="col-sm-2"><button type="button" class="btn btn-warning addmore">Add more</button></div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-warning addmore">Add more</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Status</label>
@@ -74,8 +74,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-4">
@@ -92,6 +90,13 @@
 @endsection
 
 @section('extend-js')
+<script type="text/javascript">
+    $(function(){
+        $('.addmore').click(function(){
+            $('.list_answer').append('<input type="text" class="form-control m-b-md" name="answer[]" value="">');
+        });
+    })
+</script>
 
 
 @endsection
