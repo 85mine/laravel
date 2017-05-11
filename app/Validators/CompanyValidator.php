@@ -17,11 +17,11 @@ class CompanyValidator
         return [
             'company_name' => 'required|max:255',
             'company_address' => 'required',
-            'company_mobile' => 'required|max:255',
+            'company_mobile' => 'required|max:15|numeric',
             'company_email' => 'email',
             'company_website' => 'max:255',
             'representative_name' => 'required',
-            'representative_mobile' => 'required',
+            'representative_mobile' => 'required|max:15|numeric',
         ];
     }
 

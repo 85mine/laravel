@@ -41,7 +41,6 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
-            Route::post('/qr/edit/{id?}', 'QrController@postEdit')->name('admin.qr.postEdit');
             // Company
             Route::get('/companies', 'CompanyController@index')->name('company.index');
             Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
@@ -49,6 +48,11 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
             Route::get('/company/edit/{id}', 'CompanyController@getEdit')->name('company.getEdit');
             Route::post('/company/edit/{id}', 'CompanyController@postEdit')->name('company.postEdit');
+            // Question management
+            Route::get('/question', 'QuestionController@index')->name('question.index');
+            Route::get('/question/add', 'QuestionController@add')->name('question.add');
+            Route::post('/question/add', 'QuestionController@add')->name('question.add');
+
         });
         // Confirm email
         Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');

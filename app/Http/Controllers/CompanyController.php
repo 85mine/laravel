@@ -43,7 +43,7 @@ class CompanyController extends BaseController
         $company = Company::find($id);
         if (!$company) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
-            return redirect(route('company.index'));
+            return redirect(route('company.index'))->withInput();
         }
         $route = 'company.postEdit';
         $breadcrumb = trans('labels.label.company.breadcrumb.edit');

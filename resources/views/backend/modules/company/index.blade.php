@@ -33,7 +33,7 @@
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
-                        <table id="company_table" class="table table-striped table-bordered table-hover">
+                        <table class="table table-striped table-bordered table-hover company_table">
                             <thead>
                             <tr>
                                 <th class="nosort text-center">
@@ -67,7 +67,7 @@
     <script src="{{url('assets/js/common.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $('#company_table').DataTable({
+            $('.company_table').DataTable({
                 pageLength: 25,
                 responsive: true,
                 processing: true,
