@@ -31,5 +31,13 @@ return [
         'create_success' => 'Create new a company successfully!',
         'edit_success' => 'Edit the company successfully!',
         'delete_success' => 'Delete the company successfully!',
+        'create_fail' => 'Create new a company failure!',
+        'edit_fail' => 'Edit the company failure!',
+        'delete_fail' => 'Delete the company failre!',
+    ],
+    'validator' => [
+        'company' => [
+            'email' => 'Email is incorrect format',
+        ],
     ],
 ];

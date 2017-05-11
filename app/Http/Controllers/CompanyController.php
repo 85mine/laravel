@@ -70,17 +70,17 @@ class CompanyController extends BaseController
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('company.getAdd'))->withInput();
+                return redirect(route('company.getEdit', [$request->id]))->withInput();
             }
 
             $company = Company::find($request->id);
-            $company->fill($request->input())->update();
+            $company->fill($request->input())->save();
 
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.edit_success')]);
             return redirect()->intended(route('company.index'))->withInput();
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
-            return redirect(route('company.getAdd'))->withInput();
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.edit_fail')]);
+            return redirect(route('company.getEdit', [$request->id]))->withInput();
         }
     }
 
@@ -92,7 +92,7 @@ class CompanyController extends BaseController
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('company.getAdd'))->withInput();
+                return redirect(route('company.getAdd', [$request->id]))->withInput();
             }
 
             $company = new Company();
@@ -101,8 +101,8 @@ class CompanyController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.create_success')]);
             return redirect()->intended(route('company.index'))->withInput();
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
-            return redirect(route('company.getAdd'))->withInput();
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.create_fail')]);
+            return redirect(route('company.getAdd', [$request->id]))->withInput();
         }
     }
 
@@ -114,7 +114,7 @@ class CompanyController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);
             return redirect()->intended(route('company.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.delete_fail')]);
             return redirect(route('company.index'));
         }
     }

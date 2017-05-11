@@ -33,8 +33,7 @@ class CompanyValidator
     private function _defaultAttribute()
     {
         return [
-            'email' => trans('messages.validator.user.login.username'),
-            'max' => trans(''),
+            'email' => trans('messages.validator.company.email'),
         ];
     }
 
