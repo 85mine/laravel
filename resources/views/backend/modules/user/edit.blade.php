@@ -1,14 +1,14 @@
 @extends('backend.layout.main')
-@section('title', trans('labels.title.user.create'))
+@section('title', trans('labels.title.user.edit'))
 
 @section('breadcrumb')
-    <h2>{{ trans('labels.title.user.create') }}</h2>
+    <h2>{{ trans('labels.title.user.edit') }}</h2>
     <ol class="breadcrumb">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.title.user.create') }}</strong>
+            <strong>{{ trans('labels.title.user.edit') }}</strong>
         </li>
     </ol>
 @endsection
@@ -36,7 +36,7 @@
                     <div class="form-group {{ $errors->has('company') ? ' has-error' : '' }}">
                         <label class="col-sm-2 control-label">{{ trans('labels.label.user.create.company') }}</label>
                         <div class="col-sm-8">
-                            {!! Form::select('company_id', $companies, null, ["id" => "company", "class" => "form-control", "placeholder" => trans('labels.label.user.create.selectCompany')]) !!}
+                            {!! Form::select('company_id', $companies, $user->company_id, ["id" => "company", "class" => "form-control", "placeholder" => trans('labels.label.user.create.selectCompany')]) !!}
                         </div>
                     </div>
                     <div class="hr-line-dashed"></div>

@@ -129,7 +129,7 @@ return [
 
     'pagination' => [
         'back' => [
-            'users' => 1,
+            'users' => 25,
         ],
     ],
 

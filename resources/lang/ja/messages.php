@@ -3,6 +3,7 @@ return [
     'common' => [
         'error_when_update' => 'Have error while process',
         'id_not_found' => 'ID not found',
+        'user_not_found' => 'User not found'
     ],
     'user' => [
         'login' => [

@@ -7,6 +7,8 @@ return [
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
     'title.user.list'                   => 'User List',
+    'title.user.create'                 => 'User Add',
+    'title.user.edit'                   => 'Edit User',
     'title.home.dashboard'              => 'Dashboard',
     'title.ips'                         => 'IP',
     'title.ips.create'                  => 'Add IP',
@@ -39,6 +41,12 @@ return [
                 'email'     => 'Email',
                 'status'    => 'Status',
                 'company'   => 'Company',
+            ],
+            'create' => [
+                'name'      => 'Name',
+                'email'     => 'Email',
+                'company'   => 'Company',
+                'selectCompany' => 'Please select company'
             ],
         ],
         'ips' => [
