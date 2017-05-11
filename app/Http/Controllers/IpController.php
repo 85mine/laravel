@@ -62,9 +62,25 @@ class IpController extends BaseController
         return view('backend.modules.ips.add_edit', compact('ips', 'route', 'breadcrumb', 'messages'));
     }
 
-    public function postEdit()
+    public function postEdit(Request $request)
     {
-        
+        try {
+            $ipValidator = new IpValidator();
+            $validator = $this->checkValidator($request->all(), $ipValidator->validateIps());
+
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                return redirect(route('ips.getEdit', [$request->id]))->withInput();
+            }
+
+            $ip = Ip::find($request->id);
+            $ip->fill($request->input())->save();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.edit_success')]);
+            return redirect(route('ips.index'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.edit_fail')]);
+            return redirect(route('ips.getEdit', [$request->id]))->withInput();
+        }
     }
 
     public function postAdd(Request $request)
@@ -79,14 +95,27 @@ class IpController extends BaseController
             }
 
             $ip = new Ip();
-            $ip->ip_address = $request->ip_address;
-            $ip->description = $request->description;
-            $ip->save();
-
+            $ip->fill($request->input())->save();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.add_success')]);
             return redirect()->intended(route('ips.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.add_fail')]);
             return redirect(route('ips.getAdd'))->withInput();
         }
+    }
+
+    public function postDelete(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $ids = explode(",", $id);
+            Ip::whereIn('id', $ids)->delete();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.delete_success')]);
+            return redirect()->intended(route('ips.index'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.delete_fail')]);
+            return redirect(route('ips.index'));
+        }
+
     }
 }
