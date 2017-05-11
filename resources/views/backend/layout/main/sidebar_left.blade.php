@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('company.getAllCompanies') }}">
+                <a href="{{ route('company.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">Companies</span>
                     {{--<span class="fa arrow"></span>--}}
