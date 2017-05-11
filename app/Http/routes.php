@@ -41,7 +41,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
-            Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.postEdit');
+            Route::post('/qr/edit/{id?}', 'QrController@postEdit')->name('admin.qr.postEdit');
 
             // Question management
             Route::get('/question', 'QuestionController@index')->name('question.index');
