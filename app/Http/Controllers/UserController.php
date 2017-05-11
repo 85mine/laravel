@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ConfirmEmail;
 use App\Validators\UserValidator;
 use App\Validators\AddUserValidator;
+use Mockery\Exception;
 use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
 use Auth;
@@ -100,9 +101,11 @@ class UserController extends BaseController
     }
 
     // Get list user
-    public function listUser()
+    public function listUser(Request $request)
     {
-        return view('backend/modules/user/list');
+        $messages = Common::getMessage($request);
+
+        return view('backend/modules/user/list', compact('messages'));
     }
 
     public function getAjaxList()
@@ -136,10 +139,27 @@ class UserController extends BaseController
         $companies = Company::pluck('company_name', 'id')->all();
 
         $route = 'user.add';
-        $title = trans('labels.label.user.add');
+        $title = trans('labels.title.user.create');
         $messages = Common::getMessage($request);
 
         return view('backend/modules/user/create', compact('user', 'route', 'title', 'messages', 'companies'));
+    }
+
+    // Create user
+    public function deleteUser(Request $request)
+    {
+        DB::beginTransaction();
+        try{
+            $userIds = explode(",", $request->id);
+            User::whereIn('id', $userIds)->delete();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.delete_success')]);
+            DB::commit();
+            return redirect()->intended(route('user.list'));
+        } catch( \Exception $e ) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, trans('messages.user.delete_fail'));
+            DB::rollback();
+            return redirect(route('user.list'));
+        }
     }
 
     // Save user from add form
@@ -163,9 +183,10 @@ class UserController extends BaseController
             $user->save();
             DB::commit();
 
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.add_success')]);
             return redirect()->intended(route('user.list'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.user.add_fail')]);
             DB::rollback();
             return redirect(route('user.create'))->withInput();
         }
@@ -192,9 +213,10 @@ class UserController extends BaseController
             $user->save();
             DB::commit();
 
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.edit_success')]);
             return redirect()->intended(route('user.list'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, trans('messages.user.edit_fail'));
             DB::rollback();
             return redirect(route('user.getEdit', ['id' => 4]))->withInput();
         }

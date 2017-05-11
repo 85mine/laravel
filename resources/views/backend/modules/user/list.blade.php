@@ -21,6 +21,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
+                    {!! $messages !!}
                     <div class="over-hidden bulk-action">
                         <a href="{{ route('user.create') }}"
                            class="btn btn-success"><i
@@ -54,6 +55,9 @@
                 </div>
             </div>
         </div>
+        {!! Form::open(array('route' => array('user.postDelete'), 'method' => 'POST', 'id' => 'form_delete', 'class' => 'form-horizontal')) !!}
+        {!! Form::hidden('id', null) !!}
+        {!! Form::close() !!}
     </div>
 @endsection
 @section('extend-js')
@@ -102,6 +106,9 @@
                     data_id = $(this).data('delete');
                 id_input.val(data_id);
 
+                //Tick on selected item
+                var $selectedItem = $(this);
+                $selectedItem.closest('tr').find('input[type=\'checkbox\']').attr('checked', true);
                 $.confirm({
                     icon: 'fa fa-warning',
                     title: '{{ trans('messages.common.confirm_title') }}',
@@ -113,7 +120,7 @@
                             $form.submit();
                         },
                         '{{ trans('messages.common.confirm_no') }}': function () {
-                            // do something
+                            $selectedItem.closest('tr').find('input[type=\'checkbox\']').attr('checked', false);
                         }
                     }
                 });

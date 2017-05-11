@@ -82,6 +82,7 @@ Route::group(['middleware' => 'ip'], function () {
             // Create account
             Route::get('/create', 'UserController@createUser')->name('user.create');
             Route::post('/add', 'UserController@addUser')->name('user.add');
+            Route::post('/delete', 'UserController@deleteUser')->name('user.postDelete');
             Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
             Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
             Route::get('/edit/{id}', 'UserController@getEdit')->name('user.getEdit');
