@@ -1,33 +1,28 @@
 @extends('backend.layout.main')
-@section('title', trans('labels.title.ips'))
+@section('title', trans('labels.title.user.list'))
 @section('extend-css')
     <link href="{{url('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}"
-          rel="stylesheet">
-    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}"
-          rel="stylesheet">
+    <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}" rel="stylesheet">
 @endsection
 @section('breadcrumb')
-    <h2>{{ trans('labels.label.ips.page_title') }}</h2>
+    <h2>{{ trans('labels.title.user.list') }}</h2>
     <ol class="breadcrumb">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.label.ips.page_title') }}</strong>
+            <strong>{{ trans('labels.title.user.list') }}</strong>
         </li>
     </ol>
 @endsection
-
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    {!! $messages !!}
-                    {{--Add/Delete Button--}}
                     <div class="over-hidden bulk-action">
-                        <a href="{{ route('ips.getAdd') }}"
+                        <a href="{{ route('user.create') }}"
                            class="btn btn-success"><i
                                     class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
@@ -35,7 +30,7 @@
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTables-user-list">
                             <thead>
                             <tr>
                                 <th class="nosort text-center">
@@ -44,8 +39,10 @@
                                         <label for="checkAll"></label>
                                     </div>
                                 </th>
-                                <th class="text-center">{{ trans('labels.label.ips.column.ip_address') }}</th>
-                                <th>{{ trans('labels.label.ips.column.description') }}</th>
+                                <th class="text-center">{{ trans('labels.label.user.list.name') }}</th>
+                                <th class="text-center">{{ trans('labels.label.user.list.email') }}</th>
+                                <th class="text-center">{{ trans('labels.label.user.list.status') }}</th>
+                                <th class="text-center">{{ trans('labels.label.user.list.company') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
@@ -58,9 +55,6 @@
             </div>
         </div>
     </div>
-    {!! Form::open(array('route' => array('ips.postDelete'), 'method' => 'POST', 'id' => 'form_delete', 'class' => 'form-horizontal')) !!}
-    {!! Form::hidden('id', null) !!}
-    {!! Form::close() !!}
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
@@ -68,19 +62,21 @@
     <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $('.dataTables-example').DataTable({
-                pageLength: 25,
+            $('.dataTables-user-list').DataTable({
+                pageLength: '{!! config('app.pagination.back.users') !!}',
                 responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    "url": '{!! route('ips.ajaxData') !!}',
+                    "url": '{!! route('user.ajaxList') !!}',
                     "type": "GET"
                 },
                 aoColumns: [
                     {data: 'checkbox'},
-                    {data: 'ip_address'},
-                    {data: 'description'},
+                    {data: 'name'},
+                    {data: 'email'},
+                    {data: 'status'},
+                    {data: 'company_name'},
                     {data: 'buttons'}
                 ],
                 aoColumnDefs: [
@@ -94,15 +90,16 @@
                         "sClass": "text-center"
                     },
                     {"width": "50px", "targets": [0]},
-                    {"width": "150px", "targets": [3]}
+                    {"width": "100px", "targets": [5]},
+                    {"width": "100px", "targets": [3]}
                 ],
                 order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
                 var $form = $('#form_delete'),
-                        id_input = $form.find('input[name="id"]'),
-                        data_id = $(this).data('delete');
+                    id_input = $form.find('input[name="id"]'),
+                    data_id = $(this).data('delete');
                 id_input.val(data_id);
 
                 $.confirm({
@@ -124,9 +121,9 @@
 
             $(document).on('click', '.btn-delete-submit', function () {
                 var check_box = $('input[type="checkbox"]:checked'),
-                        $form = $('#form_delete'),
-                        id_input = $form.find('input[name="id"]'),
-                        temp_arr = [];
+                    $form = $('#form_delete'),
+                    id_input = $form.find('input[name="id"]'),
+                    temp_arr = [];
                 $.each(check_box, function () {
                     var $val = $(this).val();
                     temp_arr.push($val);
@@ -147,8 +144,7 @@
                         }
                     }
                 });
-            })
-
+            });
         });
     </script>
 @endsection

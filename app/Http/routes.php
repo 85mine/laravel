@@ -40,6 +40,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
             Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
             Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
+            Route::post('/ips/delete', 'IpController@postDelete')->name('ips.postDelete');
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
@@ -68,6 +69,18 @@ Route::group(['middleware' => 'ip'], function () {
         Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
+        });
+
+        // Account
+        Route::group(['prefix' => 'user'], function () {
+            // List account
+            Route::get('/list', 'UserController@listUser')->name('user.list');
+            // Create account
+            Route::get('/create', 'UserController@createUser')->name('user.create');
+            Route::post('/add', 'UserController@addUser')->name('user.add');
+            Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
+            Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
+            Route::get('/edit/{id}', 'UserController@getEdit')->name('user.getEdit');
         });
     });
 });

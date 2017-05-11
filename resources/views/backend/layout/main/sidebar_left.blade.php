@@ -15,7 +15,7 @@
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="#">{{ trans('labels.label.common.profile') }}</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{route('user.getLogin')}}">{{ trans('labels.label.common.logOut') }}</a></li>
+                        <li><a href="{{route('user.getLogout')}}">{{ trans('labels.label.common.logOut') }}</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
@@ -23,7 +23,7 @@
                 </div>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('user.list') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">User</span>
                     {{--<span class="fa arrow"></span>--}}

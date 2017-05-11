@@ -3,6 +3,11 @@ return [
     'common' => [
         'error_when_update' => 'Have error while process',
         'id_not_found' => 'ID not found',
+        'confirm_title' => 'Confirm',
+        'confirm_delete_question' => 'Do you really want to delete?',
+        'confirm_yes' => 'Yes',
+        'confirm_no' => 'No',
+        'user_not_found' => 'User not found',
     ],
     'user' => [
         'login' => [
@@ -17,4 +22,9 @@ return [
             'active_email_error' => 'Active email error. Please click <a href="' . STRING_REPLACE . '">here</a> to try again.',
         ],
     ],
+    'ips' => [
+        'edit_success'      => 'Edit Success',
+        'add_success'       => 'Add Success',
+        'delete_success'       => 'Delete Success',
+    ]
 ];

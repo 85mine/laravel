@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\ConfirmEmail;
 use App\Validators\UserValidator;
+use App\Validators\AddUserValidator;
+use Yajra\Datatables\Facades\Datatables;
 use Illuminate\Http\Request;
 use Auth;
 use App\Helper\Common;
 use App\Services\UserService;
+use App\Models\User;
+use App\Models\Company;
+use DB;
 
 class UserController extends BaseController
 {
@@ -92,5 +97,122 @@ class UserController extends BaseController
         $input['check'] = $confirmEmail['status'];
         $input['message'] = $confirmEmail['message'];
         return redirect(route('user.getConfirmEmail'))->withInput($input);
+    }
+
+    // Get list user
+    public function listUser()
+    {
+        return view('backend/modules/user/list');
+    }
+
+    public function getAjaxList()
+    {
+        $userList = User::with('company')->get();
+
+        foreach ($userList as &$user) {
+            $id = $user['id'];
+            $edit_url = route('user.getEdit', [$id]);
+
+            $user['company_name'] = $user->company ? $user->company->company_name : '';
+            $user['status'] = $user->status == 1 ? 'active' : 'disable';
+
+            // Checkbox
+            $user['checkbox'] = '<div class="checkbox checkbox-success">
+                                        <input id="checkbox' . $id . '" type="checkbox" class="check" value="' . $id . '">
+                                        <label for="checkbox' . $id . '"></label>
+                                  </div>';
+            $user['buttons'] = '<div class="btn-group">';
+            $user['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
+            $user['buttons'] .= '<a href="javascript:;" class="btn btn-danger delete" title="' . trans('labels.label.common.btnDelete') . '" data-delete="' . $id . '"><i class="fa fa-remove"></i></a>';
+            $user['buttons'] .= '</div>';
+        }
+        return Datatables::of($userList)->make(true);
+    }
+
+    // Create user
+    public function createUser(Request $request)
+    {
+        $user = new User();
+        $companies = Company::pluck('company_name', 'id')->all();
+
+        $route = 'user.add';
+        $breadcrumb = trans('labels.label.user.add');
+        $messages = Common::getMessage($request);
+
+        return view('backend/modules/user/create', compact('user', 'route', 'breadcrumb', 'messages', 'companies'));
+    }
+
+    public function addUser(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $userValidator = new AddUserValidator();
+            $validator = $this->checkValidator($request->all(), $userValidator->validateAddUser());
+
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                return redirect(route('user.create'))->withInput();
+            }
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->status = 0;
+            $user->company_id = $request->company_id;
+            $user->save();
+            DB::commit();
+
+            return redirect()->intended(route('user.list'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            DB::rollback();
+            return redirect(route('user.create'))->withInput();
+        }
+    }
+
+    public function postEditUser(Request $request)
+    {
+        //dd(['id' => $request->id]);
+        DB::beginTransaction();
+        try {
+            $userValidator = new AddUserValidator();
+            $validator = $this->checkValidator($request->all(), $userValidator->validateAddUser());
+
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                //return redirect(route('user.edit', ['id' => 4]))->withInput();
+            }
+
+            $user = User::find($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->status = 0;
+            $user->company_id = $request->company_id;
+            $user->save();
+            DB::commit();
+
+            return redirect()->intended(route('user.list'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            DB::rollback();
+            return redirect(route('user.create', ['id' => 4]))->withInput();
+        }
+    }
+
+    // Edit user
+    public function getEdit(Request $request, $id)
+    {
+        $user = User::find($id);
+        $companies = Company::pluck('company_name', 'id')->all();
+
+        if (!$user) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
+            return redirect(route('user.list'));
+        }
+        $route = 'user.postEdit';
+        $breadcrumb = trans('labels.title.user.edit');
+        $messages = Common::getMessage($request);
+
+        return view('backend/modules/user/create', compact('user', 'route', 'breadcrumb', 'messages', 'companies'));
     }
 }
