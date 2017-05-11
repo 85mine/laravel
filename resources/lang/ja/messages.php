@@ -6,7 +6,8 @@ return [
         'confirm_title' => 'Confirm',
         'confirm_delete_question' => 'Do you really want to delete?',
         'confirm_yes' => 'Yes',
-        'confirm_no' => 'No'
+        'confirm_no' => 'No',
+        'user_not_found' => 'User not found',
     ],
     'user' => [
         'login' => [

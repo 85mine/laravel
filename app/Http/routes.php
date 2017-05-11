@@ -72,5 +72,17 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         });
+
+        // Account
+        Route::group(['prefix' => 'user'], function () {
+            // List account
+            Route::get('/list', 'UserController@listUser')->name('user.list');
+            // Create account
+            Route::get('/create', 'UserController@createUser')->name('user.create');
+            Route::post('/add', 'UserController@addUser')->name('user.add');
+            Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
+            Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
+            Route::get('/edit/{id}', 'UserController@getEdit')->name('user.getEdit');
+        });
     });
 });
