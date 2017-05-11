@@ -42,21 +42,19 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
             Route::post('/qr/edit/{id?}', 'QrController@postEdit')->name('admin.qr.postEdit');
+            // Company
+            Route::get('/companies', 'CompanyController@index')->name('company.index');
+            Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
+            Route::get('/company/add', 'CompanyController@getAdd')->name('company.getAdd');
+            Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
+            Route::get('/company/edit/{id}', 'CompanyController@getEdit')->name('company.getEdit');
+            Route::post('/company/edit/{id}', 'CompanyController@postEdit')->name('company.postEdit');
         });
         // Confirm email
         Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
         Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         // Active email
         Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
-
-        // Company management
-        Route::get('/companies', 'CompanyController@getAllCompanies')->name('company.getAllCompanies');
-        Route::get('/company/new', 'CompanyController@getAddNewCompany')->name('company.addNew');
-        Route::post('/company/new', 'CompanyController@postAddNewCompany')->name('company.postNew');
-        Route::get('/company/{id}/detail', 'CompanyController@getCompany')->name('company.detail');
-        Route::get('/company/{id}/edit', 'CompanyController@getEditCompany')->name('company.edit');
-        Route::post('/company/{id}/edit', 'CompanyController@postEditCompany')->name('company.edit');
-        Route::get('/company/{id}/delete', 'CompanyController@deleteCompany')->name('company.delete');
 
         Route::group(['middleware' => 'user.status:' . ROUTER_CONFIRM_EMAIL], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
