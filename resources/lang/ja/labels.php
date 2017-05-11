@@ -75,20 +75,20 @@ return [
                 'representative_mobile'         => 'Represent Mobile',
             ],
             'breadcrumb'    => [
-                'index'                  => 'Companies',
+                'index'                 => 'Companies',
                 'edit'                  => 'Edit Company',
-                'add'                => 'Add Company'
+                'add'                   => 'Add Company'
             ]
         ],
         'question' => [
             'page_title'    => 'Questions Management',
             'label'         => [
-                'add_more'      =>  'Add More',
-                'remove'        =>  'Remove'
+                'add_more'              =>  'Add More',
+                'remove'                =>  'Remove'
             ],
             'column'        => [
-                'content'           => 'Question',
-                'answer'            => 'Answer'
+                'content'               => 'Question',
+                'answer'                => 'Answer'
             ],
             'breadcrumb'    => [
                 'edit'                  => 'Edit Question',
