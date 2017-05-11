@@ -21,6 +21,12 @@ return [
             'active_email_success'  => 'Active email success. Please click <a href="' . STRING_REPLACE . '">here</a> to login',
             'active_email_error'    => 'Active email error. Please click <a href="' . STRING_REPLACE . '">here</a> to try again.',
         ],
+        'delete_fail'               => 'Delete Fail',
+        'delete_success'            => 'Delete Success',
+        'edit_success'              => 'Edit Success',
+        'edit_fail'                 => 'Edit Fail',
+        'add_fail'                  => 'Add Fail',
+        'add_success'               => 'Add Success',
     ],
     'ips' => [
         'edit_success'              => 'Edit Success',

@@ -20,8 +20,8 @@ class AddUserValidator {
 
     private function _defaultRule() {
         return [
-            'email' => 'required|email',
-            'name' => 'required',
+            'email' => 'required|email|max:100',
+            'name' => 'required|max:255',
             'company_id' => 'required',
         ];
     }
