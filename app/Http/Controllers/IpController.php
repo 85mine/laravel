@@ -70,7 +70,7 @@ class IpController extends BaseController
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('ips.getEdit'))->withInput();
+                return redirect(route('ips.getEdit', [$request->id]))->withInput();
             }
 
             $ip = Ip::find($request->id);
@@ -78,8 +78,8 @@ class IpController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.edit_success')]);
             return redirect(route('ips.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
-            return redirect(route('ips.getEdit'))->withInput();
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.edit_fail')]);
+            return redirect(route('ips.getEdit', [$request->id]))->withInput();
         }
     }
 
@@ -99,7 +99,7 @@ class IpController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.add_success')]);
             return redirect()->intended(route('ips.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.add_fail')]);
             return redirect(route('ips.getAdd'))->withInput();
         }
     }
@@ -113,7 +113,7 @@ class IpController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.ips.delete_success')]);
             return redirect()->intended(route('ips.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.ips.delete_fail')]);
             return redirect(route('ips.index'));
         }
 
