@@ -25,6 +25,10 @@ Route::group(['middleware' => 'ip'], function () {
 
     // Admin
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+        // Logout
+        Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
+
         Route::pattern('id', '[0-9]+');
         // Check user confirm email
         Route::group(['middleware' => 'user.status:' . ROUTER_USER], function () {
@@ -43,6 +47,12 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
             Route::post('/qr/edit/{id?}', 'QrController@postEdit')->name('admin.qr.postEdit');
+
+            // Question management
+            Route::get('/question', 'QuestionController@index')->name('question.index');
+            Route::get('/question/add', 'QuestionController@add')->name('question.add');
+            Route::post('/question/add', 'QuestionController@add')->name('question.add');
+
         });
         // Confirm email
         Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
