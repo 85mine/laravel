@@ -62,37 +62,61 @@ class CompanyController extends BaseController
         return view('backend.modules.company.add_edit', compact('company', 'route', 'breadcrumb', 'messages'));
     }
 
-    public function postEdit()
+    public function postEdit(Request $request, $id)
     {
+        try {
+            $companyValidator = new CompanyValidator();
+            $validator = $this->checkValidator($request->all(), $companyValidator->validateCompany());
 
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                return redirect(route('company.getAdd'))->withInput();
+            }
+
+            $company = Company::find($id);
+            $company->company_name = $request->company_name;
+            $company->company_address = $request->company_address;
+            $company->company_mobile = $request->company_mobile;
+            $company->company_email = $request->company_email;
+            $company->company_website = $request->company_website;
+            $company->representative_name = $request->representative_name;
+            $company->representative_mobile = $request->representative_mobile;
+            $company->update();
+
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, ["Create new a company successfully!"]);
+            return redirect()->intended(route('company.index'))->withInput();
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            return redirect(route('company.getAdd'))->withInput();
+        }
     }
 
     public function postAdd(Request $request)
     {
         try {
-        $companyValidator = new CompanyValidator();
-        $validator = $this->checkValidator($request->all(), $companyValidator->validateCompany());
+            $companyValidator = new CompanyValidator();
+            $validator = $this->checkValidator($request->all(), $companyValidator->validateCompany());
 
-        if ($validator->fails()) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-            return redirect(route('company.getAdd'))->withInput();
-        }
+            if ($validator->fails()) {
+                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+                return redirect(route('company.getAdd'))->withInput();
+            }
 
-        $company = new Company();
-        $company->company_name = $request->company_name;
-        $company->company_address = $request->company_address;
-        $company->company_mobile = $request->company_mobile;
-        $company->company_email = $request->company_email;
-        $company->company_website = $request->company_website;
-        $company->representative_name = $request->representative_name;
-        $company->representative_mobile = $request->representative_mobile;
-        $company->save();
+            $company = new Company();
+            $company->company_name = $request->company_name;
+            $company->company_address = $request->company_address;
+            $company->company_mobile = $request->company_mobile;
+            $company->company_email = $request->company_email;
+            $company->company_website = $request->company_website;
+            $company->representative_name = $request->representative_name;
+            $company->representative_mobile = $request->representative_mobile;
+            $company->save();
 
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, ["Create new a company successfully!"]);
-        return redirect()->intended(route('company.index'))->withInput();
-    } catch (\Exception $e) {
-        Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
-        return redirect(route('company.getAdd'))->withInput();
-    }
+            return redirect()->intended(route('company.index'))->withInput();
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            return redirect(route('company.getAdd'))->withInput();
+        }
     }
 }

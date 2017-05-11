@@ -52,6 +52,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
             Route::get('/company/edit/{id}', 'CompanyController@getEdit')->name('company.getEdit');
             Route::post('/company/edit/{id}', 'CompanyController@postEdit')->name('company.postEdit');
+            Route::post('/company/delete/{id}', 'CompanyController@delete')->name('company.delete');
             // Question management
             Route::get('/question', 'QuestionController@index')->name('question.index');
             Route::get('/question/add', 'QuestionController@add')->name('question.add');

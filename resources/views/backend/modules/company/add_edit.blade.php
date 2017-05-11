@@ -1,14 +1,12 @@
 @extends('backend.layout.main')
-@section('title')
-    New Company
-@endsection
+@section('title', trans('labels.company'))
 
 @section('extend-css')
     <link href="{{ URL::asset('assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('breadcrumb')
-    <h2>Company Management</h2>
+    <h2>{{ trans('labels.label.company.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
@@ -35,7 +33,7 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    {!! Form::model($company, ['route' => [$route], 'method' => 'POST', 'id' => 'formIps', 'class' => 'form-horizontal']) !!}
+                    {!! Form::model($company, ['route' => [$route, $company], 'method' => 'POST', 'id' => 'formCompany', 'class' => 'form-horizontal']) !!}
                     {!! Form::hidden('id', null) !!}
                     {!! $messages !!}
                     <div class="form-group {{ $errors->has('company_name') ? ' has-error' : '' }}">
