@@ -25,6 +25,10 @@ Route::group(['middleware' => 'ip'], function () {
 
     // Admin
     Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+        // Logout
+        Route::get('/logout', 'UserController@getLogout')->name('user.getLogout');
+
         Route::pattern('id', '[0-9]+');
         // Check user confirm email
         Route::group(['middleware' => 'user.status:' . ROUTER_USER], function () {

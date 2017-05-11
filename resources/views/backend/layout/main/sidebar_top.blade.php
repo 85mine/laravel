@@ -5,7 +5,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <a href="{{route('user.getLogin')}}">
+                <a href="{{route('user.getLogout')}}">
                     <i class="fa fa-sign-out"></i> {{ trans('labels.label.common.logOut') }}
                 </a>
             </li>
