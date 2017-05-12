@@ -20,7 +20,7 @@ class CompanyController extends BaseController
 
     public function getAjaxData()
     {
-        $data = Company::all();
+        $data = Company::sortBy('created_at')->all();
         foreach ($data as &$_data) {
             $id = $_data['id'];
             $edit_url = route('company.getEdit', [$id]);

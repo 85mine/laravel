@@ -6,7 +6,7 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{ trans('labels.label.company.page_title') }}</h2>
+    <h2>{{ $breadcrumb }}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
@@ -24,14 +24,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>{{ $breadcrumb }}</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                    </div>
-                </div>
                 <div class="ibox-content">
                     {!! Form::model($company, ['route' => [$route], 'method' => 'POST', 'id' => 'formCompany', 'class' => 'form-horizontal']) !!}
                     {!! Form::hidden('id', null) !!}

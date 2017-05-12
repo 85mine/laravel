@@ -25,13 +25,12 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     {!! $messages !!}
-                    {{--Add/Delete Button--}}
                     <div class="over-hidden bulk-action">
                         <a href="{{ route('company.getAdd') }}"
-                           class="btn btn-success pull-right"><i
+                           class="btn btn-success"><i
                                     class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
-                           class="btn btn-danger btn-delete-submit pull-right m-r-10 hidden" data-action="deleted"><i
+                           class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
@@ -78,20 +77,21 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                autoWidth: false,
                 ajax: {
                     "url": '{!! route('company.ajaxData') !!}',
                     "type": "GET"
                 },
                 aoColumns: [
-                    {data: 'checkbox'},
-                    {data: 'company_name'},
-                    {data: 'company_address'},
-                    {data: 'company_mobile'},
-                    {data: 'company_email'},
-                    {data: 'company_website'},
-                    {data: 'representative_name'},
-                    {data: 'representative_mobile'},
-                    {data: 'buttons'}
+                    {mData: 'checkbox'},
+                    {mData: 'company_name'},
+                    {mData: 'company_address'},
+                    {mData: 'company_mobile'},
+                    {mData: 'company_email'},
+                    {mData: 'company_website'},
+                    {mData: 'representative_name'},
+                    {mData: 'representative_mobile'},
+                    {mData: 'buttons'}
                 ],
                 aoColumnDefs: [
                     {
@@ -100,13 +100,12 @@
 
                     },
                     {
-                        'targets': [0, 1, 3],
+                        'targets': [0, 3, 4, 7],
                         "sClass": "text-center"
                     },
-                    {"width": "100px", "targets": [0]},
-                    {"width": "150px", "targets": [3]}
+                    {"width": "3px", "targets": [0]},
+                    {"width": "100px", "targets": [8]}
                 ],
-                order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
