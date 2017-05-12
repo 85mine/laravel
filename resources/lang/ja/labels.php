@@ -12,7 +12,10 @@ return [
     'title.ips.edit'                    => 'Edit IP',
     'title.qr.create'                   => 'Create Qr',
     'title.qr.edit'                     => 'Edit Qr',
-
+    'title.customer.customers'          => 'Customers',
+    'title.customer.create'             => 'Create customer',
+    'title.customer.detail'             => 'Customer detail',
+    'title.customer.edit'               => 'Edit customer',
     // Label
     'label' => [
         'common' => [
@@ -44,7 +47,22 @@ return [
                 'edit'                  => 'Edit IP',
                 'add'                   => 'Add New IP'
             ]
-        ]
+        ],
+        'customer' => [
+            'header'    => 'Customers Management',
+            'column'        => [
+                'id'                    => 'Id',
+                'first_name'            => 'First name',
+                'last_name'             => 'Last name',
+                'phone_number'          => 'Phone number',
+                'email'                 => 'Email address',
+            ],
+            'breadcrumb'    => [
+                'create'                => 'Create customer',
+                'detail'                => 'Customer detail',
+                'edit'                  => 'Edit customer'
+            ]
+        ],
     ],
 
     // Placeholder

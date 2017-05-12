@@ -71,5 +71,16 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         });
+
+        // Customer management
+        Route::get('/customers', 'CustomerController@getCustomers')->name('customer.getCustomers');
+
+        Route::get('/customer/create', 'CustomerController@getCreateCustomer')->name('customer.getCreate');
+        Route::post('/customer/create', 'CustomerController@postCreateCustomer')->name('customer.postCreate');
+
+        Route::get('/customer/detail/{id}', 'CustomerController@getDetail')->name('customer.getDetail');
+
+        Route::get('/customer/edit/{id}', 'CustomerController@getEdit')->name('customer.getEdit');
+        Route::post('/customer/edit/{id}', 'CustomerController@postEdit')->name('customer.postEdit');
     });
 });
