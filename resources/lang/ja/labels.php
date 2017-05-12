@@ -1,6 +1,6 @@
 <?php
 return [
-    // title
+    // Title
     'title.common'                      => '住宅メーカ向け診断',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
@@ -15,17 +15,14 @@ return [
     'title.ips.edit'                    => 'Edit IP',
     'title.qr.create'                   => 'Create Qr',
     'title.qr.edit'                     => 'Edit Qr',
-<<<<<<< HEAD
     'title.customer.customers'          => 'Customers',
     'title.customer.create'             => 'Create customer',
     'title.customer.detail'             => 'Customer detail',
     'title.customer.edit'               => 'Edit customer',
-=======
     'title.company'                     => 'Company',
     'title.company.create'              => 'Create Company',
     'title.company.edit'                => 'Edit Company',
 
->>>>>>> 66c9871c747737a8a40405fd90ae4ad9c9e48704
     // Label
     'label' => [
         'common' => [
@@ -72,7 +69,6 @@ return [
                 'add'                   => 'Add New IP'
             ]
         ],
-<<<<<<< HEAD
         'customer' => [
             'header'    => 'Customers Management',
             'column'        => [
