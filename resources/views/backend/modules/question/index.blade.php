@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    Question
+    {{trans('labels.label.question.page_title')}}
 @endsection
 
 @section('extend-css')
@@ -12,13 +12,13 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>Question Management</h2>
+    <h2>{{trans('labels.label.question.page_title')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">Home</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.label.common.home') }}</a>
         </li>
         <li class="active">
-            <strong>Question</strong>
+            <strong>{{ trans('labels.title.question') }}</strong>
         </li>
     </ol>
 @endsection
@@ -96,8 +96,11 @@
                     },
                     {
                         'targets': [0,3,4],
-                        "sClass": "text-center"
+                        "sClass": "text-center",
+
                     },
+                    {"width": "50px", "targets": [0]},
+                    {"width": "100px", "targets": [4]},
                 ],
                 order: [[1, 'desc']]
             });
@@ -107,7 +110,8 @@
                     id_input = $form.find('input[name="id"]'),
                     data_id = $(this).data('delete');
                 id_input.val(data_id);
-
+                var $selectedItem = $(this);
+                $selectedItem.closest('tr').find('input[type=\'checkbox\']').attr('checked', true);
                 $.confirm({
                     icon: 'fa fa-warning',
                     title: '{{ trans('messages.common.confirm_title') }}',

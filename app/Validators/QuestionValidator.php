@@ -15,7 +15,7 @@ class QuestionValidator
     private function _defaultRule()
     {
         return [
-            'content' => 'required',
+            'question_content' => 'required',
             'answer.*' => 'required'
         ];
     }
@@ -28,7 +28,7 @@ class QuestionValidator
     private function _defaultAttribute()
     {
         return [
-            'content' => trans('labels.label.question.column.content'),
+            'question_content' => trans('labels.label.question.column.content'),
             'answer' => trans('labels.label.question.column.answer')
         ];
     }

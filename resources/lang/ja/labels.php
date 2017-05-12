@@ -18,6 +18,9 @@ return [
     'title.company'                     => '会社',
     'title.company.create'              => '会社追加',
     'title.company.edit'                => '会社編集',
+    'title.question'                    => '質問リスト',
+    'title.question.add'                => '質問追加',
+    'title.question.edit'               => '質問追加',
 
     // Label
     'label' => [
