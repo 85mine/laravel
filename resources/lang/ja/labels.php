@@ -1,6 +1,6 @@
 <?php
 return [
-    // title
+    // Title
     'title.common'                      => '住宅メーカ向け診断',
     'title.short.common'                => 'BS',
     'title.user.login'                  => 'ログイン',
@@ -11,6 +11,17 @@ return [
     'title.user.edit'                   => 'ユーザー編集',
     'title.home.dashboard'              => 'Dashboard',
     'title.ips'                         => 'IP',
+    'title.ips.create'                  => 'Add IP',
+    'title.ips.edit'                    => 'Edit IP',
+    'title.qr.create'                   => 'Create Qr',
+    'title.qr.edit'                     => 'Edit Qr',
+    'title.customer.customers'          => 'Customers',
+    'title.customer.create'             => 'Create customer',
+    'title.customer.detail'             => 'Customer detail',
+    'title.customer.edit'               => 'Edit customer',
+    'title.company'                     => 'Company',
+    'title.company.create'              => 'Create Company',
+    'title.company.edit'                => 'Edit Company',
     'title.ips.create'                  => 'IP追加',
     'title.ips.edit'                    => 'IP編集',
     'title.qr.create'                   => 'QRコード追加',
@@ -66,6 +77,21 @@ return [
             'breadcrumb'    => [
                 'edit'                  => 'IP編集',
                 'add'                   => 'IP追加'
+            ]
+        ],
+        'customer' => [
+            'header'    => 'Customers Management',
+            'column'        => [
+                'id'                    => 'Id',
+                'first_name'            => 'First name',
+                'last_name'             => 'Last name',
+                'phone_number'          => 'Phone number',
+                'email'                 => 'Email address',
+            ],
+            'breadcrumb'    => [
+                'create'                => 'Create customer',
+                'detail'                => 'Customer detail',
+                'edit'                  => 'Edit customer'
             ]
         ],
         'company' => [

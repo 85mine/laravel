@@ -23,6 +23,13 @@
                 </div>
             </li>
             <li>
+                <a href="{{ route('customer.getCustomers') }}">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">{{trans('labels.label.customer.header')}}</span>
+                    {{--<span class="fa arrow"></span>--}}
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('user.list') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">User</span>
