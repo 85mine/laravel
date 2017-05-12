@@ -103,8 +103,8 @@
                         'targets': [0, 3, 4, 7, 8],
                         "sClass": "text-center"
                     },
-                    {"width": "50px", "targets": [0]},
-                    {"width": "120px", "targets": [8]},
+                    {"width": "30px", "targets": [0]},
+                    {"width": "100px", "targets": [8]},
                 ],
             });
 
