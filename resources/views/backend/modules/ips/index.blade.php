@@ -35,7 +35,7 @@
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table id="ip_table" class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th class="nosort text-center">
@@ -45,7 +45,7 @@
                                     </div>
                                 </th>
                                 <th class="text-center">{{ trans('labels.label.ips.column.ip_address') }}</th>
-                                <th>{{ trans('labels.label.ips.column.description') }}</th>
+                                <th class="text-center">{{ trans('labels.label.ips.column.description') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
@@ -68,11 +68,12 @@
     <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
     <script>
         $(document).ready(function () {
-            $('.dataTables-example').DataTable({
+            $('#ip_table').DataTable({
                 pageLength: 25,
                 responsive: true,
                 processing: true,
                 serverSide: true,
+//                bAutoWidth: false,
                 ajax: {
                     "url": '{!! route('ips.ajaxData') !!}',
                     "type": "GET"
@@ -93,17 +94,28 @@
                         'targets': [0, 1, 3],
                         "sClass": "text-center"
                     },
-                    {"width": "50px", "targets": [0]},
-                    {"width": "150px", "targets": [3]}
+                    {"width": "30px", "targets": [0]},
+                    {"width": "100px", "targets": [3]}
                 ],
                 order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
-                var $form = $('#form_delete'),
+                var $this = $(this),
+                        selected_checkbox = $this.closest('tr').find('input.check'),
+                        selected_checkbox_id = selected_checkbox.attr('id'),
+                        $form = $('#form_delete'),
                         id_input = $form.find('input[name="id"]'),
-                        data_id = $(this).data('delete');
+                        data_id = $this.data('delete');
                 id_input.val(data_id);
+
+                // Check on selected checkbox
+                if (selected_checkbox.is(':checked')) {
+                    $('input[type="checkbox"]').not('#' + selected_checkbox_id).prop("checked", false);
+                } else {
+                    $('input[type="checkbox"]:checked').prop("checked", false);
+                    selected_checkbox.trigger('click');
+                }
 
                 $.confirm({
                     icon: 'fa fa-warning',
@@ -116,7 +128,8 @@
                             $form.submit();
                         },
                         '{{ trans('messages.common.confirm_no') }}': function () {
-                            // do something
+                            // unCheck selected checkbox
+                            selected_checkbox.trigger('click');
                         }
                     }
                 });

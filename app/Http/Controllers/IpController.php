@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Symfony\Component\VarDumper\Cloner\Data;
 use Yajra\Datatables\Facades\Datatables;
 use App\Models\Ip;
 use App\Helper\Common;
@@ -66,7 +67,7 @@ class IpController extends BaseController
     {
         try {
             $ipValidator = new IpValidator();
-            $validator = $this->checkValidator($request->all(), $ipValidator->validateIps());
+            $validator = $this->checkValidator($request->all(), $ipValidator->validateIps($request->id, true));
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
