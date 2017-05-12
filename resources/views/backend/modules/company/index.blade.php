@@ -44,12 +44,12 @@
                                     </div>
                                 </th>
                                 <th class="text-center">{{ trans('labels.label.company.column.company_name') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_address') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_mobile') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_email') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_website') }}</th>
-                                <th>{{ trans('labels.label.company.column.representative_name') }}</th>
-                                <th>{{ trans('labels.label.company.column.representative_mobile') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_address') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_mobile') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_email') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_website') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.representative_name') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.representative_mobile') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
@@ -83,15 +83,15 @@
                     "type": "GET"
                 },
                 aoColumns: [
-                    {mData: 'checkbox'},
-                    {mData: 'company_name'},
-                    {mData: 'company_address'},
-                    {mData: 'company_mobile'},
-                    {mData: 'company_email'},
-                    {mData: 'company_website'},
-                    {mData: 'representative_name'},
-                    {mData: 'representative_mobile'},
-                    {mData: 'buttons'}
+                    {data: 'checkbox'},
+                    {data: 'company_name'},
+                    {data: 'company_address'},
+                    {data: 'company_mobile'},
+                    {data: 'company_email'},
+                    {data: 'company_website'},
+                    {data: 'representative_name'},
+                    {data: 'representative_mobile'},
+                    {data: 'buttons'}
                 ],
                 aoColumnDefs: [
                     {
@@ -100,11 +100,11 @@
 
                     },
                     {
-                        'targets': [0, 3, 4, 7],
+                        'targets': [0, 3, 4, 7, 8],
                         "sClass": "text-center"
                     },
-                    {"width": "3px", "targets": [0]},
-                    {"width": "100px", "targets": [8]}
+                    {"width": "50px", "targets": [0]},
+                    {"width": "120px", "targets": [8]},
                 ],
             });
 
