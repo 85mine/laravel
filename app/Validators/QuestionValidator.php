@@ -1,9 +1,9 @@
 <?php
 namespace App\Validators;
 
-class IpValidator
+class QuestionValidator
 {
-    public function validateIps()
+    public function validateQuestion()
     {
         $res['rules'] = $this->_defaultRule();
         $res['messages'] = $this->_defaultMessage();
@@ -15,7 +15,8 @@ class IpValidator
     private function _defaultRule()
     {
         return [
-            'ip_address' => 'required|max:50|ip'
+            'content' => 'required',
+            'answer.*' => 'required'
         ];
     }
 
@@ -27,7 +28,8 @@ class IpValidator
     private function _defaultAttribute()
     {
         return [
-            'ip_address' => trans('labels.label.ips.column.ip_address')
+            'content' => trans('labels.label.question.column.content'),
+            'answer' => trans('labels.label.question.column.answer')
         ];
     }
 

@@ -306,3 +306,11 @@ input[type="checkbox"]{
 .sml-search-l{
     max-width: 500px;
 }
+
+.bulk-action{
+    margin-bottom: 20px;
+}
+
+th .checkbox, td .checkbox{
+    padding-left: 0;
+}

@@ -6,16 +6,26 @@ return [
     'title.user.login'                  => 'ログイン',
     'title.user.confirm_email'          => 'Confirm email',
     'title.user.active_email'           => 'Active email',
+    'title.user.list'                   => 'User List',
+    'title.user.create'                 => 'User Add',
+    'title.user.edit'                   => 'Edit User',
     'title.home.dashboard'              => 'Dashboard',
     'title.ips'                         => 'IP',
     'title.ips.create'                  => 'Add IP',
     'title.ips.edit'                    => 'Edit IP',
     'title.qr.create'                   => 'Create Qr',
     'title.qr.edit'                     => 'Edit Qr',
+<<<<<<< HEAD
     'title.customer.customers'          => 'Customers',
     'title.customer.create'             => 'Create customer',
     'title.customer.detail'             => 'Customer detail',
     'title.customer.edit'               => 'Edit customer',
+=======
+    'title.company'                     => 'Company',
+    'title.company.create'              => 'Create Company',
+    'title.company.edit'                => 'Edit Company',
+
+>>>>>>> 66c9871c747737a8a40405fd90ae4ad9c9e48704
     // Label
     'label' => [
         'common' => [
@@ -36,6 +46,20 @@ return [
                 'description' => 'Please check email or request new email to active',
                 'send_email' => 'Send new email',
             ],
+            'list' => [
+                'name'      => 'Name',
+                'email'     => 'Email',
+                'status'    => 'Status',
+                'company'   => 'Company',
+            ],
+            'create' => [
+                'name'      => 'Name',
+                'email'     => 'Email',
+                'company'   => 'Company',
+                'selectCompany' => 'Please select company',
+                'active'    => 'active',
+                'disable'   => 'disable'
+            ],
         ],
         'ips' => [
             'page_title'    => 'Ips Management',
@@ -48,6 +72,7 @@ return [
                 'add'                   => 'Add New IP'
             ]
         ],
+<<<<<<< HEAD
         'customer' => [
             'header'    => 'Customers Management',
             'column'        => [
@@ -63,6 +88,39 @@ return [
                 'edit'                  => 'Edit customer'
             ]
         ],
+        'company' => [
+            'page_title'    => 'Companies Management',
+            'column'        => [
+                'company_name'                  => 'Name',
+                'company_address'               => 'Address',
+                'company_mobile'                => 'Mobile',
+                'company_email'                 => 'Email',
+                'company_website'               => 'Website',
+                'representative_name'           => 'Represent Name',
+                'representative_mobile'         => 'Represent Mobile',
+            ],
+            'breadcrumb'    => [
+                'index'                 => 'Companies',
+                'edit'                  => 'Edit Company',
+                'add'                   => 'Add Company'
+            ]
+        ],
+        'question' => [
+            'page_title'    => 'Questions Management',
+            'label'         => [
+                'add_more'              =>  'Add More',
+                'remove'                =>  'Remove'
+            ],
+            'column'        => [
+                'content'               => 'Question',
+                'answer'                => 'Answer',
+                'status'                => 'Status'
+            ],
+            'breadcrumb'    => [
+                'edit'                  => 'Edit Question',
+                'add'                   => 'Add New Question'
+            ]
+        ]
     ],
 
     // Placeholder
