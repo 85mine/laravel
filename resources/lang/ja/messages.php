@@ -28,6 +28,14 @@ return [
         'add_fail'                  => 'Add Fail',
         'add_success'               => 'Add Success',
     ],
+    'customer' => [
+        'edit_success'              => '成功にCustomerを編集しました。',
+        'add_success'               => '成功にCustomerを追加しました。',
+        'delete_success'            => '成功にCustomerを削除しました。',
+        'edit_failed'               => '失敗にCustomerを編集しました。',
+        'add_failed'                => '失敗にCustomerを追加しました。',
+        'delete_failed'             => '失敗にCustomerを削除しました。',
+    ],
     'ips' => [
         'edit_success'              => '成功にIPを編集しました。',
         'add_success'               => '成功にIPを追加しました。',
