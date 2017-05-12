@@ -30,7 +30,7 @@
                     <div class="sml-box-header">
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('customer.getCreate') }}" class="btn btn-success pull-right"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
+                            <a href="{{ route('customer.getCreate') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         </div>
                     </div>
                     <div class="sml-box">
