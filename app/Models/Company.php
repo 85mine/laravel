@@ -18,5 +18,9 @@ class Company extends Model
         'representative_mobile',
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at', 'deleted_at', 'company_description', 'representative_email'
+    ];
+
 
 }
