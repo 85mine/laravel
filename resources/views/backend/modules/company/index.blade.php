@@ -25,13 +25,12 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     {!! $messages !!}
-                    {{--Add/Delete Button--}}
                     <div class="over-hidden bulk-action">
                         <a href="{{ route('company.getAdd') }}"
-                           class="btn btn-success pull-right"><i
+                           class="btn btn-success"><i
                                     class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                         <a href="javascript:;"
-                           class="btn btn-danger btn-delete-submit pull-right m-r-10 hidden" data-action="deleted"><i
+                           class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
                     </div>
                     <div class="table-responsive">
@@ -45,12 +44,12 @@
                                     </div>
                                 </th>
                                 <th class="text-center">{{ trans('labels.label.company.column.company_name') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_address') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_mobile') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_email') }}</th>
-                                <th>{{ trans('labels.label.company.column.company_website') }}</th>
-                                <th>{{ trans('labels.label.company.column.representative_name') }}</th>
-                                <th>{{ trans('labels.label.company.column.representative_mobile') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_address') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_mobile') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_email') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.company_website') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.representative_name') }}</th>
+                                <th class="text-center">{{ trans('labels.label.company.column.representative_mobile') }}</th>
                                 <th class="nosort"></th>
                             </tr>
                             </thead>
@@ -78,6 +77,7 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
+                autoWidth: false,
                 ajax: {
                     "url": '{!! route('company.ajaxData') !!}',
                     "type": "GET"
@@ -100,13 +100,12 @@
 
                     },
                     {
-                        'targets': [0, 1, 3],
+                        'targets': [0, 3, 4, 7, 8],
                         "sClass": "text-center"
                     },
-                    {"width": "100px", "targets": [0]},
-                    {"width": "150px", "targets": [3]}
+                    {"width": "50px", "targets": [0]},
+                    {"width": "120px", "targets": [8]},
                 ],
-                order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
