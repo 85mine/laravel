@@ -1,16 +1,16 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.label.question.page_title')}}
+    {{ $breadcrumb }}
 @endsection
 
 @section('breadcrumb')
-    <h2>Question Management</h2>
+    <h2>{{ $breadcrumb }}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">Home</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.label.common.home') }}</a>
         </li>
         <li>
-            <a href="{{ route('question.index') }}">Question</a>
+            <a href="{{ route('question.index') }}">{{ trans('labels.title.question') }}</a>
         </li>
         <li class="active">
             <strong>{{ $breadcrumb }}</strong>
@@ -25,14 +25,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>{{ $breadcrumb }}</h5>
-                    <div class="ibox-tools">
-                        <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                    </div>
-                </div>
                 <div class="ibox-content">
                         {!! Form::model($question, ['route' => [$route], 'method' => 'POST', 'id' => 'form_question', 'class' => 'form-horizontal']) !!}
                         {!! Form::hidden('id', null) !!}
@@ -40,7 +32,7 @@
                         <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.content') }}</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="content" rows="8">{{ $question->content }}</textarea>
+                                <textarea class="form-control" name="question_content" rows="8">{{ $question->content }}</textarea>
                             </div>
                         </div>
                         <div class="form-group {{ $errors->has('answer') ? ' has-error' : '' }}">
@@ -78,7 +70,7 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
+                            <div class="col-sm-2 col-sm-offset-2">
                                 <button class="btn btn-primary" type="submit">{{ trans('labels.label.common.btnSave') }}</button>
                             </div>
                         </div>

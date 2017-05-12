@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    Question
+    {{trans('labels.label.question.page_title')}}
 @endsection
 
 @section('extend-css')
@@ -12,13 +12,13 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>Question Management</h2>
+    <h2>{{trans('labels.label.question.page_title')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">Home</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.label.common.home') }}</a>
         </li>
         <li class="active">
-            <strong>Question</strong>
+            <strong>{{ trans('labels.title.question') }}</strong>
         </li>
     </ol>
 @endsection
@@ -96,18 +96,31 @@
                     },
                     {
                         'targets': [0,3,4],
-                        "sClass": "text-center"
+                        "sClass": "text-center",
+
                     },
+                    {"width": "30px", "targets": [0]},
+                    {"width": "100px", "targets": [4]},
                 ],
                 order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
-                var $form = $('#form_delete'),
+                var $this = $(this),
+                    selected_checkbox = $this.closest('tr').find('input.check'),
+                    selected_checkbox_id = selected_checkbox.attr('id'),
+                    $form = $('#form_delete'),
                     id_input = $form.find('input[name="id"]'),
-                    data_id = $(this).data('delete');
+                    data_id = $this.data('delete');
                 id_input.val(data_id);
 
+                // Check on selected checkbox
+                if (selected_checkbox.is(':checked')) {
+                    $('input[type="checkbox"]').not('#' + selected_checkbox_id).prop("checked", false);
+                } else {
+                    $('input[type="checkbox"]:checked').prop("checked", false);
+                    selected_checkbox.trigger('click');
+                }
                 $.confirm({
                     icon: 'fa fa-warning',
                     title: '{{ trans('messages.common.confirm_title') }}',

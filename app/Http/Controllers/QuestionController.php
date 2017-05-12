@@ -19,6 +19,12 @@ class QuestionController extends BaseController {
         $route = 'question.postAdd';
         $breadcrumb = trans('labels.label.question.breadcrumb.add');
         $messages = Common::getMessage($request);
+        if(!empty($messages)){
+            $question->content = $request->old('question_content');
+            $question->answer = json_encode($request->old('answer'));
+            $question->status = json_encode($request->old('answer'));
+        }
+
         return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages'));
     }
 
@@ -30,11 +36,11 @@ class QuestionController extends BaseController {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
                 return redirect(route('question.add'))->withInput();
             }
-            $data = new Question();
-            $data->content = trim($request->content);
-            $data->answer = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
-            $data->status = $request->status;
-            $data->save();
+            $question = new Question();
+            $question->content = trim($request->question_content);
+            $question->answer = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
+            $question->status = $request->status;
+            $question->save();
             return redirect()->intended(route('question.index'));
 
         } catch (\Exception $e) {
@@ -53,7 +59,11 @@ class QuestionController extends BaseController {
         $route = 'question.postEdit';
         $breadcrumb = trans('labels.label.question.breadcrumb.edit');
         $messages = Common::getMessage($request);
-
+        if(!empty($messages)){
+            $question->content = $request->old('question_content');
+            $question->answer = json_encode($request->old('answer'));
+            $question->status = json_encode($request->old('answer'));
+        }
         return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages'));
     }
 
@@ -65,13 +75,13 @@ class QuestionController extends BaseController {
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('question.getEdit'))->withInput();
+                return redirect(route('question.getEdit',[$request->id]))->withInput();
             }
 
             $question = Question::find($request->id);
 
 
-            $question->content = trim($request->content);
+            $question->content = trim($request->question_content);
             $question->answer = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
             $question->status = $request->status;
             $question->save();
