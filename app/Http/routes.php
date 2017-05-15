@@ -67,9 +67,9 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/customers', 'CustomerController@getCustomers')->name('customer.getCustomers');
             Route::get('/customer/create', 'CustomerController@getCreateCustomer')->name('customer.getCreate');
             Route::post('/customer/create', 'CustomerController@postCreateCustomer')->name('customer.postCreate');
-            Route::get('/customer/delete', 'CustomerController@postDelete')->name('customer.postDelete');
-            Route::get('/customer/edit/{id}', 'CustomerController@getEdit')->name('customer.getEdit');
-            Route::post('/customer/edit/{id}', 'CustomerController@postEdit')->name('customer.postEdit');
+            Route::post('/customer/delete', 'CustomerController@postDelete')->name('customer.postDelete');
+            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.getEdit');
+            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.postEdit');
             Route::get('customer/getAjaxData', 'CustomerController@getAjaxData')->name('customer.getAjaxData');
 
         });

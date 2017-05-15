@@ -12,9 +12,9 @@ use Yajra\Datatables\Datatables;
 
 class CustomerController extends BaseController
 {
-    public function getCustomers(){
-        $data = Customer::paginate(50);
-        return view('backend.modules.customer.customers')->with("customers",$data);
+    public function getCustomers(Request $request){
+        $messages = Common::getMessage($request);
+        return view('backend.modules.customer.customers',compact('messages'));
     }
 
     public function getCreateCustomer(Request $request){
@@ -85,7 +85,7 @@ class CustomerController extends BaseController
     public function postDelete(Request $request)
     {
         try {
-            $id = $request->id;
+            $id = $request->s_id;
             $ids = explode(",", $id);
             Customer::whereIn('id', $ids)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
