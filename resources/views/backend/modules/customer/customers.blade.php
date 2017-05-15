@@ -31,6 +31,7 @@
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
                             <a href="{{ route('customer.getCreate') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
+                            <a href="{{ route('customer.postDelete') }}" class="btn btn-disable" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
                     <div class="sml-box">
@@ -39,15 +40,15 @@
                                 <thead>
                                 <tr>
                                     <th>
-                                        <input class="magic-checkbox" type="checkbox" name="layout" id="inputAll">
-                                        <label for="inputAll"></label>
+                                        <input class="select_all magic-checkbox" type="checkbox" id="select_all_top">
+                                        <label for="select_all_top"></label>
                                     </th>
                                     <th>{{trans('labels.label.customer.column.id')}}</th>
                                     <th>{{trans('labels.label.customer.column.first_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.last_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.phone_number')}}</th>
                                     <th>{{trans('labels.label.customer.column.email')}}</th>
-                                    {{--<th>Action</th>--}}
+                                    <th>{{trans('labels.label.customer.column.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,15 +57,15 @@
                                 <tfoot>
                                 <tr>
                                     <th>
-                                        <input class="magic-checkbox" type="checkbox" name="layout" id="inputAll">
-                                        <label for="inputAll"></label>
+                                        <input class="select_all magic-checkbox" type="checkbox" id="select_all_bottom">
+                                        <label for="select_all_bottom"></label>
                                     </th>
                                     <th>{{trans('labels.label.customer.column.id')}}</th>
                                     <th>{{trans('labels.label.customer.column.first_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.last_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.phone_number')}}</th>
                                     <th>{{trans('labels.label.customer.column.email')}}</th>
-                                    {{--<th>Action</th>--}}
+                                    <th>{{trans('labels.label.customer.column.action')}}</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -99,20 +100,11 @@
                     orderable: false,
                     bSortable: false,
                     render: function ( data, type, row ) {
-                        return '<input type="checkbox" '  + ' id="input' + row.id + '" class="magic-checkbox"/>' +
-                               '<label class="pull-left"' + ' for="input' + row.id +'"></label>';
+                        return '<input type="checkbox" '  + ' id="' + row.id + '" class="select_item magic-checkbox"/>' +
+                               '<label class="pull-left"' + ' for="' + row.id +'"></label>';
                     },
                     aTargets: [0]
                 },
-//                {
-//                    orderable: false,
-//                    bSortable: false,
-//                    render: function ( data, type, row ) {
-//                        return '<input type="checkbox" '  + ' id="input' + row.id + '" class="magic-checkbox"/>' +
-//                            '<label class="pull-left"' + ' for="input' + row.id +'"></label>';
-//                    },
-//                    aTargets: [5]
-//                },
                 {
                     mData: "id",
                     aTargets: [1]
@@ -133,7 +125,17 @@
                     mData: "email",
                     aTargets: [5]
                 },
+                {
+                    orderable: false,
+                    bSortable: false,
+                    render: function ( data, type, row ) {
+                        return '<a href="{{route('customer.postDelete',2)}}" class="btn btn-xs btn-white m-l-xs m-r-xxs"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
+                               '<a class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
+                    },
+                    aTargets: [6]
+                },
             ],
         });
     </script>
+    <script src="{{url('assets/js/modules/customer.js')}}"></script>
 @endsection

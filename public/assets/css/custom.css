@@ -307,6 +307,18 @@ input[type="checkbox"]{
     max-width: 500px;
 }
 
+.btn-disable{
+    color: #fff;
+    background-color: #ccc;
+    border-color: #f5f5f5;
+}
+
+.btn-disable:hover{
+    color: #fff;
+    background-color: #999999;
+    border-color: #f5f5f5;
+}
+
 .bulk-action{
     margin-bottom: 20px;
 }
