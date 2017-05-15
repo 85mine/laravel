@@ -219,5 +219,4 @@
             });
         }
     </script>
-{{--    <script src="{{url('assets/js/modules/customer.js')}}"></script>--}}
 @endsection
