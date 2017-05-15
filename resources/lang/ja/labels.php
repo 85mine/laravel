@@ -87,6 +87,7 @@ return [
                 'last_name'             => 'Last name',
                 'phone_number'          => 'Phone number',
                 'email'                 => 'Email address',
+                'action'                => 'Action'
             ],
             'breadcrumb'    => [
                 'create'                => 'Create customer',
