@@ -31,7 +31,11 @@ class QuestionController extends BaseController {
     public function postAdd(Request $request) {
         try {
             $questionValidator = new QuestionValidator();
-            $validator = $this->checkValidator($request->all(), $questionValidator->validateQuestion());
+            $res = $questionValidator->validateQuestion();
+            foreach ($request->answer as $key => $answer_item){
+                $res['attributes']['answer.'.$key] = trans('labels.label.question.column.answer').' ('.($key+1).') ';
+            }
+            $validator = $this->checkValidator($request->all(), $res);
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
                 return redirect(route('question.add'))->withInput();
@@ -71,7 +75,11 @@ class QuestionController extends BaseController {
     {
         try {
             $questionValidator = new QuestionValidator();
-            $validator = $this->checkValidator($request->all(), $questionValidator->validateQuestion());
+            $res = $questionValidator->validateQuestion();
+            foreach ($request->answer as $key => $answer_item){
+                $res['attributes']['answer.'.$key] = trans('labels.label.question.column.answer').' ('.($key+1).') ';
+            }
+            $validator = $this->checkValidator($request->all(), $res);
 
             if ($validator->fails()) {
                 Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
