@@ -77,6 +77,10 @@ return [
             'breadcrumb'    => [
                 'edit'                  => 'IP編集',
                 'add'                   => 'IP追加'
+            ],
+            'ips_enable'    => [
+                'on'                    => '許可',
+                'off'                   => '禁止'
             ]
         ],
         'customer' => [

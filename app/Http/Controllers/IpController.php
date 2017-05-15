@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Yajra\Datatables\Facades\Datatables;
 use App\Models\Ip;
+use App\Models\Config;
 use App\Helper\Common;
 use App\Validators\IpValidator;
 
@@ -16,7 +17,9 @@ class IpController extends BaseController
     public function index(Request $request)
     {
         $messages = Common::getMessage($request);
-        return view('backend.modules.ips.index', compact('messages'));
+        $config = Config::first();
+        $ips_enable = $config ? $config->ips_enable : 0;
+        return view('backend.modules.ips.index', compact('messages', 'ips_enable'));
     }
 
     public function getAjaxData()
@@ -118,5 +121,18 @@ class IpController extends BaseController
             return redirect(route('ips.index'));
         }
 
+    }
+
+    public function postSetIpsConnection(Request $request)
+    {
+        try {
+            $ips_enable = $request->ips_enable;
+            $config = Config::firstOrNew([]);
+            $config->ips_enable = ($ips_enable == 'true') ? 1 : 0;
+            $config->save();
+            echo json_encode(['status' => 'success']);
+        } catch (\Exception $e) {
+            echo json_encode(['status' => 'fail']);
+        }
     }
 }

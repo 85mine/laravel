@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ip extends Model
+class Config extends Model
 {
-    protected $table = 'ips';
+    protected $table = 'config';
 
     protected $fillable = [
-        'ip_address', 'description', 'status'
+        'ips_enable'
     ];
 }
