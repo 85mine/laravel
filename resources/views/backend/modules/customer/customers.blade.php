@@ -180,6 +180,7 @@
                 var selected = $(this).attr('name').slice(4);
                 if(selected) {
                     $('.sml-delete-btn').removeClass( "btn-disable" ).addClass( "btn-danger" );
+                    $('.sml-select-all').prop('checked', false);
                     $('.sml-select-item').prop('checked', false);
                     $(this).parent().parent().find('.sml-select-item').prop('checked', true);;
 
