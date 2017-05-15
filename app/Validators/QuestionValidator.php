@@ -1,6 +1,5 @@
 <?php
 namespace App\Validators;
-
 class QuestionValidator
 {
     public function validateQuestion()
@@ -14,10 +13,10 @@ class QuestionValidator
 
     private function _defaultRule()
     {
-        return [
-            'question_content' => 'required',
-            'answer.*' => 'required'
-        ];
+        $rules = array();
+        $rules['question_content'] = 'required';
+        $rules['answer.*'] = 'required';
+        return $rules;
     }
 
     private function _defaultMessage()
@@ -27,10 +26,9 @@ class QuestionValidator
 
     private function _defaultAttribute()
     {
-        return [
-            'question_content' => trans('labels.label.question.column.content'),
-            'answer' => trans('labels.label.question.column.answer')
-        ];
+        $attribute = array();
+        $attribute['question_content'] = trans('labels.label.question.column.content');
+        return $attribute;
     }
 
 }

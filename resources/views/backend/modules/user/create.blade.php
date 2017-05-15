@@ -37,7 +37,7 @@
                         <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.user.list.status') }}</label>
                             <div class="col-sm-8">
-                                {!! Form::select('status', ['0' => trans('labels.label.user.create.disable'), '1' => trans('labels.label.user.create.active')],  null, ["id" => "status", "class" => "form-control m-b"]) !!}
+                                {!! Form::select('status', ['0' => trans('labels.label.user.create.disable'), '1' => trans('labels.label.user.create.active')],  null, ["id" => "status", "class" => "form-control"]) !!}
                             </div>
                         </div>
                     @endif
