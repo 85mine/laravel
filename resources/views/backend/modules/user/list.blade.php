@@ -90,10 +90,10 @@
 
                     },
                     {
-                        'targets': [0, 1, 3],
-                        "sClass": "text-center"
+                        'targets': [0, 3, 5],
+                        "sClass": "text-center "
                     },
-                    {"width": "50px", "targets": [0]},
+                    {"width": "30px", "targets": [0]},
                     {"width": "100px", "targets": [5]},
                     {"width": "100px", "targets": [3]}
                 ],
@@ -102,13 +102,21 @@
 
             $(document).on('click', '.delete', function () {
                 var $form = $('#form_delete'),
+                    selected_checkbox = $(this).closest('tr').find('input.check'),
+                    selected_checkbox_id = selected_checkbox.attr('id'),
                     id_input = $form.find('input[name="id"]'),
                     data_id = $(this).data('delete');
                 id_input.val(data_id);
 
                 //Tick on selected item
-                var $selectedItem = $(this);
-                $selectedItem.closest('tr').find('input[type=\'checkbox\']').attr('checked', true);
+                // Check on selected checkbox
+                if (selected_checkbox.is(':checked')) {
+                    $('input[type="checkbox"]').not('#' + selected_checkbox_id).prop("checked", false);
+                } else {
+                    $('input[type="checkbox"]:checked').prop("checked", false);
+                    selected_checkbox.trigger('click');
+                }
+
                 $.confirm({
                     icon: 'fa fa-warning',
                     title: '{{ trans('messages.common.confirm_title') }}',
@@ -120,7 +128,7 @@
                             $form.submit();
                         },
                         '{{ trans('messages.common.confirm_no') }}': function () {
-                            $selectedItem.closest('tr').find('input[type=\'checkbox\']').attr('checked', false);
+                            selected_checkbox.trigger('click');
                         }
                     }
                 });
