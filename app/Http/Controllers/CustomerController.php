@@ -42,10 +42,6 @@ class CustomerController extends BaseController
         }
     }
 
-    public function getDetail(){
-
-    }
-
     public function getEdit(Request $request, $id){
         $customer = Customer::find($id);
 
@@ -84,5 +80,20 @@ class CustomerController extends BaseController
 //        dd($data);
 //        $data = Customer::all();
         return Datatables::of($data)->make(true);
+    }
+
+    public function postDelete(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $ids = explode(",", $id);
+            Customer::whereIn('id', $ids)->delete();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
+            return redirect()->intended(route('customer.getCustomers'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_failed')]);
+            return redirect(route('customer.getCustomers'));
+        }
+
     }
 }
