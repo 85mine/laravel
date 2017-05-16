@@ -120,7 +120,8 @@ return [
             'column'        => [
                 'content'               => '質問',
                 'answer'                => '回答',
-                'status'                => 'ステータス'
+                'status'                => 'ステータス',
+                'type'                  => '質問タイプ'
             ],
             'breadcrumb'    => [
                 'edit'                  => '質問編集',
