@@ -108,7 +108,7 @@ class CompanyController extends BaseController
 
     public function delete(Request $request) {
         try {
-            $id = $request->id;
+            $id = $request->s_ids;
             $company = explode(",", $id);
             Company::whereIn('id', $company)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);

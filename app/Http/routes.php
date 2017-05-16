@@ -52,7 +52,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
             Route::get('/company/add', 'CompanyController@getAdd')->name('company.getAdd');
             Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
-            Route::get('/company/edit/{id}', 'CompanyController@getEdit')->name('company.getEdit');
+            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.getEdit');
             Route::post('/company/edit', 'CompanyController@postEdit')->name('company.postEdit');
             Route::post('/company/delete', 'CompanyController@delete')->name('company.delete');
             // Question management

@@ -1,13 +1,7 @@
 @extends('backend.layout.main')
 @section('title', trans('labels.title.user.list'))
 @section('extend-css')
-    <!-- Magic-Check -->
-    <link href="{{url('assets/css/plugins/magic-check/magic-check.min.css')}}" rel="stylesheet">
-    <!-- dataTables -->
-    <link href="{{url('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
-    <!-- jquery-confirm! -->
-    {{--Demo: https://craftpip.github.io/jquery-confirm/--}}
-    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}" rel="stylesheet">
+    @include('backend.layout.sml-table.header')
 @endsection
 @section('breadcrumb')
     <h2>{{ trans('labels.title.user.list') }}</h2>
@@ -139,6 +133,6 @@
             ],
         });
     </script>
-    @include('backend.layout.main_table')
+    @include('backend.layout.sml-table.footer')
     <script src="{{url('assets/js/sml-table.js')}}"></script>
 @endsection
