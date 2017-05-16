@@ -51,6 +51,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('survey.index') }}">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">{{trans('labels.label.survey.menu')}}</span>
+                    {{--<span class="fa arrow"></span>--}}
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">QR code</span>

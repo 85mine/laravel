@@ -17,7 +17,9 @@ class SurveyController extends BaseController
 
     public function getAjaxList()
     {
-        $surveys = Survey::with('customer')->get();
+        $surveys = Survey::with(['customer' => function($query){
+                        $query->select('first_name', 'email');
+                    }])->get();
 
         foreach ($surveys as &$survey) {
             $id = $survey['id'];

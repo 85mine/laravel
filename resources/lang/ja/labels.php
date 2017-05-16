@@ -139,6 +139,7 @@ return [
                 'email'              => 'メール',
                 'createDate'         => 'Created Date'
             ],
+            'menu' => 'Survey'
         ]
     ],
 
