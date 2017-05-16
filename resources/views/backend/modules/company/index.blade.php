@@ -73,7 +73,8 @@
     <script>
         $(document).ready(function () {
             $('.company_table').DataTable({
-                pageLength: 25,
+                pageLength: 10,
+                destroy: true,
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -97,22 +98,33 @@
                     {
                         'aTargets': ['nosort'],
                         'bSortable': false
-
                     },
                     {
                         'targets': [0, 3, 4, 7, 8],
-                        "sClass": "text-center"
+                        "sClass": "text-center "
                     },
-                    {"width": "50px", "targets": [0]},
-                    {"width": "120px", "targets": [8]},
+                    {"width": "30px", "targets": [0]},
+                    {"width": "100px", "targets": [8]}
                 ],
+                order: [[1, 'desc']]
             });
 
             $(document).on('click', '.delete', function () {
                 var $form = $('#form_delete'),
+                    selected_checkbox = $(this).closest('tr').find('input.check'),
+                    selected_checkbox_id = selected_checkbox.attr('id'),
                     id_input = $form.find('input[name="id"]'),
                     data_id = $(this).data('delete');
                 id_input.val(data_id);
+
+                //Tick on selected item
+                // Check on selected checkbox
+                if (selected_checkbox.is(':checked')) {
+                    $('input[type="checkbox"]').not('#' + selected_checkbox_id).prop("checked", false);
+                } else {
+                    $('input[type="checkbox"]:checked').prop("checked", false);
+                    selected_checkbox.trigger('click');
+                }
 
                 $.confirm({
                     icon: 'fa fa-warning',
@@ -125,7 +137,7 @@
                             $form.submit();
                         },
                         '{{ trans('messages.common.confirm_no') }}': function () {
-                            // do something
+                            selected_checkbox.trigger('click');
                         }
                     }
                 });
@@ -156,7 +168,7 @@
                         }
                     }
                 });
-            })
+            });
         });
 
     </script>

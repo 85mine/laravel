@@ -32,6 +32,7 @@ return [
     'title.question'                    => '質問リスト',
     'title.question.add'                => '質問追加',
     'title.question.edit'               => '質問追加',
+    'title.survey.list'                 => 'Survey List',
 
     // Label
     'label' => [
@@ -77,6 +78,10 @@ return [
             'breadcrumb'    => [
                 'edit'                  => 'IP編集',
                 'add'                   => 'IP追加'
+            ],
+            'ips_enable'    => [
+                'on'                    => '許可',
+                'off'                   => '禁止'
             ]
         ],
         'customer' => [
@@ -87,6 +92,7 @@ return [
                 'last_name'             => 'Last name',
                 'phone_number'          => 'Phone number',
                 'email'                 => 'Email address',
+                'action'                => 'Action'
             ],
             'breadcrumb'    => [
                 'create'                => 'Create customer',
@@ -127,6 +133,13 @@ return [
                 'edit'                  => '質問編集',
                 'add'                   => '質問追加'
             ]
+        ],
+        'survey' => [
+            'column'        => [
+                'name'               => '名前',
+                'email'              => 'メール',
+                'createDate'         => 'Created Date'
+            ],
         ]
     ],
 

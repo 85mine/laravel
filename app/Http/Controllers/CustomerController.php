@@ -12,9 +12,9 @@ use Yajra\Datatables\Datatables;
 
 class CustomerController extends BaseController
 {
-    public function getCustomers(){
-        $data = Customer::paginate(50);
-        return view('backend.modules.customer.customers')->with("customers",$data);
+    public function getCustomers(Request $request){
+        $messages = Common::getMessage($request);
+        return view('backend.modules.customer.customers',compact('messages'));
     }
 
     public function getCreateCustomer(Request $request){
@@ -40,10 +40,6 @@ class CustomerController extends BaseController
             Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.add_failed')]);
             return redirect(route('customer.getCreate', [$request->id]))->withInput();
         }
-    }
-
-    public function getDetail(){
-
     }
 
     public function getEdit(Request $request, $id){
@@ -84,5 +80,20 @@ class CustomerController extends BaseController
 //        dd($data);
 //        $data = Customer::all();
         return Datatables::of($data)->make(true);
+    }
+
+    public function postDelete(Request $request)
+    {
+        try {
+            $id = $request->s_id;
+            $ids = explode(",", $id);
+            Customer::whereIn('id', $ids)->delete();
+            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
+            return redirect()->intended(route('customer.getCustomers'));
+        } catch (\Exception $e) {
+            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_failed')]);
+            return redirect(route('customer.getCustomers'));
+        }
+
     }
 }

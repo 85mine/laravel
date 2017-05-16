@@ -41,6 +41,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
             Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
             Route::post('/ips/delete', 'IpController@postDelete')->name('ips.postDelete');
+            Route::post('/ips/enable_ips', 'IpController@postSetIpsConnection')->name('ips.postSetConnection');
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
@@ -67,9 +68,9 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/customers', 'CustomerController@getCustomers')->name('customer.getCustomers');
             Route::get('/customer/create', 'CustomerController@getCreateCustomer')->name('customer.getCreate');
             Route::post('/customer/create', 'CustomerController@postCreateCustomer')->name('customer.postCreate');
-            Route::get('/customer/detail/{id}', 'CustomerController@getDetail')->name('customer.getDetail');
-            Route::get('/customer/edit/{id}', 'CustomerController@getEdit')->name('customer.getEdit');
-            Route::post('/customer/edit/{id}', 'CustomerController@postEdit')->name('customer.postEdit');
+            Route::post('/customer/delete', 'CustomerController@postDelete')->name('customer.postDelete');
+            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.getEdit');
+            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.postEdit');
             Route::get('customer/getAjaxData', 'CustomerController@getAjaxData')->name('customer.getAjaxData');
 
         });
@@ -83,6 +84,10 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/confirm-email', 'UserController@getConfirmEmail')->name('user.getConfirmEmail');
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         });
+
+        // Survey management
+        Route::get('/surveys/', 'SurveyController@index')->name('survey.index');
+        Route::get('/surveys/ajaxList', 'SurveyController@getAjaxList')->name('survey.ajaxList');
 
         // Account
         Route::group(['prefix' => 'user'], function () {
