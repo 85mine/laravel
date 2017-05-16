@@ -4,11 +4,7 @@
 @endsection
 
 @section('extend-css')
-    <link href="{{ URL::asset('assets/css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
-    <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}"
-          rel="stylesheet">
-    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}"
-          rel="stylesheet">
+    @include('backend.layout.sml-table.header')
 @endsection
 
 @section('breadcrumb')
@@ -27,144 +23,125 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-content">
-                    <div class="over-hidden bulk-action">
-                        <a href="{{ route('question.add') }}"
-                           class="btn btn-success"><i
-                                    class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
-                        <a href="javascript:;"
-                           class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
-                                    class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
+                <div class="row p-w-sm">
+                    <div class="sml-box-header">
+                        {!! $messages !!}
+                        {{--Add/Delete Button--}}
+                        <div class="over-hidden bulk-action">
+                            <a href="{{ route('question.add') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
+                            <a href="{{ route('question.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <thead>
-                            <tr>
-                                <th class="nosort text-center">
-                                    <div class="checkbox checkbox-success">
-                                        <input id="checkAll" type="checkbox" class="check-all" data-target="tbody">
-                                        <label for="checkAll"></label>
-                                    </div>
-                                </th>
-                                <th>{{ trans('labels.label.question.column.content') }}</th>
-                                <th>{{ trans('labels.label.question.column.answer') }}</th>
-                                <th>{{ trans('labels.label.question.column.status') }}</th>
-                                <th class="nosort"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                    <div class="sml-box">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover dataTables">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <input class="sml-select-all magic-checkbox" type="checkbox" id="btn-select-all">
+                                        <label for="btn-select-all"></label>
+                                    </th>
+                                    <th>{{ trans('labels.label.question.column.content') }}</th>
+                                    <th>{{ trans('labels.label.question.column.answer') }}</th>
+                                    <th>{{ trans('labels.label.question.column.status') }}</th>
+                                    <th>{{ trans('labels.label.common.action') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{--DataTables--}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="sml-box-footer">
 
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {!! Form::open(array('route' => array('question.postDelete'), 'method' => 'POST', 'id' => 'form_delete', 'class' => 'form-horizontal')) !!}
-    {!! Form::hidden('id', null) !!}
+    {!! Form::open(array('route' => array('question.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
+    {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
 @section('extend-js')
+    <!-- dataTables -->
     <script src="{{url('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
-    <script src="{{url('assets/js/common.js')}}"></script>
-
     <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').DataTable({
-                pageLength: 25,
-                responsive: true,
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    "url": '{!! route('question.ajaxData') !!}',
-                    "type": "GET"
+    <script type="text/javascript">
+        $('.dataTables').DataTable({
+            pageLength: 10,
+            destroy: true,
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            order: [[1, 'desc']],
+            ajax: {
+                "url": '{!! route('question.ajaxData') !!}',
+                "type": "GET"
+            },
+            aoColumnDefs:[
+                {
+                    orderable: false,
+                    bSortable: false,
+                    render: function ( data, type, row ) {
+                        return '<input type="checkbox" '  + ' id="input_' + row.id + '" value="' + row.id + '"'+ ' class="sml-select-item magic-checkbox"/>' +
+                            '<label class="pull-left"' + ' for="input_' + row.id +'"></label>';
+                    },
+                    aTargets: [0]
                 },
-                aoColumns: [
-                    {data: 'checkbox'},
-                    {data: 'content'},
-                    {data: 'answer'},
-                    {data: 'status'},
-                    {data: 'buttons'}
-                ],
-                aoColumnDefs: [
-                    {
-                        'aTargets': ['nosort'],
-                        'bSortable': false
-
+                {
+                    mData: "content",
+                    aTargets: [1]
+                },
+                {
+                    mData: "answer",
+                    render: function ( data, type, row ) {
+                        var range = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+                        var result = '';
+                        data = JSON.parse(data);
+                        data.forEach(function(v,i) {
+                            result += '<span class="label m-xs">' + range[i] + ': ' + v + '</span> ';
+                        });
+                        return result;
                     },
-                    {
-                        'targets': [0,3,4],
-                        "sClass": "text-center",
-
+                    aTargets: [2]
+                },
+                {
+                    mData: "status",
+                    render: function ( data, type, row ) {
+                        switch(data){
+                            case 0:
+                                data = '<span class="label label-danger">{{trans('labels.label.common.status_disable')}}</span>';
+                                break;
+                            case 1:
+                                data = '<span class="label label-primary">{{trans('labels.label.common.status_active')}}</span>';
+                                break;
+                            default:
+                                data = '<span class="label"></span>';
+                                break;
+                        }
+                        return data;
                     },
-                    {"width": "30px", "targets": [0]},
-                    {"width": "100px", "targets": [4]},
-                ],
-                order: [[1, 'desc']]
-            });
-
-            $(document).on('click', '.delete', function () {
-                var $this = $(this),
-                    selected_checkbox = $this.closest('tr').find('input.check'),
-                    selected_checkbox_id = selected_checkbox.attr('id'),
-                    $form = $('#form_delete'),
-                    id_input = $form.find('input[name="id"]'),
-                    data_id = $this.data('delete');
-                id_input.val(data_id);
-
-                // Check on selected checkbox
-                if (selected_checkbox.is(':checked')) {
-                    $('input[type="checkbox"]').not('#' + selected_checkbox_id).prop("checked", false);
-                } else {
-                    $('input[type="checkbox"]:checked').prop("checked", false);
-                    selected_checkbox.trigger('click');
-                }
-                $.confirm({
-                    icon: 'fa fa-warning',
-                    title: '{{ trans('messages.common.confirm_title') }}',
-                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
-                    animation: 'opacity',
-                    closeAnimation: 'scale',
-                    buttons: {
-                        '{{ trans('messages.common.confirm_yes') }}': function () {
-                            $form.submit();
-                        },
-                        '{{ trans('messages.common.confirm_no') }}': function () {
-                            // do something
-                        }
-                    }
-                });
-            });
-
-            $(document).on('click', '.btn-delete-submit', function () {
-                var check_box = $('input[type="checkbox"]:checked'),
-                    $form = $('#form_delete'),
-                    id_input = $form.find('input[name="id"]'),
-                    temp_arr = [];
-                $.each(check_box, function () {
-                    var $val = $(this).val();
-                    temp_arr.push($val);
-                });
-                id_input.val(temp_arr);
-                $.confirm({
-                    icon: 'fa fa-warning',
-                    title: '{{ trans('messages.common.confirm_title') }}',
-                    content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
-                    animation: 'opacity',
-                    closeAnimation: 'scale',
-                    buttons: {
-                        '{{ trans('messages.common.confirm_yes') }}': function () {
-                            $form.submit();
-                        },
-                        '{{ trans('messages.common.confirm_no') }}': function () {
-                            // do something
-                        }
-                    }
-                });
-            })
-
+                    aTargets: [3]
+                },
+                {
+                    orderable: false,
+                    bSortable: false,
+                    render: function ( data, type, row ) {
+                        return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
+                            '<a href="{{route('question.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
+                    },
+                    aTargets: [4]
+                },
+                {
+                    aTargets: [0, 3, 4],
+                    sClass: "text-center"
+                },
+            ],
         });
     </script>
+    @include('backend.layout.sml-table.footer')
+    <script src="{{url('assets/js/sml-table.js')}}"></script>
 @endsection

@@ -46,7 +46,7 @@
                                     <th>{{trans('labels.label.customer.column.last_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.phone_number')}}</th>
                                     <th>{{trans('labels.label.customer.column.email')}}</th>
-                                    <th>{{trans('labels.label.customer.column.action')}}</th>
+                                    <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

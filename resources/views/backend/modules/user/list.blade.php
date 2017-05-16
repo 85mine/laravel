@@ -40,7 +40,7 @@
                                     <th>{{trans('labels.label.user.list.email')}}</th>
                                     <th>{{trans('labels.label.user.list.status')}}</th>
                                     <th>{{trans('labels.label.user.list.company')}}</th>
-                                    <th>{{trans('labels.label.customer.column.action')}}</th>
+                                    <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -100,10 +100,10 @@
                     render: function ( data, type, row ) {
                         switch(data){
                             case 0:
-                                data = '<span class="label label-danger">{{trans('labels.label.common.status_active')}}</span>';
+                                data = '<span class="label label-danger">{{trans('labels.label.common.status_disable')}}</span>';
                                 break;
                             case 1:
-                                data = '<span class="label label-primary">{{trans('labels.label.common.status_disable')}}</span>';
+                                data = '<span class="label label-primary">{{trans('labels.label.common.status_active')}}</span>';
                                 break;
                             default:
                                 data = '<span class="label"></span>';

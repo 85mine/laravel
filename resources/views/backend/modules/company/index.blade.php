@@ -44,7 +44,7 @@
                                     <th>{{ trans('labels.label.company.column.company_website') }}</th>
                                     <th>{{ trans('labels.label.company.column.representative_name') }}</th>
                                     <th>{{ trans('labels.label.company.column.representative_mobile') }}</th>
-                                    <th>{{trans('labels.label.customer.column.action')}}</th>
+                                    <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

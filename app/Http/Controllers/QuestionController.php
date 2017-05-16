@@ -10,8 +10,9 @@ use App\Models\Question;
 use App\Helper\Common;
 
 class QuestionController extends BaseController {
-    public function index() {
-        return view('backend.modules.question.index');
+    public function index(Request $request) {
+        $messages = Common::getMessage($request);
+        return view('backend.modules.question.index', compact('messages'));
     }
 
     public function getAdd(Request $request) {
@@ -104,7 +105,7 @@ class QuestionController extends BaseController {
     public function postDelete(Request $request)
     {
         try {
-            $id = $request->id;
+            $id = $request->s_ids;
             $ids = explode(",", $id);
             Question::whereIn('id', $ids)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.question.delete_success')]);
@@ -118,29 +119,6 @@ class QuestionController extends BaseController {
 
     public function ajaxData() {
         $data = Question::all();
-        $list_status = config('config.status_question');
-        $range_AZ = range('A','Z');
-        foreach ($data as &$_data) {
-            $id = $_data['id'];
-            $edit_url = route('question.getEdit', [$id]);
-            // Checkbox
-            $_data['checkbox'] = '<div class="checkbox checkbox-success">
-                <input id="checkbox' . $id . '" type="checkbox" class="check" value="' . $id . '">
-                <label for="checkbox' . $id . '"></label>
-            </div>';
-
-            $list_answer = json_decode($_data['answer']);
-            $_data['answer'] = '';
-            foreach ($list_answer as $key => $answer){
-                $_data['answer'] .= '<p>'.$range_AZ[$key] .' : '.$answer.'</p>';
-            }
-
-            $_data['status'] = $list_status[$_data['status']];
-            $_data['buttons'] = '<div class="btn-group">';
-            $_data['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
-            $_data['buttons'] .= '<a href="javascript:;" class="btn btn-danger delete" title="' . trans('labels.label.common.btnDelete') . '" data-delete="' . $id . '"><i class="fa fa-remove"></i></a>';
-            $_data['buttons'] .= '</div>';
-        }
         return Datatables::of($data)->make(true);
     }
 }

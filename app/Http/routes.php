@@ -60,7 +60,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/question/ajaxData', 'QuestionController@ajaxData')->name('question.ajaxData');
             Route::get('/question/add', 'QuestionController@getAdd')->name('question.add');
             Route::post('/question/postAdd', 'QuestionController@postAdd')->name('question.postAdd');
-            Route::get('/question/edit/{id}', 'QuestionController@getEdit')->name('question.getEdit');
+            Route::get('/question/edit/{id?}', 'QuestionController@getEdit')->name('question.getEdit');
             Route::post('/question/postEdit', 'QuestionController@postEdit')->name('question.postEdit');
             Route::post('/question/postDelete', 'QuestionController@postDelete')->name('question.postDelete');
 

@@ -49,7 +49,8 @@ return [
             'nameOfAdminEmail'          => 'Admin',
             'bulkDelete'                => '削除',
             'status_active'             => 'active',
-            'status_disable'             => 'disable',
+            'status_disable'            => 'disable',
+            'action'                    => 'action',
         ],
         'user' => [
             'confirm_email' => [
@@ -94,7 +95,6 @@ return [
                 'last_name'             => 'Last name',
                 'phone_number'          => 'Phone number',
                 'email'                 => 'Email address',
-                'action'                => 'Action'
             ],
             'breadcrumb'    => [
                 'create'                => 'Create customer',
