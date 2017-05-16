@@ -48,6 +48,7 @@
                                 </th>
                                 <th>{{ trans('labels.label.question.column.content') }}</th>
                                 <th>{{ trans('labels.label.question.column.answer') }}</th>
+                                <th>{{ trans('labels.label.question.column.type') }}</th>
                                 <th>{{ trans('labels.label.question.column.status') }}</th>
                                 <th class="nosort"></th>
                             </tr>
@@ -85,6 +86,7 @@
                     {data: 'checkbox'},
                     {data: 'content'},
                     {data: 'answer'},
+                    {data: 'type'},
                     {data: 'status'},
                     {data: 'buttons'}
                 ],
@@ -95,12 +97,12 @@
 
                     },
                     {
-                        'targets': [0,3,4],
+                        'targets': [0,4,5],
                         "sClass": "text-center",
 
                     },
                     {"width": "30px", "targets": [0]},
-                    {"width": "100px", "targets": [4]},
+                    {"width": "100px", "targets": [5]},
                 ],
                 order: [[1, 'desc']]
             });

@@ -15,6 +15,7 @@ class QuestionController extends BaseController {
     }
 
     public function getAdd(Request $request) {
+        $list_type = config('config.type_question');
         $question = new Question();
         $route = 'question.postAdd';
         $breadcrumb = trans('labels.label.question.breadcrumb.add');
@@ -22,10 +23,10 @@ class QuestionController extends BaseController {
         if(!empty($messages)){
             $question->content = $request->old('question_content');
             $question->answer = json_encode($request->old('answer'));
-            $question->status = json_encode($request->old('answer'));
+            $question->status = $request->old('status');
+            $question->answer = $request->old('type');
         }
-
-        return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages'));
+        return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages','list_type'));
     }
 
     public function postAdd(Request $request) {
@@ -41,9 +42,10 @@ class QuestionController extends BaseController {
                 return redirect(route('question.add'))->withInput();
             }
             $question = new Question();
-            $question->content = trim($request->question_content);
-            $question->answer = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
-            $question->status = $request->status;
+            $question->content  = trim($request->question_content);
+            $question->answer   = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
+            $question->status   = $request->status;
+            $question->type     = $request->type;
             $question->save();
             return redirect()->intended(route('question.index'));
 
@@ -53,8 +55,8 @@ class QuestionController extends BaseController {
         }
     }
 
-    public function getEdit(Request $request, $id)
-    {
+    public function getEdit(Request $request, $id){
+        $list_type = config('config.type_question');
         $question = Question::find($id);
         if (!$question) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
@@ -64,11 +66,12 @@ class QuestionController extends BaseController {
         $breadcrumb = trans('labels.label.question.breadcrumb.edit');
         $messages = Common::getMessage($request);
         if(!empty($messages)){
-            $question->content = $request->old('question_content');
-            $question->answer = json_encode($request->old('answer'));
-            $question->status = json_encode($request->old('answer'));
+            $question->content  = $request->old('question_content');
+            $question->answer   = json_encode($request->old('answer'));
+            $question->status   = $request->old('status');
+            $question->type     = $request->old('type');
         }
-        return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages'));
+        return view('backend.modules.question.form', compact('question', 'route', 'breadcrumb', 'messages','list_type'));
     }
 
     public function postEdit(Request $request)
@@ -87,11 +90,10 @@ class QuestionController extends BaseController {
             }
 
             $question = Question::find($request->id);
-
-
-            $question->content = trim($request->question_content);
-            $question->answer = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
-            $question->status = $request->status;
+            $question->content  = trim($request->question_content);
+            $question->answer   = preg_replace('/\s{2,}/', ' ', json_encode($request->answer));
+            $question->status   = $request->status;
+            $question->type     = $request->type;
             $question->save();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.question.edit_success')]);
             return redirect(route('question.index'));
@@ -119,6 +121,7 @@ class QuestionController extends BaseController {
     public function ajaxData() {
         $data = Question::all();
         $list_status = config('config.status_question');
+        $list_type = config('config.type_question');
         $range_AZ = range('A','Z');
         foreach ($data as &$_data) {
             $id = $_data['id'];
@@ -134,7 +137,7 @@ class QuestionController extends BaseController {
             foreach ($list_answer as $key => $answer){
                 $_data['answer'] .= '<p>'.$range_AZ[$key] .' : '.$answer.'</p>';
             }
-
+            $_data['type'] = isset($list_type[$_data['type']]) ? $list_type[$_data['type']] :'';
             $_data['status'] = $list_status[$_data['status']];
             $_data['buttons'] = '<div class="btn-group">';
             $_data['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
