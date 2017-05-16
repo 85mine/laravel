@@ -98,4 +98,9 @@ Route::group(['middleware' => 'ip'], function () {
         });
 
     });
+
 });
+
+//Survey
+Route::get('/index', 'SurveyController@index')->name('index');
+Route::get('/survey', 'SurveyController@getSurvey')->name('survey');

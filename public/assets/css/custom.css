@@ -333,3 +333,38 @@ td input[type="checkbox"] {
     width: 100%;
     vertical-align: top;
 }
+
+#centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+#survey {
+    position: relative;
+    width: 50%;
+    height: 120px;
+    margin: 50px auto;
+}
+
+#survey h2 {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#survey .question {
+    margin-top: 25px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+#survey .question p {
+    font-size: 1.6em;
+}
+
+#survey button {
+    margin: 20px auto;
+    padding: 10px;
+}
