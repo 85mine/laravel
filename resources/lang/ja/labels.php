@@ -32,6 +32,7 @@ return [
     'title.question'                    => '質問リスト',
     'title.question.add'                => '質問追加',
     'title.question.edit'               => '質問追加',
+    'title.survey.list'                 => 'Survey List',
 
     // Label
     'label' => [
@@ -131,6 +132,13 @@ return [
                 'edit'                  => '質問編集',
                 'add'                   => '質問追加'
             ]
+        ],
+        'survey' => [
+            'column'        => [
+                'name'               => '名前',
+                'email'              => 'メール',
+                'createDate'         => 'Created Date'
+            ],
         ]
     ],
 

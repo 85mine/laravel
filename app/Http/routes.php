@@ -85,6 +85,10 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/confirm-email', 'UserController@postConfirmEmail')->name('user.postConfirmEmail');
         });
 
+        // Survey management
+        Route::get('/surveys/', 'SurveyController@index')->name('survey.index');
+        Route::get('/surveys/ajaxList', 'SurveyController@getAjaxList')->name('survey.ajaxList');
+
         // Account
         Route::group(['prefix' => 'user'], function () {
             // List account
