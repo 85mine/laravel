@@ -37,22 +37,22 @@
                         </div>
                         <div class="form-group {{ $errors->has('answer') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.answer') }}</label>
-                            <div class="col-sm-9 list_answer">
-                                @if(!empty($question->answer))
-                                    <?php $list_answer = json_decode($question->answer);?>
-                                    @foreach($list_answer as $key => $answer)
-                                        <div class="col-xs-10 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value="{{$answer}}"></div>
-                                        <div class="col-xs-2 btn_remove"><button type="button" class="btn btn-danger remove" onclick="removeAnswer(this);"><i class="fa fa-times"></i></button></div>
-                                    @endforeach
-                                @else
-                                    <div class="col-xs-10 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value=""></div>
-                                    <div class="col-xs-2 btn_remove"><button type="button" class="btn btn-danger remove" onclick="removeAnswer(this);"><i class="fa fa-times"></i></button></div>
-                                @endif
+                            <div class="col-sm-10 list_answer">
+                                <?php
+                                    $ranger_answer = range('A','E');
+                                    $list_answer = json_decode($question->answer);
+                                ?>
+                                @foreach($ranger_answer as $key => $item)
+                                    <?php $answer =  isset($list_answer[$key]) ? $list_answer[$key] : '';?>
+                                    <div class="col-xs-1 no-padding"> <label class="control-label">{{$item."."}}</label></div>
+                                    <div class="col-xs-11 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value="{{$answer}}"></div>
+                                @endforeach
                             </div>
-                            <div class="col-sm-1 list_button">
+                            {{--<div class="col-sm-1 list_button">
                                 <button type="button" class="btn btn-block btn-warning m-b-md addmore"><i class="fa fa-plus"></i></button>
-                            </div>
+                            </div>--}}
                         </div>
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.status') }}</label>
                             <div class="col-sm-10">
@@ -66,6 +66,16 @@
                                         <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="0" {{ $question->status == 0 ? 'checked':''}} > Pending
                                     </label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('type') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.type') }}</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="type">
+                                    @foreach($list_type as $type_value => $type)
+                                        <option value="{{$type_value}}" {{ $question->type == $type_value ? 'selected':''}}>{{$type}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

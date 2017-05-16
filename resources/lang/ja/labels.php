@@ -32,6 +32,7 @@ return [
     'title.question'                    => '質問リスト',
     'title.question.add'                => '質問追加',
     'title.question.edit'               => '質問追加',
+    'title.survey.list'                 => 'Survey List',
 
     // Label
     'label' => [
@@ -77,6 +78,10 @@ return [
             'breadcrumb'    => [
                 'edit'                  => 'IP編集',
                 'add'                   => 'IP追加'
+            ],
+            'ips_enable'    => [
+                'on'                    => '許可',
+                'off'                   => '禁止'
             ]
         ],
         'customer' => [
@@ -121,12 +126,21 @@ return [
             'column'        => [
                 'content'               => '質問',
                 'answer'                => '回答',
-                'status'                => 'ステータス'
+                'status'                => 'ステータス',
+                'type'                  => '質問タイプ'
             ],
             'breadcrumb'    => [
                 'edit'                  => '質問編集',
                 'add'                   => '質問追加'
             ]
+        ],
+        'survey' => [
+            'column'        => [
+                'name'               => '名前',
+                'email'              => 'メール',
+                'createDate'         => 'Created Date'
+            ],
+            'menu' => 'Survey'
         ]
     ],
 

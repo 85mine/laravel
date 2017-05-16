@@ -2,6 +2,7 @@
 @section('title', trans('labels.title.ips'))
 @section('extend-css')
     <link href="{{url('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/plugins/switchery/switchery.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css')}}"
           rel="stylesheet">
     <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}"
@@ -33,7 +34,12 @@
                         <a href="javascript:;"
                            class="btn btn-danger btn-delete-submit m-r-10 hidden" data-action="deleted"><i
                                     class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.bulkDelete') }}</a>
+                        <input id="ips_enable" type="checkbox"
+                               class="js-switch" {{ ($ips_enable == 1) ? 'checked' : '' }} />
+                        <label id="ips_enable_label"
+                               for="ips_enable">{{ ($ips_enable == 1) ? trans('labels.label.ips.ips_enable.on') : trans('labels.label.ips.ips_enable.off') }}</label>
                     </div>
+
                     <div class="table-responsive">
                         <table id="ip_table" class="table table-striped table-bordered table-hover">
                             <thead>
@@ -64,6 +70,7 @@
 @endsection
 @section('extend-js')
     <script src="{{url('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
+    <script src="{{url('assets/js/plugins/switchery/switchery.js')}}"></script>
     <script src="{{url('assets/js/common.js')}}"></script>
     <script src="{{url('assets/js/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
     <script>
@@ -73,7 +80,6 @@
                 responsive: true,
                 processing: true,
                 serverSide: true,
-//                bAutoWidth: false,
                 ajax: {
                     "url": '{!! route('ips.ajaxData') !!}',
                     "type": "GET"
@@ -160,8 +166,31 @@
                         }
                     }
                 });
-            })
+            });
 
+            // switch button
+            var elem = document.querySelector('.js-switch');
+            var switchery = new Switchery(elem, {color: '#1AB394'});
+            var switchery_label = $('#ips_enable_label');
+            elem.onchange = function () {
+                var elem_checked = elem.checked,
+                        switchery_label_text = (elem_checked) ? '{{ trans('labels.label.ips.ips_enable.on') }}' : '{{ trans('labels.label.ips.ips_enable.off') }}';
+
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route('ips.postSetConnection') }}',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        ips_enable: elem_checked
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status = 'success') {
+                            switchery_label.text(switchery_label_text);
+                        }
+                    }
+                })
+            };
         });
     </script>
 @endsection
