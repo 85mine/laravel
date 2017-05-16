@@ -140,7 +140,9 @@ function checkAll($control)
 }
 
 $(function () {
+    // checkAll checkbox
     checkAll($('input.check-all, a.check-all, label.check-all'));
+
     // delete button
     $(document).on('click', 'input[type="checkbox"]', function () {
         var checkbox_length = $('input.check:checked').length;
