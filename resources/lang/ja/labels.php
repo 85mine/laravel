@@ -47,7 +47,9 @@ return [
             'btnEdit'                   => '編集',
             'btnDelete'                 => '削除',
             'nameOfAdminEmail'          => 'Admin',
-            'bulkDelete'                => '削除'
+            'bulkDelete'                => '削除',
+            'status_active'             => 'active',
+            'status_disable'             => 'disable',
         ],
         'user' => [
             'confirm_email' => [

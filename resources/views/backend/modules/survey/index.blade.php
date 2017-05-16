@@ -97,7 +97,7 @@
             $('.sml-select-item').prop('checked', false);
 
             var form = $('#sml-form-delete-submit');
-            var data_to_delete = form.find('input[type="hidden"][name="s_id"]');
+            var data_to_delete = form.find('input[type="hidden"][name="s_ids"]');
 
             $('.sml-select-all').change(function() {
                 if(this.checked) {

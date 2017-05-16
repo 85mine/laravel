@@ -69,7 +69,7 @@
         </div>
     </div>
     {!! Form::open(array('route' => array('customer.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
-    {!! Form::hidden('s_id', null) !!}
+    {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
 
@@ -133,91 +133,9 @@
                     aTargets: [0, 6],
                     sClass: "text-center"
                 },
-//                {
-//                    width: "30px",
-//                    aTargets: [0]
-//                },
-
             ],
         });
     </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.sml-select-all').prop('checked', false);
-            $('.sml-select-item').prop('checked', false);
-
-            var form = $('#sml-form-delete-submit');
-            var data_to_delete = form.find('input[type="hidden"][name="s_id"]');
-
-            $('.sml-select-all').change(function() {
-                if(this.checked) {
-                    $('.sml-select-all').prop('checked', true);
-                    $('.sml-select-item').prop('checked', true);
-                }else{
-                    $('.sml-select-all').prop('checked', false);
-                    $('.sml-select-item').prop('checked', false);
-                }
-            });
-
-            $('.sml-select-all, .sml-select-item').change(function() {
-                if(get_list_checked().length>0){
-                    $('.sml-delete-btn').removeClass( "btn-disable" ).addClass( "btn-danger" );
-                }else {
-                    $('.sml-delete-btn').removeClass( "btn-danger" ).addClass( "btn-disable" );
-                }
-            });
-
-            $('.sml-delete-btn').on('click',function () {
-                var selected = get_list_checked();
-                if(selected.length === 0){
-                    return false;
-                }
-                data_to_delete.val(selected);
-                show_confirm_box(form);
-            });
-
-            $('.sml-select-item-delete').on('click',function () {
-                var selected = $(this).attr('name').slice(4);
-                if(selected) {
-                    $('.sml-delete-btn').removeClass( "btn-disable" ).addClass( "btn-danger" );
-                    $('.sml-select-all').prop('checked', false);
-                    $('.sml-select-item').prop('checked', false);
-                    $(this).parent().parent().find('.sml-select-item').prop('checked', true);;
-
-                    data_to_delete.val(selected);
-                    show_confirm_box(form);
-                }
-            });
-
-        });
-
-        function get_list_checked() {
-            var selected = [];
-            var list = $('input[type=checkbox].sml-select-item');
-            $.each(list,function(){
-                if(this.checked){
-                    selected.push($(this).val());
-                }
-            });
-            return selected;
-        }
-
-        function show_confirm_box(form) {
-            $.confirm({
-                icon: 'fa fa-warning',
-                title: '{{ trans('messages.common.confirm_title') }}',
-                content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
-                animation: 'opacity',
-                closeAnimation: 'scale',
-                buttons: {
-                    '{{ trans('messages.common.confirm_yes') }}': function () {
-                        form.submit();
-                    },
-                    '{{ trans('messages.common.confirm_no') }}': function () {
-                        // do something
-                    }
-                }
-            });
-        }
-    </script>
+    @include('backend.layout.main_table')
+    <script src="{{url('assets/js/sml-table.js')}}"></script>
 @endsection

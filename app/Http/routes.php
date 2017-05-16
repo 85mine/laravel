@@ -99,7 +99,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/delete', 'UserController@deleteUser')->name('user.postDelete');
             Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
             Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
-            Route::get('/edit/{id}', 'UserController@getEdit')->name('user.getEdit');
+            Route::get('/edit/{id?}', 'UserController@getEdit')->name('user.getEdit');
         });
 
     });

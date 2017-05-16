@@ -111,24 +111,6 @@ class UserController extends BaseController
     public function getAjaxList()
     {
         $userList = User::with('company')->get();
-
-        foreach ($userList as &$user) {
-            $id = $user['id'];
-            $edit_url = route('user.getEdit', [$id]);
-
-            $user['company_name'] = $user->company ? $user->company->company_name : '';
-            $user['status'] = $user->status == 1 ? trans('labels.label.user.create.active') : trans('labels.label.user.create.disable');
-
-            // Checkbox
-            $user['checkbox'] = '<div class="checkbox checkbox-success">
-                                        <input id="checkbox' . $id . '" type="checkbox" class="check" value="' . $id . '">
-                                        <label for="checkbox' . $id . '"></label>
-                                  </div>';
-            $user['buttons'] = '<div class="btn-group">';
-            $user['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
-            $user['buttons'] .= '<a href="javascript:;" class="btn btn-danger delete" title="' . trans('labels.label.common.btnDelete') . '" data-delete="' . $id . '"><i class="fa fa-remove"></i></a>';
-            $user['buttons'] .= '</div>';
-        }
         return Datatables::of($userList)->make(true);
     }
 
@@ -150,7 +132,7 @@ class UserController extends BaseController
     {
         DB::beginTransaction();
         try{
-            $userIds = explode(",", $request->id);
+            $userIds = explode(",", $request->s_ids);
             User::whereIn('id', $userIds)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.delete_success')]);
             DB::commit();
