@@ -16,7 +16,7 @@ class QuestionController extends BaseController {
     }
 
     public function getAdd(Request $request) {
-        $list_type = config('config.type_question');
+        $list_type = config('config.question.type');
         $question = new Question();
         $route = 'question.postAdd';
         $breadcrumb = trans('labels.label.question.breadcrumb.add');
@@ -57,7 +57,7 @@ class QuestionController extends BaseController {
     }
 
     public function getEdit(Request $request, $id){
-        $list_type = config('config.type_question');
+        $list_type = config('config.question.type');
         $question = Question::find($id);
         if (!$question) {
             Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
@@ -122,7 +122,9 @@ class QuestionController extends BaseController {
     public function ajaxData() {
         $data = Question::all();
         foreach ($data as $item) {
-            $item['type'] = config('config.question.type')[$item['type']];
+            if(isset(config('config.question.type')[$item['type']])){
+                $item['type'] = config('config.question.type')[$item['type']];
+            }
         }
         return Datatables::of($data)->make(true);
     }
