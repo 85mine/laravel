@@ -28,7 +28,6 @@
                         {!! $messages !!}
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('customer.getCreate') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                             <a href="{{ route('customer.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
@@ -41,7 +40,6 @@
                                         <input class="sml-select-all magic-checkbox" type="checkbox" id="btn-select-all">
                                         <label for="btn-select-all"></label>
                                     </th>
-                                    <th>{{trans('labels.label.customer.column.id')}}</th>
                                     <th>{{trans('labels.label.customer.column.first_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.last_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.phone_number')}}</th>
@@ -95,24 +93,20 @@
                     aTargets: [0]
                 },
                 {
-                    mData: "id",
+                    mData: "first_name",
                     aTargets: [1]
                 },
                 {
-                    mData: "first_name",
+                    mData: "last_name",
                     aTargets: [2]
                 },
                 {
-                    mData: "last_name",
+                    mData: "phone_number",
                     aTargets: [3]
                 },
                 {
-                    mData: "phone_number",
-                    aTargets: [4]
-                },
-                {
                     mData: "email",
-                    aTargets: [5]
+                    aTargets: [4]
                 },
                 {
                     orderable: false,
@@ -121,10 +115,10 @@
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
                                '<a href="{{route('customer.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
-                    aTargets: [6]
+                    aTargets: [5]
                 },
                 {
-                    aTargets: [0, 6],
+                    aTargets: [0, 5],
                     sClass: "text-center"
                 },
             ],

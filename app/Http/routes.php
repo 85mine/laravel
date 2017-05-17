@@ -36,7 +36,7 @@ Route::group(['middleware' => 'ip'], function () {
             // IPs
             Route::get('/ips', 'IpController@index')->name('ips.index');
             Route::get('/ips/ajaxData', 'IpController@getAjaxData')->name('ips.ajaxData');
-            Route::get('/ips/edit/{id}', 'IpController@getEdit')->name('ips.getEdit');
+            Route::get('/ips/edit/{id?}', 'IpController@getEdit')->name('ips.getEdit');
             Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
             Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
             Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
