@@ -43,6 +43,7 @@
                                     </th>
                                     <th>{{ trans('labels.label.question.column.content') }}</th>
                                     <th>{{ trans('labels.label.question.column.answer') }}</th>
+                                    <th>{{ trans('labels.label.question.column.type') }}</th>
                                     <th>{{ trans('labels.label.question.column.status') }}</th>
                                     <th>{{ trans('labels.label.common.action') }}</th>
                                 </tr>
@@ -102,11 +103,18 @@
                         var result = '';
                         data = JSON.parse(data);
                         data.forEach(function(v,i) {
-                            result += '<span class="label m-xs">' + range[i] + ': ' + v + '</span> ';
+                            result += '<a value="' + i + '" class="btn btn-xs btn-white m-l-xs m-r-xxs">' + range[i] + ': ' + v + '</a>'
                         });
                         return result;
                     },
                     aTargets: [2]
+                },
+                {
+                    mData: "type",
+                    render: function ( data, type, row ) {
+                        return '<a class="btn btn-xs btn-warning m-l-xs m-r-xxs">' + data + '</a>';
+                    },
+                    aTargets: [3]
                 },
                 {
                     mData: "status",
@@ -124,7 +132,7 @@
                         }
                         return data;
                     },
-                    aTargets: [3]
+                    aTargets: [4]
                 },
                 {
                     orderable: false,
@@ -133,12 +141,16 @@
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
                             '<a href="{{route('question.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
-                    aTargets: [4]
+                    aTargets: [-1]
                 },
                 {
-                    aTargets: [0, 3, 4],
+                    aTargets: [0, 4, -1],
                     sClass: "text-center"
                 },
+                {
+                    aTargets: [ '_all' ],
+                    defaultContent: "",
+                }
             ],
         });
     </script>

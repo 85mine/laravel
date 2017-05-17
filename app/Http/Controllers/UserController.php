@@ -110,7 +110,9 @@ class UserController extends BaseController
 
     public function getAjaxList()
     {
-        $userList = User::with('company')->get();
+        $userList = User::with(['company' => function ($query) {
+                    $query->select('id', 'company_name');
+                }])->get();
         return Datatables::of($userList)->make(true);
     }
 

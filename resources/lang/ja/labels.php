@@ -88,7 +88,7 @@ return [
             ]
         ],
         'customer' => [
-            'header'    => 'Customers Management',
+            'header'        => 'Customers Management',
             'column'        => [
                 'id'                    => 'Id',
                 'first_name'            => 'First name',
@@ -128,7 +128,8 @@ return [
             'column'        => [
                 'content'               => '質問',
                 'answer'                => '回答',
-                'status'                => 'ステータス'
+                'status'                => 'ステータス',
+                'type'                  => '質問タイプ'
             ],
             'breadcrumb'    => [
                 'edit'                  => '質問編集',
@@ -141,6 +142,7 @@ return [
                 'email'              => 'メール',
                 'createDate'         => 'Created Date'
             ],
+            'menu' => 'Survey'
         ]
     ],
 

@@ -126,12 +126,16 @@
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
                             '<a href="{{route('company.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
-                    aTargets: [8]
+                    aTargets: [-1]
                 },
                 {
-                    aTargets: [0, 8],
+                    aTargets: [0, -1],
                     sClass: "text-center"
                 },
+                {
+                    aTargets: [ '_all' ],
+                    defaultContent: "",
+                }
             ],
         });
     </script>
