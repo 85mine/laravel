@@ -112,7 +112,9 @@
                 {
                     mData: "type",
                     render: function ( data, type, row ) {
-                        return '<a class="btn btn-xs btn-warning m-l-xs m-r-xxs">' + data + '</a>';
+                        if(data) {
+                            return '<a class="btn btn-xs btn-warning m-l-xs m-r-xxs">' + data + '</a>';
+                        }
                     },
                     aTargets: [3]
                 },

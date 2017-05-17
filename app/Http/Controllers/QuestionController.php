@@ -122,7 +122,9 @@ class QuestionController extends BaseController {
     public function ajaxData() {
         $data = Question::all();
         foreach ($data as $item) {
-            $item['type'] = config('config.question.type')[$item['type']];
+            if(isset(config('config.question.type')[$item['type']])){
+                $item['type'] = config('config.question.type')[$item['type']];
+            }
         }
         return Datatables::of($data)->make(true);
     }
