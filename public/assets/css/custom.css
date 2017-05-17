@@ -368,3 +368,11 @@ td input[type="checkbox"] {
     margin: 20px auto;
     padding: 10px;
 }
+
+#survey-form .hidden {
+    display: none;
+}
+
+#survey-form p {
+    margin-top: 20px;
+}
