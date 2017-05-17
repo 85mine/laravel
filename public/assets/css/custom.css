@@ -376,3 +376,9 @@ td input[type="checkbox"] {
 #survey-form p {
     margin-top: 20px;
 }
+
+#survey .line-button {
+    width: 50px;
+    height: 5px;
+    background-color: white;
+}
