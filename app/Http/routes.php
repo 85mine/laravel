@@ -103,4 +103,10 @@ Route::group(['middleware' => 'ip'], function () {
         });
 
     });
+
 });
+
+//Survey frontend
+Route::get('/index', 'SurveyController@getIndex')->name('index');
+Route::get('/survey', 'SurveyController@getSurvey')->name('survey');
+Route::post('/survey', 'SurveyController@postSurvey')->name('postSurvey');

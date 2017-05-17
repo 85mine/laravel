@@ -3,13 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Yajra\Datatables\Facades\Datatables;
 use App\Models\Survey;
 use App\Helper\Common;
 
+use App\Http\Requests;
+use App\Models\Question;
+
 class SurveyController extends BaseController
 {
+    public function getIndex() {
+        return view('frontend.layout.index');
+    }
+
+    public function getSurvey() {
+        $questions = Question::where('status', 1)->get();
+        return view('frontend.layout.survey', compact('questions'));
+    }
+
+    public function postSurvey(Request $request) {
+        dd($request);
+    }
+
     public function index()
     {
         return view('backend.modules.survey.index');
