@@ -16,23 +16,32 @@ $(document).ready(function () {
 //                    console.log($(this).val());
             listCheck.push($(this).val());
         });
-        console.log(listCheck);
-        if (listCheck.length > 1 && listCheck.length < 5) {
-            $('.question_' + page).addClass("hidden");
-            page++;
-            $('.question_' + page).removeClass("hidden");
-            $('.label').html("");
-
-            if (page == max_page) {
-                page = max_page;
-                $('.btn-next').addClass("hide");
-                $('.btn-submit').removeClass("hide");
-                $('.btn-prev').removeClass("hide");
+        // console.log(listCheck);
+        if(page <= max_page-1) {
+            if (listCheck.length > 1 && listCheck.length < 5) {
+                $('.question_' + page).addClass("hidden");
+                ++page;
+                $('.question_' + page).removeClass("hidden");
+                $('.label').html("");
+                console.log(page);
+                if (page == max_page + 1) {
+                    page = max_page + 1;
+                    $('.btn-next').addClass("hide");
+                    $('.btn-submit').removeClass("hide");
+                    $('.btn-prev').removeClass("hide");
+                } else {
+                    console.log(page);
+                    $('.btn-prev').removeClass("hide");
+                }
             } else {
-                $('.btn-prev').removeClass("hide");
+                $('.label').html("Allow to choose 2-4 values");
             }
-        } else {
-            $('.label').html("Allow to choose 2-4 values");
+        }else{
+            console.log("maxpage + 1");
+            $('.question').addClass("hidden");
+            $('.show-warning').removeClass("hidden");
+            $('.btn-submit').removeClass("hide");
+            $('.btn-next').addClass("hide");
         }
     });
 
@@ -41,6 +50,7 @@ $(document).ready(function () {
         page--;
         $('.question_' + page).removeClass("hidden");
         $('.label').html("");
+        $('.show-warning').addClass('hidden');
 
         if (page == 1) {
             page = 1;
