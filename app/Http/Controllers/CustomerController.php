@@ -85,7 +85,7 @@ class CustomerController extends BaseController
     public function postDelete(Request $request)
     {
         try {
-            $id = $request->s_id;
+            $id = $request->s_ids;
             $ids = explode(",", $id);
             Customer::whereIn('id', $ids)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
