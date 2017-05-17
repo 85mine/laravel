@@ -21,20 +21,6 @@ class CompanyController extends BaseController
     public function getAjaxData()
     {
         $data = Company::all();
-        foreach ($data as &$_data) {
-            $id = $_data['id'];
-            $edit_url = route('company.getEdit', [$id]);
-
-            // Checkbox
-            $_data['checkbox'] = '<div class="checkbox checkbox-success">
-                                        <input id="checkbox' . $id . '" type="checkbox" class="check" value="' . $id . '">
-                                        <label for="checkbox' . $id . '"></label>
-                                  </div>';
-            $_data['buttons'] = '<div class="btn-group">';
-            $_data['buttons'] .= '<a href="' . $edit_url . '" class="btn btn-warning edit" title="' . trans('labels.label.common.btnEdit') . '"><i class="fa fa-edit"></i></a>';
-            $_data['buttons'] .= '<a href="javascript:;" class="btn btn-danger delete" title="' . trans('labels.label.common.btnDelete') . '" data-delete="' . $id . '"><i class="fa fa-remove"></i></a>';
-            $_data['buttons'] .= '</div>';
-        }
         return Datatables::of($data)->make(true);
     }
 
@@ -108,7 +94,7 @@ class CompanyController extends BaseController
 
     public function delete(Request $request) {
         try {
-            $id = $request->id;
+            $id = $request->s_ids;
             $company = explode(",", $id);
             Company::whereIn('id', $company)->delete();
             Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);

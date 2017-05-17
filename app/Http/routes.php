@@ -36,7 +36,7 @@ Route::group(['middleware' => 'ip'], function () {
             // IPs
             Route::get('/ips', 'IpController@index')->name('ips.index');
             Route::get('/ips/ajaxData', 'IpController@getAjaxData')->name('ips.ajaxData');
-            Route::get('/ips/edit/{id}', 'IpController@getEdit')->name('ips.getEdit');
+            Route::get('/ips/edit/{id?}', 'IpController@getEdit')->name('ips.getEdit');
             Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
             Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
             Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
@@ -52,7 +52,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
             Route::get('/company/add', 'CompanyController@getAdd')->name('company.getAdd');
             Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
-            Route::get('/company/edit/{id}', 'CompanyController@getEdit')->name('company.getEdit');
+            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.getEdit');
             Route::post('/company/edit', 'CompanyController@postEdit')->name('company.postEdit');
             Route::post('/company/delete', 'CompanyController@delete')->name('company.delete');
             // Question management
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::get('/question/ajaxData', 'QuestionController@ajaxData')->name('question.ajaxData');
             Route::get('/question/add', 'QuestionController@getAdd')->name('question.add');
             Route::post('/question/postAdd', 'QuestionController@postAdd')->name('question.postAdd');
-            Route::get('/question/edit/{id}', 'QuestionController@getEdit')->name('question.getEdit');
+            Route::get('/question/edit/{id?}', 'QuestionController@getEdit')->name('question.getEdit');
             Route::post('/question/postEdit', 'QuestionController@postEdit')->name('question.postEdit');
             Route::post('/question/postDelete', 'QuestionController@postDelete')->name('question.postDelete');
 
@@ -99,7 +99,7 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/delete', 'UserController@deleteUser')->name('user.postDelete');
             Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
             Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
-            Route::get('/edit/{id}', 'UserController@getEdit')->name('user.getEdit');
+            Route::get('/edit/{id?}', 'UserController@getEdit')->name('user.getEdit');
         });
 
     });

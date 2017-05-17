@@ -4,13 +4,7 @@
 @endsection
 
 @section('extend-css')
-    <!-- Magic-Check -->
-    <link href="{{url('assets/css/plugins/magic-check/magic-check.min.css')}}" rel="stylesheet">
-    <!-- dataTables -->
-    <link href="{{url('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
-    <!-- jquery-confirm! -->
-    {{--Demo: https://craftpip.github.io/jquery-confirm/--}}
-    <link href="{{url('assets/css/plugins/jquery-confirm/jquery-confirm.min.css')}}" rel="stylesheet">
+    @include('backend.layout.sml-table.header')
 @endsection
 
 @section('breadcrumb')
@@ -34,7 +28,6 @@
                         {!! $messages !!}
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('customer.getCreate') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
                             <a href="{{ route('customer.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
@@ -47,12 +40,11 @@
                                         <input class="sml-select-all magic-checkbox" type="checkbox" id="btn-select-all">
                                         <label for="btn-select-all"></label>
                                     </th>
-                                    <th>{{trans('labels.label.customer.column.id')}}</th>
                                     <th>{{trans('labels.label.customer.column.first_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.last_name')}}</th>
                                     <th>{{trans('labels.label.customer.column.phone_number')}}</th>
                                     <th>{{trans('labels.label.customer.column.email')}}</th>
-                                    <th>{{trans('labels.label.customer.column.action')}}</th>
+                                    <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -69,7 +61,7 @@
         </div>
     </div>
     {!! Form::open(array('route' => array('customer.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
-    {!! Form::hidden('s_id', null) !!}
+    {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
 
@@ -101,24 +93,20 @@
                     aTargets: [0]
                 },
                 {
-                    mData: "id",
+                    mData: "first_name",
                     aTargets: [1]
                 },
                 {
-                    mData: "first_name",
+                    mData: "last_name",
                     aTargets: [2]
                 },
                 {
-                    mData: "last_name",
+                    mData: "phone_number",
                     aTargets: [3]
                 },
                 {
-                    mData: "phone_number",
-                    aTargets: [4]
-                },
-                {
                     mData: "email",
-                    aTargets: [5]
+                    aTargets: [4]
                 },
                 {
                     orderable: false,
@@ -127,97 +115,19 @@
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
                                '<a href="{{route('customer.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
-                    aTargets: [6]
+                    aTargets: [-1]
                 },
                 {
-                    aTargets: [0, 6],
+                    aTargets: [0, -1],
                     sClass: "text-center"
                 },
-//                {
-//                    width: "30px",
-//                    aTargets: [0]
-//                },
-
+                {
+                    aTargets: [ '_all' ],
+                    defaultContent: "",
+                }
             ],
         });
     </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.sml-select-all').prop('checked', false);
-            $('.sml-select-item').prop('checked', false);
-
-            var form = $('#sml-form-delete-submit');
-            var data_to_delete = form.find('input[type="hidden"][name="s_id"]');
-
-            $('.sml-select-all').change(function() {
-                if(this.checked) {
-                    $('.sml-select-all').prop('checked', true);
-                    $('.sml-select-item').prop('checked', true);
-                }else{
-                    $('.sml-select-all').prop('checked', false);
-                    $('.sml-select-item').prop('checked', false);
-                }
-            });
-
-            $('.sml-select-all, .sml-select-item').change(function() {
-                if(get_list_checked().length>0){
-                    $('.sml-delete-btn').removeClass( "btn-disable" ).addClass( "btn-danger" );
-                }else {
-                    $('.sml-delete-btn').removeClass( "btn-danger" ).addClass( "btn-disable" );
-                }
-            });
-
-            $('.sml-delete-btn').on('click',function () {
-                var selected = get_list_checked();
-                if(selected.length === 0){
-                    return false;
-                }
-                data_to_delete.val(selected);
-                show_confirm_box(form);
-            });
-
-            $('.sml-select-item-delete').on('click',function () {
-                var selected = $(this).attr('name').slice(4);
-                if(selected) {
-                    $('.sml-delete-btn').removeClass( "btn-disable" ).addClass( "btn-danger" );
-                    $('.sml-select-all').prop('checked', false);
-                    $('.sml-select-item').prop('checked', false);
-                    $(this).parent().parent().find('.sml-select-item').prop('checked', true);;
-
-                    data_to_delete.val(selected);
-                    show_confirm_box(form);
-                }
-            });
-
-        });
-
-        function get_list_checked() {
-            var selected = [];
-            var list = $('input[type=checkbox].sml-select-item');
-            $.each(list,function(){
-                if(this.checked){
-                    selected.push($(this).val());
-                }
-            });
-            return selected;
-        }
-
-        function show_confirm_box(form) {
-            $.confirm({
-                icon: 'fa fa-warning',
-                title: '{{ trans('messages.common.confirm_title') }}',
-                content: '<strong>{{ trans('messages.common.confirm_delete_question') }}</strong>',
-                animation: 'opacity',
-                closeAnimation: 'scale',
-                buttons: {
-                    '{{ trans('messages.common.confirm_yes') }}': function () {
-                        form.submit();
-                    },
-                    '{{ trans('messages.common.confirm_no') }}': function () {
-                        // do something
-                    }
-                }
-            });
-        }
-    </script>
+    @include('backend.layout.sml-table.footer')
+    <script src="{{url('assets/js/sml-table.js')}}"></script>
 @endsection

@@ -47,7 +47,10 @@ return [
             'btnEdit'                   => '編集',
             'btnDelete'                 => '削除',
             'nameOfAdminEmail'          => 'Admin',
-            'bulkDelete'                => '削除'
+            'bulkDelete'                => '削除',
+            'status_active'             => 'active',
+            'status_disable'            => 'disable',
+            'action'                    => 'action',
         ],
         'user' => [
             'confirm_email' => [
@@ -85,14 +88,13 @@ return [
             ]
         ],
         'customer' => [
-            'header'    => 'Customers Management',
+            'header'        => 'Customers Management',
             'column'        => [
                 'id'                    => 'Id',
                 'first_name'            => 'First name',
                 'last_name'             => 'Last name',
                 'phone_number'          => 'Phone number',
                 'email'                 => 'Email address',
-                'action'                => 'Action'
             ],
             'breadcrumb'    => [
                 'create'                => 'Create customer',
