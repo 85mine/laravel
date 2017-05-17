@@ -12,7 +12,7 @@ class CustomersTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        foreach (range(1,2000) as $item){
+        foreach (range(1,2) as $item){
             foreach(range(1,2000) as $index)
             {
                 DB::table('customers')->insert([
