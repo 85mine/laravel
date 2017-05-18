@@ -4,73 +4,61 @@ $(document).ready(function () {
         radioClass: 'iradio_square-green',
     });
 
-    var page = $('.question').attr("id");
+    var page = $('.question').attr("class").split("question_")[1];
+    var question_id = $('.question').attr("id");
     $('.question_' + page).removeClass("hidden");
     var max_page = $('.max_page').val();
 
-    $('.btn_' + page).removeClass("btn-default");
-    $('.btn_' + page).addClass("btn-primary");
-
     $('.btn-next').click(function () {
+        console.log(question_id);
         var listCheck = [];
-        console.log($("input[name='answer[]']"));
-        $("input[name='answer_" + page + "[]']:checked").each(function () {
+        $("input[name='questions[" + question_id + "]" + "[]']:checked").each(function () {
 //                    console.log($(this).val());
             listCheck.push($(this).val());
         });
-        // console.log(listCheck);
+        console.log(listCheck);
+        $('.label').html("");
         if (page <= max_page) {
             if (listCheck.length > 1 && listCheck.length < 5) {
                 $('.question_' + page).addClass("hidden");
-                $('.btn_' + page).removeClass("btn-primary");
-                $('.btn_' + page).addClass("btn-default");
-                ++page;
-                $('.question_' + page).removeClass("hidden");
-                $('.label').html("");
-                if (page == max_page + 1) {
-                    page = max_page + 1;
+                $('.btn-next').addClass('hide');
+                page++;
+                $('.btn-prev').removeClass('hide');
+                if (page > max_page) {
+                    $('.question_' + max_page).addClass("hidden");
                     $('.btn-next').addClass("hide");
                     $('.btn-submit').removeClass("hide");
                     $('.btn-prev').removeClass("hide");
+                    $('.show-warning').removeClass("hidden");
+                    page = parseInt(max_page) + parseInt("1");
+                    // console.log(question_id);
                 } else {
-                    $('.btn-prev').removeClass("hide");
-                    $('.btn_' + page).removeClass("btn-default");
-                    $('.btn_' + page).addClass("btn-primary");
+                    $('.question_' + page).removeClass("hidden");
+                    $('.btn-next').removeClass("hide");
+                    question_id = $('.question_' + page).attr("id");
+                    // console.log(question_id);
                 }
             } else {
-                $('.label').html("Allow to choose 2-4 values");
+                $('.label').html("Allow to choose 2-4 answers for each question!");
             }
-        } else {
-            $('.question').addClass("hidden");
-            $('.show-warning').removeClass("hidden");
-            $('.btn-submit').removeClass("hide");
-            $('.btn-next').addClass("hide");
-            $('.btn_' + page).removeClass("btn-primary");
-            $('.btn_' + page).addClass("btn-default");
-            $('.btn_end').removeClass("btn-default");
-            $('.btn_end').addClass("btn-danger");
         }
     });
 
     $('.btn-prev').click(function () {
-        $('.question_' + page).addClass("hidden");
-        $('.btn_' + page).removeClass("btn-primary");
-        $('.btn_' + page).addClass("btn-default");
-        page--;
-        $('.question_' + page).removeClass("hidden");
-        $('.label').html("");
-        $('.show-warning').addClass('hidden');
-
-        if (page == 1) {
-            page = 1;
-            $('.btn-next').removeClass("hide");
-            $('.btn-prev').addClass("hide");
-        } else {
-            $('.btn-next').removeClass("hide");
+        if (page > max_page) {
+            $('.show-warning').addClass("hidden");
             $('.btn-submit').addClass("hide");
+            page--;
+            $('.question_' + page).removeClass("hidden");
+            $('.btn-next').removeClass("hide");
+        } else {
+            $('.question_' + page).addClass("hidden");
+            page--;
+            $('.question_' + page).removeClass("hidden");
+            if (page == 1) {
+                $('.btn-prev').addClass("hide");
+            }
         }
-        $('.btn_' + page).removeClass("btn-default");
-        $('.btn_' + page).addClass("btn-primary");
     });
 
     // $('.btn').click(function() {

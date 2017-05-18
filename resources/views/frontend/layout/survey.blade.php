@@ -10,26 +10,27 @@
 @section('content')
 
     <div id="survey">
-        <div class="col-lg-12">
-            @foreach($questions as $key => $question)
-                <button type="button" class="btn btn-default btn-circle btn-lg btn_{{++$key}}" id="{{$key}}">{{$key}}</button>
-                <span class="line-button">---------</span>
-            @endforeach
-                <button type="button" class="btn btn-default btn-circle btn-lg btn_end"><span class="fa fa-dot-circle-o"></span></button>
-        </div>
+        {{--<div class="col-lg-12">--}}
+            {{--@foreach($questions as $key => $question)--}}
+                {{--<button type="button" class="btn btn-default btn-circle btn-lg btn_{{++$key}}" id="{{$key}}">{{$key}}</button>--}}
+                {{--<span class="line-button">---------</span>--}}
+            {{--@endforeach--}}
+                {{--<button type="button" class="btn btn-default btn-circle btn-lg btn_end"><span class="fa fa-dot-circle-o"></span></button>--}}
+        {{--</div>--}}
         <div class="col-lg-12">
             <div class="ibox-content">
                 <h2>Survey</h2>
                 <form action="{{ route('postSurvey') }}" method="post" id="survey-form">
                     {{ csrf_field() }}
                     @foreach($questions as $key => $question)
-                        <div class="question question_{{ ++$key }} hidden" id="{{ $key }}">
+                        <div class="hidden question question_{{ ++$key }}" id="{{ $question->id }}">
+                            <input type="hidden" value="{{ $question->type }}" name="question_type[{{ $question->id }}][]"/>
                             <p>Question {{ $key }}: {{ $question->content }}</p>
                             <ul class="todo-list m-t">
                                 @foreach(json_decode($question->answer) as $i => $answer)
                                     <li>
                                         <input type="checkbox" value="{{ $i }}"
-                                               name="answer_{{ $key }}[]" class="i-checks answer"/>
+                                               name="questions[{{ $question->id }}][]" class="i-checks answer"/>
                                         <span class="m-l-xs">{{ $answer }}</span>
                                     </li>
                                 @endforeach
