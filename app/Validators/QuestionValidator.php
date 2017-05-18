@@ -1,17 +1,13 @@
 <?php
+
 namespace App\Validators;
-class QuestionValidator
+
+class QuestionValidator extends AbstractValidator
 {
-    public function validateQuestion()
-    {
-        $res['rules'] = $this->_defaultRule();
-        $res['messages'] = $this->_defaultMessage();
-        $res['attributes'] = $this->_defaultAttribute();
-
-        return $res;
-    }
-
-    private function _defaultRule()
+    /**
+     * @return array
+     */
+    protected function rules()
     {
         $rules = array();
         $rules['question_content'] = 'required';
@@ -20,17 +16,24 @@ class QuestionValidator
         return $rules;
     }
 
-    private function _defaultMessage()
+    /**
+     * @return array
+     */
+    protected function messages()
     {
-        return [];
+        return [
+
+        ];
     }
 
-    private function _defaultAttribute()
+    /**
+     * @return array
+     */
+    protected function attributes()
     {
         $attribute = array();
         $attribute['question_content'] = trans('labels.label.question.column.content');
         $attribute['type'] = trans('labels.label.question.column.type');
         return $attribute;
     }
-
 }

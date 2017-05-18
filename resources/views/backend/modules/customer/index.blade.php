@@ -8,7 +8,7 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{trans('labels.label.customer.header')}}</h2>
+    <h2>{{trans('labels.label.customer.page_title')}}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{route('admin.dashboard')}}">{{trans('labels.label.common.home')}}</a>
@@ -28,7 +28,7 @@
                         {!! $messages !!}
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('customer.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
+                            <a href="{{ route('customer.post.delete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
                     <div class="sml-box">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-    {!! Form::open(array('route' => array('customer.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('route' => array('customer.post.delete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
     {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
@@ -79,7 +79,7 @@
             autoWidth: false,
             order: [[1, 'desc']],
             ajax: {
-                "url": '{!! route('customer.getAjaxData') !!}',
+                "url": '{!! route('customer.get.ajax.data') !!}',
                 "type": "GET"
             },
             aoColumnDefs:[

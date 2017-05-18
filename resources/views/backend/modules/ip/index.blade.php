@@ -4,13 +4,13 @@
     @include('backend.layout.sml-table.header')
 @endsection
 @section('breadcrumb')
-    <h2>{{ trans('labels.label.ips.page_title') }}</h2>
+    <h2>{{ trans('labels.label.ip.page_title') }}</h2>
     <ol class="breadcrumb">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.label.ips.page_title') }}</strong>
+            <strong>{{ trans('labels.label.ip.page_title') }}</strong>
         </li>
     </ol>
 @endsection
@@ -24,8 +24,8 @@
                         {!! $messages !!}
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('ips.getAdd') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
-                            <a href="{{ route('ips.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
+                            <a href="{{ route('ip.get.add') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
+                            <a href="{{ route('ip.post.delete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
                     <div class="sml-box">
@@ -37,8 +37,8 @@
                                         <input class="sml-select-all magic-checkbox" type="checkbox" id="btn-select-all">
                                         <label for="btn-select-all"></label>
                                     </th>
-                                    <th>{{ trans('labels.label.ips.column.ip_address') }}</th>
-                                    <th>{{ trans('labels.label.ips.column.description') }}</th>
+                                    <th>{{ trans('labels.label.ip.column.ip_address') }}</th>
+                                    <th>{{ trans('labels.label.ip.column.description') }}</th>
                                     <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    {!! Form::open(array('route' => array('ips.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('route' => array('ip.post.delete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
     {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
@@ -73,7 +73,7 @@
             autoWidth: false,
             order: [[1, 'desc']],
             ajax: {
-                "url": '{!! route('ips.ajaxData') !!}',
+                "url": '{!! route('ip.get.ajax.data') !!}',
                 "type": "GET"
             },
             aoColumnDefs:[
@@ -99,7 +99,7 @@
                     bSortable: false,
                     render: function ( data, type, row ) {
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
-                            '<a href="{{route('ips.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
+                            '<a href="{{route('ip.get.edit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
                     aTargets: [-1]
                 },

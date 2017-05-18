@@ -2,6 +2,8 @@
 namespace App\Validators;
 use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Contracts\Validation\Factory as ValidatorFactory;
+use Mockery\Exception;
+use Psy\Exception\ErrorException;
 
 abstract class AbstractValidator
 {

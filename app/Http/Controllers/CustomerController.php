@@ -88,7 +88,7 @@ class CustomerController extends BaseController
             Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
             return redirect(route('customer.get.index'));
         } catch (\Exception $e) {
-            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_failed')]);
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_fail')]);
             return redirect(route('customer.get.index'));
         }
 

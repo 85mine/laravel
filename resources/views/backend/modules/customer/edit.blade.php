@@ -8,7 +8,7 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{trans('labels.label.customer.header')}}</h2>
+    <h2>{{trans('labels.label.customer.page_title')}}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{route('admin.dashboard')}}">{{trans('labels.label.common.home')}}</a>

@@ -25,7 +25,7 @@
             <li>
                 <a href="{{ route('customer.get.index') }}">
                     <i class="fa fa-th-large"></i>
-                    <span class="nav-label">{{trans('labels.label.customer.header')}}</span>
+                    <span class="nav-label">{{trans('labels.label.customer.page_title')}}</span>
                     {{--<span class="fa arrow"></span>--}}
                 </a>
             </li>
@@ -44,7 +44,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('question.index') }}">
+                <a href="{{ route('question.get.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">Question</span>
                     {{--<span class="fa arrow"></span>--}}
@@ -65,7 +65,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('ips.index') }}">
+                <a href="{{ route('ip.get.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">IP</span>
                     {{--<span class="fa arrow"></span>--}}

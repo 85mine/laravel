@@ -72,7 +72,7 @@ return [
                 'disable'   => 'disable'
             ],
         ],
-        'ips' => [
+        'ip' => [
             'page_title'    => 'IPリスト',
             'column'        => [
                 'ip_address'            => 'IPアドレス',
@@ -88,7 +88,7 @@ return [
             ]
         ],
         'customer' => [
-            'header'        => 'Customers Management',
+            'page_title'        => 'Customers Management',
             'column'        => [
                 'id'                    => 'Id',
                 'first_name'            => 'First name',
