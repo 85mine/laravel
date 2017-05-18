@@ -10,7 +10,7 @@ class QuestionValidator extends AbstractValidator
     protected function rules()
     {
         $rules = array();
-        $rules['question_content'] = 'required';
+        $rules['content'] = 'required';
         $rules['answer.*'] = 'required';
         $rules['type'] = 'required';
         return $rules;
@@ -32,7 +32,8 @@ class QuestionValidator extends AbstractValidator
     protected function attributes()
     {
         $attribute = array();
-        $attribute['question_content'] = trans('labels.label.question.column.content');
+        $attribute['content'] = trans('labels.label.question.column.content');
+        $attribute['answer.*'] = trans('labels.label.question.column.answer');
         $attribute['type'] = trans('labels.label.question.column.type');
         return $attribute;
     }

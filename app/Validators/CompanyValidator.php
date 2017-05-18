@@ -1,18 +1,12 @@
 <?php
 namespace App\Validators;
 
-class CompanyValidator
+class CompanyValidator extends AbstractValidator
 {
-    public function validateCompany()
-    {
-        $res['rules'] = $this->_defaultRule();
-        $res['messages'] = $this->_defaultMessage();
-        $res['attributes'] = $this->_defaultAttribute();
-
-        return $res;
-    }
-
-    private function _defaultRule()
+    /**
+     * @return array
+     */
+    protected function rules()
     {
         return [
             'company_name' => 'required|max:255',
@@ -25,12 +19,20 @@ class CompanyValidator
         ];
     }
 
-    private function _defaultMessage()
+    /**
+     * @return array
+     */
+    protected function messages()
     {
-        return [];
+        return [
+
+        ];
     }
 
-    private function _defaultAttribute()
+    /**
+     * @return array
+     */
+    protected function attributes()
     {
         return [
             'company_name' => trans('labels.label.company.column.company_name'),
@@ -42,5 +44,4 @@ class CompanyValidator
             'representative_mobile' => trans('labels.label.company.column.representative_mobile'),
         ];
     }
-
 }

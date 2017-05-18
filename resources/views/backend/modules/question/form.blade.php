@@ -48,6 +48,9 @@
                                     <div class="col-xs-11 no-padding answer_item"><input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value="{{$answer}}"></div>
                                 @endforeach
                             </div>
+                            {{--<div class="col-sm-1 list_button">
+                                <button type="button" class="btn btn-block btn-warning m-b-md addmore"><i class="fa fa-plus"></i></button>
+                            </div>--}}
                         </div>
 
                         <div class="form-group">

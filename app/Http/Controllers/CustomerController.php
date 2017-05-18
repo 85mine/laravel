@@ -38,7 +38,7 @@ class CustomerController extends BaseController
             $this->validator->validate($this->request->all());
         }catch (ValidatorException $e){
             Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
-            return redirect(route('customer.get.add', [$this->request->id]))->withInput();
+            return redirect(route('customer.get.add'))->withInput();
         }
         $this->repository->create($this->request->input());
         Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.add_success')]);

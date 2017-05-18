@@ -30,13 +30,17 @@ abstract class RepositoryAbstract implements RepositoryInterface {
     public function update($id, $attributes)
     {
         $result = call_user_func_array("{$this->modelClassName}::findOrFail", array($id));
-        $result->update(array_filter($attributes));
+        $result->update($attributes);
         return $result;
     }
 
     public function whereIn($id, array $values)
     {
-        $result = call_user_func_array("{$this->modelClassName}::whereIn", array($id,$values));
-        return $result;
+        return call_user_func_array("{$this->modelClassName}::whereIn", array($id,$values));;
+    }
+
+    public function with($relations)
+    {
+        return call_user_func_array("{$this->modelClassName}::with", array($relations));;
     }
 }

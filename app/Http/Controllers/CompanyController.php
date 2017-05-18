@@ -2,106 +2,95 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Validators\CompanyValidator;
-use App\Models\Company;
 use App\Helper\Common;
-use Yajra\Datatables\Facades\Datatables;
+use App\Repositories\CompanyRepository;
+use App\Validators\CompanyValidator;
+use App\Validators\Exceptions\ValidatorException;
+use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class CompanyController extends BaseController
 {
-    public function index(Request $request)
-    {
-        $messages = Common::getMessage($request);
-        return view('backend.modules.company.index', compact('messages'));
+
+    private $validator;
+
+    private $repository;
+
+    public function __construct(Request $request, CompanyRepository $repository, CompanyValidator $validator){
+        $this->validator = $validator;
+        $this->repository = $repository;
+        parent::__construct($request);
     }
 
-    public function getAjaxData()
-    {
-        $data = Company::all();
+    public function getIndex(){
+        $messages = $this->messages;
+        return view('backend.modules.company.index',compact('messages'));
+    }
+
+    public function getAdd(){
+        $messages = $this->messages;
+        return view('backend.modules.company.add',compact('messages'));
+    }
+
+    public function postAdd(){
+
+        try{
+            $this->validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('company.get.add'))->withInput();
+        }
+        $this->repository->create($this->request->input());
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.add_success')]);
+        return redirect(route('company.get.index'));
+    }
+
+    public function getEdit($id){
+
+        $company =  $this->repository->find($id);
+
+        if (!$company) {
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
+            return redirect(route('company.get.index'));
+        }
+
+        $messages = $this->messages;
+        return view('backend.modules.company.edit', compact('company','messages'));
+    }
+
+    public function postEdit($id){
+
+        try{
+            $this->validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('company.get.edit', $id))->withInput();
+        }
+
+        $this->repository->update($id,$this->request->input());
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.edit_success')]);
+        return redirect(route('company.get.index'));
+    }
+
+    public function getAjaxData(){
+        $data = $this->repository->all();
         return Datatables::of($data)->make(true);
     }
 
-    public function getEdit(Request $request, $id)
-    {
-        $company = Company::find($id);
-        if (!$company) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.id_not_found')]);
-            return redirect(route('company.index'))->withInput();
-        }
-        $route = 'company.postEdit';
-        $breadcrumb = trans('labels.label.company.breadcrumb.edit');
-        $messages = Common::getMessage($request);
-
-        return view('backend.modules.company.add_edit', compact('company', 'route', 'breadcrumb', 'messages'));
-    }
-
-    public function getAdd(Request $request)
-    {
-        $company = new Company();
-        $route = 'company.postAdd';
-        $breadcrumb = trans('labels.label.company.breadcrumb.add');
-        $messages = Common::getMessage($request);
-
-        return view('backend.modules.company.add_edit', compact('company', 'route', 'breadcrumb', 'messages'));
-    }
-
-    public function postEdit(Request $request)
+    public function postDelete()
     {
         try {
-            $companyValidator = new CompanyValidator();
-            $validator = $this->checkValidator($request->all(), $companyValidator->validateCompany());
+            $id = $this->request->s_ids;
+            $ids = explode(",", $id);
 
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('company.getEdit', [$request->id]))->withInput();
-            }
+            $this->repository->whereIn('id',$ids)->delete();
 
-            $company = Company::find($request->id);
-            $company->fill($request->input())->save();
-
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.edit_success')]);
-            return redirect()->intended(route('company.index'))->withInput();
+            Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);
+            return redirect(route('company.get.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.edit_fail')]);
-            return redirect(route('company.getEdit', [$request->id]))->withInput();
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.company.delete_fail')]);
+            return redirect(route('company.get.index'));
         }
-    }
 
-    public function postAdd(Request $request)
-    {
-        try {
-            $companyValidator = new CompanyValidator();
-            $validator = $this->checkValidator($request->all(), $companyValidator->validateCompany());
-
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('company.getAdd', [$request->id]))->withInput();
-            }
-
-            $company = new Company();
-            $company->fill($request->input())->save();
-
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.create_success')]);
-            return redirect()->intended(route('company.index'))->withInput();
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.create_fail')]);
-            return redirect(route('company.getAdd', [$request->id]))->withInput();
-        }
-    }
-
-    public function delete(Request $request) {
-        try {
-            $id = $request->s_ids;
-            $company = explode(",", $id);
-            Company::whereIn('id', $company)->delete();
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.company.delete_success')]);
-            return redirect()->intended(route('company.index'));
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.company.delete_fail')]);
-            return redirect(route('company.index'));
-        }
     }
 }

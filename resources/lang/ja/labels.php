@@ -97,9 +97,9 @@ return [
                 'email'                 => 'Email address',
             ],
             'breadcrumb'    => [
-                'create'                => 'Create customer',
-                'detail'                => 'Customer detail',
-                'edit'                  => 'Edit customer'
+                'index'                 => '会社',
+                'edit'                  => '会社編集',
+                'add'                   => '会社追加'
             ]
         ],
         'company' => [
@@ -132,8 +132,9 @@ return [
                 'type'                  => '質問タイプ'
             ],
             'breadcrumb'    => [
-                'edit'                  => '質問編集',
-                'add'                   => '質問追加'
+                'index'                 => '会社',
+                'edit'                  => '会社編集',
+                'add'                   => '会社追加'
             ]
         ],
         'survey' => [

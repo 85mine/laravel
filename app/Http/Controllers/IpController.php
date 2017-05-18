@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\IpRepository;
+use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 use App\Helper\Common;

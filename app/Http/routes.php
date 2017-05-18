@@ -11,11 +11,17 @@
 |
 */
 Route::group(['middleware' => 'ip'], function () {
-    Route::get('/', 'UserController@getIndex')->name('user.getIndex');
+
+    // Before login
+    Route::get('/', function (){
+        return redirect(route('user.getLogin'));
+    });
+
     // Active email
     Route::group(['middleware' => 'user.status:' . ROUTER_ACTIVE_EMAIL], function () {
         Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
     });
+
     // Guest
     Route::group(['middleware' => 'guest'], function () {
         // Login
@@ -50,14 +56,14 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
 
-            // Company
-            Route::get('/companies', 'CompanyController@index')->name('company.index');
-            Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
-            Route::get('/company/add', 'CompanyController@getAdd')->name('company.getAdd');
-            Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
-            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.getEdit');
-            Route::post('/company/edit', 'CompanyController@postEdit')->name('company.postEdit');
-            Route::post('/company/delete', 'CompanyController@delete')->name('company.delete');
+            //Company Management
+            Route::get('/company/index', 'CompanyController@getIndex')->name('company.get.index');
+            Route::get('/company/add', 'CompanyController@getAdd')->name('company.get.add');
+            Route::post('/company/add', 'CompanyController@postAdd')->name('company.post.add');
+            Route::post('/company/delete', 'CompanyController@postDelete')->name('company.post.delete');
+            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.get.edit');
+            Route::post('/company/edit/{id?}', 'CompanyController@postEdit')->name('company.post.edit');
+            Route::get('/company/getAjaxData', 'CompanyController@getAjaxData')->name('company.get.ajax.data');
             
             //Question Management
             Route::get('/question/index', 'QuestionController@getIndex')->name('question.get.index');
@@ -93,18 +99,14 @@ Route::group(['middleware' => 'ip'], function () {
         Route::get('/surveys/', 'SurveyController@index')->name('survey.index');
         Route::get('/surveys/ajaxList', 'SurveyController@getAjaxList')->name('survey.ajaxList');
 
-        // Account
-        Route::group(['prefix' => 'user'], function () {
-            // List account
-            Route::get('/list', 'UserController@listUser')->name('user.list');
-            // Create account
-            Route::get('/create', 'UserController@createUser')->name('user.create');
-            Route::post('/add', 'UserController@addUser')->name('user.add');
-            Route::post('/delete', 'UserController@deleteUser')->name('user.postDelete');
-            Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
-            Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
-            Route::get('/edit/{id?}', 'UserController@getEdit')->name('user.getEdit');
-        });
+        // User Management
+        Route::get('/user/index', 'UserController@getIndex')->name('user.get.index');
+        Route::get('/user/add', 'UserController@getAdd')->name('user.get.add');
+        Route::post('/user/add', 'UserController@postAdd')->name('user.post.add');
+        Route::post('/user/delete', 'UserController@postDelete')->name('user.post.delete');
+        Route::get('/user/edit/{id?}', 'UserController@getEdit')->name('user.get.edit');
+        Route::post('/user/edit/{id?}', 'UserController@postEdit')->name('user.post.edit');
+        Route::get('/user/getAjaxData', 'UserController@getAjaxData')->name('user.get.ajax.data');
 
     });
 });

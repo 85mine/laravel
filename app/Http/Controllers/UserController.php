@@ -2,66 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ConfirmEmail;
-use App\Validators\UserValidator;
-use App\Validators\AddUserValidator;
-use Mockery\Exception;
-use Yajra\Datatables\Facades\Datatables;
-use Illuminate\Http\Request;
-use Auth;
 use App\Helper\Common;
-use App\Services\UserService;
-use App\Models\User;
 use App\Models\Company;
-use DB;
+use App\Repositories\UserRepository;
+use App\Services\UserService;
+use App\Validators\UserAddValidator;
+use App\Validators\UserValidator;
+use App\Validators\Exceptions\ValidatorException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Datatables;
 
 class UserController extends BaseController
 {
     protected $user;
+
     protected $userService;
 
-    /**
-     * UserController constructor.
-     * @param UserService $userService
-     */
-    public function __construct(UserService $userService)
-    {
+    private $validator;
+
+    private $repository;
+
+    public function __construct(Request $request,
+                                UserService $userService,
+                                UserRepository $repository,
+                                UserValidator $validator){
         $this->user = Auth::user();
         $this->userService = $userService;
+        $this->validator = $validator;
+        $this->repository = $repository;
+        parent::__construct($request);
     }
 
-    // before login
-    public function getIndex(Request $request) {
-        return redirect(route('user.getLogin'));
-    }
-
-    public function getLogin(Request $request)
+    public function getLogin()
     {
-        $messages = Common::getMessage($request);
-        return view('backend.modules.user.login')->with([
-            'messages' => $messages
-        ]);
+        $messages = $this->messages;
+        return view('backend.modules.user.login',compact('messages'));
     }
 
-    public function postLogin(Request $request)
+    public function postLogin()
     {
         try {
-            $userValidator = new UserValidator();
-            $validator = $this->checkValidator($request->all(), $userValidator->validateLogin());
-
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
+            try{
+                $this->validator->validate($this->request->all());
+            }catch (ValidatorException $e){
+                Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
                 return redirect(route('user.getLogin'))->withInput();
             }
 
-            if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
+            if (Auth::attempt(['email' => $this->request->get('email'), 'password' => $this->request->get('password')])) {
                 return redirect()->intended(route('admin.dashboard'));
             } else {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.user.login.fails')]);
+                Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.user.login.fails')]);
                 return redirect(route('user.getLogin'))->withInput();
             }
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, $e->getMessage());
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessage());
             return redirect(route('user.getLogin'))->withInput();
         }
     }
@@ -72,154 +68,111 @@ class UserController extends BaseController
         return redirect(route('user.getLogin'));
     }
 
-    // after login
-    public function getDashboard(Request $request)
+    // After login
+    public function getDashboard()
     {
         return view('backend.modules.home.index');
     }
 
-    public function getActiveEmail(Request $request)
+    public function getActiveEmail()
     {
-        $activeEmail = $this->userService->activeEmail($request->get('token'));
+        $activeEmail = $this->userService->activeEmail($this->request->get('token'));
         return view('backend.modules.user.active_email')->with([
             'check' => $activeEmail['status']
         ]);
     }
 
-    public function getConfirmEmail(Request $request)
+    public function getConfirmEmail()
     {
         return view('backend.modules.user.confirm_email');
     }
 
-    public function postConfirmEmail(Request $request)
+    public function postConfirmEmail()
     {
         $confirmEmail = $this->userService->sendConfirmEmail($this->user);
-        $input = $request->all();
+        $input = $this->request->all();
         $input['check'] = $confirmEmail['status'];
         $input['message'] = $confirmEmail['message'];
         return redirect(route('user.getConfirmEmail'))->withInput($input);
     }
 
-    // Get list user
-    public function listUser(Request $request)
-    {
-        $messages = Common::getMessage($request);
-
-        return view('backend/modules/user/list', compact('messages'));
+    public function getIndex(){
+        $messages = $this->messages;
+        return view('backend.modules.user.index',compact('messages'));
     }
 
-    public function getAjaxList()
-    {
-        $userList = User::with(['company' => function ($query) {
-                    $query->select('id', 'company_name');
-                }])->get();
-        return Datatables::of($userList)->make(true);
-    }
+    public function getAdd(){
+        $messages = $this->messages;
 
-    // Create user
-    public function createUser(Request $request)
-    {
-        $user = new User();
         $companies = Company::pluck('company_name', 'id')->all();
 
-        $route = 'user.add';
-        $title = trans('labels.title.user.create');
-        $messages = Common::getMessage($request);
-
-        return view('backend/modules/user/create', compact('user', 'route', 'title', 'messages', 'companies'));
+        return view('backend.modules.user.add',compact('messages','companies'));
     }
 
-    // Create user
-    public function deleteUser(Request $request)
-    {
-        DB::beginTransaction();
+    public function postAdd(UserAddValidator $validator){
+
         try{
-            $userIds = explode(",", $request->s_ids);
-            User::whereIn('id', $userIds)->delete();
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.delete_success')]);
-            DB::commit();
-            return redirect()->intended(route('user.list'));
-        } catch( \Exception $e ) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, trans('messages.user.delete_fail'));
-            DB::rollback();
-            return redirect(route('user.list'));
+            $validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('user.get.add'))->withInput();
         }
+
+        $data = $this->request->input();
+        $data['status'] = 0;
+
+        $this->repository->create($data);
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.add_success')]);
+        return redirect(route('user.get.index'));
     }
 
-    // Save user from add form
-    public function addUser(Request $request)
-    {
-        DB::beginTransaction();
-        try {
-            $userValidator = new AddUserValidator();
-            $validator = $this->checkValidator($request->all(), $userValidator->validateAddUser());
+    public function getEdit($id){
 
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('user.create'))->withInput();
-            }
-
-            $user = new User();
-            $user->name = trim($request->name);
-            $user->email = trim($request->email);
-            $user->status = 0;
-            $user->company_id = $request->company_id;
-            $user->save();
-            DB::commit();
-
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.add_success')]);
-            return redirect()->intended(route('user.list'));
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.user.add_fail')]);
-            DB::rollback();
-            return redirect(route('user.create'))->withInput();
-        }
-    }
-
-    // Save user from edit form
-    public function postEditUser(Request $request)
-    {
-        DB::beginTransaction();
-        try {
-            $userValidator = new AddUserValidator();
-            $validator = $this->checkValidator($request->all(), $userValidator->validateAddUser());
-
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('user.getEdit', ['id' => 4]))->withInput();
-            }
-
-            $user = User::find($request->id);
-            $user->name = trim($request->name);
-            $user->email = trim($request->email);
-            $user->status = $request->status;
-            $user->company_id = $request->company_id;
-            $user->save();
-            DB::commit();
-
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.edit_success')]);
-            return redirect()->intended(route('user.list'));
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, trans('messages.user.edit_fail'));
-            DB::rollback();
-            return redirect(route('user.getEdit', ['id' => 4]))->withInput();
-        }
-    }
-
-    // Edit user
-    public function getEdit(Request $request, $id)
-    {
-        $user = User::find($id);
-        $companies = Company::pluck('company_name', 'id')->all();
+        $user =  $this->repository->find($id);
 
         if (!$user) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
-            return redirect(route('user.list'));
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
+            return redirect(route('user.get.index'));
         }
-        $route = 'user.postEdit';
-        $title = trans('labels.title.user.edit');
-        $messages = Common::getMessage($request);
+        $companies = Company::pluck('company_name', 'id')->all();
+        $messages = $this->messages;
+        return view('backend.modules.user.edit', compact('user','messages','companies'));
+    }
 
-        return view('backend/modules/user/create', compact('user', 'route', 'title', 'messages', 'companies'));
+    public function postEdit($id,UserAddValidator $validator){
+
+        try{
+            $validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('user.get.edit', $id))->withInput();
+        }
+        $this->repository->update($id,$this->request->input());
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.edit_success')]);
+        return redirect(route('user.get.index'));
+    }
+
+    public function getAjaxData(){
+        $data = $this->repository->with(['company' => function ($query) {
+            $query->select('id', 'company_name');
+        }])->get();
+        return Datatables::of($data)->make(true);
+    }
+
+    public function postDelete()
+    {
+        try {
+            $id = $this->request->s_ids;
+            $ids = explode(",", $id);
+
+            $this->repository->whereIn('id',$ids)->delete();
+
+            Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.user.delete_success')]);
+            return redirect(route('user.get.index'));
+        } catch (\Exception $e) {
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.user.delete_fail')]);
+            return redirect(route('user.get.index'));
+        }
+
     }
 }

@@ -27,30 +27,30 @@
                     <div class="sml-box-header">
                     </div>
                     <div class="sml-box">
-                        {!! Form::open(['method' => 'POST', 'id' => 'form_customer', 'class' => 'form-horizontal']) !!}
+                        {!! Form::model($user, ['method' => 'POST', 'id' => 'form_user', 'class' => 'form-horizontal']) !!}
                         {!! $messages !!}
-                        <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.customer.column.first_name')}}</label>
+                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.create.name') }}</label>
                             <div class="col-sm-8">
-                                {!! Form::text('first_name', null,  ["id" => "first_name", "class" => "form-control m-b", "placeholder" => trans('labels.label.customer.column.first_name')]) !!}
-                            </div>
-                        </div>
-                        <div class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.customer.column.last_name')}}</label>
-                            <div class="col-sm-8">
-                                {!! Form::text('last_name', null,  ["id" => "last_name", "class" => "form-control m-b", "placeholder" => trans('labels.label.customer.column.last_name')]) !!}
-                            </div>
-                        </div>
-                        <div class="form-group {{ $errors->has('phone_number') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.customer.column.phone_number') }}</label>
-                            <div class="col-sm-8">
-                                {!! Form::text('phone_number', null,  ["id" => "phone_number", "class" => "form-control m-b", "placeholder" => trans('labels.label.customer.column.phone_number')]) !!}
+                                {!! Form::text('name', null,  ["id" => "name", "class" => "form-control", "placeholder" => trans('labels.label.user.create.name')]) !!}
                             </div>
                         </div>
                         <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.customer.column.email') }}</label>
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.create.email') }}</label>
                             <div class="col-sm-8">
-                                {!! Form::text('email', null,  ["id" => "email", "class" => "form-control m-b", "placeholder" => trans('labels.label.customer.column.email')]) !!}
+                                {!! Form::text('email', null,  ["id" => "email", "class" => "form-control", "placeholder" => trans('labels.label.user.create.email')]) !!}
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.list.status') }}</label>
+                            <div class="col-sm-8">
+                                {!! Form::select('status', ['0' => trans('labels.label.user.create.disable'), '1' => trans('labels.label.user.create.active')],  null, ["id" => "status", "class" => "form-control"]) !!}
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('company') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.create.company') }}</label>
+                            <div class="col-sm-8">
+                                {!! Form::select('company_id', $companies, null, ["id" => "company", "class" => "form-control", "placeholder" => trans('labels.label.user.create.selectCompany')]) !!}
                             </div>
                         </div>
 

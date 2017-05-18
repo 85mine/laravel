@@ -30,14 +30,14 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('user.list') }}">
+                <a href="{{ route('user.get.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">User</span>
                     {{--<span class="fa arrow"></span>--}}
                 </a>
             </li>
             <li>
-                <a href="{{ route('company.index') }}">
+                <a href="{{ route('company.get.index') }}">
                     <i class="fa fa-th-large"></i>
                     <span class="nav-label">Companies</span>
                     {{--<span class="fa arrow"></span>--}}

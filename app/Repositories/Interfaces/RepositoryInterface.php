@@ -9,4 +9,5 @@ interface RepositoryInterface {
     public function destroy($ids);
     public function update($id,$attributes);
     public function whereIn($id, array $values);
+    public function with($relations);
 }

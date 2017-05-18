@@ -35,7 +35,7 @@
                         <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.content') }}</label>
                             <div class="col-sm-10">
-                                {!! Form::textarea('question_content', null,  ["id" => "question_content", "class" => "form-control", "placeholder" => trans('labels.label.question.column.content')]) !!}
+                                {!! Form::textarea('content', null,  ["class" => "form-control", "placeholder" => trans('labels.label.question.column.content')]) !!}
                             </div>
                         </div>
                         <div class="form-group {{ $errors->has('answer') ? ' has-error' : '' }}">
@@ -55,12 +55,12 @@
                             <div class="col-sm-10">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        {!! Form::radio('status', null,  ["id" => "inlineRadio1", "value" => "1","class" => "form-check-input"]) !!} Active
+                                        {!! Form::radio('status', 1,  ["id" => "inlineRadio1", "class" => "form-check-input"]) !!} Active
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        {!! Form::radio('status', null,  ["id" => "inlineRadio1", "value" => "0","class" => "form-check-input"]) !!} Pending
+                                        {!! Form::radio('status', 0,  ["id" => "inlineRadio2", "class" => "form-check-input"]) !!} Pending
                                     </label>
                                 </div>
                             </div>
@@ -93,25 +93,5 @@
 @endsection
 
 @section('extend-js')
-    <script>
-        $(function(){
-            $('.addmore').click(function(){
-                var html = '<div class="col-xs-10 no-padding answer_item">' +
-                    '<input type="text" class="form-control col-sm-5 m-b-md" name="answer[]" value="">' +
-                    '</div>'+
-                    '<div class="col-xs-2 btn_remove">' +
-                    '<button type="button" class="btn btn-danger remove" onclick="removeAnswer(this);"><i class="fa fa-times"></i></button>' +
-                    '</div>';
-                $('.list_answer').append(html);
-            });
-        });
-        function removeAnswer(obj){
-            var element_index = $(obj).parent().index();
-            if(element_index == 1 && $('.list_answer div').length == 2){
-                return false;
-            }
-            $(obj).parent().remove();
-            $('.list_answer div').eq(element_index-1).remove();
-        }
-    </script>
+
 @endsection

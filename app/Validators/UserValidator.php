@@ -1,35 +1,33 @@
 <?php
 namespace App\Validators;
 
-class UserValidator {
-
-
+class UserValidator extends AbstractValidator {
     /**
-     * check validate login
-     *
-     * @return mixed
+     * @return array
      */
-    public function validateLogin() {
-
-        $res['rules'] = $this->_defaultRule();
-        $res['messages'] = $this->_defaultMessage();
-        $res['attributes'] = $this->_defaultAttribute();
-
-        return $res;
-    }
-
-    private function _defaultRule() {
+    protected function rules()
+    {
         return [
             'email' => 'required|email',
             'password' => 'required',
         ];
     }
 
-    private function _defaultMessage() {
-        return [];
+    /**
+     * @return array
+     */
+    protected function messages()
+    {
+        return [
+
+        ];
     }
 
-    private function _defaultAttribute() {
+    /**
+     * @return array
+     */
+    protected function attributes()
+    {
         return [
             'email' => trans('messages.validator.user.login.username'),
             'password' => trans('messages.validator.user.login.password'),

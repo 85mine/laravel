@@ -9,7 +9,7 @@ class IpValidator extends AbstractValidator
     protected function rules()
     {
         return [
-//            'ip_address' => 'required|unique:ips,ip_address|max:50|ip'
+            'ip_address' => 'required|unique:ips,ip_address|max:50|ip'
         ];
     }
 

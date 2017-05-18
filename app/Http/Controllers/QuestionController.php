@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\IpRepository;
 use App\Repositories\QuestionRepository;
+use App\Validators\Exceptions\ValidatorException;
 use App\Validators\QuestionValidator;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 use App\Helper\Common;
-use App\Validators\IpValidator;
 
 class QuestionController extends BaseController
 {
@@ -35,12 +34,11 @@ class QuestionController extends BaseController
     }
 
     public function postAdd(){
-
         try{
             $this->validator->validate($this->request->all());
         }catch (ValidatorException $e){
             Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
-            return redirect(route('question.get.add', [$this->request->id]))->withInput();
+            return redirect(route('question.get.add'))->withInput();
         }
         $this->repository->create($this->request->input());
         Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.question.add_success')]);
@@ -76,6 +74,11 @@ class QuestionController extends BaseController
 
     public function getAjaxData(){
         $data = $this->repository->all();
+        foreach ($data as $item) {
+            if(isset(config('config.question.type')[$item['type']])){
+                $item['type'] = config('config.question.type')[$item['type']];
+            }
+        }
         return Datatables::of($data)->make(true);
     }
 

@@ -31,19 +31,4 @@ abstract class BaseController extends Controller
         Common::setMessage($this->request, $type, $messages);
     }
 
-    /**
-     * @param $data
-     * @param $validators
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    public function checkValidator($data, $validators)
-    {
-        $rules = isset($validators['rules']) ? $validators['rules'] : [];
-        $messages = isset($validators['messages']) ? $validators['messages'] : [];
-        $attributes = isset($validators['attributes']) ? $validators['attributes'] : [];
-
-        $validator = validator($data, $rules, $messages, $attributes);
-        return $validator;
-    }
-
 }
