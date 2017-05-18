@@ -29,6 +29,7 @@
                     <div class="sml-box">
                         {!! Form::open(['method' => 'POST', 'id' => 'form_customer', 'class' => 'form-horizontal']) !!}
                         {!! $messages !!}
+                        {{--{!! dd($errors) !!}--}}
                         <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
                             <label class="col-sm-2 control-label">{{trans('labels.label.customer.column.first_name')}}</label>
                             <div class="col-sm-8">

@@ -65,12 +65,12 @@ Route::group(['middleware' => 'ip'], function () {
             Route::post('/question/postDelete', 'QuestionController@postDelete')->name('question.postDelete');
 
             //Customer Management
-            Route::get('/customers', 'CustomerController@getCustomers')->name('customer.getCustomers');
-            Route::get('/customer/create', 'CustomerController@getCreateCustomer')->name('customer.getCreate');
-            Route::post('/customer/create', 'CustomerController@postCreateCustomer')->name('customer.postCreate');
+            Route::get('/customer/index', 'CustomerController@getIndex')->name('customer.get.index');
+            Route::get('/customer/create', 'CustomerController@getAdd')->name('customer.get.add');
+            Route::post('/customer/create', 'CustomerController@postAdd')->name('customer.post.add');
             Route::post('/customer/delete', 'CustomerController@postDelete')->name('customer.postDelete');
-            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.getEdit');
-            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.postEdit');
+            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.get.edit');
+            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.post.edit');
             Route::get('customer/getAjaxData', 'CustomerController@getAjaxData')->name('customer.getAjaxData');
 
         });
