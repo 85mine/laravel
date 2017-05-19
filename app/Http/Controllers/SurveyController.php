@@ -28,13 +28,12 @@ class SurveyController extends BaseController
         $questions = $request->questions;
         $question_type = $request->question_type;
         $mark = config('config.question.mark');
+        $list_type = config('config.question.type');
 
-        $mark_design = 0;
-        $mark_space = 0;
-        $mark_request = 0;
-        $mark_function = 0;
-        $mark_purpose = 0;
-        //dd($question_type,$questions);
+        $marks = [];
+        foreach ($list_type as $key => $type) {
+            $marks[$key] = 0;
+        }
 
         foreach ($questions as $key => $answer) {
             $total = 0;
@@ -43,31 +42,13 @@ class SurveyController extends BaseController
             }
 
             $type = $question_type[$key][0];
-            switch ($type) {
-                case 'design':
-                    $mark_design += $total;
-                    break;
-                case 'space':
-                    $mark_space += $total;
-                    break;
-                case 'request':
-                    $mark_request += $total;
-                    break;
-                case 'function':
-                    $mark_function += $total;
-                    break;
-                case 'purpose':
-                    $mark_purpose += $total;
-                    break;
-                default:
-                    break;
-            }
+            $marks[$type] += $total;
+
         }
 
-//        dd([$mark_design,$mark_space,$mark_request,$mark_function,$mark_purpose]);
+        dd($marks);
 
-        $result = 10000;
-        return redirect()->route('survey.result')->with(compact('result', 'mark_design', 'mark_space', 'mark_request', 'mark_function', 'mark_purpose'));
+        return redirect()->route('survey.result')->with(compact('marks'));
     }
 
     public function getResult()

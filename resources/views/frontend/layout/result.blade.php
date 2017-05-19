@@ -4,13 +4,8 @@
 
     <div id="survey">
         <strong>Your result is: <span class="result">
-        @if(Session::has('result'))
-                    {{--{{ Session::get('result') }}--}}
-                    {!! Session::get('mark_design') !!},
-                    {!! Session::get('mark_space') !!},
-                    {!! Session::get('mark_request') !!},
-                    {!! Session::get('mark_function') !!},
-                    {!! Session::get('mark_purpose') !!}
+        @if(Session::has('marks["design"]'))
+                    {!! Session::get('marks["design"]') !!}
                 @endif
         </span>
         </strong>

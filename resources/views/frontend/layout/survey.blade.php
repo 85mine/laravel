@@ -10,13 +10,13 @@
 @section('content')
 
     <div id="survey">
-        {{--<div class="col-lg-12">--}}
-            {{--@foreach($questions as $key => $question)--}}
-                {{--<button type="button" class="btn btn-default btn-circle btn-lg btn_{{++$key}}" id="{{$key}}">{{$key}}</button>--}}
-                {{--<span class="line-button">---------</span>--}}
-            {{--@endforeach--}}
-                {{--<button type="button" class="btn btn-default btn-circle btn-lg btn_end"><span class="fa fa-dot-circle-o"></span></button>--}}
-        {{--</div>--}}
+        <div class="col-lg-12">
+            @foreach($questions as $key => $question)
+                <button type="button" class="btn btn-circle btn-lg btn_{{++$key}} btn_question" id="{{$key}}">{{$key}}</button>
+                <span class="line-button"></span>
+            @endforeach
+                <button type="button" class="btn btn-circle btn-lg btn_question btn_end"><span class="fa fa-dot-circle-o"></span></button>
+        </div>
         <div class="col-lg-12">
             <div class="ibox-content">
                 <h2>Survey</h2>

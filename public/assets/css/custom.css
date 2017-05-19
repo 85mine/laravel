@@ -346,7 +346,7 @@ td input[type="checkbox"] {
     position: relative;
     width: 50%;
     height: 120px;
-    margin: 50px auto;
+    margin: 0px auto;
 }
 
 #survey h2 {
