@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\Common;
 use App\Models\Company;
-use App\Repositories\UserRepository;
+use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
 use App\Validators\UserAddValidator;
 use App\Validators\UserValidator;
@@ -25,7 +25,7 @@ class UserController extends BaseController
 
     public function __construct(Request $request,
                                 UserService $userService,
-                                UserRepository $repository,
+                                UserRepositoryInterface $repository,
                                 UserValidator $validator){
         $this->user = Auth::user();
         $this->userService = $userService;

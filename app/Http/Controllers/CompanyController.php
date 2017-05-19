@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Common;
-use App\Repositories\CompanyRepository;
+use App\Repositories\CompanyRepositoryInterface;
 use App\Validators\CompanyValidator;
 use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class CompanyController extends BaseController
 
     private $repository;
 
-    public function __construct(Request $request, CompanyRepository $repository, CompanyValidator $validator){
+    public function __construct(Request $request, CompanyRepositoryInterface $repository, CompanyValidator $validator){
         $this->validator = $validator;
         $this->repository = $repository;
         parent::__construct($request);

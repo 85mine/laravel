@@ -8,13 +8,13 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{ trans('labels.label.question.breadcrumb.add') }}</h2>
+    <h2>{{ trans('labels.label.question.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li>
-            <a href="{{ route('question.get.index') }}">{{ trans('labels.label.question.page_title') }}</a>
+            <a href="{{ route('question.get.index') }}">{{ trans('labels.label.question.breadcrumb.index') }}</a>
         </li>
         <li class="active">
             <strong>{{trans('labels.label.question.breadcrumb.add')}}</strong>
@@ -42,9 +42,9 @@
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.answer') }}</label>
                             <div class="col-sm-10 list_answer">
                                 @foreach(range('A','E') as $key => $item)
-                                    <div class="col-xs-1 no-padding"> <label class="control-label">{{$item."."}}</label></div>
+                                    <div class="col-xs-1 no-padding"> <label class="control-label">{{"$item."}}</label></div>
                                     <div class="col-xs-11 no-padding answer_item">
-                                        {!! Form::text('answer[]', null,  ["class" => "form-control col-sm-5 m-b-md"]) !!}
+                                        {!! Form::text("answer[{$key}]", null,  ["class" => "form-control col-sm-5 m-b-md"]) !!}
                                     </div>
                                 @endforeach
                             </div>
@@ -69,8 +69,8 @@
                             <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.type') }}</label>
                             <div class="col-sm-3">
                                 <select class="form-control" name="type">
-                                    @foreach($list_type as $type_value => $type)
-                                        <option value="{{$type_value}}">{{$type}}</option>
+                                    @foreach($list_type as $key => $type)
+                                        <option value="{{$key}}">{{$type}}</option>
                                     @endforeach
                                 </select>
                             </div>

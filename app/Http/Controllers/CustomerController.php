@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Common;
-use App\Repositories\CustomerRepository;
+use App\Repositories\CustomerRepositoryInterface;
+use App\Repositories\EloquentCustomerRepository;
 use App\Validators\CustomerValidator;
 use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class CustomerController extends BaseController
 
     private $repository;
 
-    public function __construct(Request $request, CustomerRepository $repository, CustomerValidator $validator){
+    public function __construct(Request $request, CustomerRepositoryInterface $repository, CustomerValidator $validator){
         $this->validator = $validator;
         $this->repository = $repository;
         parent::__construct($request);

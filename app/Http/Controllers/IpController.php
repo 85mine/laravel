@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\IpRepository;
+use App\Repositories\EloquentIpRepository;
+use App\Repositories\IpRepositoryInterface;
 use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
@@ -16,7 +17,7 @@ class IpController extends BaseController
 
     private $repository;
 
-    public function __construct(Request $request, IpRepository $repository, IpValidator $validator){
+    public function __construct(Request $request, IpRepositoryInterface $repository, IpValidator $validator){
         $this->validator = $validator;
         $this->repository = $repository;
         parent::__construct($request);

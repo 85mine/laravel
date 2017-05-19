@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Repositories\Abstracts;
-use App\Repositories\Interfaces\RepositoryInterface;
+namespace App\Repositories\Eloquent;
 
-abstract class RepositoryAbstract implements RepositoryInterface {
+use App\Repositories\BaseRepositoryInterface;
+
+abstract class EloquentBaseRepository implements BaseRepositoryInterface {
 
     protected $modelClassName;
 

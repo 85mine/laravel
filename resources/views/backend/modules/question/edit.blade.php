@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.title.customer.customers')}}
+    {{trans('labels.title.question.edit')}}
 @endsection
 
 @section('extend-css')
@@ -8,16 +8,16 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{ trans('labels.label.ip.page_title') }}</h2>
+    <h2>{{ trans('labels.label.question.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li>
-            <a href="{{ route('ip.get.index') }}">{{ trans('labels.label.ip.page_title') }}</a>
+            <a href="{{ route('question.get.index') }}">{{ trans('labels.label.question.breadcrumb.index') }}</a>
         </li>
         <li class="active">
-            <strong>{{trans('labels.label.ip.breadcrumb.add')}}</strong>
+            <strong>{{trans('labels.label.question.breadcrumb.edit')}}</strong>
         </li>
     </ol>
 @endsection
@@ -30,25 +30,57 @@
                     <div class="sml-box-header">
                     </div>
                     <div class="sml-box">
-                        {!! Form::model($ip, ['method' => 'POST', 'id' => 'form_customer', 'class' => 'form-horizontal']) !!}
+                        {!! Form::model($question, ['method' => 'POST', 'id' => 'form_question', 'class' => 'form-horizontal']) !!}
                         {!! $messages !!}
-                        {{--{!! dd($errors) !!}--}}
-                        <div class="form-group {{ $errors->has('first_name') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.ip.column.ip_address')}}</label>
-                            <div class="col-sm-8">
-                                {!! Form::text('ip_address', null,  ["id" => "ip_address", "class" => "form-control", "placeholder" => trans('labels.label.ip.column.ip_address')]) !!}
+                        <div class="form-group {{ $errors->has('content') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.content') }}</label>
+                            <div class="col-sm-10">
+                                {!! Form::textarea('content', null,  ["class" => "form-control", "placeholder" => trans('labels.label.question.column.content')]) !!}
                             </div>
                         </div>
-                        <div class="form-group {{ $errors->has('last_name') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{trans('labels.label.ip.column.description')}}</label>
-                            <div class="col-sm-8">
-                                {!! Form::textarea('description', null,  ["id" => "description", "class" => "form-control", "placeholder" => trans('labels.label.ip.column.description')]) !!}
+                        <div class="form-group {{ $errors->has('answer') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.answer') }}</label>
+                            <div class="col-sm-10 list_answer">
+                                @php($answers = json_decode($question->answer))
+                                @foreach(range('A','E') as $key => $item)
+                                    @php($answer =  isset($answers[$key]) ? $answers[$key] : '')
+                                    <div class="col-xs-1 no-padding"> <label class="control-label">{{"$item."}}</label></div>
+                                    <div class="col-xs-11 no-padding answer_item">
+                                        {!! Form::text("answer[{$key}]", $answer,  ["class" => "form-control col-sm-5 m-b-md"]) !!}
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.status') }}</label>
+                            <div class="col-sm-10">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        {!! Form::radio('status', 1,  ["id" => "inlineRadio1", "class" => "form-check-input"]) !!} Active
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        {!! Form::radio('status', 0,  ["id" => "inlineRadio2", "class" => "form-check-input"]) !!} Pending
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('type') ? ' has-error' : '' }}">
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.question.column.type') }}</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="type">
+                                    @foreach($list_type as $key => $type)
+                                        <option value="{{$key}}" {{ $question->type == $key ? 'selected':''}}>{{$type}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-2 col-sm-offset-2">
-                                <button class="btn btn-primary" type="submit">{{trans('labels.label.common.btnSave')}}</button>
+                                <button class="btn btn-primary" type="submit">{{ trans('labels.label.common.btnSave') }}</button>
                             </div>
                         </div>
                         {!! Form::close() !!}
@@ -63,10 +95,5 @@
 @endsection
 
 @section('extend-js')
-    <script src="{{url('assets/js/jquery.input-ip-address-control-1.0.min.js')}}"></script>
-    <script>
-        $(function () {
-            $('input[name="ip_address"]').ipAddress();
-        })
-    </script>
+
 @endsection

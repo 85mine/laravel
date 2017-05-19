@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.title.customer.customers')}}
+    {{trans('labels.title.user.edit')}}
 @endsection
 
 @section('extend-css')
@@ -8,13 +8,16 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{trans('labels.label.customer.page_title')}}</h2>
+    <h2>{{ trans('labels.label.user.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{route('admin.dashboard')}}">{{trans('labels.label.common.home')}}</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
+        </li>
+        <li>
+            <a href="{{ route('user.get.index') }}">{{ trans('labels.label.user.breadcrumb.index') }}</a>
         </li>
         <li class="active">
-            <strong>{{trans('labels.label.customer.breadcrumb.create')}}</strong>
+            <strong>{{trans('labels.label.user.breadcrumb.edit')}}</strong>
         </li>
     </ol>
 @endsection
@@ -42,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group {{ $errors->has('status') ? ' has-error' : '' }}">
-                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.list.status') }}</label>
+                            <label class="col-sm-2 control-label">{{ trans('labels.label.user.column.status') }}</label>
                             <div class="col-sm-8">
                                 {!! Form::select('status', ['0' => trans('labels.label.user.create.disable'), '1' => trans('labels.label.user.create.active')],  null, ["id" => "status", "class" => "form-control"]) !!}
                             </div>

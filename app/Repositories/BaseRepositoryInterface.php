@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Interfaces;
+namespace App\Repositories;
 
-interface RepositoryInterface {
+interface BaseRepositoryInterface {
     public function create(array $attributes);
     public function all($columns = array('*'));
     public function find($id, $columns = array('*'));

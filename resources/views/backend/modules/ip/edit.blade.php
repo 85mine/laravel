@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.title.customer.customers')}}
+    {{trans('labels.title.ip.edit')}}
 @endsection
 
 @section('extend-css')
@@ -14,10 +14,10 @@
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li>
-            <a href="{{ route('ip.get.index') }}">{{ trans('labels.label.ip.page_title') }}</a>
+            <a href="{{ route('ip.get.index') }}">{{ trans('labels.label.ip.breadcrumb.index') }}</a>
         </li>
         <li class="active">
-            <strong>{{trans('labels.label.ip.breadcrumb.add')}}</strong>
+            <strong>{{trans('labels.label.ip.breadcrumb.edit')}}</strong>
         </li>
     </ol>
 @endsection

@@ -1,16 +1,20 @@
 @extends('backend.layout.main')
-@section('title', trans('labels.title.ips'))
+@section('title')
+    {{trans('labels.title.ip.index')}}
+@endsection
+
 @section('extend-css')
     @include('backend.layout.sml-table.header')
 @endsection
+
 @section('breadcrumb')
     <h2>{{ trans('labels.label.ip.page_title') }}</h2>
     <ol class="breadcrumb">
-        <li class="active">
+        <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.label.ip.page_title') }}</strong>
+            <strong>{{trans('labels.label.ip.breadcrumb.index')}}</strong>
         </li>
     </ol>
 @endsection

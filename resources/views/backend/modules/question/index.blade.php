@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.label.question.page_title')}}
+    {{trans('labels.title.question.index')}}
 @endsection
 
 @section('extend-css')
@@ -8,13 +8,13 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{trans('labels.label.question.page_title')}}</h2>
+    <h2>{{ trans('labels.label.question.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.label.common.home') }}</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.title.question') }}</strong>
+            <strong>{{trans('labels.label.question.breadcrumb.index')}}</strong>
         </li>
     </ol>
 @endsection

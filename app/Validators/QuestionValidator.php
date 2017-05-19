@@ -9,11 +9,11 @@ class QuestionValidator extends AbstractValidator
      */
     protected function rules()
     {
-        $rules = array();
-        $rules['content'] = 'required';
-        $rules['answer.*'] = 'required';
-        $rules['type'] = 'required';
-        return $rules;
+        return [
+            'content' => 'required',
+            'answer.*' => 'required',
+            'type' => 'required',
+        ];
     }
 
     /**
@@ -31,10 +31,9 @@ class QuestionValidator extends AbstractValidator
      */
     protected function attributes()
     {
-        $attribute = array();
-        $attribute['content'] = trans('labels.label.question.column.content');
-        $attribute['answer.*'] = trans('labels.label.question.column.answer');
-        $attribute['type'] = trans('labels.label.question.column.type');
-        return $attribute;
+        return [
+            'content' => trans('labels.label.question.column.content'),
+            'type' => trans('labels.label.question.column.type'),
+        ];
     }
 }

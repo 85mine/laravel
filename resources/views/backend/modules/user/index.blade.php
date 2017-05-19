@@ -1,19 +1,24 @@
 @extends('backend.layout.main')
-@section('title', trans('labels.title.user.list'))
+@section('title')
+    {{trans('labels.title.user.index')}}
+@endsection
+
 @section('extend-css')
     @include('backend.layout.sml-table.header')
 @endsection
+
 @section('breadcrumb')
-    <h2>{{ trans('labels.title.user.list') }}</h2>
+    <h2>{{ trans('labels.label.user.page_title') }}</h2>
     <ol class="breadcrumb">
-        <li class="active">
+        <li>
             <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.title.user.list') }}</strong>
+            <strong>{{trans('labels.label.user.breadcrumb.index')}}</strong>
         </li>
     </ol>
 @endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -36,10 +41,10 @@
                                         <input class="sml-select-all magic-checkbox" type="checkbox" id="btn-select-all">
                                         <label for="btn-select-all"></label>
                                     </th>
-                                    <th>{{trans('labels.label.user.list.name')}}</th>
-                                    <th>{{trans('labels.label.user.list.email')}}</th>
-                                    <th>{{trans('labels.label.user.list.status')}}</th>
-                                    <th>{{trans('labels.label.user.list.company')}}</th>
+                                    <th>{{trans('labels.label.user.column.name')}}</th>
+                                    <th>{{trans('labels.label.user.column.email')}}</th>
+                                    <th>{{trans('labels.label.user.column.status')}}</th>
+                                    <th>{{trans('labels.label.user.column.company')}}</th>
                                     <th>{{trans('labels.label.common.action')}}</th>
                                 </tr>
                                 </thead>
