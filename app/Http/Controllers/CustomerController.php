@@ -3,96 +3,94 @@
 namespace App\Http\Controllers;
 
 use App\Helper\Common;
-use App\Models\Customer;
+use App\Repositories\CustomerRepositoryInterface;
+use App\Repositories\EloquentCustomerRepository;
 use App\Validators\CustomerValidator;
+use App\Validators\Exceptions\ValidatorException;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 
 class CustomerController extends BaseController
 {
-    public function getCustomers(Request $request){
-        $messages = Common::getMessage($request);
-        return view('backend.modules.customer.customers',compact('messages'));
+
+    private $validator;
+
+    private $repository;
+
+    public function __construct(Request $request, CustomerRepositoryInterface $repository, CustomerValidator $validator){
+        $this->validator = $validator;
+        $this->repository = $repository;
+        parent::__construct($request);
     }
 
-    public function getCreateCustomer(Request $request){
-        $messages = Common::getMessage($request);
+    public function getIndex(){
+        $messages = $this->messages;
+        return view('backend.modules.customer.index',compact('messages'));
+    }
+
+    public function getAdd(){
+        $messages = $this->messages;
         return view('backend.modules.customer.add',compact('messages'));
     }
 
-    public function postCreateCustomer(Request $request){
-        try {
-            $_validate = new CustomerValidator();
-            $validator = $this->checkValidator($request->all(), $_validate->validate());
+    public function postAdd(){
 
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('customer.getCreate', [$request->id]))->withInput();
-            }
-
-            $customer = new Customer();
-            $customer->fill($request->input())->save();
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.add_success')]);
-            return redirect(route('customer.getCustomers'));
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.add_failed')]);
-            return redirect(route('customer.getCreate', [$request->id]))->withInput();
+        try{
+            $this->validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('customer.get.add'))->withInput();
         }
+        $this->repository->create($this->request->input());
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.add_success')]);
+        return redirect(route('customer.get.index'));
     }
 
-    public function getEdit(Request $request, $id){
-        $customer = Customer::find($id);
+    public function getEdit($id){
+
+        $customer =  $this->repository->find($id);
 
         if (!$customer) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
-            return redirect(route('customer.getCustomers'));
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.common.user_not_found')]);
+            return redirect(route('customer.get.index'));
         }
 
-        $messages = Common::getMessage($request);
-
+        $messages = $this->messages;
         return view('backend.modules.customer.edit', compact('customer','messages'));
     }
 
-    public function postEdit(Request $request){
-        try {
-            $_validate = new CustomerValidator();
-            $validator = $this->checkValidator($request->all(), $_validate->validate());
+    public function postEdit($id){
 
-            if ($validator->fails()) {
-                Common::setMessage($request, MESSAGE_STATUS_ERROR, $validator->getMessageBag());
-                return redirect(route('customer.getEdit', [$request->id]))->withInput();
-            }
-
-            $customer = Customer::find($request->id);
-            $customer->fill($request->input())->save();
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.edit_success')]);
-            return redirect(route('customer.getCustomers'));
-        } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.edit_failed')]);
-            return redirect(route('customer.getEdit', [$request->id]))->withInput();
+        try{
+            $this->validator->validate($this->request->all());
+        }catch (ValidatorException $e){
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, $e->getMessageBag());
+            return redirect(route('customer.get.edit', $id))->withInput();
         }
+
+        $this->repository->update($id,$this->request->input());
+        Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.edit_success')]);
+        return redirect(route('customer.get.index'));
     }
 
     public function getAjaxData(){
-        $data =  Customer::where('id', '<', 1000)->take(100)->get();
-//        dd($data);
-//        $data = Customer::all();
+        $data = $this->repository->all();
         return Datatables::of($data)->make(true);
     }
 
-    public function postDelete(Request $request)
+    public function postDelete()
     {
         try {
-            $id = $request->s_ids;
+            $id = $this->request->s_ids;
             $ids = explode(",", $id);
-            Customer::whereIn('id', $ids)->delete();
-            Common::setMessage($request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
-            return redirect()->intended(route('customer.getCustomers'));
+
+            $this->repository->whereIn('id',$ids)->delete();
+
+            Common::setMessage($this->request, MESSAGE_STATUS_SUCCESS, [trans('messages.customer.delete_success')]);
+            return redirect(route('customer.get.index'));
         } catch (\Exception $e) {
-            Common::setMessage($request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_failed')]);
-            return redirect(route('customer.getCustomers'));
+            Common::setMessage($this->request, MESSAGE_STATUS_ERROR, [trans('messages.customer.delete_fail')]);
+            return redirect(route('customer.get.index'));
         }
 
     }

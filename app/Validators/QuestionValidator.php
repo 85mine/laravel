@@ -1,36 +1,39 @@
 <?php
+
 namespace App\Validators;
-class QuestionValidator
+
+class QuestionValidator extends AbstractValidator
 {
-    public function validateQuestion()
+    /**
+     * @return array
+     */
+    protected function rules()
     {
-        $res['rules'] = $this->_defaultRule();
-        $res['messages'] = $this->_defaultMessage();
-        $res['attributes'] = $this->_defaultAttribute();
-
-        return $res;
+        return [
+            'content' => 'required',
+            'answer.*' => 'required',
+            'type' => 'required',
+        ];
     }
 
-    private function _defaultRule()
+    /**
+     * @return array
+     */
+    protected function messages()
     {
-        $rules = array();
-        $rules['question_content'] = 'required';
-        $rules['answer.*'] = 'required';
-        $rules['type'] = 'required';
-        return $rules;
+        return [
+
+        ];
     }
 
-    private function _defaultMessage()
+    /**
+     * @return array
+     */
+    protected function attributes()
     {
-        return [];
+        return [
+            'content' => trans('labels.label.question.column.content'),
+            'type' => trans('labels.label.question.column.type'),
+        ];
     }
-
-    private function _defaultAttribute()
-    {
-        $attribute = array();
-        $attribute['question_content'] = trans('labels.label.question.column.content');
-        $attribute['type'] = trans('labels.label.question.column.type');
-        return $attribute;
-    }
-
 }

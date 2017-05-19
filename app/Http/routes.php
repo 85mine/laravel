@@ -11,11 +11,17 @@
 |
 */
 Route::group(['middleware' => 'ip'], function () {
-    Route::get('/', 'UserController@getIndex')->name('user.getIndex');
+
+    // Before login
+    Route::get('/', function (){
+        return redirect(route('user.getLogin'));
+    });
+
     // Active email
     Route::group(['middleware' => 'user.status:' . ROUTER_ACTIVE_EMAIL], function () {
         Route::get('/active-email', 'UserController@getActiveEmail')->name('user.getActiveEmail');
     });
+
     // Guest
     Route::group(['middleware' => 'guest'], function () {
         // Login
@@ -32,46 +38,50 @@ Route::group(['middleware' => 'ip'], function () {
         Route::pattern('id', '[0-9]+');
         // Check user confirm email
         Route::group(['middleware' => 'user.status:' . ROUTER_USER], function () {
+
             Route::get('/', 'UserController@getDashboard')->name('admin.dashboard');
-            // IPs
-            Route::get('/ips', 'IpController@index')->name('ips.index');
-            Route::get('/ips/ajaxData', 'IpController@getAjaxData')->name('ips.ajaxData');
-            Route::get('/ips/edit/{id?}', 'IpController@getEdit')->name('ips.getEdit');
-            Route::post('/ips/edit', 'IpController@postEdit')->name('ips.postEdit');
-            Route::get('/ips/add', 'IpController@getAdd')->name('ips.getAdd');
-            Route::post('/ips/add', 'IpController@postAdd')->name('ips.postAdd');
-            Route::post('/ips/delete', 'IpController@postDelete')->name('ips.postDelete');
-            Route::post('/ips/enable_ips', 'IpController@postSetIpsConnection')->name('ips.postSetConnection');
+
+            // IP Management
+            Route::get('/ip/index', 'IpController@getIndex')->name('ip.get.index');
+            Route::get('/ip/add', 'IpController@getAdd')->name('ip.get.add');
+            Route::post('/ip/add', 'IpController@postAdd')->name('ip.post.add');
+            Route::post('/ip/delete', 'IpController@postDelete')->name('ip.post.delete');
+            Route::get('/ip/edit/{id?}', 'IpController@getEdit')->name('ip.get.edit');
+            Route::post('/ip/edit/{id?}', 'IpController@postEdit')->name('ip.post.edit');
+            Route::get('/ip/getAjaxData', 'IpController@getAjaxData')->name('ip.get.ajax.data');
+
             // QR code
             Route::get('/qr', 'QrController@getList')->name('admin.qr.getList');
             Route::get('/qr/create', 'QrController@getCreate')->name('admin.qr.getCreate');
             Route::post('/qr/create', 'QrController@postCreate')->name('admin.qr.postCreate');
             Route::get('/qr/edit/{id?}', 'QrController@getEdit')->name('admin.qr.getEdit');
-            // Company
-            Route::get('/companies', 'CompanyController@index')->name('company.index');
-            Route::get('/companies/ajaxData', 'CompanyController@getAjaxData')->name('company.ajaxData');
-            Route::get('/company/add', 'CompanyController@getAdd')->name('company.getAdd');
-            Route::post('/company/add', 'CompanyController@postAdd')->name('company.postAdd');
-            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.getEdit');
-            Route::post('/company/edit', 'CompanyController@postEdit')->name('company.postEdit');
-            Route::post('/company/delete', 'CompanyController@delete')->name('company.delete');
-            // Question management
-            Route::get('/question', 'QuestionController@index')->name('question.index');
-            Route::get('/question/ajaxData', 'QuestionController@ajaxData')->name('question.ajaxData');
-            Route::get('/question/add', 'QuestionController@getAdd')->name('question.add');
-            Route::post('/question/postAdd', 'QuestionController@postAdd')->name('question.postAdd');
-            Route::get('/question/edit/{id?}', 'QuestionController@getEdit')->name('question.getEdit');
-            Route::post('/question/postEdit', 'QuestionController@postEdit')->name('question.postEdit');
-            Route::post('/question/postDelete', 'QuestionController@postDelete')->name('question.postDelete');
+
+            //Company Management
+            Route::get('/company/index', 'CompanyController@getIndex')->name('company.get.index');
+            Route::get('/company/add', 'CompanyController@getAdd')->name('company.get.add');
+            Route::post('/company/add', 'CompanyController@postAdd')->name('company.post.add');
+            Route::post('/company/delete', 'CompanyController@postDelete')->name('company.post.delete');
+            Route::get('/company/edit/{id?}', 'CompanyController@getEdit')->name('company.get.edit');
+            Route::post('/company/edit/{id?}', 'CompanyController@postEdit')->name('company.post.edit');
+            Route::get('/company/getAjaxData', 'CompanyController@getAjaxData')->name('company.get.ajax.data');
+            
+            //Question Management
+            Route::get('/question/index', 'QuestionController@getIndex')->name('question.get.index');
+            Route::get('/question/add', 'QuestionController@getAdd')->name('question.get.add');
+            Route::post('/question/add', 'QuestionController@postAdd')->name('question.post.add');
+            Route::post('/question/delete', 'QuestionController@postDelete')->name('question.post.delete');
+            Route::get('/question/edit/{id?}', 'QuestionController@getEdit')->name('question.get.edit');
+            Route::post('/question/edit/{id?}', 'QuestionController@postEdit')->name('question.post.edit');
+            Route::get('/question/getAjaxData', 'QuestionController@getAjaxData')->name('question.get.ajax.data');
 
             //Customer Management
-            Route::get('/customers', 'CustomerController@getCustomers')->name('customer.getCustomers');
-            Route::get('/customer/create', 'CustomerController@getCreateCustomer')->name('customer.getCreate');
-            Route::post('/customer/create', 'CustomerController@postCreateCustomer')->name('customer.postCreate');
-            Route::post('/customer/delete', 'CustomerController@postDelete')->name('customer.postDelete');
-            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.getEdit');
-            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.postEdit');
-            Route::get('customer/getAjaxData', 'CustomerController@getAjaxData')->name('customer.getAjaxData');
+            Route::get('/customer/index', 'CustomerController@getIndex')->name('customer.get.index');
+            Route::get('/customer/add', 'CustomerController@getAdd')->name('customer.get.add');
+            Route::post('/customer/add', 'CustomerController@postAdd')->name('customer.post.add');
+            Route::post('/customer/delete', 'CustomerController@postDelete')->name('customer.post.delete');
+            Route::get('/customer/edit/{id?}', 'CustomerController@getEdit')->name('customer.get.edit');
+            Route::post('/customer/edit/{id?}', 'CustomerController@postEdit')->name('customer.post.edit');
+            Route::get('/customer/getAjaxData', 'CustomerController@getAjaxData')->name('customer.get.ajax.data');
 
         });
         // Confirm email
@@ -89,18 +99,14 @@ Route::group(['middleware' => 'ip'], function () {
         Route::get('/surveys/', 'SurveyController@index')->name('survey.index');
         Route::get('/surveys/ajaxList', 'SurveyController@getAjaxList')->name('survey.ajaxList');
 
-        // Account
-        Route::group(['prefix' => 'user'], function () {
-            // List account
-            Route::get('/list', 'UserController@listUser')->name('user.list');
-            // Create account
-            Route::get('/create', 'UserController@createUser')->name('user.create');
-            Route::post('/add', 'UserController@addUser')->name('user.add');
-            Route::post('/delete', 'UserController@deleteUser')->name('user.postDelete');
-            Route::post('/postEdit', 'UserController@postEditUser')->name('user.postEdit');
-            Route::get('/ajaxList', 'UserController@getAjaxList')->name('user.ajaxList');
-            Route::get('/edit/{id?}', 'UserController@getEdit')->name('user.getEdit');
-        });
+        // User Management
+        Route::get('/user/index', 'UserController@getIndex')->name('user.get.index');
+        Route::get('/user/add', 'UserController@getAdd')->name('user.get.add');
+        Route::post('/user/add', 'UserController@postAdd')->name('user.post.add');
+        Route::post('/user/delete', 'UserController@postDelete')->name('user.post.delete');
+        Route::get('/user/edit/{id?}', 'UserController@getEdit')->name('user.get.edit');
+        Route::post('/user/edit/{id?}', 'UserController@postEdit')->name('user.post.edit');
+        Route::get('/user/getAjaxData', 'UserController@getAjaxData')->name('user.get.ajax.data');
 
     });
 

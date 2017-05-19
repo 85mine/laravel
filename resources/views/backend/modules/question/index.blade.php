@@ -1,6 +1,6 @@
 @extends('backend.layout.main')
 @section('title')
-    {{trans('labels.label.question.page_title')}}
+    {{trans('labels.title.question.index')}}
 @endsection
 
 @section('extend-css')
@@ -8,13 +8,13 @@
 @endsection
 
 @section('breadcrumb')
-    <h2>{{trans('labels.label.question.page_title')}}</h2>
+    <h2>{{ trans('labels.label.question.page_title') }}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.label.common.home') }}</a>
+            <a href="{{ route('admin.dashboard') }}">{{ trans('labels.title.home.dashboard') }}</a>
         </li>
         <li class="active">
-            <strong>{{ trans('labels.title.question') }}</strong>
+            <strong>{{trans('labels.label.question.breadcrumb.index')}}</strong>
         </li>
     </ol>
 @endsection
@@ -28,8 +28,8 @@
                         {!! $messages !!}
                         {{--Add/Delete Button--}}
                         <div class="over-hidden bulk-action">
-                            <a href="{{ route('question.add') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
-                            <a href="{{ route('question.postDelete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
+                            <a href="{{ route('question.get.add') }}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{ trans('labels.label.common.btnAddMore') }}</a>
+                            <a href="{{ route('question.post.delete') }}" class="btn btn-disable sml-delete-btn" onclick="return false;"><i class="fa fa-fw fa-remove"></i> {{ trans('labels.label.common.btnDelete') }}</a>
                         </div>
                     </div>
                     <div class="sml-box">
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-    {!! Form::open(array('route' => array('question.postDelete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
+    {!! Form::open(array('route' => array('question.post.delete'), 'method' => 'POST', 'id' => 'sml-form-delete-submit', 'class' => 'form-horizontal')) !!}
     {!! Form::hidden('s_ids', null) !!}
     {!! Form::close() !!}
 @endsection
@@ -79,7 +79,7 @@
             autoWidth: false,
             order: [[1, 'desc']],
             ajax: {
-                "url": '{!! route('question.ajaxData') !!}',
+                "url": '{!! route('question.get.ajax.data') !!}',
                 "type": "GET"
             },
             aoColumnDefs:[
@@ -141,7 +141,7 @@
                     bSortable: false,
                     render: function ( data, type, row ) {
                         return '<a name="del_' + row.id + '" class="btn btn-xs btn-white m-l-xs m-r-xxs sml-select-item-delete"><i class="fa fa-trash"></i> {{trans('labels.label.common.btnDelete')}}</a>' +
-                            '<a href="{{route('question.getEdit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
+                            '<a href="{{route('question.get.edit')}}/' + row.id + '" class="btn btn-xs btn-primary m-l-xs m-r-xxs"><i class="fa fa-pencil"></i> {{trans('labels.label.common.btnEdit')}}</a>';
                     },
                     aTargets: [-1]
                 },

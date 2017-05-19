@@ -1,18 +1,12 @@
 <?php
 namespace App\Validators;
 
-class CustomerValidator
+class CustomerValidator extends AbstractValidator
 {
-    public function validate()
-    {
-        $res['rules'] = $this->_defaultRule();
-        $res['messages'] = $this->_defaultMessage();
-        $res['attributes'] = $this->_defaultAttribute();
-
-        return $res;
-    }
-
-    private function _defaultRule()
+    /**
+     * @return array
+     */
+    protected function rules()
     {
         return [
             'first_name' => 'required|max:100',
@@ -22,12 +16,21 @@ class CustomerValidator
         ];
     }
 
-    private function _defaultMessage()
+    /**
+     * @return array
+     */
+    protected function messages()
     {
-        return [];
+        // TODO: Implement messages() method.
+        return [
+
+        ];
     }
 
-    private function _defaultAttribute()
+    /**
+     * @return array
+     */
+    protected function attributes()
     {
         return [
             'first_name' => trans('labels.label.customer.column.first_name'),
@@ -36,5 +39,4 @@ class CustomerValidator
             'email' => trans('labels.label.customer.column.email'),
         ];
     }
-
 }

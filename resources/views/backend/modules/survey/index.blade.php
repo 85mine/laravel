@@ -17,7 +17,7 @@
     <h2>{{trans('labels.title.survey.list')}}</h2>
     <ol class="breadcrumb">
         <li>
-            <a href="{{route('admin.dashboard')}}">{{trans('labels.label.common.home')}}</a>
+            <a href="{{route('admin.dashboard')}}">{{trans('labels.label.common.dashboard')}}</a>
         </li>
         <li class="active">
             <strong>{{trans('labels.title.survey.list')}}</strong>

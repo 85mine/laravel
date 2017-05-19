@@ -1,37 +1,44 @@
 <?php
 return [
-    // Title
+    // Common
     'title.common'                      => '住宅メーカ向け診断',
     'title.short.common'                => 'BS',
+    'title.home.dashboard'              => 'Dashboard',
+
+    // User
     'title.user.login'                  => 'ログイン',
     'title.user.confirm_email'          => 'メール確認',
     'title.user.active_email'           => 'メール有効',
-    'title.user.list'                   => 'ユーザーリスト',
-    'title.user.create'                 => 'ユーザー追加',
+    'title.user.index'                  => 'ユーザーリスト',
+    'title.user.add'                    => 'ユーザー追加',
     'title.user.edit'                   => 'ユーザー編集',
-    'title.home.dashboard'              => 'Dashboard',
-    'title.ips'                         => 'IP',
-    'title.ips.create'                  => 'Add IP',
-    'title.ips.edit'                    => 'Edit IP',
-    'title.qr.create'                   => 'Create Qr',
-    'title.qr.edit'                     => 'Edit Qr',
-    'title.customer.customers'          => 'Customers',
-    'title.customer.create'             => 'Create customer',
-    'title.customer.detail'             => 'Customer detail',
+
+    // Customer
+    'title.customer.index'              => 'Customers',
+    'title.customer.add'                => 'Create customer',
     'title.customer.edit'               => 'Edit customer',
-    'title.company'                     => 'Company',
-    'title.company.create'              => 'Create Company',
-    'title.company.edit'                => 'Edit Company',
-    'title.ips.create'                  => 'IP追加',
-    'title.ips.edit'                    => 'IP編集',
+
+    // Ip
+    'title.ip.index'                    => 'IP',
+    'title.ip.add'                      => 'IP追加',
+    'title.ip.edit'                     => 'IP編集',
+
+    // Qr
+    'title.qr.index'                    => 'Index',
     'title.qr.create'                   => 'QRコード追加',
     'title.qr.edit'                     => 'QRコード編集',
-    'title.company'                     => '会社',
-    'title.company.create'              => '会社追加',
+
+    // Company
+    'title.company.index'               => '会社',
+    'title.company.add'                 => '会社追加',
     'title.company.edit'                => '会社編集',
-    'title.question'                    => '質問リスト',
+
+    // Question
+    'title.question.index'              => '質問リスト',
     'title.question.add'                => '質問追加',
     'title.question.edit'               => '質問追加',
+
+    // Survey
     'title.survey.list'                 => 'Survey List',
 
     // Label
@@ -40,7 +47,7 @@ return [
             'login'                     => 'ログイン',
             'logOut'                    => 'ログアウト',
             'profile'                   => 'プロフィール',
-            'home'                      => 'ホーム',
+            'dashboard'                 => 'Dashboard',
             'btnAddMore'                => '追加',
             'btnSave'                   => '保存',
             'btnCancel'                 => 'キャンセル',
@@ -57,11 +64,17 @@ return [
                 'description' => 'Please check email or request new email to active',
                 'send_email' => 'Send new email',
             ],
-            'list' => [
+            'page_title'    => 'IPリスト',
+            'column' => [
                 'name'      => '名前',
                 'email'     => 'メール',
                 'status'    => 'ステータス',
                 'company'   => '会社',
+            ],
+            'breadcrumb'    => [
+                'index'                 => 'Index',
+                'edit'                  => 'Edit',
+                'add'                   => 'Add'
             ],
             'create' => [
                 'name'      => '名前',
@@ -72,13 +85,14 @@ return [
                 'disable'   => 'disable'
             ],
         ],
-        'ips' => [
+        'ip' => [
             'page_title'    => 'IPリスト',
             'column'        => [
                 'ip_address'            => 'IPアドレス',
                 'description'           => '説明'
             ],
             'breadcrumb'    => [
+                'index'                 => 'Index',
                 'edit'                  => 'IP編集',
                 'add'                   => 'IP追加'
             ],
@@ -88,7 +102,7 @@ return [
             ]
         ],
         'customer' => [
-            'header'        => 'Customers Management',
+            'page_title'    => 'Customers Management',
             'column'        => [
                 'id'                    => 'Id',
                 'first_name'            => 'First name',
@@ -97,26 +111,26 @@ return [
                 'email'                 => 'Email address',
             ],
             'breadcrumb'    => [
-                'create'                => 'Create customer',
-                'detail'                => 'Customer detail',
-                'edit'                  => 'Edit customer'
+                'index'                 => 'Index',
+                'edit'                  => 'Edit',
+                'add'                   => 'Add'
             ]
         ],
         'company' => [
             'page_title'    => '会社リスト',
             'column'        => [
-                'company_name'                  => '名前',
-                'company_address'               => '場所',
-                'company_mobile'                => '携帯電話',
-                'company_email'                 => 'メールアドレス',
-                'company_website'               => 'サイト',
-                'representative_name'           => '担当者名',
-                'representative_mobile'         => '担当者携帯電話',
+                'company_name'          => '名前',
+                'company_address'       => '場所',
+                'company_mobile'        => '携帯電話',
+                'company_email'         => 'メールアドレス',
+                'company_website'       => 'サイト',
+                'representative_name'   => '担当者名',
+                'representative_mobile' => '担当者携帯電話',
             ],
             'breadcrumb'    => [
-                'index'                 => '会社',
-                'edit'                  => '会社編集',
-                'add'                   => '会社追加'
+                'index'                 => 'Index',
+                'edit'                  => 'Edit',
+                'add'                   => 'Add'
             ]
         ],
         'question' => [
@@ -132,8 +146,9 @@ return [
                 'type'                  => '質問タイプ'
             ],
             'breadcrumb'    => [
-                'edit'                  => '質問編集',
-                'add'                   => '質問追加'
+                'index'                 => 'Index',
+                'edit'                  => 'Edit',
+                'add'                   => 'Add'
             ]
         ],
         'survey' => [
