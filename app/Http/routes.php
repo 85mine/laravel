@@ -116,3 +116,4 @@ Route::group(['middleware' => 'ip'], function () {
 Route::get('/index', 'SurveyController@getIndex')->name('index');
 Route::get('/survey', 'SurveyController@getSurvey')->name('survey');
 Route::post('/survey', 'SurveyController@postSurvey')->name('postSurvey');
+Route::get('/survey/result', 'SurveyController@getResult')->name('survey.result');
